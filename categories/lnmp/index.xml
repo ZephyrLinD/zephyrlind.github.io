@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LNMP on ZephyrLin&#39;s Blog</title>
+    <link>https://zephyrlin.github.io/categories/lnmp/</link>
+    <description>Recent content in LNMP on ZephyrLin&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 09 Aug 2019 08:46:15 +0800</lastBuildDate>
+    
+	<atom:link href="https://zephyrlin.github.io/categories/lnmp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>我的Ubuntu Server LNMP折腾笔记</title>
+      <link>https://zephyrlin.github.io/2019/08/%E6%88%91%E7%9A%84ubuntu-server-lnmp%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 09 Aug 2019 08:46:15 +0800</pubDate>
+      
+      <guid>https://zephyrlin.github.io/2019/08/%E6%88%91%E7%9A%84ubuntu-server-lnmp%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</guid>
+      <description>本文旨在记录Ubuntu Server上面稍微好配的LNMP环境的一些坑还有一些特殊的地方。因为像CentOS、RHEL都比较适合源代码安装，但是Ubuntu Server源代码安装反而过于折腾而且没必要，所以跟RedHat家的安装方法比，安装虽然简单，但是包名不同，也算有点坑吧。把它们记录下来，以后再弄的时候看这里就可以了。</description>
+    </item>
+    
+  </channel>
+</rss>

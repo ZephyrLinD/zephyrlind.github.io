@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on ZephyrLin&#39;s Blog</title>
+    <link>https://zephyrlin.github.io/categories/</link>
+    <description>Recent content in Categories on ZephyrLin&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 09 Aug 2019 08:46:15 +0800</lastBuildDate>
+    
+	<atom:link href="https://zephyrlin.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>LNMP</title>
+      <link>https://zephyrlin.github.io/categories/lnmp/</link>
+      <pubDate>Fri, 09 Aug 2019 08:46:15 +0800</pubDate>
+      
+      <guid>https://zephyrlin.github.io/categories/lnmp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>https://zephyrlin.github.io/categories/ubuntu/</link>
+      <pubDate>Fri, 09 Aug 2019 08:46:15 +0800</pubDate>
+      
+      <guid>https://zephyrlin.github.io/categories/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web服务器</title>
+      <link>https://zephyrlin.github.io/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Fri, 09 Aug 2019 08:46:15 +0800</pubDate>
+      
+      <guid>https://zephyrlin.github.io/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Powershell</title>
+      <link>https://zephyrlin.github.io/categories/powershell/</link>
+      <pubDate>Sat, 03 Aug 2019 22:40:13 +0800</pubDate>
+      
+      <guid>https://zephyrlin.github.io/categories/powershell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>终端美化</title>
+      <link>https://zephyrlin.github.io/categories/%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/</link>
+      <pubDate>Sat, 03 Aug 2019 22:40:13 +0800</pubDate>
+      
+      <guid>https://zephyrlin.github.io/categories/%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
