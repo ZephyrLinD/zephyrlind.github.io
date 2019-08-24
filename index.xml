@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>Cheveretoins</title>
-      <link>https://zephyrlind.github.io/2019/08/cheveretoins/</link>
+      <title>Chevereto的安装和一些坑</title>
+      <link>https://zephyrlind.github.io/2019/08/chevereto%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E5%9D%91/</link>
       <pubDate>Sat, 24 Aug 2019 13:45:32 +0800</pubDate>
       
-      <guid>https://zephyrlind.github.io/2019/08/cheveretoins/</guid>
-      <description></description>
+      <guid>https://zephyrlind.github.io/2019/08/chevereto%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E5%9D%91/</guid>
+      <description>Chevereto图床安装过程中遇到了好多的坑，大部分是因为自己对PHP、Nginx了解不多的原因。所以记录下来，供以后参考。</description>
     </item>
     
     <item>
