@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>category on ZephyrLin&#39;s Blog</title>
+    <link>https://zephyrlind.github.io/categories/category/</link>
+    <description>Recent content in category on ZephyrLin&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 24 Aug 2019 13:45:32 +0800</lastBuildDate>
+    
+	<atom:link href="https://zephyrlind.github.io/categories/category/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cheveretoins</title>
+      <link>https://zephyrlind.github.io/2019/08/cheveretoins/</link>
+      <pubDate>Sat, 24 Aug 2019 13:45:32 +0800</pubDate>
+      
+      <guid>https://zephyrlind.github.io/2019/08/cheveretoins/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

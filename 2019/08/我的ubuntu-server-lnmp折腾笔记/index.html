@@ -55,12 +55,12 @@
 
 
 
-  <meta property="og:image" content="https://zephyr99-pics-1257686472.cos.ap-beijing.myqcloud.com/lnmpubuntu/lnmp_logo_small.png">
-  <meta property="twitter:image" content="https://zephyr99-pics-1257686472.cos.ap-beijing.myqcloud.com/lnmpubuntu/lnmp_logo_small.png">
+  <meta property="og:image" content="http://graph.zephyrl.co/images/2019/08/24/dfoflnmp.png">
+  <meta property="twitter:image" content="http://graph.zephyrl.co/images/2019/08/24/dfoflnmp.png">
 
 
-  <meta property="og:image" content="https://zephyr99-pics-1257686472.cos.ap-beijing.myqcloud.com/lnmpubuntu/lnmp_logo_big.png">
-  <meta property="twitter:image" content="https://zephyr99-pics-1257686472.cos.ap-beijing.myqcloud.com/lnmpubuntu/lnmp_logo_big.png">
+  <meta property="og:image" content="http://graph.zephyrl.co/images/2019/08/24/lnmp_logo_big.png">
+  <meta property="twitter:image" content="http://graph.zephyrl.co/images/2019/08/24/lnmp_logo_big.png">
 
 
 
@@ -228,7 +228,7 @@
   <div class="post-header-cover
               text-left
               "
-       style="background-image:url('https://zephyr99-pics-1257686472.cos.ap-beijing.myqcloud.com/lnmpubuntu/lnmp_logo_big.png')"
+       style="background-image:url('http://graph.zephyrl.co/images/2019/08/24/lnmp_logo_big.png')"
        data-behavior="4">
     
       <div class="post-header main-content-wrap text-left">
@@ -285,7 +285,7 @@
 
 <p>LNMP也有不同的搭配：</p>
 
-<p><img src="https://zephyr99-pics-1257686472.cos.ap-beijing.myqcloud.com/lnmpubuntu/dfoflnmp.png" alt="LNMP" /></p>
+<p><img src="http://graph.zephyrl.co/images/2019/08/24/dfoflnmp.png" alt="dfoflnmp.png" /></p>
 
 <p>本文旨在记录Ubuntu Server上面稍微好配的LNMP环境的一些坑还有一些特殊的地方。因为像CentOS、RHEL都比较适合源代码安装，但是Ubuntu Server源代码安装反而过于折腾而且没必要，所以跟RedHat家的安装方法比，安装虽然简单，但是包名不同，也算有点坑吧。把它们记录下来，以后再弄的时候看这里就可以了。</p>
 
@@ -305,7 +305,7 @@
 
 <p>此时可以直接访问IP地址，会显示Nginx的欢迎页面</p>
 
-<p><img src="https://zephyr99-pics-1257686472.cos.ap-beijing.myqcloud.com/lnmpubuntu/nginxwelcome.png" alt="Nginx Welcome" /></p>
+<p><img src="http://graph.zephyrl.co/images/2019/08/24/nginxwelcome.png" alt="Nginx Welcome" /></p>
 
 <p>或者curl一下localhost</p>
 
@@ -387,7 +387,7 @@ Commercial support is available at
 
 <p>修改第56-63行如下：</p>
 
-<p><img src="https://zephyr99-pics-1257686472.cos.ap-beijing.myqcloud.com/lnmpubuntu/phpchanges.png" alt="修改行" /></p>
+<p><img src="http://graph.zephyrl.co/images/2019/08/24/phpchanges.png" alt="修改行" /></p>
 
 <p>之后还有的修改就是第41行的<code>root</code>选项，可以修改网站的根目录，就不一一赘述了。</p>
 
@@ -403,7 +403,7 @@ Commercial support is available at
 
 <p>大约第37行加入语句：</p>
 
-<p><img src="https://zephyr99-pics-1257686472.cos.ap-beijing.myqcloud.com/lnmpubuntu/phpchanges2.png" alt="修改行" /></p>
+<p><img src="http://graph.zephyrl.co/images/2019/08/24/phpchanges2.png" alt="修改行" /></p>
 
 <p>修改之后，我们重启php7.2-fpm</p>
 
@@ -419,7 +419,7 @@ Commercial support is available at
 
 <p>然后在浏览器打开：IP地址/info.php 效果如下</p>
 
-<p><img src="https://zephyr99-pics-1257686472.cos.ap-beijing.myqcloud.com/lnmpubuntu/phpinfo.png" alt="phpinfo" /></p>
+<p><img src="http://graph.zephyrl.co/images/2019/08/24/phpinfo.png" alt="phpinfo" /></p>
 
 <h2 id="确认可以通过php连接到mysql">确认可以通过PHP连接到MySQL</h2>
 
@@ -473,7 +473,7 @@ Commercial support is available at
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/cheveretoins/" data-tooltip="Cheveretoins">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -553,7 +553,7 @@ Commercial support is available at
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/cheveretoins/" data-tooltip="Cheveretoins">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
