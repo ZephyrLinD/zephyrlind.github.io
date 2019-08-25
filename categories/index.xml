@@ -30,15 +30,6 @@
     </item>
     
     <item>
-      <title>LNMP</title>
-      <link>https://zephyrlind.github.io/categories/lnmp/</link>
-      <pubDate>Sun, 25 Aug 2019 20:16:52 +0800</pubDate>
-      
-      <guid>https://zephyrlind.github.io/categories/lnmp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Ubuntu</title>
       <link>https://zephyrlind.github.io/categories/ubuntu/</link>
       <pubDate>Sun, 25 Aug 2019 20:16:52 +0800</pubDate>
@@ -53,6 +44,15 @@
       <pubDate>Sat, 24 Aug 2019 13:45:32 +0800</pubDate>
       
       <guid>https://zephyrlind.github.io/categories/%E5%9B%BE%E5%BA%8A/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LNMP</title>
+      <link>https://zephyrlind.github.io/categories/lnmp/</link>
+      <pubDate>Fri, 09 Aug 2019 08:46:15 +0800</pubDate>
+      
+      <guid>https://zephyrlind.github.io/categories/lnmp/</guid>
       <description></description>
     </item>
     

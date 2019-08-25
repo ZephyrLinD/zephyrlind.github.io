@@ -20,7 +20,18 @@
       <description>在配置一台服务器多个网站的SSL的时候出现了一些问题&amp;hellip; 当我端口转发第一个网站的时候，发现第二个配置好的会转发到第一个网站&amp;hellip;
 解决办法：在第二个网站的config里面吧return 403改掉
 server { listen 80; server_name 2nd.example.com; rewrite ^ https://$server_name$request_uri? permanent; }  即可解决问题
-RTM的&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;..</description>
+RTM的&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;..
+问题解决的链接：http://blog.chinaunix.net/uid-231372-id-4584714.html
+感谢这位大佬。侵删。</description>
+    </item>
+    
+    <item>
+      <title>通过Let&#39;s Encrypt来获取SSL证书</title>
+      <link>https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/</link>
+      <pubDate>Sun, 25 Aug 2019 20:16:52 +0800</pubDate>
+      
+      <guid>https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/</guid>
+      <description>这个Chrome浏览器是个好东西&amp;hellip;但是看着我自己博客和图床网页链接边上的“不安全”，很强迫症。于是，我&amp;hellip;&amp;hellip;</description>
     </item>
     
     <item>
