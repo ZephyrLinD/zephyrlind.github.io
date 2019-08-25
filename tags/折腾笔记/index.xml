@@ -6,10 +6,22 @@
     <description>Recent content in 折腾笔记 on ZephyrLin&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 25 Aug 2019 20:16:52 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 25 Aug 2019 22:35:14 +0800</lastBuildDate>
     
 	<atom:link href="https://zephyrlind.github.io/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Repeatport</title>
+      <link>https://zephyrlind.github.io/2019/08/repeatport/</link>
+      <pubDate>Sun, 25 Aug 2019 22:35:14 +0800</pubDate>
+      
+      <guid>https://zephyrlind.github.io/2019/08/repeatport/</guid>
+      <description>在配置一台服务器多个网站的SSL的时候出现了一些问题&amp;hellip; 当我端口转发第一个网站的时候，发现第二个配置好的会转发到第一个网站&amp;hellip;
+解决办法：在第二个网站的config里面吧return 403改掉
+server { listen 80; server_name 2nd.example.com; rewrite ^ https://$server_name$request_uri? permanent; }  即可解决问题
+RTM的&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;..</description>
+    </item>
     
     <item>
       <title>通过Let&#39;s Encrypt来获取SSL证书</title>

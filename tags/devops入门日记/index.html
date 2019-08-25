@@ -211,6 +211,67 @@
               
   
     
+      
+        
+      
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="https://zephyrlind.github.io/2019/08/repeatport/">
+          Repeatport
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-08-25T22:35:14&#43;08:00">
+        
+  八月 25, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://zephyrlind.github.io/categories/nginx">Nginx</a>, 
+    
+      <a class="category-link" href="https://zephyrlind.github.io/categories/web%e6%9c%8d%e5%8a%a1%e5%99%a8">Web服务器</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      
+        在配置一台服务器多个网站的SSL的时候出现了一些问题&hellip; 当我端口转发第一个网站的时候，发现第二个配置好的会转发到第一个网站&hellip;
+解决办法：在第二个网站的config里面吧return 403改掉
+server { listen 80; server_name 2nd.example.com; rewrite ^ https://$server_name$request_uri? permanent; }  即可解决问题
+RTM的&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
+      
+      <p>
+        <a href="https://zephyrlind.github.io/2019/08/repeatport/" class="postShorten-excerpt_link link">阅读全文</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
   
 
 

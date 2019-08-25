@@ -8,32 +8,42 @@
 <meta name="generator" content="Hugo 0.56.3 with theme Tranquilpeak 0.4.6-BETA">
 <meta name="author" content="Zephyr Lin">
 <meta name="keywords" content="">
-<meta name="description" content="这个Chrome浏览器是个好东西&hellip;但是看着我自己博客和图床网页链接边上的“不安全”，很强迫症。于是，我&hellip;&hellip;">
+<meta name="description" content="在配置一台服务器多个网站的SSL的时候出现了一些问题&hellip; 当我端口转发第一个网站的时候，发现第二个配置好的会转发到第一个网站&hellip;
+解决办法：在第二个网站的config里面吧return 403改掉
+server { listen 80; server_name 2nd.example.com; rewrite ^ https://$server_name$request_uri? permanent; }  即可解决问题
+RTM的&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..">
 
 
-<meta property="og:description" content="这个Chrome浏览器是个好东西&hellip;但是看着我自己博客和图床网页链接边上的“不安全”，很强迫症。于是，我&hellip;&hellip;">
+<meta property="og:description" content="在配置一台服务器多个网站的SSL的时候出现了一些问题&hellip; 当我端口转发第一个网站的时候，发现第二个配置好的会转发到第一个网站&hellip;
+解决办法：在第二个网站的config里面吧return 403改掉
+server { listen 80; server_name 2nd.example.com; rewrite ^ https://$server_name$request_uri? permanent; }  即可解决问题
+RTM的&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..">
 <meta property="og:type" content="article">
-<meta property="og:title" content="通过Let&#39;s Encrypt来获取SSL证书">
-<meta name="twitter:title" content="通过Let&#39;s Encrypt来获取SSL证书">
-<meta property="og:url" content="https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/">
-<meta property="twitter:url" content="https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/">
+<meta property="og:title" content="Repeatport">
+<meta name="twitter:title" content="Repeatport">
+<meta property="og:url" content="https://zephyrlind.github.io/2019/08/repeatport/">
+<meta property="twitter:url" content="https://zephyrlind.github.io/2019/08/repeatport/">
 <meta property="og:site_name" content="ZephyrLin&#39;s Blog">
-<meta property="og:description" content="这个Chrome浏览器是个好东西&hellip;但是看着我自己博客和图床网页链接边上的“不安全”，很强迫症。于是，我&hellip;&hellip;">
-<meta name="twitter:description" content="这个Chrome浏览器是个好东西&hellip;但是看着我自己博客和图床网页链接边上的“不安全”，很强迫症。于是，我&hellip;&hellip;">
+<meta property="og:description" content="在配置一台服务器多个网站的SSL的时候出现了一些问题&hellip; 当我端口转发第一个网站的时候，发现第二个配置好的会转发到第一个网站&hellip;
+解决办法：在第二个网站的config里面吧return 403改掉
+server { listen 80; server_name 2nd.example.com; rewrite ^ https://$server_name$request_uri? permanent; }  即可解决问题
+RTM的&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..">
+<meta name="twitter:description" content="在配置一台服务器多个网站的SSL的时候出现了一些问题&hellip; 当我端口转发第一个网站的时候，发现第二个配置好的会转发到第一个网站&hellip;
+解决办法：在第二个网站的config里面吧return 403改掉
+server { listen 80; server_name 2nd.example.com; rewrite ^ https://$server_name$request_uri? permanent; }  即可解决问题
+RTM的&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..">
 <meta property="og:locale" content="zh-cn">
 
   
-    <meta property="article:published_time" content="2019-08-25T20:16:52">
+    <meta property="article:published_time" content="2019-08-25T22:35:14">
   
   
-    <meta property="article:modified_time" content="2019-08-25T20:16:52">
+    <meta property="article:modified_time" content="2019-08-25T22:35:14">
   
   
   
     
-      <meta property="article:section" content="LNMP">
-    
-      <meta property="article:section" content="Ubuntu">
+      <meta property="article:section" content="Nginx">
     
       <meta property="article:section" content="Web服务器">
     
@@ -55,12 +65,6 @@
 
 
 
-  <meta property="og:image" content="http://graph.zephyrl.co/images/2019/08/25/logo.th.jpg">
-  <meta property="twitter:image" content="http://graph.zephyrl.co/images/2019/08/25/logo.th.jpg">
-
-
-  <meta property="og:image" content="http://graph.zephyrl.co/images/2019/08/25/bigpage.jpg">
-  <meta property="twitter:image" content="http://graph.zephyrl.co/images/2019/08/25/bigpage.jpg">
 
 
 
@@ -69,14 +73,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=640">
 
 
-    <title>通过Let&#39;s Encrypt来获取SSL证书</title>
+    <title>Repeatport</title>
 
     <link rel="icon" href="https://zephyrlind.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/">
+    <link rel="canonical" href="https://zephyrlind.github.io/2019/08/repeatport/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -225,22 +229,24 @@
 </nav>
 
       
-  <div class="post-header-cover
-              text-left
-              "
-       style="background-image:url('http://graph.zephyrl.co/images/2019/08/25/bigpage.jpg')"
-       data-behavior="4">
-    
-      <div class="post-header main-content-wrap text-left">
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      通过Let&#39;s Encrypt来获取SSL证书
+      Repeatport
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2019-08-25T20:16:52&#43;08:00">
+      <time itemprop="datePublished" datetime="2019-08-25T22:35:14&#43;08:00">
         
   八月 25, 2019
 
@@ -251,9 +257,7 @@
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://zephyrlind.github.io/categories/lnmp">LNMP</a>, 
-    
-      <a class="category-link" href="https://zephyrlind.github.io/categories/ubuntu">Ubuntu</a>, 
+      <a class="category-link" href="https://zephyrlind.github.io/categories/nginx">Nginx</a>, 
     
       <a class="category-link" href="https://zephyrlind.github.io/categories/web%e6%9c%8d%e5%8a%a1%e5%99%a8">Web服务器</a>
     
@@ -262,136 +266,27 @@
   </div>
 
 </div>
-    
-  </div>
-
-
-      <div id="main" data-behavior="4"
-        class="hasCover
-               hasCoverMetaIn
-               ">
-        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
-          
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               
 
-<h2 id="前言">前言</h2>
+<h2 id="在配置一台服务器多个网站的ssl的时候出现了一些问题">在配置一台服务器多个网站的SSL的时候出现了一些问题&hellip;</h2>
 
-<p><code>Let's Encrypt</code>是一个免费，自动化，并且开放的证书颁发机构。由非营利性组织<a href="https://www.abetterinternet.org/about/">互联网安全研究小组</a>（ISRG）运营。</p>
+<p>当我端口转发第一个网站的时候，发现第二个配置好的会转发到第一个网站&hellip;</p>
 
-<p>简单的说，我们可以借助 Let&rsquo;s Encrypt 颁发的证书可以为我们的网站免费启用 HTTPS(SSL/TLS) 。</p>
+<p>解决办法：在第二个网站的config里面吧return 403改掉</p>
 
-<p>Let&rsquo;s Encrypt免费证书的签发/续签都是脚本自动化的，官方提供了几种证书的申请方式方法，<a href="https://letsencrypt.org/docs/client-options/">点击此处</a>快速浏览。</p>
-
-<p>其中官方推荐使用Certbot客户端来签发证书，但是这种方式配置起来过于麻烦，我就选择了官网说的第三方客户端<a href="https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E">acme.sh</a>来申请，这是是目前 Let&rsquo;s Encrypt 免费证书客户端最简单、最智能的 shell 脚本，可以自动发布和续订 Let&rsquo;s Encrypt 中的免费证书。</p>
-
-<h2 id="安装-acme-sh">安装<code>acme.sh</code></h2>
-
-<p>安装只需一条命令即可完成</p>
-
-<pre><code class="language-shell">curl https://get.acme.sh | sh
-</code></pre>
-
-<p>其中，首先会把acme.sh安装到<code>~/.acme.sh</code>，此目录也会存储生成的证书文件。然后脚本会指定别名<code>alias acme.sh=~/.acme.sh/acme.sh</code>。然后自动创建<code>cronjob</code>定时任务，每天0:00:00会自动检测所有证书，及时更新证书。</p>
-
-<p>为了保险起见我还是进行了如下操作</p>
-
-<pre><code class="language-shell">echo &quot;alias acme.sh=~/.acme.sh/acme.sh&quot; &gt;&gt; ~/.zshrc
-</code></pre>
-
-<p>安装命令执行完毕后，执行<code>acme.sh --version</code>确认是否能正常使用<code>acme.sh</code>命令。</p>
-
-<pre><code class="language-shell">$ acme.sh --version
-https://github.com/Neilpang/acme.sh
-v2.8.3
-</code></pre>
-
-<h2 id="生成证书">生成证书</h2>
-
-<p>acme支持DNS和HTTP认证，我选择了HTTP验证的方式</p>
-
-<p>其中，我以example.com的域名举例，实际操作换成自己的就可以了：</p>
-
-<pre><code class="language-shell">acme.sh --issue -d example.com -d www.example.com -w /home/wwwroot/example.com
-</code></pre>
-
-<p>简单解释下这条命令涉及到的一些参数：</p>
-
-<ul>
-<li><code>--issue</code>是 acme.sh 脚本用来颁发证书的指令；</li>
-<li><code>-d</code>是<code>--domain</code>的简称，其后面必须填写已备案的域名；</li>
-<li><code>-w</code>是<code>--webroot</code>的简称，其后面需填写网站储存的根目录（我以<code>/home/wwwroot/example.com</code>为例）</li>
-</ul>
-
-<p>证书签发成功会有如下输出：</p>
-
-<p><a href="http://graph.zephyrl.co/image/TTsA"><img src="http://graph.zephyrl.co/images/2019/08/25/success.md.png" alt="success.md.png" /></a></p>
-
-<p>从截图看出，生成的证书放在了<code>/root/.acme.sh/esofar.cn</code>目录。</p>
-
-<p>另外，可以通过下面两个常用<code>acme.sh</code>命令查看和删除证书：</p>
-
-<pre><code class="language-shell"># 查看证书列表
-acme.sh --list 
-
-# 删除证书
-acme.sh remove &lt;SAN_Domains&gt;
-</code></pre>
-
-<h2 id="安装证书">安装证书</h2>
-
-<p>本文将以Nginx为例，记录如何将证书安装，如果其他webserver大家可以参考acme.sh的文档来说。</p>
-
-<p>由于证书生成的目录并不是Nginx存储SSL证书的正确目录，所以我们要用<code>--installcert</code>命令来指定复制的目标位置，来让Nginx的配置文件直接读取该目录下的证书。</p>
-
-<pre><code class="language-shell">acme.sh --installcert -d zephyrl.co \
-    --key-file /etc/nginx/ssl/zephyrl.co.key \
-    --fullchain-file /etc/nginx/ssl/fullchain.cer \
-    --reloadcmd &quot;service nginx force-reload&quot;
-</code></pre>
-
-<p>如果发现出现<code>/root/.acme.sh/acme.sh: line 5121: /etc/nginx/ssl/example.com.key: No such file or directory</code>的错误，请先执行以下操作：</p>
-
-<pre><code class="language-shell">mkdir /etc/nginx/ssl
-</code></pre>
-
-<p>成功后：</p>
-
-<p><img src="http://graph.zephyrl.co/images/2019/08/25/successinstall.png" alt="successinstall.png" /></p>
-
-<p>最后一步就是修改Nginx配置文件，启动SSL，之后重启Nginx，其中Nginx配置可以参考以下，转载自别人的博客</p>
-
-<p>这个：</p>
-
-<pre><code class="language-nginx">server {
-    listen 443 ssl default_server;
-    listen [::]:443 ssl default_server;
-    server_name esofar.cn;
-    ssl on;
-    ssl_certificate      /etc/nginx/ssl/fullchain.cer;
-    ssl_certificate_key  /etc/nginx/ssl/esofar.cn.key;
-    root /home/wwwroot/esofar.cn;
-    index index.html;
-    location / {
-        try_files $uri $uri/ @router;
-        index index.html;
-    }
-
-    location @router {
-        rewrite ^.*$ /index.html last;
-    }
-}
-
-server {
+<pre><code class="language-Nginx">server {
     listen 80;
-    server_name esofar.cn;
-    return 301 https://$server_name$request_uri;
+    server_name 2nd.example.com;
+    rewrite ^ https://$server_name$request_uri? permanent;
 }
 </code></pre>
 
-<p>也是从此，我的域名下的一个网站升级到了HTTPS，23333333333333</p>
+<p>即可解决问题</p>
+
+<p>RTM的&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..</p>
 
               
             </div>
@@ -419,7 +314,7 @@ server {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/repeatport/" data-tooltip="Repeatport">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -427,7 +322,7 @@ server {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/chevereto%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E5%9D%91/" data-tooltip="Chevereto的安装和一些坑">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/" data-tooltip="通过Let&#39;s Encrypt来获取SSL证书">
               
                   <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -445,13 +340,13 @@ server {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zephyrlind.github.io/2019/08/repeatport/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zephyrlind.github.io/2019/08/repeatport/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
@@ -499,7 +394,7 @@ server {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/repeatport/" data-tooltip="Repeatport">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -507,7 +402,7 @@ server {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/chevereto%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E5%9D%91/" data-tooltip="Chevereto的安装和一些坑">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/" data-tooltip="通过Let&#39;s Encrypt来获取SSL证书">
               
                   <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -525,13 +420,13 @@ server {
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zephyrlind.github.io/2019/08/repeatport/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zephyrlind.github.io/2019/08/repeatport/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
@@ -561,13 +456,13 @@ server {
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzephyrlind.github.io%2F2019%2F08%2F%25E9%2580%259A%25E8%25BF%2587lets-encrypt%25E6%259D%25A5%25E8%258E%25B7%25E5%258F%2596ssl%25E8%25AF%2581%25E4%25B9%25A6%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzephyrlind.github.io%2F2019%2F08%2Frepeatport%2F">
           <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fzephyrlind.github.io%2F2019%2F08%2F%25E9%2580%259A%25E8%25BF%2587lets-encrypt%25E6%259D%25A5%25E8%258E%25B7%25E5%258F%2596ssl%25E8%25AF%2581%25E4%25B9%25A6%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fzephyrlind.github.io%2F2019%2F08%2Frepeatport%2F">
           <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
         </a>
       </li>
@@ -659,9 +554,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/zephyrlind.github.io\/2019\/08\/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6\/';
+          this.page.url = 'https:\/\/zephyrlind.github.io\/2019\/08\/repeatport\/';
           
-            this.page.identifier = '\/2019\/08\/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6\/'
+            this.page.identifier = '\/2019\/08\/repeatport\/'
           
         };
         (function() {
