@@ -6,24 +6,15 @@
     <description>Recent content in Categories on ZephyrLin&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 24 Aug 2019 13:45:32 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 25 Aug 2019 20:16:52 +0800</lastBuildDate>
     
 	<atom:link href="https://zephyrlind.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>图床</title>
-      <link>https://zephyrlind.github.io/categories/%E5%9B%BE%E5%BA%8A/</link>
-      <pubDate>Sat, 24 Aug 2019 13:45:32 +0800</pubDate>
-      
-      <guid>https://zephyrlind.github.io/categories/%E5%9B%BE%E5%BA%8A/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>LNMP</title>
       <link>https://zephyrlind.github.io/categories/lnmp/</link>
-      <pubDate>Fri, 09 Aug 2019 08:46:15 +0800</pubDate>
+      <pubDate>Sun, 25 Aug 2019 20:16:52 +0800</pubDate>
       
       <guid>https://zephyrlind.github.io/categories/lnmp/</guid>
       <description></description>
@@ -32,7 +23,7 @@
     <item>
       <title>Ubuntu</title>
       <link>https://zephyrlind.github.io/categories/ubuntu/</link>
-      <pubDate>Fri, 09 Aug 2019 08:46:15 +0800</pubDate>
+      <pubDate>Sun, 25 Aug 2019 20:16:52 +0800</pubDate>
       
       <guid>https://zephyrlind.github.io/categories/ubuntu/</guid>
       <description></description>
@@ -41,9 +32,27 @@
     <item>
       <title>Web服务器</title>
       <link>https://zephyrlind.github.io/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
-      <pubDate>Fri, 09 Aug 2019 08:46:15 +0800</pubDate>
+      <pubDate>Sun, 25 Aug 2019 20:16:52 +0800</pubDate>
       
       <guid>https://zephyrlind.github.io/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nginx</title>
+      <link>https://zephyrlind.github.io/categories/nginx/</link>
+      <pubDate>Sat, 24 Aug 2019 13:45:32 +0800</pubDate>
+      
+      <guid>https://zephyrlind.github.io/categories/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>图床</title>
+      <link>https://zephyrlind.github.io/categories/%E5%9B%BE%E5%BA%8A/</link>
+      <pubDate>Sat, 24 Aug 2019 13:45:32 +0800</pubDate>
+      
+      <guid>https://zephyrlind.github.io/categories/%E5%9B%BE%E5%BA%8A/</guid>
       <description></description>
     </item>
     

@@ -8,32 +8,34 @@
 <meta name="generator" content="Hugo 0.56.3 with theme Tranquilpeak 0.4.6-BETA">
 <meta name="author" content="Zephyr Lin">
 <meta name="keywords" content="">
-<meta name="description" content="Chevereto图床安装过程中遇到了好多的坑，大部分是因为自己对PHP、Nginx了解不多的原因。所以记录下来，供以后参考。">
+<meta name="description" content="这个Chrome浏览器是个好东西&hellip;但是看着我自己博客和图床网页链接边上的“不安全”，很强迫症。于是，我&hellip;&hellip;">
 
 
-<meta property="og:description" content="Chevereto图床安装过程中遇到了好多的坑，大部分是因为自己对PHP、Nginx了解不多的原因。所以记录下来，供以后参考。">
+<meta property="og:description" content="这个Chrome浏览器是个好东西&hellip;但是看着我自己博客和图床网页链接边上的“不安全”，很强迫症。于是，我&hellip;&hellip;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Chevereto的安装和一些坑">
-<meta name="twitter:title" content="Chevereto的安装和一些坑">
-<meta property="og:url" content="https://zephyrlind.github.io/2019/08/chevereto%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E5%9D%91/">
-<meta property="twitter:url" content="https://zephyrlind.github.io/2019/08/chevereto%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E5%9D%91/">
+<meta property="og:title" content="通过Let&#39;s Encrypt来获取SSL证书">
+<meta name="twitter:title" content="通过Let&#39;s Encrypt来获取SSL证书">
+<meta property="og:url" content="https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/">
+<meta property="twitter:url" content="https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/">
 <meta property="og:site_name" content="ZephyrLin&#39;s Blog">
-<meta property="og:description" content="Chevereto图床安装过程中遇到了好多的坑，大部分是因为自己对PHP、Nginx了解不多的原因。所以记录下来，供以后参考。">
-<meta name="twitter:description" content="Chevereto图床安装过程中遇到了好多的坑，大部分是因为自己对PHP、Nginx了解不多的原因。所以记录下来，供以后参考。">
+<meta property="og:description" content="这个Chrome浏览器是个好东西&hellip;但是看着我自己博客和图床网页链接边上的“不安全”，很强迫症。于是，我&hellip;&hellip;">
+<meta name="twitter:description" content="这个Chrome浏览器是个好东西&hellip;但是看着我自己博客和图床网页链接边上的“不安全”，很强迫症。于是，我&hellip;&hellip;">
 <meta property="og:locale" content="zh-cn">
 
   
-    <meta property="article:published_time" content="2019-08-24T13:45:32">
+    <meta property="article:published_time" content="2019-08-25T20:16:52">
   
   
-    <meta property="article:modified_time" content="2019-08-24T13:45:32">
+    <meta property="article:modified_time" content="2019-08-25T20:16:52">
   
   
   
     
-      <meta property="article:section" content="图床">
+      <meta property="article:section" content="LNMP">
     
-      <meta property="article:section" content="Nginx">
+      <meta property="article:section" content="Ubuntu">
+    
+      <meta property="article:section" content="Web服务器">
     
   
   
@@ -61,14 +63,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=640">
 
 
-    <title>Chevereto的安装和一些坑</title>
+    <title>通过Let&#39;s Encrypt来获取SSL证书</title>
 
     <link rel="icon" href="https://zephyrlind.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://zephyrlind.github.io/2019/08/chevereto%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E5%9D%91/">
+    <link rel="canonical" href="https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -228,15 +230,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Chevereto的安装和一些坑
+      通过Let&#39;s Encrypt来获取SSL证书
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2019-08-24T13:45:32&#43;08:00">
+      <time itemprop="datePublished" datetime="2019-08-25T20:16:52&#43;08:00">
         
-  八月 24, 2019
+  八月 25, 2019
 
       </time>
     
@@ -245,9 +247,11 @@
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://zephyrlind.github.io/categories/%e5%9b%be%e5%ba%8a">图床</a>, 
+      <a class="category-link" href="https://zephyrlind.github.io/categories/lnmp">LNMP</a>, 
     
-      <a class="category-link" href="https://zephyrlind.github.io/categories/nginx">Nginx</a>
+      <a class="category-link" href="https://zephyrlind.github.io/categories/ubuntu">Ubuntu</a>, 
+    
+      <a class="category-link" href="https://zephyrlind.github.io/categories/web%e6%9c%8d%e5%8a%a1%e5%99%a8">Web服务器</a>
     
   
 
@@ -259,156 +263,121 @@
             <div class="main-content-wrap">
               
 
-<h2 id="前言">前言：</h2>
+<h2 id="前言">前言</h2>
 
-<p>看着乱成一坨的腾讯COS图片地址，我受够了。这对我这个强迫症真的是极为不友好。</p>
+<p><code>Let's Encrypt</code>是一个免费，自动化，并且开放的证书颁发机构。由非营利性组织<a href="https://www.abetterinternet.org/about/">互联网安全研究小组</a>（ISRG）运营。</p>
 
-<p>然后，突然想到知乎问题中，<a href="https://www.zhihu.com/question/40854395/answer/379997699">自己拥有一台服务器可以做哪些很酷的事情</a>中，一个叫<strong>小游</strong>的大佬的<a href="https://www.zhihu.com/question/40854395/answer/728324567">回答</a>（<a href="https://xiaoyou66.com/">点击此处进入大佬的博客</a>），我可以做一个图床来存储一些我想上传的图啊！</p>
+<p>简单的说，我们可以借助 Let&rsquo;s Encrypt 颁发的证书可以为我们的网站免费启用 HTTPS(SSL/TLS) 。</p>
 
-<p>于是，一不做二不休，作为一个想做运维的菜鸡，这种事情一看见就手痒。</p>
+<p>Let&rsquo;s Encrypt免费证书的签发/续签都是脚本自动化的，官方提供了几种证书的申请方式方法，<a href="https://letsencrypt.org/docs/client-options/">点击此处</a>快速浏览。</p>
 
-<h2 id="安装chevereto">安装Chevereto</h2>
+<p>其中官方推荐使用Certbot客户端来签发证书，但是这种方式配置起来过于麻烦，我就选择了官网说的第三方客户端<a href="https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E">acme.sh</a>来申请，这是是目前 Let&rsquo;s Encrypt 免费证书客户端最简单、最智能的 shell 脚本，可以自动发布和续订 Let&rsquo;s Encrypt 中的免费证书。</p>
 
-<p><code>Chevereto</code>分为免费版本和收费版本，因为我只作图片存储用，不需要评论等社交元素，所以免费版本足够使用。最好还是别用破解版了，律师<del>含</del>函警告。</p>
+<h2 id="安装-acme-sh">安装<code>acme.sh</code></h2>
 
-<p>源代码是从官方的<a href="https://github.com/Chevereto/Chevereto-Free">Github页面</a>下载的，官方提供了四种方法，我选择的第一种，安装器安装。其他方式安装大同小异，不做赘述。</p>
+<p>安装只需一条命令即可完成</p>
 
-<ul>
-<li>第一步：修改Nginx配置，创建一个新的网站</li>
-</ul>
-
-<p>因为我是打算未来弄一个<code>WordPress</code>主站的，所以我打算把主站先留出来，创建一个新的网站。</p>
-
-<p>首先，创建网站文件夹，将安装器下载到文件夹中备用，</p>
-
-<p>我用我的作为示例，在自己动手的时候需要修改目录：</p>
-
-<pre><code class="language-shell">  sudo mkdir /var/www/graph
-  cd /var/www/graph
-  wget https://chevereto.com/download/file/installer
+<pre><code class="language-shell">curl https://get.acme.sh | sh
 </code></pre>
 
-<ul>
-<li><p>然后，打开配置文件：</p>
+<p>其中，首先会把acme.sh安装到<code>~/.acme.sh</code>，此目录也会存储生成的证书文件。然后脚本会指定别名<code>alias acme.sh=~/.acme.sh/acme.sh</code>。然后自动创建<code>cronjob</code>定时任务，每天0:00:00会自动检测所有证书，及时更新证书。</p>
 
-<pre><code class="language-shell">sudo vim /etc/nginx/sites-available/default
-</code></pre></li>
+<p>为了保险起见我还是进行了如下操作</p>
+
+<pre><code class="language-shell">echo &quot;alias acme.sh=~/.acme.sh/acme.sh&quot; &gt;&gt; ~/.zshrc
+</code></pre>
+
+<p>安装命令执行完毕后，执行<code>acme.sh --version</code>确认是否能正常使用<code>acme.sh</code>命令。</p>
+
+<pre><code class="language-shell">$ acme.sh --version
+https://github.com/Neilpang/acme.sh
+v2.8.3
+</code></pre>
+
+<h2 id="生成证书">生成证书</h2>
+
+<p>acme支持DNS和HTTP认证，我选择了HTTP验证的方式</p>
+
+<p>其中，我以example.com的域名举例，实际操作换成自己的就可以了：</p>
+
+<pre><code class="language-shell">acme.sh --issue -d example.com -d www.example.com -w /home/wwwroot/example.com
+</code></pre>
+
+<p>简单解释下这条命令涉及到的一些参数：</p>
+
+<ul>
+<li><code>--issue</code>是 acme.sh 脚本用来颁发证书的指令；</li>
+<li><code>-d</code>是<code>--domain</code>的简称，其后面必须填写已备案的域名；</li>
+<li><code>-w</code>是<code>--webroot</code>的简称，其后面需填写网站储存的根目录（我以<code>/home/wwwroot/example.com</code>为例）</li>
 </ul>
 
-<p>添加以下内容以配置新的网站的伪静态（部分配置参考自小游大佬的博客，<a href="https://xiaoyou66.com/archives/774">点击进入</a>）</p>
+<p>证书签发成功会有如下输出：</p>
 
-<pre><code class="language-Nginx">  server {
-	listen 80;
-	listen [::]:80;
-	server_name graph.zephyrl.co;
-	root /var/www/graph.zephyrl.co;
-    index index.php index.html index.htm index.nginx-debian.html;
+<p><a href="http://graph.zephyrl.co/image/TTsA"><img src="http://graph.zephyrl.co/images/2019/08/25/success.md.png" alt="success.md.png" /></a></p>
 
-    # Image not found replacement
-    location ~* (jpe?g|png|gif) {
-        log_not_found off;
-        error_page 404 /content/images/system/default/404.gif;
-    }
+<p>从截图看出，生成的证书放在了<code>/root/.acme.sh/esofar.cn</code>目录。</p>
 
-    # CORS header (avoids font rendering issues)
-    location ~ \.(ttf|ttc|otf|eot|woff|woff2|font.css|css|js)$ {
-        add_header Access-Control-Allow-Origin &quot;*&quot;;
-    }
+<p>另外，可以通过下面两个常用<code>acme.sh</code>命令查看和删除证书：</p>
 
-    # Pretty URLs
+<pre><code class="language-shell"># 查看证书列表
+acme.sh --list 
+
+# 删除证书
+acme.sh remove &lt;SAN_Domains&gt;
+</code></pre>
+
+<h2 id="安装证书">安装证书</h2>
+
+<p>本文将以Nginx为例，记录如何将证书安装，如果其他webserver大家可以参考acme.sh的文档来说。</p>
+
+<p>由于证书生成的目录并不是Nginx存储SSL证书的正确目录，所以我们要用<code>--installcert</code>命令来指定复制的目标位置，来让Nginx的配置文件直接读取该目录下的证书。</p>
+
+<pre><code class="language-shell">acme.sh --installcert -d zephyrl.co \
+    --key-file /etc/nginx/ssl/zephyrl.co.key \
+    --fullchain-file /etc/nginx/ssl/fullchain.cer \
+    --reloadcmd &quot;service nginx force-reload&quot;
+</code></pre>
+
+<p>如果发现出现<code>/root/.acme.sh/acme.sh: line 5121: /etc/nginx/ssl/example.com.key: No such file or directory</code>的错误，请先执行以下操作：</p>
+
+<pre><code class="language-shell">mkdir /etc/nginx/ssl
+</code></pre>
+
+<p>成功后：</p>
+
+<p><img src="http://graph.zephyrl.co/images/2019/08/25/successinstall.png" alt="successinstall.png" /></p>
+
+<p>最后一步就是修改Nginx配置文件，启动SSL，之后重启Nginx，其中Nginx配置可以参考以下，转载自别人的博客</p>
+
+<p>这个：</p>
+
+<pre><code class="language-nginx">server {
+    listen 443 ssl default_server;
+    listen [::]:443 ssl default_server;
+    server_name esofar.cn;
+    ssl on;
+    ssl_certificate      /etc/nginx/ssl/fullchain.cer;
+    ssl_certificate_key  /etc/nginx/ssl/esofar.cn.key;
+    root /home/wwwroot/esofar.cn;
+    index index.html;
     location / {
-        try_files $uri $uri/ /index.php?$query_string;
+        try_files $uri $uri/ @router;
+        index index.html;
     }
 
-    location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass 127.0.0.1:9000;
-	}
-  }
+    location @router {
+        rewrite ^.*$ /index.html last;
+    }
+}
+
+server {
+    listen 80;
+    server_name esofar.cn;
+    return 301 https://$server_name$request_uri;
+}
 </code></pre>
 
-<h2 id="第二部-安装和安装过程中的坑">第二部，安装和安装过程中的坑</h2>
-
-<p>完成上面的步骤后，打开<code>网站名称/installer.php</code>，</p>
-
-<p>发现下图即为成功：</p>
-
-<p><a href="http://graph.zephyrl.co/image/PCD"><img src="http://graph.zephyrl.co/images/2019/08/24/installer1.md.png" alt="installer1.md.png" /></a></p>
-
-<p>当然如果你和我一样衰，就会出现一个个问题。然后</p>
-
-<p>首先是出现了<code>Chevereto can’t create the app/settings.php file. You must manually create this file</code>，之后应该打开终端，创建该文件，</p>
-
-<pre><code class="language-shell">cd /var/www/graph
-touch app/settings.php
-</code></pre>
-
-<p>即可进入下一个问题：</p>
-
-<p>由于当时手忙脚乱心态爆炸，以下问题均没有截图。我会努力描述的并且尽量找到找一些网上的图片，侵删。</p>
-
-<p><a href="http://graph.zephyrl.co/image/gwF"><img src="http://graph.zephyrl.co/images/2019/08/24/installqus.md.png" alt="installqus.md.png" /></a></p>
-
-<p>大概就是这个页面，我的还多了缺少curl、zip、libdb的提示，实在找不到图，只能自己描述一下。</p>
-
-<p>先来解决权限问题：</p>
-
-<pre><code class="language-shell">chmod -R 775 ./*
-</code></pre>
-
-<p>然后来解决缺少组件的问题，由于是ubuntu系统，我们<strong>不需要从官网下载源代码然后编译，会报错</strong>，直接<code>apt</code>安装即可。</p>
-
-<pre><code class="language-shell">sudo apt install php-curl php-gd php-mbstring php-zip
-</code></pre>
-
-<p>省的跟我一样xjb make install然后浪费好多时间 =_=</p>
-
-<p>之后出现了成功的页面，就很开心</p>
-
-<p><a href="http://graph.zephyrl.co/image/PCD"><img src="http://graph.zephyrl.co/images/2019/08/24/installer1.md.png" alt="installer1.md.png" /></a></p>
-
-<p>点击Continue，然后一路Skip，直到如下选择数据库。</p>
-
-<p><a href="http://graph.zephyrl.co/image/RZd"><img src="http://graph.zephyrl.co/images/2019/08/24/installer2-db.md.png" alt="installer2-db.md.png" /></a></p>
-
-<p>此时，打开终端，创建数据库.可以使用<code>phpmyadmin</code>，<code>navicat premium</code>等可视化工具创建数据库创建数据库，也可以在终端使用SQL命令；数据库名称自定。创建完成后输入你的数据库名称、账号和密码（依次是我打马的地方）。点击下一步即可。</p>
-
-<p><a href="http://graph.zephyrl.co/image/qQG"><img src="http://graph.zephyrl.co/images/2019/08/24/install3.md.png" alt="install3.md.png" /></a></p>
-
-<p>这里大家就跟着他说的写就可以了。坑已经没了，很快就可以嗨皮了（前提是你备案了）。</p>
-
-<h2 id="挂载阿里云ossfs">挂载阿里云OSSFS</h2>
-
-<ul>
-<li><p>首先，下载挂载工具，我是Ubuntu 18.04 LTS，其他版本安装方法请参照<a href="https://help.aliyun.com/document_detail/32196.html">官方说明页面</a></p>
-
-<pre><code class="language-shell">wget http://gosspublic.alicdn.com/ossfs/ossfs_1.80.6_ubuntu18.04_amd64.deb?spm=a2c4g.11186623.2.13.5a037358XgQ4NQ&amp;file=ossfs_1.80.6_ubuntu18.04_amd64.deb
-
-sudo dpkg -i ossfs_1.80.6_ubuntu18.04_amd64.deb
-</code></pre></li>
-
-<li><p>安装好后就可以设置bucket name 和 AccessKeyId/Secret信息，将其存放在/etc/passwd-ossfs 文件中。注意这个文件的权限必须正确设置，建议设为640。</p>
-
-<pre><code class="language-shell">echo 你的bucket名字:你的keyid:你的keysecret &gt; /etc/passwd-ossfs
-chmod 640 /etc/passwd-ossfs
-</code></pre></li>
-
-<li><p>挂载</p></li>
-</ul>
-
-<p>OSSFS的挂载方法如下：</p>
-
-<pre><code class="language-shell">  ossfs 你的bucket名字 挂载目录 -ourl=你的阿里云的访问网址
-</code></pre>
-
-<p>我们将挂载目录挂载在Chevereto目录下的images文件夹就可以了</p>
-
-<p>以我为例，</p>
-
-<pre><code class="language-shell">  ossfs mybuckit /var/www/graph/images -ourl=阿里云地址 -o allow_other 
-</code></pre>
-
-<p>完成后即可开始使用了！</p>
+<p>也是从此，我的域名下的一个网站升级到了HTTPS，23333333333333</p>
 
               
             </div>
@@ -436,7 +405,7 @@ chmod 640 /etc/passwd-ossfs
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/" data-tooltip="通过Let&#39;s Encrypt来获取SSL证书">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -444,7 +413,7 @@ chmod 640 /etc/passwd-ossfs
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/%E6%88%91%E7%9A%84ubuntu-server-lnmp%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" data-tooltip="我的Ubuntu Server LNMP折腾笔记">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/chevereto%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E5%9D%91/" data-tooltip="Chevereto的安装和一些坑">
               
                   <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -462,13 +431,13 @@ chmod 640 /etc/passwd-ossfs
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zephyrlind.github.io/2019/08/chevereto%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E5%9D%91/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zephyrlind.github.io/2019/08/chevereto%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E5%9D%91/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
@@ -516,7 +485,7 @@ chmod 640 /etc/passwd-ossfs
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/" data-tooltip="通过Let&#39;s Encrypt来获取SSL证书">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -524,7 +493,7 @@ chmod 640 /etc/passwd-ossfs
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/%E6%88%91%E7%9A%84ubuntu-server-lnmp%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" data-tooltip="我的Ubuntu Server LNMP折腾笔记">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/chevereto%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E5%9D%91/" data-tooltip="Chevereto的安装和一些坑">
               
                   <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -542,13 +511,13 @@ chmod 640 /etc/passwd-ossfs
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zephyrlind.github.io/2019/08/chevereto%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E5%9D%91/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zephyrlind.github.io/2019/08/chevereto%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E5%9D%91/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zephyrlind.github.io/2019/08/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
@@ -578,13 +547,13 @@ chmod 640 /etc/passwd-ossfs
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzephyrlind.github.io%2F2019%2F08%2Fchevereto%25E7%259A%2584%25E5%25AE%2589%25E8%25A3%2585%25E5%2592%258C%25E4%25B8%2580%25E4%25BA%259B%25E5%259D%2591%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzephyrlind.github.io%2F2019%2F08%2F%25E9%2580%259A%25E8%25BF%2587lets-encrypt%25E6%259D%25A5%25E8%258E%25B7%25E5%258F%2596ssl%25E8%25AF%2581%25E4%25B9%25A6%2F">
           <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fzephyrlind.github.io%2F2019%2F08%2Fchevereto%25E7%259A%2584%25E5%25AE%2589%25E8%25A3%2585%25E5%2592%258C%25E4%25B8%2580%25E4%25BA%259B%25E5%259D%2591%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fzephyrlind.github.io%2F2019%2F08%2F%25E9%2580%259A%25E8%25BF%2587lets-encrypt%25E6%259D%25A5%25E8%258E%25B7%25E5%258F%2596ssl%25E8%25AF%2581%25E4%25B9%25A6%2F">
           <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
         </a>
       </li>
@@ -676,9 +645,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/zephyrlind.github.io\/2019\/08\/chevereto%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E5%9D%91\/';
+          this.page.url = 'https:\/\/zephyrlind.github.io\/2019\/08\/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6\/';
           
-            this.page.identifier = '\/2019\/08\/chevereto%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E5%9D%91\/'
+            this.page.identifier = '\/2019\/08\/%E9%80%9A%E8%BF%87lets-encrypt%E6%9D%A5%E8%8E%B7%E5%8F%96ssl%E8%AF%81%E4%B9%A6\/'
           
         };
         (function() {
