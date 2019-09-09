@@ -4,7 +4,66 @@
   
   <url>
     <loc>https://zephyrlind.github.io/categories/</loc>
-    <lastmod>2019-08-25T22:35:14+08:00</lastmod>
+    <lastmod>2019-09-07T23:23:40+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zephyrlind.github.io/categories/centos/</loc>
+    <lastmod>2019-09-07T23:23:40+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zephyrlind.github.io/2019/09/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2019-09-07T23:23:40+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zephyrlind.github.io/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2019-09-07T23:23:40+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zephyrlind.github.io/categories/lnmp/</loc>
+    <lastmod>2019-09-07T23:23:40+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zephyrlind.github.io/categories/nginx/</loc>
+    <lastmod>2019-09-07T23:23:40+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zephyrlind.github.io/post/</loc>
+    <lastmod>2019-09-07T23:23:40+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zephyrlind.github.io/tags/</loc>
+    <lastmod>2019-09-07T23:23:40+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zephyrlind.github.io/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+    <lastmod>2019-09-07T23:23:40+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zephyrlind.github.io/</loc>
+    <lastmod>2019-09-07T23:23:40+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zephyrlind.github.io/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2019-09-07T23:23:40+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -15,44 +74,8 @@
   </url>
   
   <url>
-    <loc>https://zephyrlind.github.io/categories/nginx/</loc>
-    <lastmod>2019-08-25T22:35:14+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://zephyrlind.github.io/post/</loc>
-    <lastmod>2019-08-25T22:35:14+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://zephyrlind.github.io/2019/08/repeatport/</loc>
     <lastmod>2019-08-25T22:35:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zephyrlind.github.io/tags/</loc>
-    <lastmod>2019-08-25T22:35:14+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://zephyrlind.github.io/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
-    <lastmod>2019-08-25T22:35:14+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://zephyrlind.github.io/</loc>
-    <lastmod>2019-08-25T22:35:14+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://zephyrlind.github.io/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2019-08-25T22:35:14+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -74,12 +97,6 @@
   <url>
     <loc>https://zephyrlind.github.io/categories/%E5%9B%BE%E5%BA%8A/</loc>
     <lastmod>2019-08-24T13:45:32+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://zephyrlind.github.io/categories/lnmp/</loc>
-    <lastmod>2019-08-09T08:46:15+08:00</lastmod>
     <priority>0</priority>
   </url>
   

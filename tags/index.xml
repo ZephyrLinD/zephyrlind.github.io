@@ -6,10 +6,28 @@
     <description>Recent content in Tags on ZephyrLin&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 25 Aug 2019 22:35:14 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 07 Sep 2019 23:23:40 +0800</lastBuildDate>
     
 	<atom:link href="https://zephyrlind.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>DevOPs入门笔记</title>
+      <link>https://zephyrlind.github.io/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 07 Sep 2019 23:23:40 +0800</pubDate>
+      
+      <guid>https://zephyrlind.github.io/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>折腾笔记</title>
+      <link>https://zephyrlind.github.io/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 07 Sep 2019 23:23:40 +0800</pubDate>
+      
+      <guid>https://zephyrlind.github.io/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>DevOPs入门日记</title>
@@ -17,15 +35,6 @@
       <pubDate>Sun, 25 Aug 2019 22:35:14 +0800</pubDate>
       
       <guid>https://zephyrlind.github.io/tags/devops%E5%85%A5%E9%97%A8%E6%97%A5%E8%AE%B0/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>折腾笔记</title>
-      <link>https://zephyrlind.github.io/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Sun, 25 Aug 2019 22:35:14 +0800</pubDate>
-      
-      <guid>https://zephyrlind.github.io/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</guid>
       <description></description>
     </item>
     

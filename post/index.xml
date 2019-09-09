@@ -6,10 +6,19 @@
     <description>Recent content in Posts on ZephyrLin&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 25 Aug 2019 22:35:14 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 07 Sep 2019 23:23:40 +0800</lastBuildDate>
     
 	<atom:link href="https://zephyrlind.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CentOS7安装LNMP记录</title>
+      <link>https://zephyrlind.github.io/2019/09/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Sat, 07 Sep 2019 23:23:40 +0800</pubDate>
+      
+      <guid>https://zephyrlind.github.io/2019/09/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95/</guid>
+      <description>曾经沉迷Ubuntu的我终于真香了，转移全线阵地到了CentOS7，关闭主网站了一阵子，然后开始熟悉CentOS下的环境配置、服务器配置。难度比Ubuntu真的难了好多，也复杂了不少，但是有了上次的经验，参考了很多书和博客，总结出了一套适合自己的路线。</description>
+    </item>
     
     <item>
       <title>Repeatport</title>
@@ -17,12 +26,7 @@
       <pubDate>Sun, 25 Aug 2019 22:35:14 +0800</pubDate>
       
       <guid>https://zephyrlind.github.io/2019/08/repeatport/</guid>
-      <description>在配置一台服务器多个网站的SSL的时候出现了一些问题&amp;hellip; 当我端口转发第一个网站的时候，发现第二个配置好的会转发到第一个网站&amp;hellip;
-解决办法：在第二个网站的config里面吧return 403改掉
-server { listen 80; server_name 2nd.example.com; rewrite ^ https://$server_name$request_uri? permanent; }  即可解决问题
-RTM的&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;..
-问题解决的链接：http://blog.chinaunix.net/uid-231372-id-4584714.html
-感谢这位大佬。侵删。</description>
+      <description>当我端口转发第一个网站的时候，发现第二个配置好的会转发到第一个网站&amp;hellip;</description>
     </item>
     
     <item>

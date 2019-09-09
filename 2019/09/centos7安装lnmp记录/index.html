@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.56.3 with theme Tranquilpeak 0.4.6-BETA">
+<meta name="author" content="Zephyr Lin">
+<meta name="keywords" content="">
+<meta name="description" content="曾经沉迷Ubuntu的我终于真香了，转移全线阵地到了CentOS7，关闭主网站了一阵子，然后开始熟悉CentOS下的环境配置、服务器配置。难度比Ubuntu真的难了好多，也复杂了不少，但是有了上次的经验，参考了很多书和博客，总结出了一套适合自己的路线。">
+
+
+<meta property="og:description" content="曾经沉迷Ubuntu的我终于真香了，转移全线阵地到了CentOS7，关闭主网站了一阵子，然后开始熟悉CentOS下的环境配置、服务器配置。难度比Ubuntu真的难了好多，也复杂了不少，但是有了上次的经验，参考了很多书和博客，总结出了一套适合自己的路线。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS7安装LNMP记录">
+<meta name="twitter:title" content="CentOS7安装LNMP记录">
+<meta property="og:url" content="https://zephyrlind.github.io/2019/09/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95/">
+<meta property="twitter:url" content="https://zephyrlind.github.io/2019/09/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95/">
+<meta property="og:site_name" content="ZephyrLin&#39;s Blog">
+<meta property="og:description" content="曾经沉迷Ubuntu的我终于真香了，转移全线阵地到了CentOS7，关闭主网站了一阵子，然后开始熟悉CentOS下的环境配置、服务器配置。难度比Ubuntu真的难了好多，也复杂了不少，但是有了上次的经验，参考了很多书和博客，总结出了一套适合自己的路线。">
+<meta name="twitter:description" content="曾经沉迷Ubuntu的我终于真香了，转移全线阵地到了CentOS7，关闭主网站了一阵子，然后开始熟悉CentOS下的环境配置、服务器配置。难度比Ubuntu真的难了好多，也复杂了不少，但是有了上次的经验，参考了很多书和博客，总结出了一套适合自己的路线。">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2019-09-07T23:23:40">
+  
+  
+    <meta property="article:modified_time" content="2019-09-07T23:23:40">
+  
+  
+  
+    
+      <meta property="article:section" content="Nginx">
+    
+      <meta property="article:section" content="LNMP">
+    
+      <meta property="article:section" content="Web服务器">
+    
+      <meta property="article:section" content="CentOS">
+    
+  
+  
+    
+      <meta property="article:tag" content="折腾笔记">
+    
+      <meta property="article:tag" content="DevOPs入门笔记">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=640">
+
+
+    <title>CentOS7安装LNMP记录</title>
+
+    <link rel="icon" href="https://zephyrlind.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://zephyrlind.github.io/2019/09/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://zephyrlind.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://zephyrlind.github.io/">ZephyrLin&#39;s Blog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://zephyrlind.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=90" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://zephyrlind.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Zephyr Lin</h4>
+        
+          <h5 class="sidebar-profile-bio">Undergraduate students in the Department of Software Engineering, TJNU</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zephyrlind.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zephyrlind.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zephyrlind.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zephyrlind.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zephyrlind.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/zephyrlind" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://stackoverflow.com/users/11878498/ZephyrLin" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+      
+      <span class="sidebar-button-desc">Stack Overflow</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zephyrlind.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      CentOS7安装LNMP记录
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-09-07T23:23:40&#43;08:00">
+        
+  九月 7, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://zephyrlind.github.io/categories/nginx">Nginx</a>, 
+    
+      <a class="category-link" href="https://zephyrlind.github.io/categories/lnmp">LNMP</a>, 
+    
+      <a class="category-link" href="https://zephyrlind.github.io/categories/web%e6%9c%8d%e5%8a%a1%e5%99%a8">Web服务器</a>, 
+    
+      <a class="category-link" href="https://zephyrlind.github.io/categories/centos">CentOS</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
+
+<h2 id="前言">前言</h2>
+
+<p>曾经沉迷Ubuntu的我终于真香了，转移全线阵地到了CentOS7，关闭主网站了一阵子，然后开始熟悉CentOS下的环境配置、服务器配置。难度比Ubuntu真的难了好多，也复杂了不少，但是有了上次的经验，参考了很多书和博客，总结出了一套适合自己的路线。</p>
+
+<p>之后还会学习Nginx的结构，配置负载均衡，然后读读Nginx的源代码。当然了，顺便还会复习一下计算机网络早就还给老师的知识。毕竟掌握的计算机科学硬核知识越多，职业危机越不那么严重&hellip;&hellip;</p>
+
+<p>在本文，源码文件保存在<code>/usr/local/src</code>中</p>
+
+<p>安装默认在<code>/usr/local/</code>下</p>
+
+<h2 id="安装配置mysql服务">安装配置MySQL服务</h2>
+
+<p><code>MySQL</code>在CentOS中被弄成收费的了的原因（貌似），默认<code>yum</code>安装<code>MySQL</code>会安装成<code>MariaDB</code>，虽然<code>MariaDB</code>是<code>MySQL</code>的子集，但是为了实际操作和以后的就业，还是选择了<code>MySQL</code>。</p>
+
+<h3 id="安装cmake">安装CMake</h3>
+
+<p>MySQL需要用CMake进行安装，大家可以到<a href="https://cmake.org/download/">CMake下载页面</a>寻找自己需要的下载版本，在下面的操作实例中我将以自己为例子：</p>
+
+<pre><code class="language-shell">yum install gcc gcc-c++ ncurses ncurses-devel bison
+mkdir /usr/local/src
+cd /usr/local/src
+wget https://github.com/Kitware/CMake/releases/download/v3.15.3/cmake-3.15.3.tar.gz
+tar zxvf cmake-3.15.3
+cd cmake-3.15.3
+./configure
+make &amp;&amp; make install
+</code></pre>
+
+<p>不出意外，<code>CMake</code>就安装完了</p>
+
+<h3 id="源代码编译安装mysql">源代码编译安装MySQL</h3>
+
+<p>MySQL除了源代码安装还有Yum源安装，具体方法和源代码的地址都可以在<a href="https://dev.mysql.com/downloads/mysql/">下载页面</a>找到，我选择的是MySQL5.7，不为啥，因为MySQL8安装需要高版本GCC我懒得升级了（别问我怎么知道的，呵呵，感谢CentOS让我一遍遍熟练各种软件的安装和配置），而且我的网站规模不大，MySQL5.7作为稳定的版本也是个不错的选择。</p>
+
+<pre><code class="language-bash">cd ..
+wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-boost-5.7.27.tar.gz
+tar zxvf mysql-boost-5.7.27.tar.gz
+cd mysql-boost-5.7.27
+</code></pre>
+
+<p>CMake需要单独创建一个文件夹来存放编译出来的文件。</p>
+
+<pre><code class="language-bash">mkdir build 
+cd build
+</code></pre>
+
+<p>建议先把cmake的配置代码复制到文本编辑器里面改成自己需要的，删掉注释和<code>\</code>后的空格，在粘贴到终端里面执行即可</p>
+
+<pre><code class="language-bash">cmake .. \
+-DCMAKE_INSTALL_PREFIX=/usr/local/mysql \                         //指定mysql数据库安装目录
+-DMYSQL_UNIX_ADDR=/usr/local/mysql/mysql.sock \                   //连接文件位置
+-DSYSCONFDIR=/etc \                                               //指定配置文件目录
+-DSYSTEMD_PID_DIR=/usr/local/mysql \                              //进程文件目录
+-DDEFAULT_CHARSET=utf8  \                                         //指定默认使用的字符集编码
+-DDEFAULT_COLLATION=utf8_general_ci \                             //指定默认使用的字符集校对规则
+-DWITH_INNOBASE_STORAGE_ENGINE=1 \                                //存储引擎
+-DWITH_ARCHIVE_STORAGE_ENGINE=1 \                                 //存储引擎
+-DWITH_BLACKHOLE_STORAGE_ENGINE=1 \                               //存储引擎
+-DWITH_PERFSCHEMA_STORAGE_ENGINE=1 \                              //存储引擎
+-DMYSQL_DATADIR=/usr/local/mysql/data \                           //数据库文件
+-DWITH_BOOST=boost \                                              //指定Boost库的位置，mysql5.7必须添加该参数
+-DWITH_SYSTEMD=1
+</code></pre>
+
+<p>最后：</p>
+
+<pre><code class="language-shell">make &amp;&amp; make install
+</code></pre>
+
+<p><strong>P.S. 如果在CMAKE的过程中有报错（报错多是环境包安装错误），当报错解决后，需要把源码目录中的CMakeCache.txt文件删除，然后再重新CMAKE，否则错误依旧</strong></p>
+
+<p><strong>P.P.S.. make过程非常费时间，建议在tmux下或者开个screen执行</strong></p>
+
+<h3 id="各种配置">各种配置</h3>
+
+<ul>
+<li><p>首先，我们需要在系统中创建一个名为mysql的用户，专门用于负责运行MySQL数据库。请记得要把这类账户的Bash终端设置成nologin解释器，避免被黑，从而提高系统安全性。</p>
+
+<pre><code class="language-bash">useradd mysql -s /sbin/nologin
+</code></pre></li>
+
+<li><p>该目录的所有者和所属组身份修改为mysql。并且将MySQL的配置文件<code>my.ini</code>的所有者和所有组身份修改为mysql。</p>
+
+<pre><code class="language-bash">chown -Rf mysql:mysql /usr/local/mysql
+chown -Rf mysql:mysql /etc/my.cnf
+</code></pre></li>
+
+<li><p>之后按照如下修改my.conf</p>
+
+<pre><code class="language-bash">$ vim /etc/my.cnf
+[client]
+port = 3306
+default-character-set=utf8
+socket = /usr/local/mysql/mysql.sock
+[mysql]
+port = 3306
+default-character-set=utf8
+socket = /usr/local/mysql/mysql.sock
+[mysqld]
+user = mysql
+basedir = /usr/local/mysql
+datadir = /usr/local/mysql/data
+port = 3306
+character_set_server=utf8
+pid-file = /usr/local/mysql/mysqld.pid
+socket = /usr/local/mysql/mysql.sock
+server-id = 1
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_AUTO_VALUE_ON_ZERO,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,PIPES_AS_CONCAT,ANSI_QUOTES
+</code></pre></li>
+
+<li><p>设置环境变量</p>
+
+<pre><code class="language-bash">echo 'PATH=/usr/local/mysql/bin:/usr/local/mysql/lib:$PATH' &gt;&gt; /etc/profile
+echo 'export PATH' &gt;&gt; /etc/profile
+source /etc/profile   
+</code></pre></li>
+
+<li><p>初始化数据库</p>
+
+<pre><code class="language-bash">cd /usr/local/mysql/
+bin/mysqld \
+--initialize-insecure \
+--user=mysql \
+--basedir=/usr/local/mysql \
+--datadir=/usr/local/mysql/data
+</code></pre></li>
+
+<li><p>添加到系统服务</p>
+
+<pre><code class="language-bash">cp usr/lib/systemd/system/mysqld.service /usr/lib/systemd/system/
+systemctl daemon-reload
+systemctl enable mysqld       # 自启动
+systemctl start mysqld
+</code></pre></li>
+</ul>
+
+<p>此时如果没有报错的话说明已经启动了，如果报错就按错误的代码查。</p>
+
+<h3 id="访问mysql数据库和navicat远程连接">访问MySQL数据库和NaviCat远程连接</h3>
+
+<ul>
+<li><p>首先用root用户直接免密码进入MySQL数据库修改一下密码：</p>
+
+<pre><code class="language-bash">$ mysql
+mysql&gt;SET PASSWORD FOR 'root'@'localhost' = PASSWORD('你的密码');
+</code></pre></li>
+</ul>
+
+<p>然后就可以执行<code>show databases;</code>等等指令看一下是否出错了，一般是不会出错的。</p>
+
+<ul>
+<li><p>在mysql终端内开启远程权限</p>
+
+<pre><code class="language-bash">mysql&gt;grant all privileges on *.* to 'root'@'%' identified by '你的密码' with grant option;
+</code></pre></li>
+</ul>
+
+<p>第一个*代表所有数据库，第二*代表所有表，赋予root权限 “%”代表所有服务器终端，也可设为IP地址</p>
+
+<ul>
+<li>之后，去服务器管理页面打开3306的端口就可以远程连接啦。</li>
+</ul>
+
+<h2 id="安装nginx高性能静态服务器">安装Nginx高性能静态服务器</h2>
+
+<h3 id="首先安装所需的组件">首先安装所需的组件：</h3>
+
+<pre><code class="language-shell">yum install pcre-devel zlib-devel openssl-devel
+</code></pre>
+
+<h3 id="在安装部署好具有依赖关系的软件包之后-创建一个用于执行nginx服务程序的账户-账户名称可以自定义-但一定别忘记-因为在后续需要调用">在安装部署好具有依赖关系的软件包之后，创建一个用于执行Nginx服务程序的账户。账户名称可以自定义，但一定别忘记，因为在后续需要调用：</h3>
+
+<pre><code class="language-bash">cd .. 
+useradd www -s /sbin/nologin
+</code></pre>
+
+<h3 id="之后来到-nginx官网-http-nginx-org-的-下载页面-http-nginx-org-en-download-html-找到需要的版本-存储链接-在服务器中下载并解压">之后来到<a href="http://nginx.org">Nginx官网</a>的<a href="http://nginx.org/en/download.html">下载页面</a>，找到需要的版本，存储链接，在服务器中下载并解压：</h3>
+
+<pre><code class="language-bash">wget http://nginx.org/download/nginx-1.16.1.tar.gz
+tar zxvf nginx-1.16.1.tar.gz
+cd nginx-1.16.1
+</code></pre>
+
+<h3 id="接下来-编译-安装">接下来，编译、安装</h3>
+
+<pre><code class="language-bash">./configure \
+--prefix=/usr/local/nginx \
+--user=www \
+--group=www \
+--with-file-aio \
+--with-http_stub_status_module \
+--with-http_gzip_static_module \
+--with-http_flv_module \
+--with-http_ssl_module
+</code></pre>
+
+<p>如果出现<code>configure error: Please reinstall the libzip dirtribution</code>或者<code>configure error: system libzip must be upgraded to version &gt;= 0.11</code>。使用Yum最新版只到0.10，不能达到要求。</p>
+
+<ul>
+<li><p>先删除libzip</p>
+
+<pre><code class="language-bash">yum remove libzip libzip-devel
+</code></pre></li>
+
+<li><p>下载安装并且手动编译（1.5之前configure，1.5之后cmake，以1.5为例）</p></li>
+</ul>
+
+<p>首先进入<a href="https://libzip.org">libzip官网</a>，选择Download进入<a href="https://libzip.org/download/">下载页面</a>，复制链接粘贴至终端，执行以下操作：</p>
+
+<pre><code class="language-bash">  cd ..
+  wget https://libzip.org/download/libzip-1.5.2.tar.gz
+  tar zxvf libzip-1.5.2.tar.gz
+  cd libzip-1.5.2
+  mkdir build
+  cd build
+  cmake ..
+  make &amp;&amp; make install
+</code></pre>
+
+<ul>
+<li>之后继续执行Nginx的configure命令即可。</li>
+</ul>
+
+<p>在之后，安装</p>
+
+<pre><code class="language-bash">make &amp;&amp; make install
+</code></pre>
+
+<h3 id="添加到系统service中">添加到系统service中</h3>
+
+<p>要想启动Nginx服务程序以及将其加入到开机启动项中，也需要有脚本文件。在安装完Nginx软件包之后默认并没有为用户提供脚本文件，因此我从《Linux就该这样学》这本书找到了一份可用的启动脚本文件，大家只需在/etc/rc.d/init.d目录中创建脚本文件并直接复制下面的脚本内容即可：</p>
+
+<ul>
+<li><p>首先，打开文件：</p>
+
+<pre><code class="language-bash">vim /etc/rc.d/init.d/nginx
+</code></pre></li>
+
+<li><p>之后，粘贴如下文本进入文件：</p>
+
+<pre><code class="language-shell">#!/bin/bash
+# nginx - this script starts and stops the nginx daemon
+# chkconfig: - 85 15
+description: Nginx is an HTTP(S) server, HTTP(S) reverse \
+# proxy and IMAP/POP3 proxy server
+# processname: nginx
+# config: /etc/nginx/nginx.conf
+# config: /usr/local/nginx/conf/nginx.conf
+# pidfile: /usr/local/nginx/logs/nginx.pid
+# Source function library.
+. /etc/rc.d/init.d/functions
+# Source networking configuration.
+. /etc/sysconfig/network
+# Check that networking is up.
+[ &quot;$NETWORKING&quot; = &quot;no&quot; ] &amp;&amp; exit 0 
+nginx=&quot;/usr/local/nginx/sbin/nginx&quot;
+prog=$(basename $nginx)
+NGINX_CONF_FILE=&quot;/usr/local/nginx/conf/nginx.conf&quot;
+[ -f /etc/sysconfig/nginx ] &amp;&amp; . /etc/sysconfig/nginx
+lockfile=/var/lock/subsys/nginx
+make_dirs() {
+# make required directories  
+user=`$nginx -V 2&gt;&amp;1 | grep &quot;configure arguments:&quot; | sed 's/[^*]*--user=\([^ ]*\).*/\1/g' -`
+      if [ -z &quot;`grep $user /etc/passwd`&quot; ]; then
+              useradd -M -s /bin/nologin $user
+      fi
+options=`$nginx -V 2&gt;&amp;1 | grep 'configure arguments:'`
+for opt in $options; do
+      if [ `echo $opt | grep '.*-temp-path'` ]; then
+              value=`echo $opt | cut -d &quot;=&quot; -f 2`
+              if [ ! -d &quot;$value&quot; ]; then
+                      # echo &quot;creating&quot; $value
+                      mkdir -p $value &amp;&amp; chown -R $user $value
+             fi
+      fi
+done
+}
+start() {
+  [ -x $nginx ] || exit 5
+  [ -f $NGINX_CONF_FILE ] || exit 6
+  make_dirs
+  echo -n $&quot;Starting $prog: &quot;
+  daemon $nginx -c $NGINX_CONF_FILE
+  retval=$?
+  echo
+  [ $retval -eq 0 ] &amp;&amp; touch $lockfile
+  return $retval
+}
+stop() {
+  echo -n $&quot;Stopping $prog: &quot;
+  killproc $prog -QUIT
+  retval=$?
+  echo
+  [ $retval -eq 0 ] &amp;&amp; rm -f $lockfile
+  return $retval
+}
+restart() {
+  #configtest || return $?
+  stop
+  sleep 1
+  start
+}
+reload() {
+  #configtest || return $?
+  echo -n $&quot;Reloading $prog: &quot;
+  killproc $nginx -HUP
+  RETVAL=$?
+  echo
+}
+force_reload() {
+  restart
+}
+configtest() {
+  $nginx -t -c $NGINX_CONF_FILE
+}
+rh_status() {
+  status $prog
+}
+rh_status_q() {
+  rh_status &gt;/dev/null 2&gt;&amp;1
+}
+case &quot;$1&quot; in
+start)
+      rh_status_q &amp;&amp; exit 0
+      $1
+      ;;
+stop)
+      rh_status_q || exit 0
+      $1
+      ;;
+restart|configtest)
+$1
+;;
+reload)
+      rh_status_q || exit 7
+      $1
+      ;;
+force-reload)
+      force_reload
+      ;;
+status)
+      rh_status
+      ;;
+condrestart|try-restart)
+      rh_status_q || exit 0
+      ;;
+*)
+echo $&quot;Usage: $0 {start|stop|status|restart|condrestart|try-restart|reload|force-reload|configtest}&quot;
+exit 2
+esac
+</code></pre></li>
+
+<li><p>保存脚本文件后记得为其赋予755权限，以便能够执行这个脚本。然后以绝对路径的方式执行这个脚本，通过restart参数重启Nginx服务程序，最后再使用chkconfig命令将Nginx服务程序添加至开机启动项中。大功告成！</p>
+
+<pre><code class="language-bash">$ chmod 775 /etc/rc.d/init.d/nginx
+$ /etc/rc.d/init.d/nginx.conf restart
+Restarting nginx (via systemctl):                          [  OK  ]
+chkconfig nginx on
+</code></pre></li>
+
+<li><p>之后来curl一下localhost，看一下网站是否配置成功。</p>
+
+<pre><code class="language-bash">$ curl localhost
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+  body {
+      width: 35em;
+      margin: 0 auto;
+      font-family: Tahoma, Verdana, Arial, sans-serif;
+  }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+
+&lt;p&gt;For online documentation and support please refer to
+&lt;a href=&quot;http://nginx.org/&quot;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a href=&quot;http://nginx.com/&quot;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></li>
+</ul>
+
+<p>如果请求返回了网站的HTML文件，说明配置成功，大功告成！</p>
+
+<h2 id="安装php服务器">安装PHP服务器</h2>
+
+<p>首先安装依赖包：</p>
+
+<pre><code class="language-bash">yum install libxml2 libxml2-devel openssl openssl-devel bzip2 bzip2-devel libcurl libcurl-devel libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel gmp gmp-devel libmcrypt libmcrypt-devel readline readline-devel libxslt libxslt-devel zlib zlib-devel glibc glibc-devel glib2 glib2-devel ncurses curl gdbm-devel db4-devel libXpm-devel libX11-devel gd-devel gmp-devel expat-devel xmlrpc-c xmlrpc-c-devel libicu-devel libmcrypt-devel libmemcached-devel libzip
+</code></pre>
+
+<p>下载、解压安装包</p>
+
+<pre><code class="language-bash">cd ..
+wget https://www.php.net/distributions/php-7.1.32.tar.gz
+tar zxvf php-7.1.32.tar.gz
+cd php-7.1.32
+</code></pre>
+
+<p>接下来编译安装(./configure &ndash;help可查看编译参数)</p>
+
+<pre><code class="language-bash">./configure \
+ --prefix=/usr/local/php\
+ --enable-fpm\
+ --with-fpm-user=www\
+ --with-fpm-group=www\
+ --with-config-file-path=/usr/local/php/conf\
+ --disable-rpath\
+ --enable-soap\
+ --with-libxml-dir\
+ --with-xmlrpc\
+ --with-openssl\
+ --with-mhash\
+ --with-pcre-regex\
+ --with-zlib\
+ --enable-bcmath\
+ --with-bz2\
+ --enable-calendar\
+ --with-curl\
+ --enable-exif\
+ --with-pcre-dir\
+ --enable-ftp\
+ --with-gd\
+ --with-openssl-dir\
+ --with-jpeg-dir\
+ --with-png-dir\
+ --with-zlib-dir\
+ --with-freetype-dir\
+ --enable-gd-jis-conv\
+ --with-gettext\
+ --with-gmp\
+ --with-mhash\
+ --enable-mbstring\
+ --with-onig\
+ --with-mysqli=mysqlnd\
+ --with-pdo-mysql=mysqlnd\
+ --with-zlib-dir\
+ --with-readline\
+ --enable-shmop\
+ --enable-sockets\
+ --enable-sysvmsg\
+ --enable-sysvsem \
+ --enable-sysvshm \
+ --enable-wddx\
+ --with-libxml-dir\
+ --with-xsl\
+ --enable-zip\
+ --with-pear
+</code></pre>
+
+<p>## 配置</p>
+
+<p>执行完安装命令后php7就已经安装在到了<code>/usr/local/php</code>目录下了。</p>
+
+<pre><code class="language-bash">/usr/local/php/bin/php -v
+</code></pre>
+
+<p>查看安装是否成功。</p>
+
+<p>为了以后方便，可以编辑 <code>/etc/profile</code> 添加环境变量 ，添加到最后面</p>
+
+<pre><code class="language-shell">PATH=$PATH:/usr/local/php/bin
+export PATH
+</code></pre>
+
+<p>然后更新环境变量。</p>
+
+<pre><code>source /etc/profile
+</code></pre>
+
+<p>查看环境变量</p>
+
+<pre><code class="language-bash">echo $PATH
+</code></pre>
+
+<p>查看php版本</p>
+
+<pre><code class="language-bash">php -v
+</code></pre>
+
+<p>删除当前默认的配置文件，然后将php服务程序目录中相应的配置文件复制过来：</p>
+
+<pre><code class="language-bash">rm -rf /etc/php.ini
+ln -s /usr/local/php/etc/php.ini /etc/php.ini
+cp php.ini-production /usr/local/php/etc/php.ini
+cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
+ln -s /usr/local/php/etc/php-fpm.conf /etc/php-fpm.conf
+</code></pre>
+
+<p>配置妥当后便可把用于管理php服务的脚本文件复制到/etc/rc.d/init.d中了。为了能够执行脚本，请记得为脚本赋予755权限。最后把php-fpm服务程序加入到开机启动项中：</p>
+
+<pre><code class="language-bash">cp sapi/fpm/init.d.php-fpm /etc/rc.d/init.d/php-fpm
+chmod 755 /etc/rc.d/init.d/php-fpm
+chkconfig php-fpm on
+</code></pre>
+
+<p>由于php服务程序的配置参数直接会影响到Web服务服务的运行环境，因此，如果默认开启了一些不必要且高危的功能（如允许用户在网页中执行Linux命令），则会降低网站被黑难度，入侵人员甚至可以拿到整台Web服务器的管理权限。因此我们需要编辑php.ini配置文件，在305行的disable_functions参数后面追加上要禁止的功能。下面的禁用功能名单是刘遄老师依据网站运行的经验而定制的，不见得适合每个生产环境，建议大家在此基础上根据自身工作需求酌情删减：</p>
+
+<pre><code class="language-bash"> 307 ; This directive allows you to disable certain functions for security reasons.
+ 308 ; It receives a comma-delimited list of function names.
+ 309 ; http://php.net/disable-functions
+ 310 disable_functions = passthru,exec,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,escapeshellcmd,dll,popen,disk_free_space,checkdnsrr,checkdnsrr,getservbyname,getservbyport,disk_total_space,posix_ctermid,posix_get_last_error,posix_getcwd,posix_getegid,posix_geteuid,posix_getgid,posix_getgrgid,posix_getgrnam,posix_getgroups,posix_getlogin,posix_getpgid,posix_getpgrp,posix_getpid,posix_getppid,posix_getpwnam,posix_getpwuid,posix_getrlimit,posix_getsid,posix_getuid,posix_isatty,posix_kill,posix_mkfifo,posix_setegid,posix_seteuid,posix_setgid,posix_setpgid,posix_setsid,posix_setuid,posix_strerror,posix_times,posix_ttyname,posix_uname
+</code></pre>
+
+<p>这样就把php服务程序配置妥当了。最后，还需要编辑Nginx服务程序的主配置文件，把第2行的井号（#）删除，然后在后面写上负责运行Nginx服务程序的账户名称和用户组名称；在第45行的index参数后面写上网站的首页名称。最后是将第65～71行参数前的井号（#）删除来启用参数，主要是修改第69行的脚本名称路径参数，其中$document_root变量即为网站信息存储的根目录路径，若没有设置该变量，则Nginx服务程序无法找到网站信息，因此会提示“404页面未找到”的报错信息。还有就是fastcgi_param配置的时候不要忘记取消注释后不要忘记改成自己的位置。在确认参数信息填写正确后便可重启Nginx服务与php-fpm服务。</p>
+
+<p>下面做一个例子</p>
+
+<pre><code class="language-nginx">server {
+        listen       80;
+        server_name  site.com www.site.co;
+        location / {
+            root   /var/www/mysite;
+            index  index.html index.htm index.php;
+        }
+        error_page   500 502 503 504  /50x.html;
+        location ~ \.php$ {
+            root           html;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME  /var/www/mysite$fastcgi_script_name;
+            include        fastcgi_params;
+        }
+}
+</code></pre>
+
+<p>之后，重启php服务</p>
+
+<pre><code class="language-bash">servide php-fpm restart
+</code></pre>
+
+<p>然后，进入网页的文件夹，新建一个文件叫<code>info.php</code>，然后打开，输入以下内容：</p>
+
+<pre><code class="language-PHP">&lt;?php
+    phpinfo();
+?&gt;
+</code></pre>
+
+<p>之后保存，打开浏览器，输入<code>域名/info.php</code>即可看见自己的php详细内容啦！</p>
+
+<h2 id="后记">后记</h2>
+
+<p>至此，LNMP框架配置完成。</p>
+
+<p>之后我还会用这个搭建WordPress、重新搭建图床还有邮件服务器。</p>
+
+<p>除此之外，也激发了我对于Nginx的兴趣，我会进一步学习Nginx的源代码，部署负载均衡等等东西。</p>
+
+<p>学校也在学习大数据，我也会在最近部署HDFS、Hadoop等等服务，来进一步加强自己的运维能力。</p>
+
+<p>未来服务器除了WordPress等，还要搭配GitLab、Jupyter Notebook等等。</p>
+
+<p>也会把笔记记录在这里！</p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://zephyrlind.github.io/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/">折腾笔记</a>
+
+  <a class="tag tag--primary tag--small" href="https://zephyrlind.github.io/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">DevOPs入门笔记</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/repeatport/" data-tooltip="Repeatport">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zephyrlind.github.io/2019/09/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zephyrlind.github.io/2019/09/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 Zephyr Lin. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/repeatport/" data-tooltip="Repeatport">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zephyrlind.github.io/2019/09/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zephyrlind.github.io/2019/09/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzephyrlind.github.io%2F2019%2F09%2Fcentos7%25E5%25AE%2589%25E8%25A3%2585lnmp%25E8%25AE%25B0%25E5%25BD%2595%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fzephyrlind.github.io%2F2019%2F09%2Fcentos7%25E5%25AE%2589%25E8%25A3%2585lnmp%25E8%25AE%25B0%25E5%25BD%2595%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Zephyr Lin</h4>
+    
+      <div id="about-card-bio">Undergraduate students in the Department of Software Engineering, TJNU</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Student
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        China, Tianjin
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://zephyrlind.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://zephyrlind.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/zephyrlind.github.io\/2019\/09\/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95\/';
+          
+            this.page.identifier = '\/2019\/09\/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

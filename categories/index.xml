@@ -6,15 +6,33 @@
     <description>Recent content in Categories on ZephyrLin&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 25 Aug 2019 22:35:14 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 07 Sep 2019 23:23:40 +0800</lastBuildDate>
     
 	<atom:link href="https://zephyrlind.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>CentOS</title>
+      <link>https://zephyrlind.github.io/categories/centos/</link>
+      <pubDate>Sat, 07 Sep 2019 23:23:40 +0800</pubDate>
+      
+      <guid>https://zephyrlind.github.io/categories/centos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LNMP</title>
+      <link>https://zephyrlind.github.io/categories/lnmp/</link>
+      <pubDate>Sat, 07 Sep 2019 23:23:40 +0800</pubDate>
+      
+      <guid>https://zephyrlind.github.io/categories/lnmp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Nginx</title>
       <link>https://zephyrlind.github.io/categories/nginx/</link>
-      <pubDate>Sun, 25 Aug 2019 22:35:14 +0800</pubDate>
+      <pubDate>Sat, 07 Sep 2019 23:23:40 +0800</pubDate>
       
       <guid>https://zephyrlind.github.io/categories/nginx/</guid>
       <description></description>
@@ -23,7 +41,7 @@
     <item>
       <title>Web服务器</title>
       <link>https://zephyrlind.github.io/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
-      <pubDate>Sun, 25 Aug 2019 22:35:14 +0800</pubDate>
+      <pubDate>Sat, 07 Sep 2019 23:23:40 +0800</pubDate>
       
       <guid>https://zephyrlind.github.io/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description></description>
@@ -44,15 +62,6 @@
       <pubDate>Sat, 24 Aug 2019 13:45:32 +0800</pubDate>
       
       <guid>https://zephyrlind.github.io/categories/%E5%9B%BE%E5%BA%8A/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>LNMP</title>
-      <link>https://zephyrlind.github.io/categories/lnmp/</link>
-      <pubDate>Fri, 09 Aug 2019 08:46:15 +0800</pubDate>
-      
-      <guid>https://zephyrlind.github.io/categories/lnmp/</guid>
       <description></description>
     </item>
     
