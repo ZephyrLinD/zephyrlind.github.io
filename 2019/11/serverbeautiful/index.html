@@ -8,41 +8,39 @@
 <meta name="generator" content="Hugo 0.56.3 with theme Tranquilpeak 0.4.6-BETA">
 <meta name="author" content="Zephyr Lin">
 <meta name="keywords" content="">
-<meta name="description" content="CentOS 的第三方软件源中（如：IUS，SCL，EPEL）还没有 Python 3.7 的 RPM 软件包，本文介绍使用源码方式安装 Python 3.7。">
+<meta name="description" content="以下是我拿到一台新的、属于自己的、以后会长期使用的小鸡（服务器）后我会干的事情，做一个总结。平台：CentOS7.6">
 
 
-<meta property="og:description" content="CentOS 的第三方软件源中（如：IUS，SCL，EPEL）还没有 Python 3.7 的 RPM 软件包，本文介绍使用源码方式安装 Python 3.7。">
+<meta property="og:description" content="以下是我拿到一台新的、属于自己的、以后会长期使用的小鸡（服务器）后我会干的事情，做一个总结。平台：CentOS7.6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Centos7 Py3">
-<meta name="twitter:title" content="Centos7 Py3">
-<meta property="og:url" content="https://zephyrlind.github.io/2019/09/centos7-py3/">
-<meta property="twitter:url" content="https://zephyrlind.github.io/2019/09/centos7-py3/">
+<meta property="og:title" content="Serverbeautiful">
+<meta name="twitter:title" content="Serverbeautiful">
+<meta property="og:url" content="https://zephyrlind.github.io/2019/11/serverbeautiful/">
+<meta property="twitter:url" content="https://zephyrlind.github.io/2019/11/serverbeautiful/">
 <meta property="og:site_name" content="ZephyrLin&#39;s Blog">
-<meta property="og:description" content="CentOS 的第三方软件源中（如：IUS，SCL，EPEL）还没有 Python 3.7 的 RPM 软件包，本文介绍使用源码方式安装 Python 3.7。">
-<meta name="twitter:description" content="CentOS 的第三方软件源中（如：IUS，SCL，EPEL）还没有 Python 3.7 的 RPM 软件包，本文介绍使用源码方式安装 Python 3.7。">
+<meta property="og:description" content="以下是我拿到一台新的、属于自己的、以后会长期使用的小鸡（服务器）后我会干的事情，做一个总结。平台：CentOS7.6">
+<meta name="twitter:description" content="以下是我拿到一台新的、属于自己的、以后会长期使用的小鸡（服务器）后我会干的事情，做一个总结。平台：CentOS7.6">
 <meta property="og:locale" content="zh-cn">
 
   
-    <meta property="article:published_time" content="2019-09-23T16:18:34">
+    <meta property="article:published_time" content="2019-11-07T20:00:04">
   
   
-    <meta property="article:modified_time" content="2019-09-23T16:18:34">
+    <meta property="article:modified_time" content="2019-11-07T20:00:04">
   
   
   
     
-      <meta property="article:section" content="服务器">
-    
-      <meta property="article:section" content="Python">
+      <meta property="article:section" content="Web服务器">
     
       <meta property="article:section" content="CentOS">
     
+      <meta property="article:section" content="终端美化">
+    
   
   
     
-      <meta property="article:tag" content="DevOPs入门笔记">
-    
-      <meta property="article:tag" content="日常备忘录">
+      <meta property="article:tag" content="折腾笔记">
     
   
 
@@ -63,14 +61,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=640">
 
 
-    <title>Centos7 Py3</title>
+    <title>Serverbeautiful</title>
 
     <link rel="icon" href="https://zephyrlind.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://zephyrlind.github.io/2019/09/centos7-py3/">
+    <link rel="canonical" href="https://zephyrlind.github.io/2019/11/serverbeautiful/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -230,15 +228,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Centos7 Py3
+      Serverbeautiful
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2019-09-23T16:18:34&#43;08:00">
+      <time itemprop="datePublished" datetime="2019-11-07T20:00:04&#43;08:00">
         
-  九月 23, 2019
+  十一月 7, 2019
 
       </time>
     
@@ -247,11 +245,11 @@
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://zephyrlind.github.io/categories/%e6%9c%8d%e5%8a%a1%e5%99%a8">服务器</a>, 
+      <a class="category-link" href="https://zephyrlind.github.io/categories/web%e6%9c%8d%e5%8a%a1%e5%99%a8">Web服务器</a>, 
     
-      <a class="category-link" href="https://zephyrlind.github.io/categories/python">Python</a>, 
+      <a class="category-link" href="https://zephyrlind.github.io/categories/centos">CentOS</a>, 
     
-      <a class="category-link" href="https://zephyrlind.github.io/categories/centos">CentOS</a>
+      <a class="category-link" href="https://zephyrlind.github.io/categories/%e7%bb%88%e7%ab%af%e7%be%8e%e5%8c%96">终端美化</a>
     
   
 
@@ -265,37 +263,172 @@
 
 <h2 id="前言">前言</h2>
 
-<p>CentOS 的第三方软件源中（如：IUS，SCL，EPEL）还没有 Python 3.7 的 RPM 软件包，本文介绍使用源码方式安装 Python 3.7。</p>
+<p>双十一剁手啦！！！我的阿里云已经快要到期了，而且上面作死想整一些骚操作然后欢声笑语打出GG，删库跑路吧。以下是我拿到一台新的、属于自己的、以后会长期使用的小鸡（服务器）后我会干的事情，做一个总结，以防万一自己忘掉，顺便用以回顾。</p>
 
-<h2 id="安装依赖包">安装依赖包</h2>
+<p>平台：腾讯云</p>
 
-<p>因为在CentOS7中源码安装Python 3.7之前需要安装GCC和make编译工具，该工具保安在“Development toos”软件组中，可以直接安装</p>
+<p>操作系统：CentOS 7.6</p>
 
-<pre><code class="language-bash">yum groupinstall &quot;Development tools&quot;
+<p>注意：里面的<code>example</code>皆为用户名的指代。</p>
+
+<h2 id="第一步-添加sudo权限的普通用户">第一步，添加sudo权限的普通用户</h2>
+
+<p>由于要长期使用，没准也会在服务器上敲代码，为了防止自己操作失误，添加一个带sudo权限普通用户。</p>
+
+<p>首先，添加用户：</p>
+
+<pre><code class="language-bash">useradd -d /home/example example
 </code></pre>
 
-<p>再安装一些其他的依赖</p>
+<p>然后，为他修改密码：</p>
 
-<pre><code class="language-bash">yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
+<pre><code class="language-bash">visudo
+</code></pre>
+
+<p>再之后找到代码段，添加如下代码</p>
+
+<pre><code class="language-shell"># Allow root to run any commands anywhere
+root     ALL=(ALL)       ALL
+example  ALL=(ALL)       ALL  # 添加的代码
+</code></pre>
+
+<p>然后切换用户到<code>example</code>，运行一下update试试：</p>
+
+<pre><code class="language-bash">sudo yum update 
+</code></pre>
+
+<p>如果可以运行，说明一切正常，大功告成！</p>
+
+<h2 id="第二部-简单美化终端">第二部，简单美化终端</h2>
+
+<p>因为毕竟是服务器，终端只需简洁、好用即可，不需要太过花哨。我们采用<code>zsh</code>+<code>oh-my-zsh</code>的组合来让终端变得有颜色，且有简单的提示。</p>
+
+<p>首先下载<code>zsh</code></p>
+
+<pre><code class="language-bash">sudo yum -y install zsh
+</code></pre>
+
+<p>然后下载<code>oh-my-zsh</code>，安装非常简单只需一行代码</p>
+
+<pre><code class="language-bash">sh -c &quot;$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
+</code></pre>
+
+<p>根据提示完成安装后，首先修改主题，我最爱使用主题 <code>ys</code>：</p>
+
+<pre><code class="language-bash">vim ~/.zshrc
+</code></pre>
+
+<p>找到 <code>ZSH_THEME</code> 字段，将原本的 <code>robbyshell</code> 修改为 <code>ys</code> 即可。</p>
+
+<p>在之后安装<code>zsh-autosuggestions</code>、<code>zsh-syntax-highlighting</code>，安装过程如下：</p>
+
+<pre><code class="language-bash">git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+</code></pre>
+
+<p>然后打开<code>.zshrc</code>，在<code>plugin</code>字段中加入两个插件：</p>
+
+<pre><code class="language-shell">plugins=([plugins...] zsh-syntax-highlighting zsh-autosuggestions)
+</code></pre>
+
+<p>然后就是一步到位，应用更改的时候啦！</p>
+
+<pre><code class="language-bash">source ~/.zshrc
+</code></pre>
+
+<p>之后我们的终端就变得相对好看啦！</p>
+
+<h2 id="安装装逼神器neofetch">安装装逼神器neofetch</h2>
+
+<p><code>Neofetch</code>可以以更全面的方式来显示输出详实的 Linux 系统信息，顺便可以和小伙伴装逼一波。（主要是他也很好看啊嘤嘤嘤）</p>
+
+<p>最早我一般在CentOS上通过编译安装它，但是现在在安装<code>neofetch</code>之前，是需要使用最新的Redhat系包管理软件<code>dnf</code>，然后就可以很方便的安装啦！</p>
+
+<pre><code class="language-bash">sudo yum install dnf
+sudo yum install dnf-plugins-core
+sudo dnf -y copr enable konimex/neofetch
+sudo dnf install neofetch
+</code></pre>
+
+<p>之后就可以通过终端输入<code>neofetch</code>截图给小伙伴啦！</p>
+
+<h2 id="安装终端复用工具tmux">安装终端复用工具TMUX</h2>
+
+<p>TMUX（terminal multiplexer）是Linux上的终端复用神器，可从一个屏幕上管理多个终端（准确说是伪终端）。使用该工具，用户可以连接或断开会话，而保持终端在后台运行。类似的工具还有screen。</p>
+
+<p>首先安装依赖：</p>
+
+<pre><code class="language-bash">sudo yum install byacc bison
+</code></pre>
+
+<p>之后，下载TMUX的源码</p>
+
+<pre><code class="language-bash">cd /usr/local/src
+sudo git clone https://github.com/tmux/tmux.git
+</code></pre>
+
+<p>编译并安装：</p>
+
+<pre><code class="language-bash">cd tmux
+sudo sh autogen.sh
+sudo ./configure
+sudo make
+sudo make install
+</code></pre>
+
+<h2 id="安装python3">安装Python3</h2>
+
+<p>作为一个“脚本小子”（是的，不是低端黑客的蔑称，只是爱写脚本实现自动化），以后立志要做DevOPs的人，首先要用Python尝试把服务器自动化。</p>
+
+<p>然而CentOS自带了Python2，想要使用Python3写脚本就需要编译安装Python3了。</p>
+
+<p>首先，安装一些工具组和依赖</p>
+
+<pre><code class="language-bash">yum -y groupinstall &quot;Development tools&quot;
+yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
 yum install libffi-devel -y
 </code></pre>
 
-<h2 id="下载源代码包解压">下载源代码包解压</h2>
+<p>不由得想到了当初体验RHEL的时候连依赖都需要编译安装，没准还要找到依赖的依赖的恐怖日子了= =</p>
+
+<p>接下来是下载源码包，我的习惯是将源码包放在<code>/usr/local/src</code>中</p>
 
 <pre><code class="language-bash">cd /usr/local/src/
-wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz
-cd Python-3.7.4
-./configure --prefix=/usr/local/python3
-make &amp;&amp; make install
+sudo wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tar.xz 
 </code></pre>
 
-<h2 id="建立软连接">建立软连接</h2>
+<p>此时你可以喝杯咖啡，看一集番，如果还没完事可以看看淘宝，注意SSH连接别断了。</p>
 
-<pre><code class="language-bash">ln -s /usr/local/python3/bin/python3 /usr/local/bin/python3
-ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
+<p>之后可以解压，要注意的是<code>tar.xz</code>的解压方法和<code>tar.gz</code>不太一样，需要先解压成<code>.tar</code>然后再进一步解压：</p>
+
+<pre><code class="language-bash">sudo xz -d Python-3.8.0.tar.xz
+sudo tar xvf python-3.8.0.tar
+sudo cd Python-3.8.0
 </code></pre>
 
-<p>之后就可以在终端输入python3或者pip来玩耍啦！</p>
+<p>最后就是编译老一套，只不过因为不在root用户上所以要加上sudo</p>
+
+<pre><code class="language-bash">mkdir /usr/local/python3
+sudo ./configure --prefix=/usr/local/python3
+sudo make 
+sudo make install
+</code></pre>
+
+<p>然后检测一下是否成功：</p>
+
+<pre><code class="language-bash">python3 -v
+pip3 -v
+</code></pre>
+
+<p>需要卸载的时候只需执行如下即可：</p>
+
+<pre><code class="language-bash">rpm -qa|grep python3|xargs rpm -ev --allmatches --nodeps
+whereis python3 |xargs rm -frv
+</code></pre>
+
+<h2 id="总结">总结</h2>
+
+<p>拿到新服务器我也就只会干这些了，在之后还会进行vim的配置，由于太过冗长所以我会新开一篇文档。</p>
 
               
             </div>
@@ -308,9 +441,7 @@ ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">标签</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://zephyrlind.github.io/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">DevOPs入门笔记</a>
-
-  <a class="tag tag--primary tag--small" href="https://zephyrlind.github.io/tags/%E6%97%A5%E5%B8%B8%E5%A4%87%E5%BF%98%E5%BD%95/">日常备忘录</a>
+  <a class="tag tag--primary tag--small" href="https://zephyrlind.github.io/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/">折腾笔记</a>
 
                   </div>
                 
@@ -323,7 +454,7 @@ ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/11/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%88%B0%E6%89%8B%E5%90%8E%E8%A6%81%E5%81%9A%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B%E4%B8%80-%E7%BB%88%E7%AB%AF%E5%88%9D%E6%AD%A5%E7%BE%8E%E5%8C%96%E5%92%8C%E4%B8%80%E4%BA%9B%E5%BF%85%E8%A6%81%E5%B7%A5%E5%85%B7/" data-tooltip="服务器到手后要做的一些事（一）———— 终端初步美化和一些必要工具">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -331,7 +462,7 @@ ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/09/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95/" data-tooltip="CentOS7安装LNMP记录">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/09/centos7-py3/" data-tooltip="Centos7 Py3">
               
                   <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -349,13 +480,13 @@ ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zephyrlind.github.io/2019/09/centos7-py3/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zephyrlind.github.io/2019/11/serverbeautiful/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zephyrlind.github.io/2019/09/centos7-py3/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zephyrlind.github.io/2019/11/serverbeautiful/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
@@ -403,7 +534,7 @@ ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/11/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%88%B0%E6%89%8B%E5%90%8E%E8%A6%81%E5%81%9A%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B%E4%B8%80-%E7%BB%88%E7%AB%AF%E5%88%9D%E6%AD%A5%E7%BE%8E%E5%8C%96%E5%92%8C%E4%B8%80%E4%BA%9B%E5%BF%85%E8%A6%81%E5%B7%A5%E5%85%B7/" data-tooltip="服务器到手后要做的一些事（一）———— 终端初步美化和一些必要工具">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -411,7 +542,7 @@ ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/09/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95/" data-tooltip="CentOS7安装LNMP记录">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/09/centos7-py3/" data-tooltip="Centos7 Py3">
               
                   <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -429,13 +560,13 @@ ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zephyrlind.github.io/2019/09/centos7-py3/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zephyrlind.github.io/2019/11/serverbeautiful/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zephyrlind.github.io/2019/09/centos7-py3/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zephyrlind.github.io/2019/11/serverbeautiful/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
@@ -465,13 +596,13 @@ ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzephyrlind.github.io%2F2019%2F09%2Fcentos7-py3%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzephyrlind.github.io%2F2019%2F11%2Fserverbeautiful%2F">
           <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fzephyrlind.github.io%2F2019%2F09%2Fcentos7-py3%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fzephyrlind.github.io%2F2019%2F11%2Fserverbeautiful%2F">
           <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
         </a>
       </li>
@@ -563,9 +694,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/zephyrlind.github.io\/2019\/09\/centos7-py3\/';
+          this.page.url = 'https:\/\/zephyrlind.github.io\/2019\/11\/serverbeautiful\/';
           
-            this.page.identifier = '\/2019\/09\/centos7-py3\/'
+            this.page.identifier = '\/2019\/11\/serverbeautiful\/'
           
         };
         (function() {

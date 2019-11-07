@@ -327,7 +327,7 @@ cd build
 -DWITH_BLACKHOLE_STORAGE_ENGINE=1 \                               //存储引擎
 -DWITH_PERFSCHEMA_STORAGE_ENGINE=1 \                              //存储引擎
 -DMYSQL_DATADIR=/usr/local/mysql/data \                           //数据库文件
--DWITH_BOOST=boost \                                              //指定Boost库的位置，mysql5.7必须添加该参数
+-DWITH_BOOST=../boost \                                           //指定Boost库的位置，mysql5.7必须添加该参数
 -DWITH_SYSTEMD=1
 </code></pre>
 
@@ -354,7 +354,7 @@ cd build
 chown -Rf mysql:mysql /etc/my.cnf
 </code></pre></li>
 
-<li><p>之后按照如下修改my.conf</p>
+<li><p>之后按照如下修改my.cnf</p>
 
 <pre><code class="language-bash">$ vim /etc/my.cnf
 [client]
@@ -407,28 +407,22 @@ systemctl start mysqld
 
 <h3 id="访问mysql数据库和navicat远程连接">访问MySQL数据库和NaviCat远程连接</h3>
 
-<ul>
-<li><p>首先用root用户直接免密码进入MySQL数据库修改一下密码：</p>
+<p>首先用root用户直接免密码进入MySQL数据库修改一下密码：</p>
 
 <pre><code class="language-bash">$ mysql
 mysql&gt;SET PASSWORD FOR 'root'@'localhost' = PASSWORD('你的密码');
-</code></pre></li>
-</ul>
+</code></pre>
 
 <p>然后就可以执行<code>show databases;</code>等等指令看一下是否出错了，一般是不会出错的。</p>
 
-<ul>
-<li><p>在mysql终端内开启远程权限</p>
+<p>在mysql终端内开启远程权限</p>
 
 <pre><code class="language-bash">mysql&gt;grant all privileges on *.* to 'root'@'%' identified by '你的密码' with grant option;
-</code></pre></li>
-</ul>
+</code></pre>
 
 <p>第一个*代表所有数据库，第二*代表所有表，赋予root权限 “%”代表所有服务器终端，也可设为IP地址</p>
 
-<ul>
-<li>之后，去服务器管理页面打开3306的端口就可以远程连接啦。</li>
-</ul>
+<p>之后，去服务器管理页面打开3306的端口就可以远程连接啦。</p>
 
 <h2 id="安装nginx高性能静态服务器">安装Nginx高性能静态服务器</h2>
 
@@ -439,7 +433,7 @@ mysql&gt;SET PASSWORD FOR 'root'@'localhost' = PASSWORD('你的密码');
 
 <h3 id="在安装部署好具有依赖关系的软件包之后-创建一个用于执行nginx服务程序的账户-账户名称可以自定义-但一定别忘记-因为在后续需要调用">在安装部署好具有依赖关系的软件包之后，创建一个用于执行Nginx服务程序的账户。账户名称可以自定义，但一定别忘记，因为在后续需要调用：</h3>
 
-<pre><code class="language-bash">cd .. 
+<pre><code class="language-bash">cd ../src 
 useradd www -s /sbin/nologin
 </code></pre>
 
@@ -510,7 +504,7 @@ cd nginx-1.16.1
 <pre><code class="language-shell">#!/bin/bash
 # nginx - this script starts and stops the nginx daemon
 # chkconfig: - 85 15
-description: Nginx is an HTTP(S) server, HTTP(S) reverse \
+# description: Nginx is an HTTP(S) server, HTTP(S) reverse \
 # proxy and IMAP/POP3 proxy server
 # processname: nginx
 # config: /etc/nginx/nginx.conf
@@ -769,6 +763,7 @@ ln -s /usr/local/php/etc/php-fpm.conf /etc/php-fpm.conf
 
 <pre><code class="language-bash">cp sapi/fpm/init.d.php-fpm /etc/rc.d/init.d/php-fpm
 chmod 755 /etc/rc.d/init.d/php-fpm
+cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf
 chkconfig php-fpm on
 </code></pre>
 
