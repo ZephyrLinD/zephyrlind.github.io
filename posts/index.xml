@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 梦黎的小窝</title>
+    <link>https://tech.zephyrl.co/posts/</link>
+    <description>Recent content in Posts on 梦黎的小窝</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Mon, 23 Dec 2019 15:01:38 +0800</lastBuildDate>
+    
+	<atom:link href="https://tech.zephyrl.co/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SSM框架学习笔记（六） 事务</title>
+      <link>https://tech.zephyrl.co/2019/12/ssm6/</link>
+      <pubDate>Mon, 23 Dec 2019 15:01:38 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2019/12/ssm6/</guid>
+      <description>事务相关</description>
+    </item>
+    
+    <item>
+      <title>SSM框架学习笔记（五） 面向切面开发（AOP）</title>
+      <link>https://tech.zephyrl.co/2019/12/ssm5/</link>
+      <pubDate>Thu, 19 Dec 2019 16:21:59 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2019/12/ssm5/</guid>
+      <description>面向切面的开发（AOP）</description>
+    </item>
+    
+    <item>
+      <title>SSM框架学习笔记（四） 整合JDBC</title>
+      <link>https://tech.zephyrl.co/2019/12/ssm4/</link>
+      <pubDate>Tue, 17 Dec 2019 17:03:07 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2019/12/ssm4/</guid>
+      <description>整合JDBC</description>
+    </item>
+    
+    <item>
+      <title>SSM框架学习笔记（三） Bean的详解</title>
+      <link>https://tech.zephyrl.co/2019/11/ssm3/</link>
+      <pubDate>Wed, 20 Nov 2019 15:40:05 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2019/11/ssm3/</guid>
+      <description>Bean详解：命名、生命周期、作用范围、懒加载、继承、别名</description>
+    </item>
+    
+    <item>
+      <title>NginxTips（一） —— Nginx的组成、Vim语法高亮、编译、命令行、热部署、日志切割脚本</title>
+      <link>https://tech.zephyrl.co/2019/11/nginxtips1/</link>
+      <pubDate>Wed, 13 Nov 2019 20:08:41 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2019/11/nginxtips1/</guid>
+      <description>我打算开始做运维的实验的时候，先是从搭建一个LNMP环境并且开始监控、维护来做的。现在我开始学习Nginx和它的源代码，这个就作为我学习的一个记录吧。我把这个组合叫做NginxTips！</description>
+    </item>
+    
+    <item>
+      <title>SSM框架学习笔记（二） Spring综述</title>
+      <link>https://tech.zephyrl.co/2019/11/ssm2/</link>
+      <pubDate>Tue, 12 Nov 2019 13:43:05 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2019/11/ssm2/</guid>
+      <description>企业课SSM框架第二讲，关于Spring的综述。</description>
+    </item>
+    
+    <item>
+      <title>服务器到手后要做的一些事（一）———— 终端初步美化和一些必要工具</title>
+      <link>https://tech.zephyrl.co/2019/11/serverbeautiful/</link>
+      <pubDate>Thu, 07 Nov 2019 20:00:04 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2019/11/serverbeautiful/</guid>
+      <description>以下是我拿到一台新的、属于自己的、以后会长期使用的小鸡（服务器）后我会干的事情，做一个总结。平台：CentOS7.6</description>
+    </item>
+    
+    <item>
+      <title>SSM框架学习笔记（一） 相关环境的搭建</title>
+      <link>https://tech.zephyrl.co/2019/10/ssm1/</link>
+      <pubDate>Mon, 14 Oct 2019 21:53:33 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2019/10/ssm1/</guid>
+      <description>企业课SSM框架第一讲，以后企业课的东西都总结在这里。</description>
+    </item>
+    
+    <item>
+      <title>Centos7安装Pyhon3</title>
+      <link>https://tech.zephyrl.co/2019/09/centos7-py3/</link>
+      <pubDate>Mon, 23 Sep 2019 16:18:34 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2019/09/centos7-py3/</guid>
+      <description>CentOS 的第三方软件源中（如：IUS，SCL，EPEL）还没有 Python 3.7 的 RPM 软件包，本文介绍使用源码方式安装 Python 3.7。</description>
+    </item>
+    
+    <item>
+      <title>CentOS7安装LNMP记录</title>
+      <link>https://tech.zephyrl.co/2019/09/centoslnmp/</link>
+      <pubDate>Sat, 07 Sep 2019 23:23:40 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2019/09/centoslnmp/</guid>
+      <description>曾经沉迷Ubuntu的我终于真香了，转移全线阵地到了CentOS7，关闭主网站了一阵子，然后开始熟悉CentOS下的环境配置、服务器配置。难度比Ubuntu真的难了好多，也复杂了不少，但是有了上次的经验，参考了很多书和博客，总结出了一套适合自己的路线。</description>
+    </item>
+    
+    <item>
+      <title>端口转发问题排查</title>
+      <link>https://tech.zephyrl.co/2019/08/repeatport/</link>
+      <pubDate>Sun, 25 Aug 2019 22:35:14 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2019/08/repeatport/</guid>
+      <description>当我端口转发第一个网站的时候，发现第二个配置好的会转发到第一个网站&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>通过Let&#39;s Encrypt来获取SSL证书</title>
+      <link>https://tech.zephyrl.co/2019/08/configssl/</link>
+      <pubDate>Sun, 25 Aug 2019 20:16:52 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2019/08/configssl/</guid>
+      <description>这个Chrome浏览器是个好东西&amp;hellip;但是看着我自己博客和图床网页链接边上的“不安全”，很强迫症。于是，我&amp;hellip;&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Chevereto的安装和一些坑</title>
+      <link>https://tech.zephyrl.co/2019/08/cheveretoins/</link>
+      <pubDate>Sat, 24 Aug 2019 13:45:32 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2019/08/cheveretoins/</guid>
+      <description>Chevereto图床安装过程中遇到了好多的坑，大部分是因为自己对PHP、Nginx了解不多的原因。所以记录下来，供以后参考。</description>
+    </item>
+    
+    <item>
+      <title>我的Ubuntu Server LNMP折腾笔记</title>
+      <link>https://tech.zephyrl.co/2019/08/diaryoflnmp/</link>
+      <pubDate>Fri, 09 Aug 2019 08:46:15 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2019/08/diaryoflnmp/</guid>
+      <description>本文旨在记录Ubuntu Server上面稍微好配的LNMP环境的一些坑还有一些特殊的地方。因为像CentOS、RHEL都比较适合源代码安装，但是Ubuntu Server源代码安装反而过于折腾而且没必要，所以跟RedHat家的安装方法比，安装虽然简单，但是包名不同，也算有点坑吧。把它们记录下来，以后再弄的时候看这里就可以了。</description>
+    </item>
+    
+    <item>
+      <title>使用Fluent Terminal &#43; Oh-My-Posh打造优雅的Windows终端</title>
+      <link>https://tech.zephyrl.co/2019/08/awsome-powershell/</link>
+      <pubDate>Sat, 03 Aug 2019 22:40:13 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2019/08/awsome-powershell/</guid>
+      <description>说起Windows的终端大家第一印象就是傻大笨，从黑框框CMD的古老到升级的Powershell的复杂多变，大家似乎对Windows的终端充满了厌恶。我也一次次转到Linux系统（比如Ubuntu、Fedora、DeepinOS等都尝试过）但是因为很多原因没办法完全使用下去，装了Hackintosh但是不够完美（而且我的ThinkPad和Hackintosh总有一种违和感），但是又怀念我的Fedora上面漂亮的oh-my-zsh，顺便看着同学的MacBook Pro流口水，我开始上网寻找答案。</description>
+    </item>
+    
+  </channel>
+</rss>

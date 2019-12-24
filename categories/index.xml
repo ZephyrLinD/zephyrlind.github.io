@@ -1,103 +1,122 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on ZephyrLin&#39;s Blog</title>
-    <link>https://zephyrlind.github.io/categories/</link>
-    <description>Recent content in Categories on ZephyrLin&#39;s Blog</description>
+    <title>Categories on 梦黎的小窝</title>
+    <link>https://tech.zephyrl.co/categories/</link>
+    <description>Recent content in Categories on 梦黎的小窝</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Thu, 07 Nov 2019 20:00:04 +0800</lastBuildDate>
+    <language>zh</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Mon, 23 Dec 2019 15:01:38 +0800</lastBuildDate>
     
-	<atom:link href="https://zephyrlind.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tech.zephyrl.co/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SSM框架</title>
+      <link>https://tech.zephyrl.co/categories/ssm%E6%A1%86%E6%9E%B6/</link>
+      <pubDate>Mon, 23 Dec 2019 15:01:38 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/categories/ssm%E6%A1%86%E6%9E%B6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>后端开发</title>
+      <link>https://tech.zephyrl.co/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Mon, 23 Dec 2019 15:01:38 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>CentOS</title>
-      <link>https://zephyrlind.github.io/categories/centos/</link>
-      <pubDate>Thu, 07 Nov 2019 20:00:04 +0800</pubDate>
+      <link>https://tech.zephyrl.co/categories/centos/</link>
+      <pubDate>Wed, 13 Nov 2019 20:08:41 +0800</pubDate>
       
-      <guid>https://zephyrlind.github.io/categories/centos/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web服务器</title>
-      <link>https://zephyrlind.github.io/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
-      <pubDate>Thu, 07 Nov 2019 20:00:04 +0800</pubDate>
-      
-      <guid>https://zephyrlind.github.io/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>终端美化</title>
-      <link>https://zephyrlind.github.io/categories/%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/</link>
-      <pubDate>Thu, 07 Nov 2019 20:00:04 +0800</pubDate>
-      
-      <guid>https://zephyrlind.github.io/categories/%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>https://zephyrlind.github.io/categories/python/</link>
-      <pubDate>Mon, 23 Sep 2019 16:18:34 +0800</pubDate>
-      
-      <guid>https://zephyrlind.github.io/categories/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>服务器</title>
-      <link>https://zephyrlind.github.io/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
-      <pubDate>Mon, 23 Sep 2019 16:18:34 +0800</pubDate>
-      
-      <guid>https://zephyrlind.github.io/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>https://tech.zephyrl.co/categories/centos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>LNMP</title>
-      <link>https://zephyrlind.github.io/categories/lnmp/</link>
-      <pubDate>Sat, 07 Sep 2019 23:23:40 +0800</pubDate>
+      <link>https://tech.zephyrl.co/categories/lnmp/</link>
+      <pubDate>Wed, 13 Nov 2019 20:08:41 +0800</pubDate>
       
-      <guid>https://zephyrlind.github.io/categories/lnmp/</guid>
+      <guid>https://tech.zephyrl.co/categories/lnmp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nginx</title>
-      <link>https://zephyrlind.github.io/categories/nginx/</link>
-      <pubDate>Sat, 07 Sep 2019 23:23:40 +0800</pubDate>
+      <link>https://tech.zephyrl.co/categories/nginx/</link>
+      <pubDate>Wed, 13 Nov 2019 20:08:41 +0800</pubDate>
       
-      <guid>https://zephyrlind.github.io/categories/nginx/</guid>
+      <guid>https://tech.zephyrl.co/categories/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web服务器</title>
+      <link>https://tech.zephyrl.co/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Wed, 13 Nov 2019 20:08:41 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>终端美化</title>
+      <link>https://tech.zephyrl.co/categories/%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/</link>
+      <pubDate>Thu, 07 Nov 2019 20:00:04 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/categories/%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://tech.zephyrl.co/categories/python/</link>
+      <pubDate>Mon, 23 Sep 2019 16:18:34 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>服务器</title>
+      <link>https://tech.zephyrl.co/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Mon, 23 Sep 2019 16:18:34 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ubuntu</title>
-      <link>https://zephyrlind.github.io/categories/ubuntu/</link>
+      <link>https://tech.zephyrl.co/categories/ubuntu/</link>
       <pubDate>Sun, 25 Aug 2019 20:16:52 +0800</pubDate>
       
-      <guid>https://zephyrlind.github.io/categories/ubuntu/</guid>
+      <guid>https://tech.zephyrl.co/categories/ubuntu/</guid>
       <description></description>
     </item>
     
     <item>
       <title>图床</title>
-      <link>https://zephyrlind.github.io/categories/%E5%9B%BE%E5%BA%8A/</link>
+      <link>https://tech.zephyrl.co/categories/%E5%9B%BE%E5%BA%8A/</link>
       <pubDate>Sat, 24 Aug 2019 13:45:32 +0800</pubDate>
       
-      <guid>https://zephyrlind.github.io/categories/%E5%9B%BE%E5%BA%8A/</guid>
+      <guid>https://tech.zephyrl.co/categories/%E5%9B%BE%E5%BA%8A/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Powershell</title>
-      <link>https://zephyrlind.github.io/categories/powershell/</link>
+      <link>https://tech.zephyrl.co/categories/powershell/</link>
       <pubDate>Sat, 03 Aug 2019 22:40:13 +0800</pubDate>
       
-      <guid>https://zephyrlind.github.io/categories/powershell/</guid>
+      <guid>https://tech.zephyrl.co/categories/powershell/</guid>
       <description></description>
     </item>
     

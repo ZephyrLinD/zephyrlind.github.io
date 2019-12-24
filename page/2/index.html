@@ -1,380 +1,615 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-  <head>
+<html lang="zh">
+    <head>
+	<meta name="generator" content="Hugo 0.56.3" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="一个准程序员的自留地">
+<link rel="canonical" href="https://tech.zephyrl.co/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<link rel="alternate" href="/index.xml" type="application/rss+xml" title="梦黎的小窝">
+    <link rel="feed" href="/index.xml" type="application/rss+xml" title="梦黎的小窝">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="梦黎的小窝"/>
+<meta name="twitter:description" content="一个准程序员的自留地"/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "https:\/\/tech.zephyrl.co\/",
     
-    <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.56.3 with theme Tranquilpeak 0.4.6-BETA">
-<meta name="author" content="Zephyr Lin">
-<meta name="keywords" content="">
-<meta name="description" content="ZephyrLin&#39;s Blog">
-
-
-<meta property="og:description" content="ZephyrLin&#39;s Blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ZephyrLin&#39;s Blog">
-<meta name="twitter:title" content="ZephyrLin&#39;s Blog">
-<meta property="og:url" content="https://zephyrlind.github.io/">
-<meta property="twitter:url" content="https://zephyrlind.github.io/">
-<meta property="og:site_name" content="ZephyrLin&#39;s Blog">
-<meta property="og:description" content="ZephyrLin&#39;s Blog">
-<meta name="twitter:description" content="ZephyrLin&#39;s Blog">
-<meta property="og:locale" content="zh-cn">
-
-
-<meta name="twitter:card" content="summary">
-
-
-
-
-
-
-
-
-
-
-
-  <meta property="og:image" content="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=640">
-  <meta property="twitter:image" content="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=640">
-
-
-    <title>ZephyrLin&#39;s Blog</title>
-
-    <link rel="icon" href="https://zephyrlind.github.io/favicon.png">
-    
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="https://zephyrlind.github.io/index.xml">
-    
-
-    
-
-    <link rel="canonical" href="https://zephyrlind.github.io/">
-
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+        "author": {
+            "@type": "Person",
+            "name": "Zephyr"
+        },
     
     
-    <link rel="stylesheet" href="https://zephyrlind.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+        "description": "一个准程序员的自留地",
     
     
+        "image": "https:\/\/tech.zephyrl.co\/cover.png",
+    
+    
+        "thumbnailUrl": "https:\/\/tech.zephyrl.co\/logo.png",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    "name": "梦黎的小窝"
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
 
-    
-      
-    
-    
-  </head>
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
 
-  <body>
-    <div id="blog">
-      <header id="header" data-behavior="1">
-  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
-  <div class="header-title">
-    <a class="header-title-link" href="https://zephyrlind.github.io/">ZephyrLin&#39;s Blog</a>
-  </div>
-  
-    
-      <a class="header-right-picture "
-         href="https://zephyrlind.github.io/#about">
-    
-    
-    
-      
-        <img class="header-picture" src="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=90" alt="作者的图片" />
-      
-    
-    </a>
-  
-</header>
-
-      <nav id="sidebar" data-behavior="1">
-  <div class="sidebar-container">
-    
-      <div class="sidebar-profile">
-        <a href="https://zephyrlind.github.io/#about">
-          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=110" alt="作者的图片" />
-        </a>
-        <h4 class="sidebar-profile-name">Zephyr Lin</h4>
-        
-          <h5 class="sidebar-profile-bio">Undergraduate students in the Department of Software Engineering, TJNU</h5>
-        
-      </div>
-    
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://zephyrlind.github.io/">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
-      
-      <span class="sidebar-button-desc">首页</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://zephyrlind.github.io/categories">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-      
-      <span class="sidebar-button-desc">分类</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://zephyrlind.github.io/tags">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
-      
-      <span class="sidebar-button-desc">标签</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://zephyrlind.github.io/archives">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
-      
-      <span class="sidebar-button-desc">归档</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://zephyrlind.github.io/#about">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
-      
-      <span class="sidebar-button-desc">关于</span>
-    </a>
-  </li>
-
-
-    </ul>
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://github.com/zephyrlind" target="_blank" rel="noopener">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
-      
-      <span class="sidebar-button-desc">GitHub</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://stackoverflow.com/users/11878498/ZephyrLin" target="_blank" rel="noopener">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
-      
-      <span class="sidebar-button-desc">Stack Overflow</span>
-    </a>
-  </li>
-
-
-    </ul>
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://zephyrlind.github.io/index.xml">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
-      
-      <span class="sidebar-button-desc">RSS</span>
-    </a>
-  </li>
-
-
-    </ul>
-  </div>
-</nav>
-
-      
-
-      <div id="main" data-behavior="1"
-        class="
-               hasCoverMetaIn
-               ">
-        <section class="postShorten-group main-content-wrap">
-          
-          
-            
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-top" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-      <a href="https://zephyrlind.github.io/2019/08/%E4%BD%BF%E7%94%A8fluent-terminal-oh-my-posh%E6%89%93%E9%80%A0%E4%BC%98%E9%9B%85%E7%9A%84windows%E7%BB%88%E7%AB%AF/">
-        <div class="postShorten-thumbnailimg">
-          <img alt="" itemprop="image" src="http://graph.zephyrl.co/images/2019/08/24/ps_logo_small.png"/>
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
         </div>
-      </a>
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://zephyrlind.github.io/2019/08/%E4%BD%BF%E7%94%A8fluent-terminal-oh-my-posh%E6%89%93%E9%80%A0%E4%BC%98%E9%9B%85%E7%9A%84windows%E7%BB%88%E7%AB%AF/">
-          使用Fluent Terminal &#43; Oh-My-Posh打造优雅的Windows终端
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2019-08-03T22:40:13&#43;08:00">
-        
-  八月 3, 2019
-
-      </time>
-    
-    
-  
-  
-    <span>发布在</span>
-    
-      <a class="category-link" href="https://zephyrlind.github.io/categories/powershell">Powershell</a>, 
-    
-      <a class="category-link" href="https://zephyrlind.github.io/categories/%e7%bb%88%e7%ab%af%e7%be%8e%e5%8c%96">终端美化</a>
-    
-  
-
-  </div>
-
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
     </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        说起Windows的终端大家第一印象就是傻大笨，从黑框框CMD的古老到升级的Powershell的复杂多变，大家似乎对Windows的终端充满了厌恶。我也一次次转到Linux系统（比如Ubuntu、Fedora、DeepinOS等都尝试过）但是因为很多原因没办法完全使用下去，装了Hackintosh但是不够完美（而且我的ThinkPad和Hackintosh总有一种违和感），但是又怀念我的Fedora上面漂亮的oh-my-zsh，顺便看着同学的MacBook Pro流口水，我开始上网寻找答案。
-      
-      <p>
-        <a href="https://zephyrlind.github.io/2019/08/%E4%BD%BF%E7%94%A8fluent-terminal-oh-my-posh%E6%89%93%E9%80%A0%E4%BC%98%E9%9B%85%E7%9A%84windows%E7%BB%88%E7%AB%AF/" class="postShorten-excerpt_link link">阅读全文</a>
-        
-      </p>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
     </div>
-  </div>
-  
-</article>
-
-          
-          
-  <div class="pagination-bar">
-    <ul class="pagination">
-      
+</nav><main class="main">
+                <div class="container">
+                    <div class="post-warp"><div class="home-intro">
+    
+    
         
-          <li class="pagination-prev">
-            <a class="btn btn--default btn--small" href="https://zephyrlind.github.io/">
-              <i class="fa fa-angle-left text-base icon-mr"></i>
-              <span>上一页</span>
+    
+    
+        <div class="home-avatar">
+            <a href="/posts">
+                <img src=https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s&#61;240&amp;d&#61;mp alt="avatar">
             </a>
-          </li>
+        </div>
+    
+
+    
+        <h2 class="home-description">
+            
+            <div id=rtp-657e9cdceba259b853aa2a637c25d5ac hidden=true>梦黎的小窝</div>
+            <div id=tp-657e9cdceba259b853aa2a637c25d5ac class="typeit"></div>
+            
+                
+            
+        </h2>
+    
+
+    <div class="home-social-links">
         
-        
-      
-      <li class="pagination-number">第 2 页 共 2 页</li>
-    </ul>
-  </div>
+    <a href="https://github.com/https://github.com/ZephyrLinD" rel="me noopener noreffer" target="_blank"><i class="fab fa-github-alt fa-fw"></i></a>
 
 
-        </section>
-        <footer id="footer" class="main-content-wrap">
-  <span class="copyrights">
-    &copy; 2019 Zephyr Lin. All Rights Reserved
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="https://stackoverflow.com/users/https://stackoverflow.com/users/11878498/ZephyrLin" rel="me noopener noreffer" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i></a>
+
+
+    <a href="https://weibo.com/https://weibo.com/u/2759070053/" rel="me noopener noreffer" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="mailto:zephrdod@gmail.com" rel="me noopener noreffer"><i class="far fa-envelope" target="_blank fa-fw"></i></a>
+
+    </div>
+</div>
+<article class="post" itemscope itemtype="http://schema.org/Article">
+    
+    
+    
+
+    
+    
+    
+    <h1 class="post-title post-list-title" itemprop="name headline">
+        <a href="https://tech.zephyrl.co/2019/11/serverbeautiful/">服务器到手后要做的一些事（一）———— 终端初步美化和一些必要工具</a>
+    </h1>
+
+    <div class="post-meta">
+        <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+        发布于&nbsp;<time datetime=2019-11-07>2019-11-07</time>&nbsp;
+        <span class="post-category">
+                收录于
+                <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">Web服务器</a>
+                    <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/centos/">CentOS</a>
+                    <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/">终端美化</a>
+                    
+            </span>
+    </div>
+    <div class="post-content">
+        
+            
+            
+            
+            
+            
+            
+            
+            以下是我拿到一台新的、属于自己的、以后会长期使用的小鸡（服务器）后我会干的事情，做一个总结。平台：CentOS7.6
+        
+    </div>
+    <div class="post-footer">
+        <a href="https://tech.zephyrl.co/2019/11/serverbeautiful/">阅读全文</a>
+        
+            <div class="post-tags">
+                
+                    &nbsp;&nbsp;<span class="tag"><a href="https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>折腾笔记</a></span>
+                
+            </div>
+        
+    </div>
+</article><article class="post" itemscope itemtype="http://schema.org/Article">
+    
+    
+    
+
+    
+    
+    
+    <h1 class="post-title post-list-title" itemprop="name headline">
+        <a href="https://tech.zephyrl.co/2019/10/ssm1/">SSM框架学习笔记（一） 相关环境的搭建</a>
+    </h1>
+
+    <div class="post-meta">
+        <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+        发布于&nbsp;<time datetime=2019-10-14>2019-10-14</time>&nbsp;
+        <span class="post-category">
+                收录于
+                <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/ssm%E6%A1%86%E6%9E%B6/">SSM框架</a>
+                    <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a>
+                    
+            </span>
+    </div>
+    <div class="post-content">
+        
+            
+            
+            
+            
+            
+            
+            
+            企业课SSM框架第一讲，以后企业课的东西都总结在这里。
+        
+    </div>
+    <div class="post-footer">
+        <a href="https://tech.zephyrl.co/2019/10/ssm1/">阅读全文</a>
+        
+            <div class="post-tags">
+                
+                    &nbsp;&nbsp;<span class="tag"><a href="https://tech.zephyrl.co/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>学习笔记</a></span>
+                
+                    &nbsp;&nbsp;<span class="tag"><a href="https://tech.zephyrl.co/tags/java/"><i class="fas fa-tag fa-fw"></i>Java</a></span>
+                
+                    &nbsp;&nbsp;<span class="tag"><a href="https://tech.zephyrl.co/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>后端开发笔记</a></span>
+                
+                    &nbsp;&nbsp;<span class="tag"><a href="https://tech.zephyrl.co/tags/spring/"><i class="fas fa-tag fa-fw"></i>Spring</a></span>
+                
+                    &nbsp;&nbsp;<span class="tag"><a href="https://tech.zephyrl.co/tags/java-ssm%E4%BC%81%E4%B8%9A%E8%AF%BE/"><i class="fas fa-tag fa-fw"></i>Java SSM企业课</a></span>
+                
+            </div>
+        
+    </div>
+</article><article class="post" itemscope itemtype="http://schema.org/Article">
+    
+    
+    
+
+    
+    
+    
+    <h1 class="post-title post-list-title" itemprop="name headline">
+        <a href="https://tech.zephyrl.co/2019/09/centos7-py3/">Centos7安装Pyhon3</a>
+    </h1>
+
+    <div class="post-meta">
+        <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+        发布于&nbsp;<time datetime=2019-09-23>2019-09-23</time>&nbsp;
+        <span class="post-category">
+                收录于
+                <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
+                    <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/python/">Python</a>
+                    <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/centos/">CentOS</a>
+                    
+            </span>
+    </div>
+    <div class="post-content">
+        
+            
+            
+            
+            
+            
+            
+            
+            CentOS 的第三方软件源中（如：IUS，SCL，EPEL）还没有 Python 3.7 的 RPM 软件包，本文介绍使用源码方式安装 Python 3.7。
+        
+    </div>
+    <div class="post-footer">
+        <a href="https://tech.zephyrl.co/2019/09/centos7-py3/">阅读全文</a>
+        
+            <div class="post-tags">
+                
+                    &nbsp;&nbsp;<span class="tag"><a href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>DevOPs入门笔记</a></span>
+                
+                    &nbsp;&nbsp;<span class="tag"><a href="https://tech.zephyrl.co/tags/%E6%97%A5%E5%B8%B8%E5%A4%87%E5%BF%98%E5%BD%95/"><i class="fas fa-tag fa-fw"></i>日常备忘录</a></span>
+                
+            </div>
+        
+    </div>
+</article><article class="post" itemscope itemtype="http://schema.org/Article">
+    
+    
+    
+
+    
+    
+    
+    <h1 class="post-title post-list-title" itemprop="name headline">
+        <a href="https://tech.zephyrl.co/2019/09/centoslnmp/">CentOS7安装LNMP记录</a>
+    </h1>
+
+    <div class="post-meta">
+        <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+        发布于&nbsp;<time datetime=2019-09-07>2019-09-07</time>&nbsp;
+        <span class="post-category">
+                收录于
+                <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/nginx/">Nginx</a>
+                    <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/lnmp/">LNMP</a>
+                    <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">Web服务器</a>
+                    <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/centos/">CentOS</a>
+                    
+            </span>
+    </div>
+    <div class="post-content">
+        
+            
+            
+            
+            
+            
+            
+            
+            曾经沉迷Ubuntu的我终于真香了，转移全线阵地到了CentOS7，关闭主网站了一阵子，然后开始熟悉CentOS下的环境配置、服务器配置。难度比Ubuntu真的难了好多，也复杂了不少，但是有了上次的经验，参考了很多书和博客，总结出了一套适合自己的路线。
+        
+    </div>
+    <div class="post-footer">
+        <a href="https://tech.zephyrl.co/2019/09/centoslnmp/">阅读全文</a>
+        
+            <div class="post-tags">
+                
+                    &nbsp;&nbsp;<span class="tag"><a href="https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>折腾笔记</a></span>
+                
+                    &nbsp;&nbsp;<span class="tag"><a href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>DevOPs入门笔记</a></span>
+                
+            </div>
+        
+    </div>
+</article><article class="post" itemscope itemtype="http://schema.org/Article">
+    
+    
+    
+
+    
+    
+    
+    <h1 class="post-title post-list-title" itemprop="name headline">
+        <a href="https://tech.zephyrl.co/2019/08/repeatport/">端口转发问题排查</a>
+    </h1>
+
+    <div class="post-meta">
+        <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+        发布于&nbsp;<time datetime=2019-08-25>2019-08-25</time>&nbsp;
+        <span class="post-category">
+                收录于
+                <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/nginx/">Nginx</a>
+                    <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">Web服务器</a>
+                    
+            </span>
+    </div>
+    <div class="post-content">
+        
+            
+            
+            
+            
+            
+            
+            
+            当我端口转发第一个网站的时候，发现第二个配置好的会转发到第一个网站&hellip;
+        
+    </div>
+    <div class="post-footer">
+        <a href="https://tech.zephyrl.co/2019/08/repeatport/">阅读全文</a>
+        
+            <div class="post-tags">
+                
+                    &nbsp;&nbsp;<span class="tag"><a href="https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>折腾笔记</a></span>
+                
+                    &nbsp;&nbsp;<span class="tag"><a href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E6%97%A5%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>DevOPs入门日记</a></span>
+                
+            </div>
+        
+    </div>
+</article><article class="post" itemscope itemtype="http://schema.org/Article">
+    
+    
+    
+
+    
+    
+    
+    <h1 class="post-title post-list-title" itemprop="name headline">
+        <a href="https://tech.zephyrl.co/2019/08/configssl/">通过Let&#39;s Encrypt来获取SSL证书</a>
+    </h1>
+
+    <div class="post-meta">
+        <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+        发布于&nbsp;<time datetime=2019-08-25>2019-08-25</time>&nbsp;
+        <span class="post-category">
+                收录于
+                <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/ubuntu/">Ubuntu</a>
+                    <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">Web服务器</a>
+                    <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/nginx/">Nginx</a>
+                    
+            </span>
+    </div>
+    <div class="post-content">
+        
+            
+            
+            
+            
+            
+            
+            
+            这个Chrome浏览器是个好东西&hellip;但是看着我自己博客和图床网页链接边上的“不安全”，很强迫症。于是，我&hellip;&hellip;
+        
+    </div>
+    <div class="post-footer">
+        <a href="https://tech.zephyrl.co/2019/08/configssl/">阅读全文</a>
+        
+            <div class="post-tags">
+                
+                    &nbsp;&nbsp;<span class="tag"><a href="https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>折腾笔记</a></span>
+                
+                    &nbsp;&nbsp;<span class="tag"><a href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E6%97%A5%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>DevOPs入门日记</a></span>
+                
+            </div>
+        
+    </div>
+</article><ul class="pagination"><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/">1</a>
+                    </span>
+                </li><li class="page-item active">
+                    <span class="page-link">
+                        <a href="/page/2/">2</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/3/">3</a>
+                    </span>
+                </li></ul></div></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2019</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
 </footer>
 
-      </div>
-    </div>
-    
-    <div id="about">
-  <div id="about-card">
-    <div id="about-btn-close">
-      <i class="fa fa-remove"></i>
-    </div>
-    
-      <img id="about-card-picture" src="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=110" alt="作者的图片" />
-    
-    <h4 id="about-card-name">Zephyr Lin</h4>
-    
-      <div id="about-card-bio">Undergraduate students in the Department of Software Engineering, TJNU</div>
+
     
     
-      <div id="about-card-job">
-        <i class="fa fa-briefcase"></i>
-        <br/>
-        Student
-      </div>
+
+
+
+
     
     
-      <div id="about-card-location">
-        <i class="fa fa-map-marker"></i>
-        <br/>
-        China, Tianjin
-      </div>
+
+
+
+
     
-  </div>
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+
+
+
+    <script src="/js/lib/typeit/typeit.modern.min.min.js"></script>
+    
+    
+        
+    
+    <script>window.typeitArr = [["tp-657e9cdceba259b853aa2a637c25d5ac"]];</script>
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
 </div>
-
-    
-
-    
-  
-    
-      <div id="cover" style="background-image:url('https://zephyrlind.github.io/images/cover.jpg');"></div>
-    
-  
-
-
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
-
-
-<script src="https://zephyrlind.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
-
-
-<script lang="javascript">
-window.onload = updateMinWidth;
-window.onresize = updateMinWidth;
-document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
-function updateMinWidth() {
-  var sidebar = document.getElementById("sidebar");
-  var main = document.getElementById("main");
-  main.style.minWidth = "";
-  var w1 = getComputedStyle(main).getPropertyValue("min-width");
-  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
-  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
-  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
-}
-</script>
-
-<script>
-$(document).ready(function() {
-  hljs.configure({ classPrefix: '', useBR: false });
-  $('pre.code-highlight > code, pre > code').each(function(i, block) {
-    if (!$(this).hasClass('codeblock')) {
-      $(this).addClass('codeblock');
-    }
-    hljs.highlightBlock(block);
-  });
-});
-</script>
-
-
-
-
-
-    
-  </body>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
 </html>

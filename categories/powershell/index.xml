@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Powershell on ZephyrLin&#39;s Blog</title>
-    <link>https://zephyrlind.github.io/categories/powershell/</link>
-    <description>Recent content in Powershell on ZephyrLin&#39;s Blog</description>
+    <title>Powershell on 梦黎的小窝</title>
+    <link>https://tech.zephyrl.co/categories/powershell/</link>
+    <description>Recent content in Powershell on 梦黎的小窝</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>zh</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Sat, 03 Aug 2019 22:40:13 +0800</lastBuildDate>
     
-	<atom:link href="https://zephyrlind.github.io/categories/powershell/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tech.zephyrl.co/categories/powershell/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>使用Fluent Terminal &#43; Oh-My-Posh打造优雅的Windows终端</title>
-      <link>https://zephyrlind.github.io/2019/08/%E4%BD%BF%E7%94%A8fluent-terminal-oh-my-posh%E6%89%93%E9%80%A0%E4%BC%98%E9%9B%85%E7%9A%84windows%E7%BB%88%E7%AB%AF/</link>
+      <link>https://tech.zephyrl.co/2019/08/awsome-powershell/</link>
       <pubDate>Sat, 03 Aug 2019 22:40:13 +0800</pubDate>
       
-      <guid>https://zephyrlind.github.io/2019/08/%E4%BD%BF%E7%94%A8fluent-terminal-oh-my-posh%E6%89%93%E9%80%A0%E4%BC%98%E9%9B%85%E7%9A%84windows%E7%BB%88%E7%AB%AF/</guid>
+      <guid>https://tech.zephyrl.co/2019/08/awsome-powershell/</guid>
       <description>说起Windows的终端大家第一印象就是傻大笨，从黑框框CMD的古老到升级的Powershell的复杂多变，大家似乎对Windows的终端充满了厌恶。我也一次次转到Linux系统（比如Ubuntu、Fedora、DeepinOS等都尝试过）但是因为很多原因没办法完全使用下去，装了Hackintosh但是不够完美（而且我的ThinkPad和Hackintosh总有一种违和感），但是又怀念我的Fedora上面漂亮的oh-my-zsh，顺便看着同学的MacBook Pro流口水，我开始上网寻找答案。</description>
     </item>
     

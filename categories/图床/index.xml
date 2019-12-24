@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>图床 on ZephyrLin&#39;s Blog</title>
-    <link>https://zephyrlind.github.io/categories/%E5%9B%BE%E5%BA%8A/</link>
-    <description>Recent content in 图床 on ZephyrLin&#39;s Blog</description>
+    <title>图床 on 梦黎的小窝</title>
+    <link>https://tech.zephyrl.co/categories/%E5%9B%BE%E5%BA%8A/</link>
+    <description>Recent content in 图床 on 梦黎的小窝</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>zh</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Sat, 24 Aug 2019 13:45:32 +0800</lastBuildDate>
     
-	<atom:link href="https://zephyrlind.github.io/categories/%E5%9B%BE%E5%BA%8A/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tech.zephyrl.co/categories/%E5%9B%BE%E5%BA%8A/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Chevereto的安装和一些坑</title>
-      <link>https://zephyrlind.github.io/2019/08/chevereto%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E5%9D%91/</link>
+      <link>https://tech.zephyrl.co/2019/08/cheveretoins/</link>
       <pubDate>Sat, 24 Aug 2019 13:45:32 +0800</pubDate>
       
-      <guid>https://zephyrlind.github.io/2019/08/chevereto%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E5%9D%91/</guid>
+      <guid>https://tech.zephyrl.co/2019/08/cheveretoins/</guid>
       <description>Chevereto图床安装过程中遇到了好多的坑，大部分是因为自己对PHP、Nginx了解不多的原因。所以记录下来，供以后参考。</description>
     </item>
     

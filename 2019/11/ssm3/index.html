@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>SSM框架学习笔记（三） Bean的详解 | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="一个准程序员的自留地">
+<link rel="prev" href="https://tech.zephyrl.co/2019/11/nginxtips1/" />
+<link rel="next" href="https://tech.zephyrl.co/2019/12/ssm4/" />
+<link rel="canonical" href="https://tech.zephyrl.co/2019/11/ssm3/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SSM框架学习笔记（三） Bean的详解"/>
+<meta name="twitter:description" content="Bean详解：命名、生命周期、作用范围、懒加载、继承、别名"/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "SSM框架学习笔记（三） Bean的详解",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/tech.zephyrl.co\/2019\/11\/ssm3\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "学习笔记, Java, 后端开发笔记, Spring, Spring MVC, MyBatics, Java SSM企业课",
+    
+    "wordcount":  1547 ,
+    "url": "https:\/\/tech.zephyrl.co\/2019\/11\/ssm3\/",
+    
+        "datePublished": "2019-11-20T15:40:05\x2b08:00",
+    
+    
+        "dateModified": "2019-11-20T15:40:05\x2b08:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "Zephyr",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">SSM框架学习笔记（三） Bean的详解</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <span class="post-category">
+                        收录于
+                        <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/ssm%E6%A1%86%E6%9E%B6/">SSM框架</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a>
+                            
+                    </span>
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2019-11-20>2019-11-20</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1547 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 4 分钟&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+<a class="post-dummy-target" id="命名"></a><h2>命名</h2>
+
+<p><code>id</code>：给Bean起个名字。使用了约束中的唯一约束。里面不能出现特殊字符的。</p>
+
+<p><code>name</code>：也是给Bean起个名字。没有使用约束中的唯一约束（理论上可以出现重复的，但是实际开发不能出现的）。里面可以出现特殊字符。如果Bean没有<code>id</code>的话，也可当作id使用。</p>
+
+<p>具体用在如下位置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;people&#34;</span> <span class="na">name=</span><span class="s">&#34;fuck&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.people&#34;</span><span class="nt">&gt;&lt;/bean&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<a class="post-dummy-target" id="生命周期"></a><h2>生命周期</h2>
+
+<p>init-method: Bean被初始化的时候执行的方法</p>
+
+<p>destroy-method: Bean被销毁的时候执行的方法（Bean是单例创建，工厂关闭）</p>
+
+<ol>
+<li><p>在bean的配置上进行配置：</p>
+
+<p>init method=&ldquo;执行方法的名称&rdquo;</p>
+
+<p>destroy-method=&ldquo;执行方法的名称&rdquo;</p>
+
+<p>在配置文件<code>Spring.xml</code>中添加如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- spring.xml --&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;people&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.people&#34;</span> <span class="na">init-method=</span><span class="s">&#34;onInit&#34;</span>   <span class="na">destroy-method=</span><span class="s">&#34;onDestroy&#34;</span><span class="nt">&gt;</span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+
+<p>在Bean体内和单元测试中的写法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">   <span class="c1">// People.java
+</span><span class="c1"></span>   <span class="kd">public</span> <span class="nf">void</span> <span class="n">onInit</span><span class="p">()</span> <span class="p">{</span>
+       <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;生命周期开始&#34;</span><span class="p">);</span>
+   <span class="p">}</span>
+   <span class="kd">public</span> <span class="nf">void</span> <span class="n">onDestroy</span><span class="p">()</span> <span class="p">{</span>
+       <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;生命周期结束&#34;</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="c1">// test.java
+</span><span class="c1"></span>   <span class="nd">@Test</span>
+   <span class="kd">public</span> <span class="nf">void</span> <span class="n">test1</span><span class="p">()</span> <span class="p">{</span>
+       <span class="n">ApplicationContext</span> <span class="nf">ac</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassXmlApplicationContext</span><span class="p">(</span><span class="s">&#34;spring.xml&#34;</span><span class="p">);</span>
+       <span class="n">People</span> <span class="nf">people</span> <span class="o">=</span> <span class="n">ac</span><span class="p">.</span><span class="na">getBean</span><span class="p">(</span><span class="s">&#34;people&#34;</span><span class="p">,</span> <span class="n">People</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+       <span class="p">((</span><span class="n">ClassPathXmlApplicationContext</span><span class="p">)</span> <span class="n">ac</span><span class="p">).</span><span class="na">close</span><span class="p">();</span>
+   <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<ol>
+<li>类实现接口</li>
+</ol>
+
+<p>分别实现 <code>InitializingBean</code>、<code>DisposableBean</code> 的接口。</p>
+
+<p><code>Spring.xml</code> 代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml">   <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;people&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.people&#34;</span><span class="nt">&gt;&lt;/bean&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Bean改成如下代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">   <span class="kd">public</span> <span class="nf">class</span> <span class="n">People</span> <span class="nf">implements</span> <span class="n">InitializingBean</span><span class="p">,</span> <span class="n">DisposableBean</span> <span class="p">{</span>
+       <span class="c1">// 省略其他
+</span><span class="c1"></span>       <span class="nd">@Override</span>
+       <span class="kd">public</span> <span class="nf">void</span> <span class="n">afterPropertiesSet</span><span class="p">()</span> <span class="kd">throws</span> <span class="nf">Exception</span> <span class="p">{</span>
+           <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;实现接口的销毁方法&#34;</span><span class="p">);</span>
+       <span class="p">}</span>
+
+       <span class="nd">@Override</span>
+       <span class="kd">public</span> <span class="nf">void</span> <span class="n">destroy</span><span class="p">()</span> <span class="kd">throws</span> <span class="nf">Exception</span> <span class="p">{</span>
+           <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;实现接口的初始化方法&#34;</span><span class="p">);</span>
+       <span class="p">}</span>
+   <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>再次执行测试类 <code>TestDemo1</code> 中的 <code>test1()</code> 方法，即可发现效果。</p>
+
+<p><strong>注意：如果以上两个方法同时执行，会先执行类实现接口。</strong></p>
+
+<p>下面这种方式，在类上进行注解时才可使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">   <span class="nd">@PostConstruct</span>
+    <span class="kd">public</span> <span class="nf">void</span> <span class="n">onInit2</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;初始化&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+   <span class="nd">@PreDestroy</span>
+    <span class="kd">public</span> <span class="nf">void</span> <span class="n">onDestroy2</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;销毁&#34;</span><span class="p">);</span>
+    <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>之后删除继承的<code>InitializingBean</code>、<code>DisposableBean</code>类，执行测试类 <code>TestDemo1</code> 中的 <code>test1()</code> 方法即可。</p>
+
+<ol>
+<li>全局默认初始化和方法的配置（方法可有可无）</li>
+</ol>
+
+<p>在 <code>spring.xml</code> 中的 <code>&lt;Beans&gt;</code> 标签中加入 <code>default-init-method=“”</code> 和<code>default-destroy-method=“”</code> 即可实现全局默认初始化方法和销毁方法的配置。</p>
+
+<a class="post-dummy-target" id="作用范围"></a><h2>作用范围</h2>
+
+<p>在 <code>Spring.xml</code> 中的 <code>&lt;Bean&gt;</code> 标签里的 <code>scope</code> 实现，有以下几种：</p>
+
+<ul>
+<li>singleton：默认的，Spring会采用单例模式创建这个对象。</li>
+<li>prototype：多例模式。（Struts2和Spring整合一定会用到）</li>
+<li>request：应用在web项目中，Spring创建这个类以后，将这个类存入到request范围中。</li>
+<li>session：应用在web项目中，Spring创建这个类以后，将这个类存入到session范围中。</li>
+<li>globalsession：应用在web项目中，必须在porlet环境下使用。但是如果没有这种环境，相对于session。</li>
+</ul>
+
+<p>尝试方法：可以创建两个同样的对象，直接输出对象的地址</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// TestDemo1
+</span><span class="c1"></span><span class="kd">public</span> <span class="nf">void</span> <span class="n">test2</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Applicationcontext</span> <span class="nf">ac</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassXmlApplicationContext</span><span class="p">(</span><span class="s">&#34;spring.xml&#34;</span><span class="p">);</span>
+    <span class="n">People</span> <span class="nf">p1</span> <span class="o">=</span> <span class="n">ac</span><span class="p">.</span><span class="na">getBean</span><span class="p">(</span><span class="s">&#34;people&#34;</span><span class="p">,</span> <span class="n">People</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+    <span class="n">People</span> <span class="nf">p2</span> <span class="o">=</span> <span class="n">ac</span><span class="p">.</span><span class="na">getBean</span><span class="p">(</span><span class="s">&#34;people&#34;</span><span class="p">,</span> <span class="n">People</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">p1</span><span class="p">);</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">p2</span><span class="p">);</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span><span class="p">);</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<a class="post-dummy-target" id="懒加载"></a><h2>懒加载</h2>
+
+<p>当你需要的时候加载，不需要的时候不加载。</p>
+
+<p>什么时候用，什么时候实例化。</p>
+
+<ul>
+<li>好处：节省资源空间</li>
+<li>可能导致某些操作响应时间增加</li>
+</ul>
+
+<p>单个bean，<code>lazy-init=true</code>，在获取Bean的时候加载。</p>
+
+<p>整个容器，<code>default-lazy-init=true</code>。</p>
+
+<a class="post-dummy-target" id="bean-的继承"></a><h2>Bean 的继承</h2>
+
+<ol>
+<li>有些情况下，类与类之间因为继承关系，会继承父类的属性，这时候可以在配置bean时使用简便的方式注入：abstract表示这个bean不需要实例化</li>
+<li>没有继承时，两个类仍然有共有属性，可以直接设置一个bean</li>
+</ol>
+
+<a class="post-dummy-target" id="bean-的别名"></a><h2>Bean 的别名</h2>
+
+<p>仅举例，不做赘述：</p>
+
+<ul>
+<li><p>xml形式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;people&#34;</span> <span class="na">name=</span><span class="s">&#34;pep, people2&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.people&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;alias</span> <span class="na">name=</span><span class="s">&#34;people&#34;</span> <span class="na">alias=</span><span class="s">&#34;people1&#34;</span> <span class="nt">/&gt;</span></code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>注解形式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="nf">class</span> <span class="n">BeanConfiguration</span> <span class="p">{</span>
+   <span class="nd">@Bean</span><span class="p">(</span><span class="s">&#34;Bean1&#34;</span><span class="p">,</span> <span class="s">&#34;Bean2&#34;</span><span class="p">)</span>
+   <span class="kd">public</span> <span class="nf">Bean</span> <span class="n">bean</span><span class="p">()</span> <span class="p">{</span>
+       <span class="k">return</span> <span class="n">Bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bean</span><span class="p">();</span>
+   <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2019-11-20 更新</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://tech.zephyrl.co/2019/11/ssm3/index.md" target="_blank">阅读原始文档</a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2019%2f11%2fssm3%2f&amp;text=SSM%e6%a1%86%e6%9e%b6%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%b8%89%ef%bc%89%20Bean%e7%9a%84%e8%af%a6%e8%a7%a3&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftech.zephyrl.co%2f2019%2f11%2fssm3%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2019%2f11%2fssm3%2f&amp;title=SSM%e6%a1%86%e6%9e%b6%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%b8%89%ef%bc%89%20Bean%e7%9a%84%e8%af%a6%e8%a7%a3" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>学习笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/java/"><i class="fas fa-tag fa-fw"></i>Java</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>后端开发笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/spring/"><i class="fas fa-tag fa-fw"></i>Spring</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/spring-mvc/"><i class="fas fa-tag fa-fw"></i>Spring MVC</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/mybatics/"><i class="fas fa-tag fa-fw"></i>MyBatics</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/java-ssm%E4%BC%81%E4%B8%9A%E8%AF%BE/"><i class="fas fa-tag fa-fw"></i>Java SSM企业课</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://tech.zephyrl.co/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://tech.zephyrl.co/2019/11/nginxtips1/" class="prev" rel="prev" title="NginxTips（一） —— Nginx的组成、Vim语法高亮、编译、命令行、热部署、日志切割脚本"><i class="fas fa-angle-left fa-fw"></i>NginxTips（一） —— Nginx的组成、Vim语法高亮、编译、命令行、热部署、日志切割脚本</a>
+        
+        
+            <a href="https://tech.zephyrl.co/2019/12/ssm4/" class="next" rel="next" title="SSM框架学习笔记（四） 整合JDBC">SSM框架学习笔记（四） 整合JDBC<i class="fas fa-angle-right fa-fw"></i></a>
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2019</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>

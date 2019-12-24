@@ -1,555 +1,622 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-  <head>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Chevereto的安装和一些坑 | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="一个准程序员的自留地">
+<link rel="prev" href="https://tech.zephyrl.co/2019/08/diaryoflnmp/" />
+<link rel="next" href="https://tech.zephyrl.co/2019/08/configssl/" />
+<link rel="canonical" href="https://tech.zephyrl.co/2019/08/cheveretoins/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Chevereto的安装和一些坑"/>
+<meta name="twitter:description" content="Chevereto图床安装过程中遇到了好多的坑，大部分是因为自己对PHP、Nginx了解不多的原因。所以记录下来，供以后参考。"/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Chevereto的安装和一些坑",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/tech.zephyrl.co\/2019\/08\/cheveretoins\/"
+    },
     
-    <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.56.3 with theme Tranquilpeak 0.4.6-BETA">
-<meta name="author" content="Zephyr Lin">
-<meta name="keywords" content="tech">
-<meta name="description" content="">
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "折腾笔记, DevOPs入门日记",
+    
+    "wordcount":  1423 ,
+    "url": "https:\/\/tech.zephyrl.co\/2019\/08\/cheveretoins\/",
+    
+        "datePublished": "2019-08-24T13:45:32\x2b08:00",
+    
+    
+        "dateModified": "2019-08-24T13:45:32\x2b08:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "Zephyr",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
 
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
 
-<meta property="og:description" content="">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Cheveretoins">
-<meta name="twitter:title" content="Cheveretoins">
-<meta property="og:url" content="https://zephyrlind.github.io/2019/08/cheveretoins/">
-<meta property="twitter:url" content="https://zephyrlind.github.io/2019/08/cheveretoins/">
-<meta property="og:site_name" content="ZephyrLin&#39;s Blog">
-<meta property="og:description" content="">
-<meta name="twitter:description" content="">
-<meta property="og:locale" content="zh-cn">
-
-  
-    <meta property="article:published_time" content="2019-08-24T13:45:32">
-  
-  
-    <meta property="article:modified_time" content="2019-08-24T13:45:32">
-  
-  
-  
-    
-      <meta property="article:section" content="category">
-    
-      <meta property="article:section" content="subcategory">
-    
-  
-  
-    
-      <meta property="article:tag" content="tag1">
-    
-      <meta property="article:tag" content="tag2">
-    
-  
-
-
-<meta name="twitter:card" content="summary">
-
-
-
-
-
-
-
-
-
-
-
-  <meta property="og:image" content="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=640">
-  <meta property="twitter:image" content="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=640">
-
-
-    <title>Cheveretoins</title>
-
-    <link rel="icon" href="https://zephyrlind.github.io/favicon.png">
-    
-
-    
-
-    <link rel="canonical" href="https://zephyrlind.github.io/2019/08/cheveretoins/">
-
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
-    
-    
-    <link rel="stylesheet" href="https://zephyrlind.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
-    
-    
-
-    
-      
-    
-    
-  </head>
-
-  <body>
-    <div id="blog">
-      <header id="header" data-behavior="4">
-  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
-  <div class="header-title">
-    <a class="header-title-link" href="https://zephyrlind.github.io/">ZephyrLin&#39;s Blog</a>
-  </div>
-  
-    
-      <a class="header-right-picture "
-         href="https://zephyrlind.github.io/#about">
-    
-    
-    
-      
-        <img class="header-picture" src="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=90" alt="作者的图片" />
-      
-    
-    </a>
-  
-</header>
-
-      <nav id="sidebar" data-behavior="4">
-  <div class="sidebar-container">
-    
-      <div class="sidebar-profile">
-        <a href="https://zephyrlind.github.io/#about">
-          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=110" alt="作者的图片" />
-        </a>
-        <h4 class="sidebar-profile-name">Zephyr Lin</h4>
-        
-          <h5 class="sidebar-profile-bio">Undergraduate students in the Department of Software Engineering, TJNU</h5>
-        
-      </div>
-    
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://zephyrlind.github.io/">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
-      
-      <span class="sidebar-button-desc">首页</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://zephyrlind.github.io/categories">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-      
-      <span class="sidebar-button-desc">分类</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://zephyrlind.github.io/tags">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
-      
-      <span class="sidebar-button-desc">标签</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://zephyrlind.github.io/archives">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
-      
-      <span class="sidebar-button-desc">归档</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://zephyrlind.github.io/#about">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
-      
-      <span class="sidebar-button-desc">关于</span>
-    </a>
-  </li>
-
-
-    </ul>
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://github.com/zephyrlind" target="_blank" rel="noopener">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
-      
-      <span class="sidebar-button-desc">GitHub</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://stackoverflow.com/users/11878498/ZephyrLin" target="_blank" rel="noopener">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
-      
-      <span class="sidebar-button-desc">Stack Overflow</span>
-    </a>
-  </li>
-
-
-    </ul>
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://zephyrlind.github.io/index.xml">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
-      
-      <span class="sidebar-button-desc">RSS</span>
-    </a>
-  </li>
-
-
-    </ul>
-  </div>
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
 </nav>
-
-      
-
-      <div id="main" data-behavior="4"
-        class="
-               hasCoverMetaIn
-               ">
-        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
-          
-          
-            <div class="post-header main-content-wrap text-left">
-  
-    <h1 class="post-title" itemprop="headline">
-      Cheveretoins
-    </h1>
-  
-  
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2019-08-24T13:45:32&#43;08:00">
-        
-  八月 24, 2019
-
-      </time>
-    
-    
-  
-  
-    <span>发布在</span>
-    
-      <a class="category-link" href="https://zephyrlind.github.io/categories/category">category</a>, 
-    
-      <a class="category-link" href="https://zephyrlind.github.io/categories/subcategory">subcategory</a>
-    
-  
-
-  </div>
-
-</div>
-          
-          <div class="post-content markdown" itemprop="articleBody">
-            <div class="main-content-wrap">
-              
-              
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
             </div>
-          </div>
-          <div id="post-footer" class="post-footer main-content-wrap">
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
             
-              
-                
-                
-                  <div class="post-footer-tags">
-                    <span class="text-color-light text-small">标签</span><br/>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
                     
-  <a class="tag tag--primary tag--small" href="https://zephyrlind.github.io/tags/tag1/">tag1</a>
+    
+    
+    
 
-  <a class="tag tag--primary tag--small" href="https://zephyrlind.github.io/tags/tag2/">tag2</a>
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">Chevereto的安装和一些坑</h1>
 
-                  </div>
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <span class="post-category">
+                        收录于
+                        <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/%E5%9B%BE%E5%BA%8A/">图床</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/nginx/">Nginx</a>
+                            
+                    </span>
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2019-08-24>2019-08-24</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1423 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 3 分钟&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+<a class="post-dummy-target" id="前言"></a><h2>前言：</h2>
+
+<p>看着乱成一坨的腾讯COS图片地址，我受够了。这对我这个强迫症真的是极为不友好。</p>
+
+<p>然后，突然想到知乎问题中，<a href="https://www.zhihu.com/question/40854395/answer/379997699">自己拥有一台服务器可以做哪些很酷的事情</a>中，一个叫<strong>小游</strong>的大佬的<a href="https://www.zhihu.com/question/40854395/answer/728324567">回答</a>（<a href="https://xiaoyou66.com/">点击此处进入大佬的博客</a>），我可以做一个图床来存储一些我想上传的图啊！</p>
+
+<p>于是，一不做二不休，作为一个想做运维的菜鸡，这种事情一看见就手痒。</p>
+
+<a class="post-dummy-target" id="安装chevereto"></a><h2>安装Chevereto</h2>
+
+<p><code>Chevereto</code>分为免费版本和收费版本，因为我只作图片存储用，不需要评论等社交元素，所以免费版本足够使用。最好还是别用破解版了，律师<del>含</del>函警告。</p>
+
+<p>源代码是从官方的<a href="https://github.com/Chevereto/Chevereto-Free">Github页面</a>下载的，官方提供了四种方法，我选择的第一种，安装器安装。其他方式安装大同小异，不做赘述。</p>
+
+<ul>
+<li>第一步：修改Nginx配置，创建一个新的网站</li>
+</ul>
+
+<p>因为我是打算未来弄一个<code>WordPress</code>主站的，所以我打算把主站先留出来，创建一个新的网站。</p>
+
+<p>首先，创建网站文件夹，将安装器下载到文件夹中备用，</p>
+
+<p>我用我的作为示例，在自己动手的时候需要修改目录：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">  sudo mkdir /var/www/graph
+  <span class="nb">cd</span> /var/www/graph
+  wget https://chevereto.com/download/file/installer</code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li><p>然后，打开配置文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo vim /etc/nginx/sites-available/default</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+<p>添加以下内容以配置新的网站的伪静态（部分配置参考自小游大佬的博客，<a href="https://xiaoyou66.com/archives/774">点击进入</a>）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-Nginx" data-lang="Nginx"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Nginx" data-lang="Nginx">  <span class="k">server</span> <span class="p">{</span>
+	<span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+	<span class="kn">listen</span> <span class="s">[::]:80</span><span class="p">;</span>
+	<span class="kn">server_name</span> <span class="s">graph.zephyrl.co</span><span class="p">;</span>
+	<span class="kn">root</span> <span class="s">/var/www/graph.zephyrl.co</span><span class="p">;</span>
+    <span class="kn">index</span> <span class="s">index.php</span> <span class="s">index.html</span> <span class="s">index.htm</span> <span class="s">index.nginx-debian.html</span><span class="p">;</span>
+
+    <span class="c1"># Image not found replacement
+</span><span class="c1"></span>    <span class="kn">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">(jpe?g|png|gif)</span> <span class="p">{</span>
+        <span class="kn">log_not_found</span> <span class="no">off</span><span class="p">;</span>
+        <span class="kn">error_page</span> <span class="mi">404</span> <span class="s">/content/images/system/default/404.gif</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1"># CORS header (avoids font rendering issues)
+</span><span class="c1"></span>    <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.(ttf|ttc|otf|eot|woff|woff2|font.css|css|js)$</span> <span class="p">{</span>
+        <span class="kn">add_header</span> <span class="s">Access-Control-Allow-Origin</span> <span class="s">&#34;*&#34;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Pretty URLs
+</span><span class="c1"></span>    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">/index.php?</span><span class="nv">$query_string</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
+        <span class="kn">include</span> <span class="s">snippets/fastcgi-php.conf</span><span class="p">;</span>
+        <span class="kn">fastcgi_pass</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
+	<span class="p">}</span>
+  <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<a class="post-dummy-target" id="第二部-安装和安装过程中的坑"></a><h2>第二部，安装和安装过程中的坑</h2>
+
+<p>完成上面的步骤后，打开<code>网站名称/installer.php</code>，</p>
+
+<p>发现下图即为成功：</p>
+
+<p><a href="http://graph.zephyrl.co/image/PCD"><figure><img src=/images/loading.svg data-sizes=auto data-src=http://graph.zephyrl.co/images/2019/08/24/installer1.md.png alt=installer1.md.png class=lazyload><figcaption class=image-caption>installer1.md.png</figcaption></figure></a></p>
+
+<p>当然如果你和我一样衰，就会出现一个个问题。然后</p>
+
+<p>首先是出现了<code>Chevereto can’t create the app/settings.php file. You must manually create this file</code>，之后应该打开终端，创建该文件，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> /var/www/graph
+touch app/settings.php</code></pre></td></tr></table>
+</div>
+</div>
+<p>即可进入下一个问题：</p>
+
+<p>由于当时手忙脚乱心态爆炸，以下问题均没有截图。我会努力描述的并且尽量找到找一些网上的图片，侵删。</p>
+
+<p><a href="http://graph.zephyrl.co/image/gwF"><figure><img src=/images/loading.svg data-sizes=auto data-src=http://graph.zephyrl.co/images/2019/08/24/installqus.md.png alt=installqus.md.png class=lazyload><figcaption class=image-caption>installqus.md.png</figcaption></figure></a></p>
+
+<p>大概就是这个页面，我的还多了缺少curl、zip、libdb的提示，实在找不到图，只能自己描述一下。</p>
+
+<p>先来解决权限问题：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">chmod -R <span class="m">775</span> ./*</code></pre></td></tr></table>
+</div>
+</div>
+<p>然后来解决缺少组件的问题，由于是ubuntu系统，我们<strong>不需要从官网下载源代码然后编译，会报错</strong>，直接<code>apt</code>安装即可。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt install php-curl php-gd php-mbstring php-zip</code></pre></td></tr></table>
+</div>
+</div>
+<p>省的跟我一样xjb make install然后浪费好多时间 =_=</p>
+
+<p>之后出现了成功的页面，就很开心</p>
+
+<p><a href="http://graph.zephyrl.co/image/PCD"><figure><img src=/images/loading.svg data-sizes=auto data-src=http://graph.zephyrl.co/images/2019/08/24/installer1.md.png alt=installer1.md.png class=lazyload><figcaption class=image-caption>installer1.md.png</figcaption></figure></a></p>
+
+<p>点击Continue，然后一路Skip，直到如下选择数据库。</p>
+
+<p><a href="http://graph.zephyrl.co/image/RZd"><figure><img src=/images/loading.svg data-sizes=auto data-src=http://graph.zephyrl.co/images/2019/08/24/installer2-db.md.png alt=installer2-db.md.png class=lazyload><figcaption class=image-caption>installer2-db.md.png</figcaption></figure></a></p>
+
+<p>此时，打开终端，创建数据库.可以使用<code>phpmyadmin</code>，<code>navicat premium</code>等可视化工具创建数据库创建数据库，也可以在终端使用SQL命令；数据库名称自定。创建完成后输入你的数据库名称、账号和密码（依次是我打马的地方）。点击下一步即可。</p>
+
+<p><a href="http://graph.zephyrl.co/image/qQG"><figure><img src=/images/loading.svg data-sizes=auto data-src=http://graph.zephyrl.co/images/2019/08/24/install3.md.png alt=install3.md.png class=lazyload><figcaption class=image-caption>install3.md.png</figcaption></figure></a></p>
+
+<p>这里大家就跟着他说的写就可以了。坑已经没了，很快就可以嗨皮了（前提是你备案了）。</p>
+
+<a class="post-dummy-target" id="挂载阿里云ossfs"></a><h2>挂载阿里云OSSFS</h2>
+
+<ul>
+<li><p>首先，下载挂载工具，我是Ubuntu 18.04 LTS，其他版本安装方法请参照<a href="https://help.aliyun.com/document_detail/32196.html">官方说明页面</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">wget http://gosspublic.alicdn.com/ossfs/ossfs_1.80.6_ubuntu18.04_amd64.deb?spm<span class="o">=</span>a2c4g.11186623.2.13.5a037358XgQ4NQ<span class="p">&amp;</span><span class="nv">file</span><span class="o">=</span>ossfs_1.80.6_ubuntu18.04_amd64.deb
+
+sudo dpkg -i ossfs_1.80.6_ubuntu18.04_amd64.deb</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>安装好后就可以设置bucket name 和 AccessKeyId/Secret信息，将其存放在/etc/passwd-ossfs 文件中。注意这个文件的权限必须正确设置，建议设为640。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> 你的bucket名字:你的keyid:你的keysecret &gt; /etc/passwd-ossfs
+chmod <span class="m">640</span> /etc/passwd-ossfs</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>挂载</p></li>
+</ul>
+
+<p>OSSFS的挂载方法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">  ossfs 你的bucket名字 挂载目录 -ourl<span class="o">=</span>你的阿里云的访问网址</code></pre></td></tr></table>
+</div>
+</div>
+<p>我们将挂载目录挂载在Chevereto目录下的images文件夹就可以了</p>
+
+<p>以我为例，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">  ossfs mybuckit /var/www/graph/images -ourl<span class="o">=</span>阿里云地址 -o allow_other </code></pre></td></tr></table>
+</div>
+</div>
+<p>完成后即可开始使用了！</p>
+
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2019-08-24 更新</span>
+            </div>
+            <div class="post-info-license">
                 
-              
-            
-            <div class="post-actions-wrap">
-  
-      <nav >
-        <ul class="post-actions post-action-nav">
-          
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--disabled">
-              
-                  <i class="fa fa-angle-left"></i>
-                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
-                </a>
-            </li>
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/%E6%88%91%E7%9A%84ubuntu-server-lnmp%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" data-tooltip="我的Ubuntu Server LNMP折腾笔记">
-              
-                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
-                  <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
-          
-        </ul>
-      </nav>
-    <ul class="post-actions post-action-share" >
-      
-        <li class="post-action hide-lg hide-md hide-sm">
-          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
-            <i class="fa fa-share-alt"></i>
-          </a>
-        </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zephyrlind.github.io/2019/08/cheveretoins/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zephyrlind.github.io/2019/08/cheveretoins/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-      
-      
-        <li class="post-action">
-          <a class="post-action-btn btn btn--default" href="#disqus_thread">
-            <i class="fa fa-comment-o"></i>
-          </a>
-        </li>
-      
-      <li class="post-action">
-        
-          <a class="post-action-btn btn btn--default" href="#">
-        
-          <i class="fa fa-list"></i>
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://tech.zephyrl.co/2019/08/cheveretoins/index.md" target="_blank">阅读原始文档</a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2019%2f08%2fcheveretoins%2f&amp;text=Chevereto%e7%9a%84%e5%ae%89%e8%a3%85%e5%92%8c%e4%b8%80%e4%ba%9b%e5%9d%91&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
         </a>
-      </li>
-    </ul>
-  
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftech.zephyrl.co%2f2019%2f08%2fcheveretoins%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2019%2f08%2fcheveretoins%2f&amp;title=Chevereto%e7%9a%84%e5%ae%89%e8%a3%85%e5%92%8c%e4%b8%80%e4%ba%9b%e5%9d%91" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>折腾笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E6%97%A5%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>DevOPs入门日记</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://tech.zephyrl.co/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://tech.zephyrl.co/2019/08/diaryoflnmp/" class="prev" rel="prev" title="我的Ubuntu Server LNMP折腾笔记"><i class="fas fa-angle-left fa-fw"></i>我的Ubuntu Server LNMP折腾笔记</a>
+        
+        
+            <a href="https://tech.zephyrl.co/2019/08/configssl/" class="next" rel="next" title="通过Let&#39;s Encrypt来获取SSL证书">通过Let&#39;s Encrypt来获取SSL证书<i class="fas fa-angle-right fa-fw"></i></a>
+        
+    </div>
 </div>
 
+        <div class="post-comment">
             
-              
-                <div id="disqus_thread">
-  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-              
             
-          </div>
-        </article>
-        <footer id="footer" class="main-content-wrap">
-  <span class="copyrights">
-    &copy; 2019 Zephyr Lin. All Rights Reserved
-  </span>
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2019</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
 </footer>
 
-      </div>
-      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
-        <div class="post-actions-wrap">
-  
-      <nav >
-        <ul class="post-actions post-action-nav">
-          
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--disabled">
-              
-                  <i class="fa fa-angle-left"></i>
-                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
-                </a>
-            </li>
-            <li class="post-action">
-              
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zephyrlind.github.io/2019/08/%E6%88%91%E7%9A%84ubuntu-server-lnmp%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" data-tooltip="我的Ubuntu Server LNMP折腾笔记">
-              
-                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
-                  <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
-          
-        </ul>
-      </nav>
-    <ul class="post-actions post-action-share" >
-      
-        <li class="post-action hide-lg hide-md hide-sm">
-          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
-            <i class="fa fa-share-alt"></i>
-          </a>
-        </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zephyrlind.github.io/2019/08/cheveretoins/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zephyrlind.github.io/2019/08/cheveretoins/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-      
-      
-        <li class="post-action">
-          <a class="post-action-btn btn btn--default" href="#disqus_thread">
-            <i class="fa fa-comment-o"></i>
-          </a>
-        </li>
-      
-      <li class="post-action">
-        
-          <a class="post-action-btn btn btn--default" href="#">
-        
-          <i class="fa fa-list"></i>
-        </a>
-      </li>
-    </ul>
-  
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
 </div>
-
-      </div>
-      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
-  <i id="btn-close-shareoptions" class="fa fa-close"></i>
-  <ul class="share-options">
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzephyrlind.github.io%2F2019%2F08%2Fcheveretoins%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fzephyrlind.github.io%2F2019%2F08%2Fcheveretoins%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-  </ul>
-</div>
-<div id="share-options-mask" class="share-options-mask"></div>
-    </div>
-    
-    <div id="about">
-  <div id="about-card">
-    <div id="about-btn-close">
-      <i class="fa fa-remove"></i>
-    </div>
-    
-      <img id="about-card-picture" src="https://www.gravatar.com/avatar/6182cc80db6e118347c1ab7fa8fa8b27?s=110" alt="作者的图片" />
-    
-    <h4 id="about-card-name">Zephyr Lin</h4>
-    
-      <div id="about-card-bio">Undergraduate students in the Department of Software Engineering, TJNU</div>
-    
-    
-      <div id="about-card-job">
-        <i class="fa fa-briefcase"></i>
-        <br/>
-        Student
-      </div>
-    
-    
-      <div id="about-card-location">
-        <i class="fa fa-map-marker"></i>
-        <br/>
-        China, Tianjin
-      </div>
-    
-  </div>
-</div>
-
-    
-
-    
-  
-    
-      <div id="cover" style="background-image:url('https://zephyrlind.github.io/images/cover.jpg');"></div>
-    
-  
-
-
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
-
-
-<script src="https://zephyrlind.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
-
-
-<script lang="javascript">
-window.onload = updateMinWidth;
-window.onresize = updateMinWidth;
-document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
-function updateMinWidth() {
-  var sidebar = document.getElementById("sidebar");
-  var main = document.getElementById("main");
-  main.style.minWidth = "";
-  var w1 = getComputedStyle(main).getPropertyValue("min-width");
-  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
-  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
-  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
-}
-</script>
-
-<script>
-$(document).ready(function() {
-  hljs.configure({ classPrefix: '', useBR: false });
-  $('pre.code-highlight > code, pre > code').each(function(i, block) {
-    if (!$(this).hasClass('codeblock')) {
-      $(this).addClass('codeblock');
-    }
-    hljs.highlightBlock(block);
-  });
-});
-</script>
-
-
-  
-    
-      <script>
-        var disqus_config = function () {
-          this.page.url = 'https:\/\/zephyrlind.github.io\/2019\/08\/cheveretoins\/';
-          
-            this.page.identifier = '\/2019\/08\/cheveretoins\/'
-          
-        };
-        (function() {
-          
-          
-          if (window.location.hostname == "localhost") {
-            return;
-          }
-          var d = document, s = d.createElement('script');
-          var disqus_shortname = 'hugo-tranquilpeak-theme';
-          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-      </script>
-    
-  
-
-
-
-
-    
-  </body>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
 </html>
-

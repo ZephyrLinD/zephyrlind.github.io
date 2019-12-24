@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>DevOPs入门笔记 on ZephyrLin&#39;s Blog</title>
-    <link>https://zephyrlind.github.io/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</link>
-    <description>Recent content in DevOPs入门笔记 on ZephyrLin&#39;s Blog</description>
+    <title>DevOPs入门笔记 on 梦黎的小窝</title>
+    <link>https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in DevOPs入门笔记 on 梦黎的小窝</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Mon, 23 Sep 2019 16:18:34 +0800</lastBuildDate>
+    <language>zh</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Wed, 13 Nov 2019 20:08:41 +0800</lastBuildDate>
     
-	<atom:link href="https://zephyrlind.github.io/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Centos7 Py3</title>
-      <link>https://zephyrlind.github.io/2019/09/centos7-py3/</link>
+      <title>NginxTips（一） —— Nginx的组成、Vim语法高亮、编译、命令行、热部署、日志切割脚本</title>
+      <link>https://tech.zephyrl.co/2019/11/nginxtips1/</link>
+      <pubDate>Wed, 13 Nov 2019 20:08:41 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2019/11/nginxtips1/</guid>
+      <description>我打算开始做运维的实验的时候，先是从搭建一个LNMP环境并且开始监控、维护来做的。现在我开始学习Nginx和它的源代码，这个就作为我学习的一个记录吧。我把这个组合叫做NginxTips！</description>
+    </item>
+    
+    <item>
+      <title>Centos7安装Pyhon3</title>
+      <link>https://tech.zephyrl.co/2019/09/centos7-py3/</link>
       <pubDate>Mon, 23 Sep 2019 16:18:34 +0800</pubDate>
       
-      <guid>https://zephyrlind.github.io/2019/09/centos7-py3/</guid>
+      <guid>https://tech.zephyrl.co/2019/09/centos7-py3/</guid>
       <description>CentOS 的第三方软件源中（如：IUS，SCL，EPEL）还没有 Python 3.7 的 RPM 软件包，本文介绍使用源码方式安装 Python 3.7。</description>
     </item>
     
     <item>
       <title>CentOS7安装LNMP记录</title>
-      <link>https://zephyrlind.github.io/2019/09/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95/</link>
+      <link>https://tech.zephyrl.co/2019/09/centoslnmp/</link>
       <pubDate>Sat, 07 Sep 2019 23:23:40 +0800</pubDate>
       
-      <guid>https://zephyrlind.github.io/2019/09/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95/</guid>
+      <guid>https://tech.zephyrl.co/2019/09/centoslnmp/</guid>
       <description>曾经沉迷Ubuntu的我终于真香了，转移全线阵地到了CentOS7，关闭主网站了一阵子，然后开始熟悉CentOS下的环境配置、服务器配置。难度比Ubuntu真的难了好多，也复杂了不少，但是有了上次的经验，参考了很多书和博客，总结出了一套适合自己的路线。</description>
     </item>
     

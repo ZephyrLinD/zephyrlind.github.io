@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>LNMP on ZephyrLin&#39;s Blog</title>
-    <link>https://zephyrlind.github.io/categories/lnmp/</link>
-    <description>Recent content in LNMP on ZephyrLin&#39;s Blog</description>
+    <title>LNMP on 梦黎的小窝</title>
+    <link>https://tech.zephyrl.co/categories/lnmp/</link>
+    <description>Recent content in LNMP on 梦黎的小窝</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Sat, 07 Sep 2019 23:23:40 +0800</lastBuildDate>
+    <language>zh</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Wed, 13 Nov 2019 20:08:41 +0800</lastBuildDate>
     
-	<atom:link href="https://zephyrlind.github.io/categories/lnmp/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tech.zephyrl.co/categories/lnmp/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>NginxTips（一） —— Nginx的组成、Vim语法高亮、编译、命令行、热部署、日志切割脚本</title>
+      <link>https://tech.zephyrl.co/2019/11/nginxtips1/</link>
+      <pubDate>Wed, 13 Nov 2019 20:08:41 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2019/11/nginxtips1/</guid>
+      <description>我打算开始做运维的实验的时候，先是从搭建一个LNMP环境并且开始监控、维护来做的。现在我开始学习Nginx和它的源代码，这个就作为我学习的一个记录吧。我把这个组合叫做NginxTips！</description>
+    </item>
+    
+    <item>
       <title>CentOS7安装LNMP记录</title>
-      <link>https://zephyrlind.github.io/2019/09/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95/</link>
+      <link>https://tech.zephyrl.co/2019/09/centoslnmp/</link>
       <pubDate>Sat, 07 Sep 2019 23:23:40 +0800</pubDate>
       
-      <guid>https://zephyrlind.github.io/2019/09/centos7%E5%AE%89%E8%A3%85lnmp%E8%AE%B0%E5%BD%95/</guid>
+      <guid>https://tech.zephyrl.co/2019/09/centoslnmp/</guid>
       <description>曾经沉迷Ubuntu的我终于真香了，转移全线阵地到了CentOS7，关闭主网站了一阵子，然后开始熟悉CentOS下的环境配置、服务器配置。难度比Ubuntu真的难了好多，也复杂了不少，但是有了上次的经验，参考了很多书和博客，总结出了一套适合自己的路线。</description>
     </item>
     
     <item>
       <title>我的Ubuntu Server LNMP折腾笔记</title>
-      <link>https://zephyrlind.github.io/2019/08/%E6%88%91%E7%9A%84ubuntu-server-lnmp%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</link>
+      <link>https://tech.zephyrl.co/2019/08/diaryoflnmp/</link>
       <pubDate>Fri, 09 Aug 2019 08:46:15 +0800</pubDate>
       
-      <guid>https://zephyrlind.github.io/2019/08/%E6%88%91%E7%9A%84ubuntu-server-lnmp%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://tech.zephyrl.co/2019/08/diaryoflnmp/</guid>
       <description>本文旨在记录Ubuntu Server上面稍微好配的LNMP环境的一些坑还有一些特殊的地方。因为像CentOS、RHEL都比较适合源代码安装，但是Ubuntu Server源代码安装反而过于折腾而且没必要，所以跟RedHat家的安装方法比，安装虽然简单，但是包名不同，也算有点坑吧。把它们记录下来，以后再弄的时候看这里就可以了。</description>
     </item>
     
