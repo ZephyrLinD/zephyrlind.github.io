@@ -181,136 +181,120 @@
             
             
             
-            
-
-<a class="post-dummy-target" id="前言"></a><h2>前言</h2>
-
+            <a class="post-dummy-target" id="heading"></a><h2>前言</h2>
 <p>双十一剁手啦！！！我的阿里云已经快要到期了，而且上面作死想整一些骚操作然后欢声笑语打出GG，删库跑路吧。以下是我拿到一台新的、属于自己的、以后会长期使用的小鸡（服务器）后我会干的事情，做一个总结，以防万一自己忘掉，顺便用以回顾。</p>
-
 <p>平台：腾讯云</p>
-
 <p>操作系统：CentOS 7.6</p>
-
 <p>注意：里面的<code>example</code>皆为用户名的指代。</p>
-
-<a class="post-dummy-target" id="第一步-添加sudo权限的普通用户"></a><h2>第一步，添加sudo权限的普通用户</h2>
-
+<a class="post-dummy-target" id="sudo"></a><h2>第一步，添加sudo权限的普通用户</h2>
 <p>由于要长期使用，没准也会在服务器上敲代码，为了防止自己操作失误，添加一个带sudo权限普通用户。</p>
-
 <p>首先，添加用户：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">useradd -d /home/example example</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">useradd -d /home/example example
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>然后，为他修改密码：</p>
+</div><p>然后，为他修改密码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">visudo</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">visudo
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>再之后找到代码段，添加如下代码</p>
+</div><p>再之后找到代码段，添加如下代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># Allow root to run any commands anywhere</span>
-root     <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span>       ALL
-example  <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span>       ALL  <span class="c1"># 添加的代码</span></code></pre></td></tr></table>
+root     <span class="nv">ALL</span><span class="o">=</span><span class="o">(</span>ALL<span class="o">)</span>       ALL
+example  <span class="nv">ALL</span><span class="o">=</span><span class="o">(</span>ALL<span class="o">)</span>       ALL  <span class="c1"># 添加的代码</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>然后切换用户到<code>example</code>，运行一下update试试：</p>
+</div><p>然后切换用户到<code>example</code>，运行一下update试试：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo yum update </code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo yum update 
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>如果可以运行，说明一切正常，大功告成！</p>
-
-<a class="post-dummy-target" id="第二部-简单美化终端"></a><h2>第二部，简单美化终端</h2>
-
+</div><p>如果可以运行，说明一切正常，大功告成！</p>
+<a class="post-dummy-target" id="heading-1"></a><h2>第二部，简单美化终端</h2>
 <p>因为毕竟是服务器，终端只需简洁、好用即可，不需要太过花哨。我们采用<code>zsh</code>+<code>oh-my-zsh</code>的组合来让终端变得有颜色，且有简单的提示。</p>
-
 <p>首先下载<code>zsh</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo yum -y install zsh</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo yum -y install zsh
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>然后下载<code>oh-my-zsh</code>，安装非常简单只需一行代码</p>
+</div><p>然后下载<code>oh-my-zsh</code>，安装非常简单只需一行代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sh -c <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="k">)</span><span class="s2">&#34;</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">sh -c <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="k">)</span><span class="s2">&#34;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>根据提示完成安装后，首先修改主题，我最爱使用主题 <code>ys</code>：</p>
+</div><p>根据提示完成安装后，首先修改主题，我最爱使用主题 <code>ys</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">vim ~/.zshrc</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">vim ~/.zshrc
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>找到 <code>ZSH_THEME</code> 字段，将原本的 <code>robbyshell</code> 修改为 <code>ys</code> 即可。</p>
-
+</div><p>找到 <code>ZSH_THEME</code> 字段，将原本的 <code>robbyshell</code> 修改为 <code>ys</code> 即可。</p>
 <p>在之后安装<code>zsh-autosuggestions</code>、<code>zsh-syntax-highlighting</code>，安装过程如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash">git clone https://github.com/zsh-users/zsh-autosuggestions <span class="si">${</span><span class="nv">ZSH_CUSTOM</span><span class="k">:-</span><span class="p">~/.oh-my-zsh/custom</span><span class="si">}</span>/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="si">${</span><span class="nv">ZSH_CUSTOM</span><span class="k">:-</span><span class="p">~/.oh-my-zsh/custom</span><span class="si">}</span>/plugins/zsh-syntax-highlighting</code></pre></td></tr></table>
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="si">${</span><span class="nv">ZSH_CUSTOM</span><span class="k">:-</span><span class="p">~/.oh-my-zsh/custom</span><span class="si">}</span>/plugins/zsh-syntax-highlighting
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>然后打开<code>.zshrc</code>，在<code>plugin</code>字段中加入两个插件：</p>
+</div><p>然后打开<code>.zshrc</code>，在<code>plugin</code>字段中加入两个插件：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">plugins</span><span class="o">=([</span>plugins...<span class="o">]</span> zsh-syntax-highlighting zsh-autosuggestions<span class="o">)</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">plugins</span><span class="o">=</span><span class="o">(</span><span class="o">[</span>plugins...<span class="o">]</span> zsh-syntax-highlighting zsh-autosuggestions<span class="o">)</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>然后就是一步到位，应用更改的时候啦！</p>
+</div><p>然后就是一步到位，应用更改的时候啦！</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">source</span> ~/.zshrc</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">source</span> ~/.zshrc
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>之后我们的终端就变得相对好看啦！</p>
-
-<a class="post-dummy-target" id="安装装逼神器neofetch"></a><h2>安装装逼神器neofetch</h2>
-
+</div><p>之后我们的终端就变得相对好看啦！</p>
+<a class="post-dummy-target" id="neofetch"></a><h2>安装装逼神器neofetch</h2>
 <p><code>Neofetch</code>可以以更全面的方式来显示输出详实的 Linux 系统信息，顺便可以和小伙伴装逼一波。（主要是他也很好看啊嘤嘤嘤）</p>
-
 <p>最早我一般在CentOS上通过编译安装它，但是现在在安装<code>neofetch</code>之前，是需要使用最新的Redhat系包管理软件<code>dnf</code>，然后就可以很方便的安装啦！</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -319,39 +303,36 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="
 <pre class="chroma"><code class="language-bash" data-lang="bash">sudo yum install dnf
 sudo yum install dnf-plugins-core
 sudo dnf -y copr <span class="nb">enable</span> konimex/neofetch
-sudo dnf install neofetch</code></pre></td></tr></table>
+sudo dnf install neofetch
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>之后就可以通过终端输入<code>neofetch</code>截图给小伙伴啦！</p>
-
-<a class="post-dummy-target" id="安装终端复用工具tmux"></a><h2>安装终端复用工具TMUX</h2>
-
+</div><p>之后就可以通过终端输入<code>neofetch</code>截图给小伙伴啦！</p>
+<a class="post-dummy-target" id="tmux"></a><h2>安装终端复用工具TMUX</h2>
 <p>TMUX（terminal multiplexer）是Linux上的终端复用神器，可从一个屏幕上管理多个终端（准确说是伪终端）。使用该工具，用户可以连接或断开会话，而保持终端在后台运行。类似的工具还有screen。</p>
-
 <p>首先安装依赖：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo yum install byacc bison</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo yum install byacc bison
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>之后，下载TMUX的源码</p>
+</div><p>之后，下载TMUX的源码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/local/src
-sudo git clone https://github.com/tmux/tmux.git</code></pre></td></tr></table>
+sudo git clone https://github.com/tmux/tmux.git
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>编译并安装：</p>
+</div><p>编译并安装：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -362,60 +343,55 @@ sudo git clone https://github.com/tmux/tmux.git</code></pre></td></tr></table>
 sudo sh autogen.sh
 sudo ./configure
 sudo make
-sudo make install</code></pre></td></tr></table>
+sudo make install
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="安装python3"></a><h2>安装Python3</h2>
-
+</div><a class="post-dummy-target" id="python3"></a><h2>安装Python3</h2>
 <p>作为一个“脚本小子”（是的，不是低端黑客的蔑称，只是爱写脚本实现自动化），以后立志要做DevOPs的人，首先要用Python尝试把服务器自动化。</p>
-
 <p>然而CentOS自带了Python2，想要使用Python3写脚本就需要编译安装Python3了。</p>
-
 <p>首先，安装一些工具组和依赖</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash">yum -y groupinstall <span class="s2">&#34;Development tools&#34;</span>
 yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
-yum install libffi-devel -y</code></pre></td></tr></table>
+yum install libffi-devel -y
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>不由得想到了当初体验RHEL的时候连依赖都需要编译安装，没准还要找到依赖的依赖的恐怖日子了= =</p>
-
+</div><p>不由得想到了当初体验RHEL的时候连依赖都需要编译安装，没准还要找到依赖的依赖的恐怖日子了= =</p>
 <p>接下来是下载源码包，我的习惯是将源码包放在<code>/usr/local/src</code>中</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/local/src/
-sudo wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tar.xz </code></pre></td></tr></table>
+sudo wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tar.xz 
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>此时你可以喝杯咖啡，看一集番，如果还没完事可以看看淘宝，注意SSH连接别断了。</p>
-
+</div><p>此时你可以喝杯咖啡，看一集番，如果还没完事可以看看淘宝，注意SSH连接别断了。</p>
 <p>之后可以解压，要注意的是<code>tar.xz</code>的解压方法和<code>tar.gz</code>不太一样，需要先解压成<code>.tar</code>然后再进一步解压：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash">sudo xz -d Python-3.8.0.tar.xz
 sudo tar xvf python-3.8.0.tar
-sudo <span class="nb">cd</span> Python-3.8.0</code></pre></td></tr></table>
+sudo <span class="nb">cd</span> Python-3.8.0
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>最后就是编译老一套，只不过因为不在root用户上所以要加上sudo</p>
+</div><p>最后就是编译老一套，只不过因为不在root用户上所以要加上sudo</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -424,33 +400,32 @@ sudo <span class="nb">cd</span> Python-3.8.0</code></pre></td></tr></table>
 <pre class="chroma"><code class="language-bash" data-lang="bash">mkdir /usr/local/python3
 sudo ./configure --prefix<span class="o">=</span>/usr/local/python3
 sudo make 
-sudo make install</code></pre></td></tr></table>
+sudo make install
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>然后检测一下是否成功：</p>
+</div><p>然后检测一下是否成功：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash">python3 -v
-pip3 -v</code></pre></td></tr></table>
+pip3 -v
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>需要卸载的时候只需执行如下即可：</p>
+</div><p>需要卸载的时候只需执行如下即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash">rpm -qa<span class="p">|</span>grep python3<span class="p">|</span>xargs rpm -ev --allmatches --nodeps
-whereis python3 <span class="p">|</span>xargs rm -frv</code></pre></td></tr></table>
+whereis python3 <span class="p">|</span>xargs rm -frv
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="总结"></a><h2>总结</h2>
-
+</div><a class="post-dummy-target" id="heading-2"></a><h2>总结</h2>
 <p>拿到新服务器我也就只会干这些了，在之后还会进行vim的配置，由于太过冗长所以我会新开一篇文档。</p>
 
         </div>
@@ -497,6 +472,10 @@ whereis python3 <span class="p">|</span>xargs rm -frv</code></pre></td></tr></ta
     
     
     
+    
+        <a href="//service.weibo.com/share/share.php?url=https%3a%2f%2ftech.zephyrl.co%2f2019%2f11%2fserverbeautiful%2f&amp;appkey=&amp;title=%e6%9c%8d%e5%8a%a1%e5%99%a8%e5%88%b0%e6%89%8b%e5%90%8e%e8%a6%81%e5%81%9a%e7%9a%84%e4%b8%80%e4%ba%9b%e4%ba%8b%ef%bc%88%e4%b8%80%ef%bc%89%e2%80%94%e2%80%94%e2%80%94%e2%80%94%20%e7%bb%88%e7%ab%af%e5%88%9d%e6%ad%a5%e7%be%8e%e5%8c%96%e5%92%8c%e4%b8%80%e4%ba%9b%e5%bf%85%e8%a6%81%e5%b7%a5%e5%85%b7" target="_blank" title="Share on Weibo">
+            <i class="fab fa-weibo fa-fw"></i>
+        </a>
     
 </span>
                 

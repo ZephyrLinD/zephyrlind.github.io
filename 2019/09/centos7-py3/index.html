@@ -181,38 +181,33 @@
             
             
             
-            
-
-<a class="post-dummy-target" id="前言"></a><h2>前言</h2>
-
+            <a class="post-dummy-target" id="heading"></a><h2>前言</h2>
 <p>CentOS 的第三方软件源中（如：IUS，SCL，EPEL）还没有 Python 3.7 的 RPM 软件包，本文介绍使用源码方式安装 Python 3.7。</p>
-
-<a class="post-dummy-target" id="安装依赖包"></a><h2>安装依赖包</h2>
-
+<a class="post-dummy-target" id="heading-1"></a><h2>安装依赖包</h2>
 <p>因为在CentOS7中源码安装Python 3.7之前需要安装GCC和make编译工具，该工具保安在“Development toos”软件组中，可以直接安装</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">yum groupinstall <span class="s2">&#34;Development tools&#34;</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">yum groupinstall <span class="s2">&#34;Development tools&#34;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>再安装一些其他的依赖</p>
+</div><p>再安装一些其他的依赖</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash">yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
-yum install libffi-devel -y</code></pre></td></tr></table>
+yum install libffi-devel -y
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="下载源代码包解压"></a><h2>下载源代码包解压</h2>
+</div><a class="post-dummy-target" id="heading-2"></a><h2>下载源代码包解压</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -223,21 +218,21 @@ yum install libffi-devel -y</code></pre></td></tr></table>
 wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz
 <span class="nb">cd</span> Python-3.7.4
 ./configure --prefix<span class="o">=</span>/usr/local/python3
-make <span class="o">&amp;&amp;</span> make install</code></pre></td></tr></table>
+make <span class="o">&amp;&amp;</span> make install
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="建立软连接"></a><h2>建立软连接</h2>
+</div><a class="post-dummy-target" id="heading-3"></a><h2>建立软连接</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash">ln -s /usr/local/python3/bin/python3 /usr/local/bin/python3
-ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3</code></pre></td></tr></table>
+ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>之后就可以在终端输入python3或者pip来玩耍啦！</p>
+</div><p>之后就可以在终端输入python3或者pip来玩耍啦！</p>
 
         </div>
 
@@ -283,6 +278,10 @@ ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3</code></pre></td></tr></ta
     
     
     
+    
+        <a href="//service.weibo.com/share/share.php?url=https%3a%2f%2ftech.zephyrl.co%2f2019%2f09%2fcentos7-py3%2f&amp;appkey=&amp;title=Centos7%e5%ae%89%e8%a3%85Pyhon3" target="_blank" title="Share on Weibo">
+            <i class="fab fa-weibo fa-fw"></i>
+        </a>
     
 </span>
                 

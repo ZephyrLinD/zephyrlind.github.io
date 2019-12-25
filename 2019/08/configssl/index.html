@@ -181,84 +181,68 @@
             
             
             
-            
-
-<a class="post-dummy-target" id="前言"></a><h2>前言</h2>
-
+            <a class="post-dummy-target" id="heading"></a><h2>前言</h2>
 <p><code>Let's Encrypt</code>是一个免费，自动化，并且开放的证书颁发机构。由非营利性组织<a href="https://www.abetterinternet.org/about/">互联网安全研究小组</a>（ISRG）运营。</p>
-
-<p>简单的说，我们可以借助 Let&rsquo;s Encrypt 颁发的证书可以为我们的网站免费启用 HTTPS(SSL/TLS) 。</p>
-
-<p>Let&rsquo;s Encrypt免费证书的签发/续签都是脚本自动化的，官方提供了几种证书的申请方式方法，<a href="https://letsencrypt.org/docs/client-options/">点击此处</a>快速浏览。</p>
-
-<p>其中官方推荐使用Certbot客户端来签发证书，但是这种方式配置起来过于麻烦，我就选择了官网说的第三方客户端<a href="https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E">acme.sh</a>来申请，这是是目前 Let&rsquo;s Encrypt 免费证书客户端最简单、最智能的 shell 脚本，可以自动发布和续订 Let&rsquo;s Encrypt 中的免费证书。</p>
-
-<a class="post-dummy-target" id="安装-acme-sh"></a><h2>安装<code>acme.sh</code></h2>
-
+<p>简单的说，我们可以借助 Let's Encrypt 颁发的证书可以为我们的网站免费启用 HTTPS(SSL/TLS) 。</p>
+<p>Let's Encrypt免费证书的签发/续签都是脚本自动化的，官方提供了几种证书的申请方式方法，<a href="https://letsencrypt.org/docs/client-options/">点击此处</a>快速浏览。</p>
+<p>其中官方推荐使用Certbot客户端来签发证书，但是这种方式配置起来过于麻烦，我就选择了官网说的第三方客户端<a href="https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E">acme.sh</a>来申请，这是是目前 Let's Encrypt 免费证书客户端最简单、最智能的 shell 脚本，可以自动发布和续订 Let's Encrypt 中的免费证书。</p>
+<a class="post-dummy-target" id="acmesh"></a><h2>安装<code>acme.sh</code></h2>
 <p>安装只需一条命令即可完成</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">curl https://get.acme.sh <span class="p">|</span> sh</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">curl https://get.acme.sh <span class="p">|</span> sh
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>其中，首先会把acme.sh安装到<code>~/.acme.sh</code>，此目录也会存储生成的证书文件。然后脚本会指定别名<code>alias acme.sh=~/.acme.sh/acme.sh</code>。然后自动创建<code>cronjob</code>定时任务，每天0:00:00会自动检测所有证书，及时更新证书。</p>
-
+</div><p>其中，首先会把acme.sh安装到<code>~/.acme.sh</code>，此目录也会存储生成的证书文件。然后脚本会指定别名<code>alias acme.sh=~/.acme.sh/acme.sh</code>。然后自动创建<code>cronjob</code>定时任务，每天0:00:00会自动检测所有证书，及时更新证书。</p>
 <p>为了保险起见我还是进行了如下操作</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="s2">&#34;alias acme.sh=~/.acme.sh/acme.sh&#34;</span> &gt;&gt; ~/.zshrc</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="s2">&#34;alias acme.sh=~/.acme.sh/acme.sh&#34;</span> &gt;&gt; ~/.zshrc
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>安装命令执行完毕后，执行<code>acme.sh --version</code>确认是否能正常使用<code>acme.sh</code>命令。</p>
+</div><p>安装命令执行完毕后，执行<code>acme.sh --version</code>确认是否能正常使用<code>acme.sh</code>命令。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell">$ acme.sh --version
 https://github.com/Neilpang/acme.sh
-v2.8.3</code></pre></td></tr></table>
+v2.8.3
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="生成证书"></a><h2>生成证书</h2>
-
+</div><a class="post-dummy-target" id="heading-1"></a><h2>生成证书</h2>
 <p>acme支持DNS和HTTP认证，我选择了HTTP验证的方式</p>
-
 <p>其中，我以example.com的域名举例，实际操作换成自己的就可以了：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">acme.sh --issue -d example.com -d www.example.com -w /home/wwwroot/example.com</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">acme.sh --issue -d example.com -d www.example.com -w /home/wwwroot/example.com
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>简单解释下这条命令涉及到的一些参数：</p>
-
+</div><p>简单解释下这条命令涉及到的一些参数：</p>
 <ul>
 <li><code>--issue</code>是 acme.sh 脚本用来颁发证书的指令；</li>
 <li><code>-d</code>是<code>--domain</code>的简称，其后面必须填写已备案的域名；</li>
 <li><code>-w</code>是<code>--webroot</code>的简称，其后面需填写网站储存的根目录（我以<code>/home/wwwroot/example.com</code>为例）</li>
 </ul>
-
 <p>证书签发成功会有如下输出：</p>
-
-<p><a href="http://graph.zephyrl.co/image/TTsA"><figure><img src=/images/loading.svg data-sizes=auto data-src=http://graph.zephyrl.co/images/2019/08/25/success.md.png alt=success.md.png class=lazyload><figcaption class=image-caption>success.md.png</figcaption></figure></a></p>
-
+<p><a href="http://graph.zephyrl.co/image/TTsA"><img src="http://graph.zephyrl.co/images/2019/08/25/success.md.png" alt="success.md.png"></a></p>
 <p>从截图看出，生成的证书放在了<code>/root/.acme.sh/esofar.cn</code>目录。</p>
-
 <p>另外，可以通过下面两个常用<code>acme.sh</code>命令查看和删除证书：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -269,17 +253,15 @@ v2.8.3</code></pre></td></tr></table>
 acme.sh --list 
 
 <span class="c1"># 删除证书</span>
-acme.sh remove &lt;SAN_Domains&gt;</code></pre></td></tr></table>
+acme.sh remove &lt;SAN_Domains&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="安装证书"></a><h2>安装证书</h2>
-
+</div><a class="post-dummy-target" id="heading-2"></a><h2>安装证书</h2>
 <p>本文将以Nginx为例，记录如何将证书安装，如果其他webserver大家可以参考acme.sh的文档来说。</p>
-
 <p>由于证书生成的目录并不是Nginx存储SSL证书的正确目录，所以我们要用<code>--installcert</code>命令来指定复制的目标位置，来让Nginx的配置文件直接读取该目录下的证书。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -288,28 +270,25 @@ acme.sh remove &lt;SAN_Domains&gt;</code></pre></td></tr></table>
 <pre class="chroma"><code class="language-shell" data-lang="shell">acme.sh --installcert -d zephyrl.co <span class="se">\
 </span><span class="se"></span>    --key-file /etc/nginx/ssl/zephyrl.co.key <span class="se">\
 </span><span class="se"></span>    --fullchain-file /etc/nginx/ssl/fullchain.cer <span class="se">\
-</span><span class="se"></span>    --reloadcmd <span class="s2">&#34;service nginx force-reload&#34;</span></code></pre></td></tr></table>
+</span><span class="se"></span>    --reloadcmd <span class="s2">&#34;service nginx force-reload&#34;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>如果发现出现<code>/root/.acme.sh/acme.sh: line 5121: /etc/nginx/ssl/example.com.key: No such file or directory</code>的错误，请先执行以下操作：</p>
+</div><p>如果发现出现<code>/root/.acme.sh/acme.sh: line 5121: /etc/nginx/ssl/example.com.key: No such file or directory</code>的错误，请先执行以下操作：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mkdir /etc/nginx/ssl</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">mkdir /etc/nginx/ssl
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>成功后：</p>
-
-<p><figure><img src=/images/loading.svg data-sizes=auto data-src=http://graph.zephyrl.co/images/2019/08/25/successinstall.png alt=successinstall.png class=lazyload><figcaption class=image-caption>successinstall.png</figcaption></figure></p>
-
+</div><p>成功后：</p>
+<p><img src="http://graph.zephyrl.co/images/2019/08/25/successinstall.png" alt="successinstall.png"></p>
 <p>最后一步就是修改Nginx配置文件，启动SSL，之后重启Nginx，其中Nginx配置可以参考以下，转载自别人的博客</p>
-
 <p>这个：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -358,10 +337,10 @@ acme.sh remove &lt;SAN_Domains&gt;</code></pre></td></tr></table>
     <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
     <span class="kn">server_name</span> <span class="s">esofar.cn</span><span class="p">;</span>
     <span class="kn">return</span> <span class="mi">301</span> <span class="s">https://</span><span class="nv">$server_name$request_uri</span><span class="p">;</span>
-<span class="p">}</span></code></pre></td></tr></table>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>也是从此，我的域名下的一个网站升级到了HTTPS，23333333333333</p>
+</div><p>也是从此，我的域名下的一个网站升级到了HTTPS，23333333333333</p>
 
         </div>
 
@@ -407,6 +386,10 @@ acme.sh remove &lt;SAN_Domains&gt;</code></pre></td></tr></table>
     
     
     
+    
+        <a href="//service.weibo.com/share/share.php?url=https%3a%2f%2ftech.zephyrl.co%2f2019%2f08%2fconfigssl%2f&amp;appkey=&amp;title=%e9%80%9a%e8%bf%87Let%27s%20Encrypt%e6%9d%a5%e8%8e%b7%e5%8f%96SSL%e8%af%81%e4%b9%a6" target="_blank" title="Share on Weibo">
+            <i class="fab fa-weibo fa-fw"></i>
+        </a>
     
 </span>
                 
