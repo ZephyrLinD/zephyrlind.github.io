@@ -9,7 +9,7 @@
 
 LNMP也有不同的搭配：
 
-![dfoflnmp.png](http://graph.zephyrl.co/images/2019/08/24/dfoflnmp.png)
+![dfoflnmp.png](https://img.zephyrl.co/images/2020/02/02/dfoflnmp.png)
 
 本文旨在记录Ubuntu Server上面稍微好配的LNMP环境的一些坑还有一些特殊的地方。因为像CentOS、RHEL都比较适合源代码安装，但是Ubuntu Server源代码安装反而过于折腾而且没必要，所以跟RedHat家的安装方法比，安装虽然简单，但是包名不同，也算有点坑吧。把它们记录下来，以后再弄的时候看这里就可以了。
 
@@ -31,7 +31,7 @@ sudo service nginx restart
 
 此时可以直接访问IP地址，会显示Nginx的欢迎页面
 
-![Nginx Welcome](http://graph.zephyrl.co/images/2019/08/24/nginxwelcome.png)
+![Nginx Welcome](https://img.zephyrl.co/images/2020/02/02/nginxwelcome.png)
 
 或者curl一下localhost
 
@@ -120,7 +120,7 @@ sudo vim /etc/nginx/sites-available/default
 
 修改第56-63行如下：
 
-![修改行](http://graph.zephyrl.co/images/2019/08/24/phpchanges.png)
+![修改行](https://img.zephyrl.co/images/2020/02/02/phpchanges.png)
 
 之后还有的修改就是第41行的`root`选项，可以修改网站的根目录，就不一一赘述了。
 
@@ -138,7 +138,7 @@ sudo vim /etc/php/7.2/fpm/pool.d/www.conf
 
 大约第37行加入语句：
 
-![修改行](http://graph.zephyrl.co/images/2019/08/24/phpchanges2.png)
+![修改行](https://img.zephyrl.co/images/2020/02/02/phpchanges2.png)
 
 修改之后，我们重启php7.2-fpm
 
@@ -156,7 +156,7 @@ sudo service php7.2-fpm restart
 
 然后在浏览器打开：IP地址/info.php 效果如下
 
-![phpinfo](http://graph.zephyrl.co/images/2019/08/24/phpinfo.png)
+![phpinfo](https://img.zephyrl.co/images/2020/02/02/phpinfo.png)
 
 ## 确认可以通过PHP连接到MySQL
 

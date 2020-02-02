@@ -185,7 +185,7 @@
 <p>鄙人不知为何骨骼精奇，有一癖好，就是对着黑框框敲敲敲怎么也不累，能直接敲一天。其实主要也是小时候受家里的老386机器熏陶，养成了对命令的酷爱。随着时代的发展，386扔掉了（现在觉得好可惜），图形化界面渐渐普及了，但是我对黑框框的热爱从未减少。遂后来学习Linux，转向服务器方向，励志成为一个合格的DevOPs。所以到了大学就开始折腾服务器、玩Linux甚至日用Linux。说得多了又扯远了。</p>
 <p>所谓LNMP就是Linux+Nginx+MySQL+PHP，与LA(apache)MP相比，不同的是，动态请求会转发给php-fpm来处理，Nginx会直接返回静态页面的处理。</p>
 <p>LNMP也有不同的搭配：</p>
-<p><img src="http://graph.zephyrl.co/images/2019/08/24/dfoflnmp.png" alt="dfoflnmp.png"></p>
+<p><img src="https://img.zephyrl.co/images/2020/02/02/dfoflnmp.png" alt="dfoflnmp.png"></p>
 <p>本文旨在记录Ubuntu Server上面稍微好配的LNMP环境的一些坑还有一些特殊的地方。因为像CentOS、RHEL都比较适合源代码安装，但是Ubuntu Server源代码安装反而过于折腾而且没必要，所以跟RedHat家的安装方法比，安装虽然简单，但是包名不同，也算有点坑吧。把它们记录下来，以后再弄的时候看这里就可以了。</p>
 <p>本文环境为 Ubuntu Server 18.04 LTS，阿里云轻量应用服务器。</p>
 <a class="post-dummy-target" id="n--nginx"></a><h2>N —— Nginx</h2>
@@ -208,7 +208,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>此时可以直接访问IP地址，会显示Nginx的欢迎页面</p>
-<p><img src="http://graph.zephyrl.co/images/2019/08/24/nginxwelcome.png" alt="Nginx Welcome"></p>
+<p><img src="https://img.zephyrl.co/images/2020/02/02/nginxwelcome.png" alt="Nginx Welcome"></p>
 <p>或者curl一下localhost</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -344,7 +344,7 @@ Commercial support is available at
 </code></pre></td></tr></table>
 </div>
 </div><p>修改第56-63行如下：</p>
-<p><img src="http://graph.zephyrl.co/images/2019/08/24/phpchanges.png" alt="修改行"></p>
+<p><img src="https://img.zephyrl.co/images/2020/02/02/phpchanges.png" alt="修改行"></p>
 <p>之后还有的修改就是第41行的<code>root</code>选项，可以修改网站的根目录，就不一一赘述了。</p>
 <p>然后执行命令，重启Nginx：</p>
 <div class="highlight"><div class="chroma">
@@ -365,7 +365,7 @@ Commercial support is available at
 </code></pre></td></tr></table>
 </div>
 </div><p>大约第37行加入语句：</p>
-<p><img src="http://graph.zephyrl.co/images/2019/08/24/phpchanges2.png" alt="修改行"></p>
+<p><img src="https://img.zephyrl.co/images/2020/02/02/phpchanges2.png" alt="修改行"></p>
 <p>修改之后，我们重启php7.2-fpm</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -389,7 +389,7 @@ Commercial support is available at
 </code></pre></td></tr></table>
 </div>
 </div><p>然后在浏览器打开：IP地址/info.php 效果如下</p>
-<p><img src="http://graph.zephyrl.co/images/2019/08/24/phpinfo.png" alt="phpinfo"></p>
+<p><img src="https://img.zephyrl.co/images/2020/02/02/phpinfo.png" alt="phpinfo"></p>
 <a class="post-dummy-target" id="确认可以通过php连接到mysql"></a><h2>确认可以通过PHP连接到MySQL</h2>
 <p>仍然是在网站根目录下，创建一个mysql.php，输入如下代码：</p>
 <div class="highlight"><div class="chroma">
