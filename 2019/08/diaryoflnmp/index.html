@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>我的Ubuntu Server LNMP折腾笔记 | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noodp" />
-<meta name="Description" content="一个准程序员的自留地">
+<meta name="Description" content="梦黎的小窝，一个学习中的程序员的自留地">
 <link rel="prev" href="https://tech.zephyrl.co/2019/08/awsome-powershell/" />
 <link rel="next" href="https://tech.zephyrl.co/2019/08/cheveretoins/" />
 <link rel="canonical" href="https://tech.zephyrl.co/2019/08/diaryoflnmp/" />
@@ -55,7 +55,7 @@
     
         "publisher": {
             "@type": "Organization",
-            "name": "Zephyr",
+            "name": "XXXX",
             "logo": {
             "@type": "ImageObject",
             "url": "https:\/\/tech.zephyrl.co\/logo.png",
@@ -94,7 +94,7 @@
             
                 <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于</a>
             
             <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
         </div>
@@ -119,7 +119,7 @@
             
                 <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于</a>
             
             <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
         </div>
@@ -136,7 +136,7 @@
 
         <div class="post-meta">
             <div class="post-meta-main">
-                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>梦黎&nbsp;</a>
                 <span class="post-category">
                         收录于
                         <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/lnmp/">LNMP</a>
@@ -181,59 +181,47 @@
             
             
             
-            
-
-<a class="post-dummy-target" id="前言"></a><h2>前言</h2>
-
+            <a class="post-dummy-target" id="heading"></a><h2>前言</h2>
 <p>鄙人不知为何骨骼精奇，有一癖好，就是对着黑框框敲敲敲怎么也不累，能直接敲一天。其实主要也是小时候受家里的老386机器熏陶，养成了对命令的酷爱。随着时代的发展，386扔掉了（现在觉得好可惜），图形化界面渐渐普及了，但是我对黑框框的热爱从未减少。遂后来学习Linux，转向服务器方向，励志成为一个合格的DevOPs。所以到了大学就开始折腾服务器、玩Linux甚至日用Linux。说得多了又扯远了。</p>
-
 <p>所谓LNMP就是Linux+Nginx+MySQL+PHP，与LA(apache)MP相比，不同的是，动态请求会转发给php-fpm来处理，Nginx会直接返回静态页面的处理。</p>
-
 <p>LNMP也有不同的搭配：</p>
-
-<p><figure><img src=/images/loading.svg data-sizes=auto data-src=http://graph.zephyrl.co/images/2019/08/24/dfoflnmp.png alt=dfoflnmp.png class=lazyload><figcaption class=image-caption>dfoflnmp.png</figcaption></figure></p>
-
+<p><img src="http://graph.zephyrl.co/images/2019/08/24/dfoflnmp.png" alt="dfoflnmp.png"></p>
 <p>本文旨在记录Ubuntu Server上面稍微好配的LNMP环境的一些坑还有一些特殊的地方。因为像CentOS、RHEL都比较适合源代码安装，但是Ubuntu Server源代码安装反而过于折腾而且没必要，所以跟RedHat家的安装方法比，安装虽然简单，但是包名不同，也算有点坑吧。把它们记录下来，以后再弄的时候看这里就可以了。</p>
-
 <p>本文环境为 Ubuntu Server 18.04 LTS，阿里云轻量应用服务器。</p>
-
-<a class="post-dummy-target" id="n-nginx"></a><h2>N —— Nginx</h2>
-
+<a class="post-dummy-target" id="n--nginx"></a><h2>N —— Nginx</h2>
 <p>Nginx的安装属于最简单的，没什么坑，直接执行以下代码即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install nginx</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install nginx
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>安装的过程中选择 <code>Y</code> ，之后环境就搭起来了，再执行下面的代码来重启服务。</p>
+</div><p>安装的过程中选择 <code>Y</code> ，之后环境就搭起来了，再执行下面的代码来重启服务。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo service nginx restart </code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo service nginx restart 
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>此时可以直接访问IP地址，会显示Nginx的欢迎页面</p>
-
-<p><figure><img src=/images/loading.svg data-sizes=auto data-src=http://graph.zephyrl.co/images/2019/08/24/nginxwelcome.png alt=Nginx Welcome class=lazyload><figcaption class=image-caption>Nginx Welcome</figcaption></figure></p>
-
+</div><p>此时可以直接访问IP地址，会显示Nginx的欢迎页面</p>
+<p><img src="http://graph.zephyrl.co/images/2019/08/24/nginxwelcome.png" alt="Nginx Welcome"></p>
 <p>或者curl一下localhost</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">curl localhost</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">curl localhost
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>出现如下代码即可证明Nginx开启成功</p>
+</div><p>出现如下代码即可证明Nginx开启成功</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -261,58 +249,56 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Welcome to nginx!<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">title</span><span class="p"></span><span class="p">&gt;</span>Welcome to nginx!<span class="p">&lt;</span><span class="p">/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">style</span><span class="p"></span><span class="p">&gt;</span>
     <span class="nt">body</span> <span class="p">{</span>
         <span class="k">width</span><span class="p">:</span> <span class="mi">35</span><span class="kt">em</span><span class="p">;</span>
         <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="kc">auto</span><span class="p">;</span>
         <span class="k">font-family</span><span class="p">:</span> <span class="n">Tahoma</span><span class="p">,</span> <span class="n">Verdana</span><span class="p">,</span> <span class="n">Arial</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to nginx!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;</span>Welcome to nginx!<span class="p">&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p"></span><span class="p">&gt;</span>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.<span class="p">&lt;</span><span class="p">/</span><span class="nt">p</span><span class="p">&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>For online documentation and support please refer to
-<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;http://nginx.org/&#34;</span><span class="p">&gt;</span>nginx.org<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p"></span><span class="p">&gt;</span>For online documentation and support please refer to
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;http://nginx.org/&#34;</span><span class="p"></span><span class="p">&gt;</span>nginx.org<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;</span>.<span class="p">&lt;</span><span class="nt">br</span><span class="p">/</span><span class="p">&gt;</span>
 Commercial support is available at
-<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;http://nginx.com/&#34;</span><span class="p">&gt;</span>nginx.com<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;http://nginx.com/&#34;</span><span class="p"></span><span class="p">&gt;</span>nginx.com<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;</span>.<span class="p">&lt;</span><span class="p">/</span><span class="nt">p</span><span class="p">&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Thank you for using nginx.<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></td></tr></table>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="nt">em</span><span class="p"></span><span class="p">&gt;</span>Thank you for using nginx.<span class="p">&lt;</span><span class="p">/</span><span class="nt">em</span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="m-mysql"></a><h2>M —— MySQL</h2>
-
+</div><a class="post-dummy-target" id="m--mysql"></a><h2>M —— MySQL</h2>
 <p>由于使用的是Ubuntu18.04，如果直接不选MySQL版本的话，则自动安装最新的MySQL，指令如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install mysql-server mysql-client </code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install mysql-server mysql-client 
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>之后用root用户直接执行<code>mysql</code>，即可打开MySQL终端，然后修改一下root密码：</p>
+</div><p>之后用root用户直接执行<code>mysql</code>，即可打开MySQL终端，然后修改一下root密码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysql&gt; SET PASSWORD FOR <span class="s1">&#39;root&#39;</span>@<span class="s1">&#39;localhost&#39;</span> <span class="o">=</span> PASSWORD<span class="o">(</span><span class="s1">&#39;你的密码&#39;</span><span class="o">)</span><span class="p">;</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">mysql&gt; SET PASSWORD FOR <span class="s1">&#39;root&#39;</span>@<span class="s1">&#39;localhost&#39;</span> <span class="o">=</span> PASSWORD<span class="o">(</span><span class="s1">&#39;你的密码&#39;</span><span class="o">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p><em>注:最前面的<code>mysql&gt;</code>代表在MySQL下输入，并不用输入。</em></p>
-
+</div><p><em>注:最前面的<code>mysql&gt;</code>代表在MySQL下输入，并不用输入。</em></p>
 <p>之后查一下表：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -333,93 +319,82 @@ Commercial support is available at
 <span class="p">|</span> localhost <span class="p">|</span> mysql.sys        <span class="p">|</span> *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE <span class="p">|</span>
 <span class="p">|</span> localhost <span class="p">|</span> debian-sys-maint <span class="p">|</span> *01803E55701BD25F26000A75E6D3EC91F71358B0 <span class="p">|</span>
 +-----------+------------------+-------------------------------------------+
-<span class="m">4</span> rows in <span class="nb">set</span> <span class="o">(</span><span class="m">0</span>.00 sec<span class="o">)</span></code></pre></td></tr></table>
+<span class="m">4</span> rows in <span class="nb">set</span> <span class="o">(</span>0.00 sec<span class="o">)</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>大功告成！</p>
-
-<a class="post-dummy-target" id="p-postfix-php"></a><h2>P —— <del>Postfix</del> PHP</h2>
-
+</div><p>大功告成！</p>
+<a class="post-dummy-target" id="p--postfix-php"></a><h2>P —— <del>Postfix</del> PHP</h2>
 <p>只需把这三个软件安装即可完成PHP的安装：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install php7.2 php7.2-fpm php7.2-mysql</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install php7.2 php7.2-fpm php7.2-mysql
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="nginx解析php"></a><h2>Nginx解析PHP</h2>
-
+</div><a class="post-dummy-target" id="nginxphp"></a><h2>Nginx解析PHP</h2>
 <p>首先修改Nginx配置文件：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo vim /etc/nginx/sites-available/default</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo vim /etc/nginx/sites-available/default
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>修改第56-63行如下：</p>
-
-<p><figure><img src=/images/loading.svg data-sizes=auto data-src=http://graph.zephyrl.co/images/2019/08/24/phpchanges.png alt=修改行 class=lazyload><figcaption class=image-caption>修改行</figcaption></figure></p>
-
+</div><p>修改第56-63行如下：</p>
+<p><img src="http://graph.zephyrl.co/images/2019/08/24/phpchanges.png" alt="修改行"></p>
 <p>之后还有的修改就是第41行的<code>root</code>选项，可以修改网站的根目录，就不一一赘述了。</p>
-
 <p>然后执行命令，重启Nginx：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo service nginx restart </code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo service nginx restart 
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>之后修改PHP的设置：</p>
+</div><p>之后修改PHP的设置：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo vim /etc/php/7.2/fpm/pool.d/www.conf</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo vim /etc/php/7.2/fpm/pool.d/www.conf
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>大约第37行加入语句：</p>
-
-<p><figure><img src=/images/loading.svg data-sizes=auto data-src=http://graph.zephyrl.co/images/2019/08/24/phpchanges2.png alt=修改行 class=lazyload><figcaption class=image-caption>修改行</figcaption></figure></p>
-
+</div><p>大约第37行加入语句：</p>
+<p><img src="http://graph.zephyrl.co/images/2019/08/24/phpchanges2.png" alt="修改行"></p>
 <p>修改之后，我们重启php7.2-fpm</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo service php7.2-fpm restart</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo service php7.2-fpm restart
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>之后我们在网站的root目录下创建info.php文件，内容如下：</p>
+</div><p>之后我们在网站的root目录下创建info.php文件，内容如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-html" data-lang="html"><span class="cp">&lt;?php
 </span><span class="cp">    phpinfo();
-</span><span class="cp">?&gt;</span></code></pre></td></tr></table>
+</span><span class="cp">?&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>然后在浏览器打开：IP地址/info.php 效果如下</p>
-
-<p><figure><img src=/images/loading.svg data-sizes=auto data-src=http://graph.zephyrl.co/images/2019/08/24/phpinfo.png alt=phpinfo class=lazyload><figcaption class=image-caption>phpinfo</figcaption></figure></p>
-
-<a class="post-dummy-target" id="确认可以通过php连接到mysql"></a><h2>确认可以通过PHP连接到MySQL</h2>
-
+</div><p>然后在浏览器打开：IP地址/info.php 效果如下</p>
+<p><img src="http://graph.zephyrl.co/images/2019/08/24/phpinfo.png" alt="phpinfo"></p>
+<a class="post-dummy-target" id="phpmysql"></a><h2>确认可以通过PHP连接到MySQL</h2>
 <p>仍然是在网站根目录下，创建一个mysql.php，输入如下代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -448,13 +423,11 @@ Commercial support is available at
 </span><span class="cp">        die(&#34;连接失败: &#34; . $conn-&gt;connect_error);
 </span><span class="cp">    }
 </span><span class="cp">    echo &#34;&lt;h1&gt;连接成功&lt;/h1&gt;&#34;;
-</span><span class="cp">?&gt;</span></code></pre></td></tr></table>
+</span><span class="cp">?&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>保存后，打开IP地址/mysql.php，显示“连接成功”即可。也可以用curl方法，和上面一样，在这里就不赘述。</p>
-
-<a class="post-dummy-target" id="后记"></a><h2>后记</h2>
-
+</div><p>保存后，打开IP地址/mysql.php，显示“连接成功”即可。也可以用curl方法，和上面一样，在这里就不赘述。</p>
+<a class="post-dummy-target" id="heading-1"></a><h2>后记</h2>
 <p>让网站“跑起来”只是我们的第一步，千里之行始于足下。后续将更新创建图床（因为正在等备案审核），创建Worldpress博客的内容。</p>
 
         </div>
@@ -501,6 +474,10 @@ Commercial support is available at
     
     
     
+    
+        <a href="//service.weibo.com/share/share.php?url=https%3a%2f%2ftech.zephyrl.co%2f2019%2f08%2fdiaryoflnmp%2f&amp;appkey=&amp;title=%e6%88%91%e7%9a%84Ubuntu%20Server%20LNMP%e6%8a%98%e8%85%be%e7%ac%94%e8%ae%b0" target="_blank" title="Share on Weibo">
+            <i class="fab fa-weibo fa-fw"></i>
+        </a>
     
 </span>
                 
@@ -551,7 +528,11 @@ Commercial support is available at
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
+<<<<<<< HEAD
             <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+=======
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2019</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">梦黎</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+>>>>>>> bdd1772b7ef933b1e29522d7a7610d94b50764f3
     </div>
 </footer>
 

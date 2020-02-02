@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>SSM框架学习笔记（五） 面向切面开发（AOP） | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noodp" />
-<meta name="Description" content="一个准程序员的自留地">
+<meta name="Description" content="梦黎的小窝，一个学习中的程序员的自留地">
 <link rel="prev" href="https://tech.zephyrl.co/2019/12/ssm4/" />
 <link rel="next" href="https://tech.zephyrl.co/2019/12/ssm6/" />
 <link rel="canonical" href="https://tech.zephyrl.co/2019/12/ssm5/" />
@@ -41,7 +41,7 @@
     
         "keywords": "学习笔记, Java, 后端开发笔记, Spring, Spring MVC, MyBatics, Java SSM企业课",
     
-    "wordcount":  1777 ,
+    "wordcount":  1821 ,
     "url": "https:\/\/tech.zephyrl.co\/2019\/12\/ssm5\/",
     
         "datePublished": "2019-12-19T16:21:59\x2b08:00",
@@ -55,7 +55,7 @@
     
         "publisher": {
             "@type": "Organization",
-            "name": "Zephyr",
+            "name": "XXXX",
             "logo": {
             "@type": "ImageObject",
             "url": "https:\/\/tech.zephyrl.co\/logo.png",
@@ -94,7 +94,7 @@
             
                 <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于</a>
             
             <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
         </div>
@@ -119,7 +119,7 @@
             
                 <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于</a>
             
             <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
         </div>
@@ -136,7 +136,7 @@
 
         <div class="post-meta">
             <div class="post-meta-main">
-                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>梦黎&nbsp;</a>
                 <span class="post-category">
                         收录于
                         <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/ssm%E6%A1%86%E6%9E%B6/">SSM框架</a>
@@ -146,7 +146,7 @@
             </div>
             <div class="post-meta-other">
                 <i class="far fa-calendar-alt fa-fw"></i><time datetime=2019-12-19>2019-12-19</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 1777 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1821 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 4 分钟&nbsp;</div>
         </div>
 
@@ -180,10 +180,7 @@
             
             
             
-            
-
-<a class="post-dummy-target" id="aop-中的术语"></a><h2>AOP 中的术语</h2>
-
+            <a class="post-dummy-target" id="aop-"></a><h2>AOP 中的术语</h2>
 <ul>
 <li>Joinpoint(连接点):所谓连接点是指那些被拦截到的点。在 spring 中,这些点指的是方法,因为 spring 只支持方法类型的连接点.</li>
 <li>Pointcut(切入点):所谓切入点是指我们要对哪些 Joinpoint 进行拦截的定义.</li>
@@ -196,11 +193,10 @@
 <li>Proxy（代理） :一个类被 AOP 织入增强后，就产生一个结果代理类</li>
 <li>Aspect(切面): 是切入点和通知（引介）的结合</li>
 </ul>
-
-<a class="post-dummy-target" id="需要导的-jar-包"></a><h2>需要导的 Jar 包</h2>
+<a class="post-dummy-target" id="-jar-"></a><h2>需要导的 Jar 包</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -214,24 +210,24 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- spring 的传统 AOP 的开发的包 --&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>spring-aop<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>4.3.19.RELEASE<span class="nt">&lt;/version&gt;</span>
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--</span><span class="c"> spring 的传统 AOP 的开发的包 </span><span class="c">--&gt;</span>
+<span class="nt">&lt;dependency</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;groupId</span><span class="nt">&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId</span><span class="nt">&gt;</span>spring-aop<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version</span><span class="nt">&gt;</span>4.3.19.RELEASE<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
-<span class="c">&lt;!-- aspectJ 的开发包: --&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>spring-aspects<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>4.3.19.RELEASE<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span></code></pre></td></tr></table>
+<span class="c">&lt;!--</span><span class="c"> aspectJ 的开发包: </span><span class="c">--&gt;</span>
+<span class="nt">&lt;dependency</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;groupId</span><span class="nt">&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId</span><span class="nt">&gt;</span>spring-aspects<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version</span><span class="nt">&gt;</span>4.3.19.RELEASE<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="引入-spring-的配置文件-引入-aop-约束"></a><h2>引入 Spring 的配置文件，引入 AOP 约束</h2>
+</div><a class="post-dummy-target" id="-spring--aop-"></a><h2>引入 Spring 的配置文件，引入 AOP 约束</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -243,7 +239,7 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- spring.xml --&gt;</span>
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--</span><span class="c"> spring.xml </span><span class="c">--&gt;</span>
 <span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.springframework.org/schema/beans&#34;</span>
 <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
 <span class="na">xmlns:aop=</span><span class="s">&#34;http://www.springframework.org/schema/aop&#34;</span>
@@ -252,15 +248,14 @@
 </span><span class="s">http://www.springframework.org/schema/beans/spring-beans.xsd
 </span><span class="s">http://www.springframework.org/schema/aop
 </span><span class="s">http://www.springframework.org/schema/aop/spring-aop.xsd&#34;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/beans&gt;</span></code></pre></td></tr></table>
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="编写目标类"></a><h2>编写目标类</h2>
-
-<a class="post-dummy-target" id="编写接口"></a><h3>编写接口</h3>
+</div><a class="post-dummy-target" id="heading"></a><h2>编写目标类</h2>
+<a class="post-dummy-target" id="heading-1"></a><h3>编写接口</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -270,20 +265,20 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nf">co</span><span class="p">.</span><span class="na">zephyrl</span><span class="p">.</span><span class="na">dao</span><span class="p">;</span>
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">co.zephyrl.dao</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="nf">interface</span> <span class="n">UserDao</span> <span class="p">{</span>
-    <span class="kt">void</span> <span class="nf">find</span><span class="p">();</span>
-    <span class="kt">void</span> <span class="nf">save</span><span class="p">();</span>
-    <span class="kt">void</span> <span class="nf">update</span><span class="p">();</span>
-    <span class="kt">int</span> <span class="nf">delete</span><span class="p">();</span>
-<span class="p">}</span></code></pre></td></tr></table>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserDao</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">find</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+    <span class="kt">void</span> <span class="nf">save</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+    <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="nf">delete</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="编写目标类对象"></a><h3>编写目标类对象</h3>
+</div><a class="post-dummy-target" id="heading-2"></a><h3>编写目标类对象</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -309,47 +304,46 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nf">co</span><span class="p">.</span><span class="na">zephyrl</span><span class="p">.</span><span class="na">dao</span><span class="p">;</span>
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">co.zephyrl.dao</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="nf">class</span> <span class="n">UserDaoImpl</span> <span class="nf">implements</span> <span class="n">UserDao</span><span class="p">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserDaoImpl</span> <span class="kd">implements</span> <span class="n">UserDao</span><span class="o">{</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nf">void</span> <span class="n">find</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;查找用户&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nf">void</span> <span class="n">save</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;保存&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">find</span><span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;查找用户&#34;</span><span class="o">)</span><span class="o">;</span>
+    <span class="o">}</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nf">void</span> <span class="n">update</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;更新&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">save</span><span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;保存&#34;</span><span class="o">)</span><span class="o">;</span>
+    <span class="o">}</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nf">int</span> <span class="n">delete</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;删除&#34;</span><span class="p">);</span>
-        <span class="k">return</span> <span class="n">1</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></td></tr></table>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;更新&#34;</span><span class="o">)</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">delete</span><span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;删除&#34;</span><span class="o">)</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">1</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="目标类的配置"></a><h2>目标类的配置</h2>
+</div><a class="post-dummy-target" id="heading-3"></a><h2>目标类的配置</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- spring.xml --&gt;</span>
-<span class="c">&lt;!-- 这个bean填写目标类的信息 --&gt;</span>
-<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;userDao&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.dao.UserDaoImpl&#34;</span><span class="nt">&gt;&lt;/bean&gt;</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--</span><span class="c"> spring.xml </span><span class="c">--&gt;</span>
+<span class="c">&lt;!--</span><span class="c"> 这个bean填写目标类的信息 </span><span class="c">--&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;userDao&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.dao.UserDaoImpl&#34;</span><span class="nt">&gt;</span><span class="nt">&lt;/bean&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="通知类型"></a><h2>通知类型</h2>
-
+</div><a class="post-dummy-target" id="heading-4"></a><h2>通知类型</h2>
 <ul>
 <li>前置通知 ：在目标方法执行之前执行.</li>
 <li>后置通知 ：在目标方法执行之后执行</li>
@@ -357,21 +351,15 @@
 <li>异常抛出通知：在目标方法执行出现异常的时候执行</li>
 <li>最终通知 ：无论目标方法是否出现异常最终通知都会执行</li>
 </ul>
-
-<a class="post-dummy-target" id="切入点表达式"></a><h2>切入点表达式</h2>
-
+<a class="post-dummy-target" id="heading-5"></a><h2>切入点表达式</h2>
 <p><code>execution</code> 主要用在 spring.xml 配置文件中。</p>
-
-<a class="post-dummy-target" id="execution-expressions"></a><h3><code>execution([expressions])</code></h3>
-
+<a class="post-dummy-target" id="executionexpressions"></a><h3><code>execution([expressions])</code></h3>
 <ul>
 <li>*：匹配任何数量字符；</li>
 <li>..：匹配任何数量字符的重复，如在类型模式中匹配任何数量子包；而在方法参数模式中匹配任何数量参数。</li>
 <li>+：匹配指定类型的子类型；仅能作为后缀放在类型模式后边。</li>
 </ul>
-
-<a class="post-dummy-target" id="表达式格式"></a><h3>表达式格式</h3>
-
+<a class="post-dummy-target" id="heading-6"></a><h3>表达式格式</h3>
 <table>
 <thead>
 <tr>
@@ -379,34 +367,29 @@
 <th align="center">意义</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="center">public * com.itdr.dao.*.*(..)</td>
 <td align="center">任意返回值类型，dao包下的任意类的任意方法都会被增强</td>
 </tr>
-
 <tr>
 <td align="center">* com.itdr.dao.*.*(..)</td>
 <td align="center">任意修饰符，任意返回值类型，dao包下的任意类的任意方法都会被增强</td>
 </tr>
-
 <tr>
 <td align="center">* com.itdr.dao.UserDao+.*(..)</td>
 <td align="center">表示当前类和它的子类的所有方法都会被增强</td>
 </tr>
-
 <tr>
 <td align="center">* com.itdr.dao..*.*(..)</td>
 <td align="center">任意修饰符，任意返回值类型，dao包及其子包下的下的任意类的任意方法都会被增强</td>
 </tr>
 </tbody>
 </table>
-
-<a class="post-dummy-target" id="编写一个切面类"></a><h2>编写一个切面类</h2>
+<a class="post-dummy-target" id="heading-7"></a><h2>编写一个切面类</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -430,34 +413,34 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- 配置切面类 --&gt;</span>
-<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;aopDemo&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.dao.AopDemo&#34;</span><span class="nt">&gt;&lt;/bean&gt;</span>
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--</span><span class="c"> 配置切面类 </span><span class="c">--&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;aopDemo&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.dao.AopDemo&#34;</span><span class="nt">&gt;</span><span class="nt">&lt;/bean&gt;</span>
 
-<span class="c">&lt;!-- 进行AOP设置 --&gt;</span>
-<span class="nt">&lt;aop:config&gt;</span>
+<span class="c">&lt;!--</span><span class="c"> 进行AOP设置 </span><span class="c">--&gt;</span>
+<span class="nt">&lt;aop:config</span><span class="nt">&gt;</span>
     <span class="nt">&lt;aop:pointcut</span> <span class="na">id=</span><span class="s">&#34;p1&#34;</span> <span class="na">expression=</span><span class="s">&#34;execution(* co.zephyrl.dao.UserDao.save(..))&#34;</span>  <span class="nt">/&gt;</span>
     <span class="nt">&lt;aop:pointcut</span> <span class="na">id=</span><span class="s">&#34;p2&#34;</span> <span class="na">expression=</span><span class="s">&#34;execution(* co.zephyrl.dao.UserDao.delete(..))&#34;</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;aop:pointcut</span> <span class="na">id=</span><span class="s">&#34;p3&#34;</span> <span class="na">expression=</span><span class="s">&#34;execution(* co.zephyrl.dao.UserDao.update(..))&#34;</span><span class="nt">/&gt;</span>
-    <span class="c">&lt;!--配置切面--&gt;</span>
+    <span class="c">&lt;!--</span><span class="c">配置切面</span><span class="c">--&gt;</span>
     <span class="nt">&lt;aop:aspect</span> <span class="na">ref=</span><span class="s">&#34;aopDemo&#34;</span><span class="nt">&gt;</span>
-        <span class="c">&lt;!-- 配置前置通知指向切面中的方法，切入点指向p1 --&gt;</span>
+        <span class="c">&lt;!--</span><span class="c"> 配置前置通知指向切面中的方法，切入点指向p1 </span><span class="c">--&gt;</span>
         <span class="nt">&lt;aop:before</span> <span class="na">method=</span><span class="s">&#34;before&#34;</span> <span class="na">pointcut-ref=</span><span class="s">&#34;p1&#34;</span> <span class="nt">/&gt;</span>
-        <span class="c">&lt;!-- 配置后置通知指向切面中的删除方法，切入点指向p2 --&gt;</span>
+        <span class="c">&lt;!--</span><span class="c"> 配置后置通知指向切面中的删除方法，切入点指向p2 </span><span class="c">--&gt;</span>
         <span class="nt">&lt;aop:after-returning</span> <span class="na">method=</span><span class="s">&#34;af&#34;</span> <span class="na">pointcut-ref=</span><span class="s">&#34;p2&#34;</span> <span class="na">returning=</span><span class="s">&#34;num&#34;</span> <span class="nt">/&gt;</span>
-        <span class="c">&lt;!-- 配置环绕通知指向切面中的修改方法，切入点指向p3 --&gt;</span>
+        <span class="c">&lt;!--</span><span class="c"> 配置环绕通知指向切面中的修改方法，切入点指向p3 </span><span class="c">--&gt;</span>
         <span class="nt">&lt;aop:around</span> <span class="na">method=</span><span class="s">&#34;ar&#34;</span> <span class="na">pointcut-ref=</span><span class="s">&#34;p3&#34;</span> <span class="nt">/&gt;</span>
-        <span class="c">&lt;!-- 配置异常通知指向切面中的修改方法，切入点指向p3 --&gt;</span>
+        <span class="c">&lt;!--</span><span class="c"> 配置异常通知指向切面中的修改方法，切入点指向p3 </span><span class="c">--&gt;</span>
         <span class="nt">&lt;aop:after-throwing</span> <span class="na">method=</span><span class="s">&#34;th&#34;</span> <span class="na">pointcut-ref=</span><span class="s">&#34;p3&#34;</span> <span class="na">throwing=</span><span class="s">&#34;thr&#34;</span> <span class="nt">/&gt;</span>
-        <span class="c">&lt;!-- 配置最终通知指向切面中的修改方法，切入点指向p3 --&gt;</span>
+        <span class="c">&lt;!--</span><span class="c"> 配置最终通知指向切面中的修改方法，切入点指向p3 </span><span class="c">--&gt;</span>
         <span class="nt">&lt;aop:after</span> <span class="na">method=</span><span class="s">&#34;zz&#34;</span> <span class="na">pointcut-ref=</span><span class="s">&#34;p3&#34;</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;/aop:aspect&gt;</span>
-<span class="nt">&lt;/aop:config&gt;</span></code></pre></td></tr></table>
+<span class="nt">&lt;/aop:config&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="测试"></a><h2>测试</h2>
+</div><a class="post-dummy-target" id="heading-8"></a><h2>测试</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -470,27 +453,25 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="nf">class</span> <span class="n">TestDemo</span> <span class="p">{</span>
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestDemo</span> <span class="o">{</span>
     <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="nf">void</span> <span class="n">demo1</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">ApplicationContext</span> <span class="nf">ac</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassPathXmlApplicationContext</span><span class="p">(</span><span class="s">&#34;spring.xml&#34;</span><span class="p">);</span>
-        <span class="n">UserDao</span> <span class="nf">userDao</span> <span class="o">=</span> <span class="n">ac</span><span class="p">.</span><span class="na">getBean</span><span class="p">(</span><span class="s">&#34;userDao&#34;</span><span class="p">,</span> <span class="n">UserDao</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-        <span class="n">userDao</span><span class="p">.</span><span class="na">find</span><span class="p">();</span>
-        <span class="n">userDao</span><span class="p">.</span><span class="na">save</span><span class="p">();</span>
-        <span class="n">userDao</span><span class="p">.</span><span class="na">delete</span><span class="p">();</span>
-        <span class="n">userDao</span><span class="p">.</span><span class="na">update</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></td></tr></table>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">demo1</span><span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ApplicationContext</span> <span class="n">ac</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassPathXmlApplicationContext</span><span class="o">(</span><span class="s">&#34;spring.xml&#34;</span><span class="o">)</span><span class="o">;</span>
+        <span class="n">UserDao</span> <span class="n">userDao</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&#34;userDao&#34;</span><span class="o">,</span> <span class="n">UserDao</span><span class="o">.</span><span class="na">class</span><span class="o">)</span><span class="o">;</span>
+        <span class="n">userDao</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+        <span class="n">userDao</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+        <span class="n">userDao</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+        <span class="n">userDao</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="aop-底层原理-了解"></a><h2>AOP 底层原理（了解）</h2>
-
+</div><a class="post-dummy-target" id="aop--1"></a><h2>AOP 底层原理（了解）</h2>
 <p>AOP的底层原理是<strong>动态代理</strong>技术，而动态代理技术的底层原理是是<strong>反射</strong></p>
-
 <p>下面我们来使用 JDK 动态代理增强一个类中方法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -513,33 +494,33 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="nf">class</span> <span class="n">MyJDKProxy</span> <span class="nf">implements</span> <span class="n">InvocationHandler</span> <span class="p">{</span>
-    <span class="kd">private</span> <span class="nf">UserDao</span> <span class="n">userDao</span><span class="p">;</span>
-    <span class="kd">public</span> <span class="nf">MyJDKProxy</span><span class="p">(</span><span class="n">UserDao</span> <span class="nf">userDao</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="na">userDao</span> <span class="o">=</span> <span class="n">userDao</span><span class="p">;</span>
-    <span class="p">}</span>
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyJDKProxy</span> <span class="kd">implements</span> <span class="n">InvocationHandler</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">UserDao</span> <span class="n">userDao</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">MyJDKProxy</span><span class="o">(</span><span class="n">UserDao</span> <span class="n">userDao</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">userDao</span> <span class="o">=</span> <span class="n">userDao</span><span class="o">;</span>
+    <span class="o">}</span>
     <span class="c1">// 编写工具方法：生成代理
-</span><span class="c1"></span>    <span class="kd">public</span> <span class="nf">UserDao</span> <span class="n">createProxy</span><span class="p">(){</span>
-        <span class="n">UserDao</span> <span class="nf">userDaoProxy</span> <span class="o">=</span> <span class="p">(</span><span class="n">UserDao</span><span class="p">)</span>
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="n">UserDao</span> <span class="nf">createProxy</span><span class="o">(</span><span class="o">)</span><span class="o">{</span>
+        <span class="n">UserDao</span> <span class="n">userDaoProxy</span> <span class="o">=</span> <span class="o">(</span><span class="n">UserDao</span><span class="o">)</span>
         <span class="c1">// 获取字节码
-</span><span class="c1"></span>        <span class="n">Proxy</span><span class="p">.</span><span class="na">newProxyInstance</span><span class="p">(</span><span class="n">userDao</span><span class="p">.</span><span class="na">getClass</span><span class="p">().</span><span class="na">getClassLoader</span><span class="p">(),</span>
-        <span class="n">userDao</span><span class="p">.</span><span class="na">getClass</span><span class="p">().</span><span class="na">getInterfaces</span><span class="p">(),</span> <span class="k">this</span><span class="p">);</span>
-        <span class="k">return</span> <span class="n">userDaoProxy</span><span class="p">;</span>
-    <span class="p">}</span>
+</span><span class="c1"></span>        <span class="n">Proxy</span><span class="o">.</span><span class="na">newProxyInstance</span><span class="o">(</span><span class="n">userDao</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="o">)</span><span class="o">.</span><span class="na">getClassLoader</span><span class="o">(</span><span class="o">)</span><span class="o">,</span>
+        <span class="n">userDao</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="o">)</span><span class="o">.</span><span class="na">getInterfaces</span><span class="o">(</span><span class="o">)</span><span class="o">,</span> <span class="k">this</span><span class="o">)</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">userDaoProxy</span><span class="o">;</span>
+    <span class="o">}</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nf">Object</span> <span class="n">invoke</span><span class="p">(</span><span class="n">Object</span> <span class="nf">proxy</span><span class="p">,</span> <span class="n">Method</span> <span class="nf">method</span><span class="p">,</span> <span class="n">Object</span><span class="p">[]</span> <span class="nf">args</span><span class="p">)</span> <span class="kd">throws</span> <span class="nf">Throwable</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="s">&#34;save&#34;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">method</span><span class="p">.</span><span class="na">getName</span><span class="p">())){</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;权限校验================&#34;</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">method</span><span class="p">.</span><span class="na">invoke</span><span class="p">(</span><span class="n">userDao</span><span class="p">,</span> <span class="n">args</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></td></tr></table>
+    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">Object</span> <span class="n">proxy</span><span class="o">,</span> <span class="n">Method</span> <span class="n">method</span><span class="o">,</span> <span class="n">Object</span><span class="o">[</span><span class="o">]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="s">&#34;save&#34;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">method</span><span class="o">.</span><span class="na">getName</span><span class="o">(</span><span class="o">)</span><span class="o">)</span><span class="o">)</span><span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;权限校验================&#34;</span><span class="o">)</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">method</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">userDao</span><span class="o">,</span> <span class="n">args</span><span class="o">)</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>进行单元测试：</p>
+</div><p>进行单元测试：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -550,19 +531,19 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
-<span class="kd">public</span> <span class="nf">void</span> <span class="n">test</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">UserDao</span> <span class="nf">ud</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JDBCUserDaoImpl</span><span class="p">();</span>
-    <span class="n">ud</span><span class="p">.</span><span class="na">save</span><span class="p">();</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">UserDao</span> <span class="n">ud</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JDBCUserDaoImpl</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+    <span class="n">ud</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
     <span class="c1">// 代理
-</span><span class="c1"></span>    <span class="n">UserDao</span> <span class="nf">udProxy</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JDKProxy</span><span class="p">(</span><span class="n">ud</span><span class="p">).</span><span class="na">createProxy</span><span class="p">;</span>
-    <span class="n">udProxy</span><span class="p">.</span><span class="na">save</span><span class="p">();</span>
-<span class="p">}</span></code></pre></td></tr></table>
+</span><span class="c1"></span>    <span class="n">UserDao</span> <span class="n">udProxy</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JDKProxy</span><span class="o">(</span><span class="n">ud</span><span class="o">)</span><span class="o">.</span><span class="na">createProxy</span><span class="o">;</span>
+    <span class="n">udProxy</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>除此之外我们还可以用 Cglib 动态代理增强一个类中的方法:</p>
+</div><p>除此之外我们还可以用 Cglib 动态代理增强一个类中的方法:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -591,33 +572,34 @@
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="nf">class</span> <span class="n">MyCglibProxy</span> <span class="nf">implements</span> <span class="n">MethodInterceptor</span><span class="p">{</span>
-    <span class="kd">private</span> <span class="nf">CustomerDao</span> <span class="n">customerDao</span><span class="p">;</span>
-    <span class="kd">public</span> <span class="nf">MyCglibProxy</span><span class="p">(</span><span class="n">CustomerDao</span> <span class="nf">customerDao</span><span class="p">){</span>
-        <span class="k">this</span><span class="p">.</span><span class="na">customerDao</span> <span class="o">=</span> <span class="n">customerDao</span><span class="p">;</span>
-    <span class="p">}</span>
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyCglibProxy</span> <span class="kd">implements</span> <span class="n">MethodInterceptor</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="n">CustomerDao</span> <span class="n">customerDao</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">MyCglibProxy</span><span class="o">(</span><span class="n">CustomerDao</span> <span class="n">customerDao</span><span class="o">)</span><span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">customerDao</span> <span class="o">=</span> <span class="n">customerDao</span><span class="o">;</span>
+    <span class="o">}</span>
     <span class="c1">// 生成代理的方法:
-</span><span class="c1"></span>    <span class="kd">public</span> <span class="nf">CustomerDao</span> <span class="n">createProxy</span><span class="p">(){</span>
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="n">CustomerDao</span> <span class="nf">createProxy</span><span class="o">(</span><span class="o">)</span><span class="o">{</span>
         <span class="c1">// 创建 Cglib 的核心类:
-</span><span class="c1"></span>        <span class="n">Enhancer</span> <span class="nf">enhancer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Enhancer</span><span class="p">();</span>
+</span><span class="c1"></span>        <span class="n">Enhancer</span> <span class="n">enhancer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Enhancer</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
         <span class="c1">// 设置父类:
-</span><span class="c1"></span>        <span class="n">enhancer</span><span class="p">.</span><span class="na">setSuperclass</span><span class="p">(</span><span class="n">CustomerDao</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+</span><span class="c1"></span>        <span class="n">enhancer</span><span class="o">.</span><span class="na">setSuperclass</span><span class="o">(</span><span class="n">CustomerDao</span><span class="o">.</span><span class="na">class</span><span class="o">)</span><span class="o">;</span>
         <span class="c1">// 设置回调:
-</span><span class="c1"></span>        <span class="n">enhancer</span><span class="p">.</span><span class="na">setCallback</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class="c1"></span>        <span class="n">enhancer</span><span class="o">.</span><span class="na">setCallback</span><span class="o">(</span><span class="k">this</span><span class="o">)</span><span class="o">;</span>
         <span class="c1">// 生成代理：
-</span><span class="c1"></span>        <span class="n">CustomerDao</span> <span class="nf">customerDaoProxy</span> <span class="o">=</span> <span class="p">(</span><span class="n">CustomerDao</span><span class="p">)</span> <span class="n">enhancer</span><span class="p">.</span><span class="na">create</span><span class="p">();</span>
-        <span class="k">return</span> <span class="n">customerDaoProxy</span><span class="p">;</span>
-    <span class="p">}</span>
+</span><span class="c1"></span>        <span class="n">CustomerDao</span> <span class="n">customerDaoProxy</span> <span class="o">=</span> <span class="o">(</span><span class="n">CustomerDao</span><span class="o">)</span> <span class="n">enhancer</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">customerDaoProxy</span><span class="o">;</span>
+    <span class="o">}</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nf">Object</span> <span class="n">intercept</span><span class="p">(</span><span class="n">Object</span> <span class="nf">proxy</span><span class="p">,</span> <span class="n">Method</span> <span class="nf">method</span><span class="p">,</span> <span class="n">Object</span><span class="p">[]</span> <span class="nf">args</span><span class="p">,</span> <span class="n">MethodProxy</span> <span class="nf">methodProxy</span><span class="p">)</span> <span class="kd">throws</span> <span class="nf">Throwable</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="s">&#34;delete&#34;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">method</span><span class="p">.</span><span class="na">getName</span><span class="p">())){</span>
-            <span class="n">Object</span> <span class="nf">obj</span> <span class="o">=</span> <span class="n">methodProxy</span><span class="p">.</span><span class="na">invokeSuper</span><span class="p">(</span><span class="n">proxy</span><span class="p">,</span> <span class="n">args</span><span class="p">);</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;日志记录================&#34;</span><span class="p">);</span>
-            <span class="k">return</span> <span class="n">obj</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">methodProxy</span><span class="p">.</span><span class="na">invokeSuper</span><span class="p">(</span><span class="n">proxy</span><span class="p">,</span> <span class="n">args</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></td></tr></table>
+    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">intercept</span><span class="o">(</span><span class="n">Object</span> <span class="n">proxy</span><span class="o">,</span> <span class="n">Method</span> <span class="n">method</span><span class="o">,</span> <span class="n">Object</span><span class="o">[</span><span class="o">]</span> <span class="n">args</span><span class="o">,</span> <span class="n">MethodProxy</span> <span class="n">methodProxy</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="s">&#34;delete&#34;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">method</span><span class="o">.</span><span class="na">getName</span><span class="o">(</span><span class="o">)</span><span class="o">)</span><span class="o">)</span><span class="o">{</span>
+            <span class="n">Object</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">methodProxy</span><span class="o">.</span><span class="na">invokeSuper</span><span class="o">(</span><span class="n">proxy</span><span class="o">,</span> <span class="n">args</span><span class="o">)</span><span class="o">;</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;日志记录================&#34;</span><span class="o">)</span><span class="o">;</span>
+            <span class="k">return</span> <span class="n">obj</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">methodProxy</span><span class="o">.</span><span class="na">invokeSuper</span><span class="o">(</span><span class="n">proxy</span><span class="o">,</span> <span class="n">args</span><span class="o">)</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -664,6 +646,10 @@
     
     
     
+    
+        <a href="//service.weibo.com/share/share.php?url=https%3a%2f%2ftech.zephyrl.co%2f2019%2f12%2fssm5%2f&amp;appkey=&amp;title=SSM%e6%a1%86%e6%9e%b6%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%ba%94%ef%bc%89%20%e9%9d%a2%e5%90%91%e5%88%87%e9%9d%a2%e5%bc%80%e5%8f%91%ef%bc%88AOP%ef%bc%89" target="_blank" title="Share on Weibo">
+            <i class="fab fa-weibo fa-fw"></i>
+        </a>
     
 </span>
                 
@@ -734,7 +720,11 @@
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
+<<<<<<< HEAD
             <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+=======
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2019</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">梦黎</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+>>>>>>> bdd1772b7ef933b1e29522d7a7610d94b50764f3
     </div>
 </footer>
 
