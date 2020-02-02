@@ -23,7 +23,7 @@ cp -r contrib/vim/* ~/.vim
 
 效果如下：
 
-![vim高亮](../../../blogImgsBak/NginxTips1/1.png)
+![vim高亮](https://img.zephyrl.co/images/2020/02/02/113c975dbbd1057df.png)
 
 ## 编译相关
 

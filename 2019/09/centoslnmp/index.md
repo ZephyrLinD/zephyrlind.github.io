@@ -46,7 +46,7 @@ cd mysql-boost-5.7.27
 CMake需要单独创建一个文件夹来存放编译出来的文件。
 
 ```bash
-mkdir build 
+mkdir build
 cd build
 ```
 
@@ -156,6 +156,7 @@ make && make install
 $ mysql
 mysql>SET PASSWORD FOR 'root'@'localhost' = PASSWORD('你的密码');
 ```
+
 然后就可以执行`show databases;`等等指令看一下是否出错了，一般是不会出错的。
 
 在mysql终端内开启远程权限
@@ -163,6 +164,7 @@ mysql>SET PASSWORD FOR 'root'@'localhost' = PASSWORD('你的密码');
 ```bash
 mysql>grant all privileges on *.* to 'root'@'%' identified by '你的密码' with grant option;
 ```
+
 第一个\*代表所有数据库，第二\*代表所有表，赋予root权限 “%”代表所有服务器终端，也可设为IP地址
 
 之后，去服务器管理页面打开3306的端口就可以远程连接啦。
@@ -470,8 +472,8 @@ cd php-7.1.32
  --enable-zip\
  --with-pear
  ```
- 
- ## 配置
+
+## 配置
 
  执行完安装命令后php7就已经安装在到了`/usr/local/php`目录下了。
 

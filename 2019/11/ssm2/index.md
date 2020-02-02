@@ -19,7 +19,7 @@ Spring是一个开放源代码的设计层面框架，他解决的是业务逻�
 
 Spring Framework由大约20个模块组成的功能组成。这些模块分为核心容器，数据访问/集成，Web，AOP（面向方面​​编程），仪器，消息传递和测试，如下图所示
 
-![Spring模块](../../../blogImgsBak/Spring2/1.png)
+![Spring模块](https://img.zephyrl.co/images/2020/02/02/1ba3eac8c098e0956.png)
 
 1. Spring核心容器：核心容器是Spring框架的重要组成部分，也可以说是Spring框架的基础。他在整个框架中的作用是负责管理对象的创建，管理，配置等等的操作。其主要包含spring-core，spring-beans，spring-context，spring-expression，spring-context-support组件。
 
@@ -41,7 +41,7 @@ Spring Framework由大约20个模块组成的功能组成。这些模块分为�
 
     前往Maven的[mvnrepository页面](https://mvnrepository.com/)来搜索Spring，在结果中寻找Spring Context即可。我们要求的是[4.3.19 RELEASE版本](https://mvnrepository.com/artifact/org.springframework/spring-context/4.3.19.RELEASE)。复制如图代码，粘贴到`pom.xml`中的`<dependencies>`代码块中，点击右下角弹出的`Import`，稍等片刻即可完成导包。
 
-    ![导包](../../../blogImgsBak/Spring2/2.png)
+    ![导包](https://img.zephyrl.co/images/2020/02/02/2c62852644f1f8b54.png)
 
 2. 导入Spring整合单元测试包
 
@@ -69,7 +69,7 @@ Spring Framework由大约20个模块组成的功能组成。这些模块分为�
 
     然后再单元测试文件夹`test`中，新建类`TestDemo1`，输入如下代码。注意添加注解`@Test`后会自动补全上方代码，然后点击左边绿色的运行按钮，会输出容器内默认值。
 
-    ![单元测试](../../../blogImgsBak/Spring2/3.png)
+    ![单元测试](https://img.zephyrl.co/images/2020/02/02/39a3f44d7f4528a0c.png)
 
 ## Spring核心：控制反转+依赖注入（IOC+DI）
 
@@ -122,7 +122,7 @@ Spring Framework由大约20个模块组成的功能组成。这些模块分为�
 
    此时返回单元测试模块，点击运行，结果如下：
 
-   ![set方法注入](../../../blogImgsBak/Spring2/4.png)
+   ![set方法注入](https://img.zephyrl.co/images/2020/02/02/41c1260fa10e2898f.png)
 
    相当容器在运行中不只实例化了Bean，而且给它赋值了。
 

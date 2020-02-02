@@ -1690,7 +1690,7 @@ jdbc.passWord=123456&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt
 &lt;/div&gt;
 &lt;p&gt;效果如下：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../../../blogImgsBak/NginxTips1/1.png&#34; alt=&#34;vim高亮&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/113c975dbbd1057df.png&#34; alt=&#34;vim高亮&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;编译相关&#34;&gt;编译相关&lt;/h2&gt;
 
@@ -1858,7 +1858,7 @@ mv &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;
 
 &lt;p&gt;Spring Framework由大约20个模块组成的功能组成。这些模块分为核心容器，数据访问/集成，Web，AOP（面向方面​​编程），仪器，消息传递和测试，如下图所示&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../../../blogImgsBak/Spring2/1.png&#34; alt=&#34;Spring模块&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/1ba3eac8c098e0956.png&#34; alt=&#34;Spring模块&#34; /&gt;&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Spring核心容器：核心容器是Spring框架的重要组成部分，也可以说是Spring框架的基础。他在整个框架中的作用是负责管理对象的创建，管理，配置等等的操作。其主要包含spring-core，spring-beans，spring-context，spring-expression，spring-context-support组件。&lt;/p&gt;&lt;/li&gt;
@@ -1883,7 +1883,7 @@ mv &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;
 
 &lt;p&gt;前往Maven的&lt;a href=&#34;https://mvnrepository.com/&#34;&gt;mvnrepository页面&lt;/a&gt;来搜索Spring，在结果中寻找Spring Context即可。我们要求的是&lt;a href=&#34;https://mvnrepository.com/artifact/org.springframework/spring-context/4.3.19.RELEASE&#34;&gt;4.3.19 RELEASE版本&lt;/a&gt;。复制如图代码，粘贴到&lt;code&gt;pom.xml&lt;/code&gt;中的&lt;code&gt;&amp;lt;dependencies&amp;gt;&lt;/code&gt;代码块中，点击右下角弹出的&lt;code&gt;Import&lt;/code&gt;，稍等片刻即可完成导包。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../../../blogImgsBak/Spring2/2.png&#34; alt=&#34;导包&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/2c62852644f1f8b54.png&#34; alt=&#34;导包&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;导入Spring整合单元测试包&lt;/p&gt;
 
@@ -1919,7 +1919,7 @@ mv &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;
 
 &lt;p&gt;然后再单元测试文件夹&lt;code&gt;test&lt;/code&gt;中，新建类&lt;code&gt;TestDemo1&lt;/code&gt;，输入如下代码。注意添加注解&lt;code&gt;@Test&lt;/code&gt;后会自动补全上方代码，然后点击左边绿色的运行按钮，会输出容器内默认值。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../../../blogImgsBak/Spring2/3.png&#34; alt=&#34;单元测试&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/39a3f44d7f4528a0c.png&#34; alt=&#34;单元测试&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&#34;spring核心-控制反转-依赖注入-ioc-di&#34;&gt;Spring核心：控制反转+依赖注入（IOC+DI）&lt;/h2&gt;
@@ -1993,7 +1993,7 @@ mv &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;
 
 &lt;p&gt;此时返回单元测试模块，点击运行，结果如下：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../../../blogImgsBak/Spring2/4.png&#34; alt=&#34;set方法注入&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/41c1260fa10e2898f.png&#34; alt=&#34;set方法注入&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;相当容器在运行中不只实例化了Bean，而且给它赋值了。&lt;/p&gt;
 
@@ -2366,37 +2366,37 @@ whereis python3 &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;xargs rm -frv&lt;/co
 
 &lt;p&gt;所以我们一般新建一个空项目来导入模块。新建空项目，然后点击加号新建一个Maven模块。然后根据下图选择：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../../../blogImgsBak/Spring1/1.png&#34; alt=&#34;Spring-1&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://img.zephyrl.co/image/Uzu&#34;&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/1.png&#34; alt=&#34;1.png&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;点击下一步，写出自己的组名，再次点击下一步:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../../../blogImgsBak/Spring1/2.png&#34; alt=&#34;Spring-2&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://img.zephyrl.co/image/3Np&#34;&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/2.png&#34; alt=&#34;2.png&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;之后是让选择自己的Maven二进制文件、配置文件的位置和包存储位置，填写上面设置的即可：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../../../blogImgsBak/Spring1/3.png&#34; alt=&#34;Spring-3&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://img.zephyrl.co/image/HX1&#34;&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/3.png&#34; alt=&#34;3.png&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../../../blogImgsBak/Spring1/4.png&#34; alt=&#34;Spring-4&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://img.zephyrl.co/image/tFa&#34;&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/4.png&#34; alt=&#34;4.png&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;在之后就进入了漫长的读条时间，第一次编译会很慢，后几次就不会这么慢了，出现&lt;code&gt;BUILD SUCCEED&lt;/code&gt;即可说明配置完成，点击应用即可。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../../../BlogImgsBak/Spring1/5.png&#34; alt=&#34;Spring-5&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://img.zephyrl.co/image/brq&#34;&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/5.png&#34; alt=&#34;5.png&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;打开Maven生成的&lt;code&gt;pom.xml&lt;/code&gt;文件，找到如下代码段，将JDK版本改成自己版本（我是1.8）,然后在&lt;code&gt;&amp;lt;dependency&amp;gt;&lt;/code&gt;模块内的&lt;code&gt;junit&lt;/code&gt;版本换成4.12&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../../../blogImgsBak/Spring1/6.png&#34; alt=&#34;Spring-6&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://img.zephyrl.co/image/FSW&#34;&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/6.png&#34; alt=&#34;6.png&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;之后在左边的目录下创建四个文件夹，文件夹名和结构如下图：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../../../blogImgsBak/Spring1/7.png&#34; alt=&#34;Spring-7&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://img.zephyrl.co/image/Gsy&#34;&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/7.png&#34; alt=&#34;7.png&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;之后要把文件夹的标签换成相应标签，有两种办法，第一种办法是右键文件夹，选择&lt;code&gt;Mark Directory as&lt;/code&gt;然后改成相对文件夹：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../../../blogImgsBak/Spring1/8.png&#34; alt=&#34;Spring-8&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://img.zephyrl.co/image/N2Vh&#34;&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/8.png&#34; alt=&#34;8.png&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;第二种办法是打开工程设置，然后点击文件夹和想要标记的文件夹类型一一对应即可：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../../../blogImgsBak/Spring1/9.png&#34; alt=&#34;Spring-9&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://img.zephyrl.co/image/lAX&#34;&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/9.png&#34; alt=&#34;9.png&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;之后，删掉&lt;code&gt;index.jsp&lt;/code&gt;，新建一个JSP文件，取名为&lt;code&gt;index.jsp&lt;/code&gt;&lt;/p&gt;
 
@@ -2556,7 +2556,7 @@ tar zxvf mysql-boost-5.7.27.tar.gz
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mkdir build 
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mkdir build
 &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; build&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3321,7 +3321,7 @@ tar zxvf php-7.1.32.tar.gz
 &lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt; --with-pear&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;## 配置&lt;/p&gt;
+&lt;h2 id=&#34;配置&#34;&gt;配置&lt;/h2&gt;
 
 &lt;p&gt;执行完安装命令后php7就已经安装在到了&lt;code&gt;/usr/local/php&lt;/code&gt;目录下了。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -3616,7 +3616,7 @@ v2.8.3&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;证书签发成功会有如下输出：&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://graph.zephyrl.co/image/TTsA&#34;&gt;&lt;img src=&#34;http://graph.zephyrl.co/images/2019/08/25/success.md.png&#34; alt=&#34;success.md.png&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/success.png&#34; alt=&#34;success.png&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;从截图看出，生成的证书放在了&lt;code&gt;/root/.acme.sh/esofar.cn&lt;/code&gt;目录。&lt;/p&gt;
 
@@ -3631,7 +3631,7 @@ v2.8.3&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 查看证书列表&lt;/span&gt;
-acme.sh --list 
+acme.sh --list
 
 &lt;span class=&#34;c1&#34;&gt;# 删除证书&lt;/span&gt;
 acme.sh remove &amp;lt;SAN_Domains&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
@@ -3667,7 +3667,7 @@ acme.sh remove &amp;lt;SAN_Domains&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&l
 &lt;/div&gt;
 &lt;p&gt;成功后：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://graph.zephyrl.co/images/2019/08/25/successinstall.png&#34; alt=&#34;successinstall.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/successinstall.png&#34; alt=&#34;successinstall.png&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;最后一步就是修改Nginx配置文件，启动SSL，之后重启Nginx，其中Nginx配置可以参考以下，转载自别人的博客&lt;/p&gt;
 
@@ -4263,7 +4263,7 @@ Commercial support is available at
 
 &lt;p&gt;说起Windows的终端大家第一印象就是傻大笨，从黑框框CMD的古老到升级的Powershell的复杂多变，大家似乎对Windows的终端充满了厌恶。我也一次次转到Linux系统（比如Ubuntu、Fedora、DeepinOS等都尝试过）但是因为很多原因没办法完全使用下去（绝对不是因为我喜欢玩游戏，哼╭(╯^╰)╮），装了Hackintosh但是不够完美（而且我的ThinkPad和Hackintosh总有一种违和感），但是又怀念我的Fedora上面漂亮的oh-my-zsh，顺便看着同学的MacBook Pro流口水，我开始上网寻找答案。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://graph.zephyrl.co/images/2019/08/24/powershell.png&#34; alt=&#34;Powershell&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/powershell08e74457a8f1b3df.png&#34; alt=&#34;Powershell&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;首先找到答案的是安装WSL（Windows Subsystem for Linux），我尝试安装了之后发现美观问题略有解决。但是之后发现系统隔绝还是很大的，反正就是总是报一些小错误，让人很烦。此时我不得不切换回了Powershell，开始思考他的美化问题。于是我找到了Oh-My-Posh。&lt;/p&gt;
 
@@ -4288,7 +4288,7 @@ Commercial support is available at
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;首先，右键Windows徽标，出现如图所示，选择  &lt;code&gt;Windows Powershell(管理员)(A)&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://graph.zephyrl.co/images/2019/08/24/chooseadmin.png&#34; alt=&#34;选择管理员模式很重要&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/chooseadmin649ade80c96f89b8.png&#34; alt=&#34;选择管理员模式很重要&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;然后，在命令行粘贴以下下代码&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -4320,7 +4320,7 @@ Commercial support is available at
 
 &lt;p&gt;然后，打开你的开始菜单，就可以找到 Fluent Terminal 啦。第一次打开是这个样子的：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://graph.zephyrl.co/images/2019/08/24/fluentterminalbasic.png&#34; alt=&#34;第一次打开的 Fluent Terminal，我一直觉得UWP超级好看&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/fluentterminalbasic9a1456cda72bae44.png&#34; alt=&#34;第一次打开的 Fluent Terminal，我一直觉得UWP超级好看&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;这时，关掉你的蓝框框吧，开始用 Fluent Terminal 吧！&lt;/p&gt;
 
@@ -4361,7 +4361,7 @@ Commercial support is available at
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;n&#34;&gt;Install-Module&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oh-my-posh&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-Scope&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CurrentUser&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;&lt;img src=&#34;http://graph.zephyrl.co/images/2019/08/24/installingposh.png&#34; alt=&#34;安装过程&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/installingposheac6b9c8d94cfd01.png&#34; alt=&#34;安装过程&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;注：所有提示 &lt;code&gt;不受信任的存储库&lt;/code&gt; 选项都选 &lt;code&gt;[A]全是(A)&lt;/code&gt;，后文不再赘述。&lt;/p&gt;&lt;/li&gt;
 
@@ -4405,13 +4405,13 @@ Commercial support is available at
 &lt;/div&gt;
 &lt;p&gt;运行截图如下（如图我搞错了重定向运算符的概念，大家别犯错啊）：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://graph.zephyrl.co/images/2019/08/24/settingprofiles.png&#34; alt=&#34;运行示例图&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/settingprofiles91912df5d209082c.png&#34; alt=&#34;运行示例图&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;重新启动 Fluent Terminal 看看刚刚配置的有没有生效吧！&lt;/p&gt;
 
 &lt;p&gt;反正我是发现，生效了，但是还是有一些意外。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://graph.zephyrl.co/images/2019/08/24/accident.png&#34; alt=&#34;Accident!&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/accident8e917c6f150d52be.png&#34; alt=&#34;Accident!&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;不用慌，回到刚刚的文件里，注释掉 &lt;code&gt;Import-Model oh-my-posh&lt;/code&gt; 这句话就好了。&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -4422,7 +4422,7 @@ Commercial support is available at
 
 &lt;p&gt;所以大家可以进入 &lt;code&gt;chocolatey&lt;/code&gt; 的安装路径，一般是在 &lt;code&gt;C:\ProgramData&lt;/code&gt; 下，右键文件夹 &lt;code&gt;chocolatey&lt;/code&gt; ,&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://graph.zephyrl.co/images/2019/08/24/chocosettings.png&#34; alt=&#34;编辑&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://img.zephyrl.co/images/2020/02/02/chocosettings97e2f6b4254201b3.png&#34; alt=&#34;编辑&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;将下面全部在“允许”调对勾即可。&lt;/p&gt;
 

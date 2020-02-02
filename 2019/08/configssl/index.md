@@ -53,7 +53,7 @@ acme.sh --issue -d example.com -d www.example.com -w /home/wwwroot/example.com
 
 证书签发成功会有如下输出：
 
-[![success.md.png](http://graph.zephyrl.co/images/2019/08/25/success.md.png)](http://graph.zephyrl.co/image/TTsA)
+![success.png](https://img.zephyrl.co/images/2020/02/02/success.png)
 
 从截图看出，生成的证书放在了`/root/.acme.sh/esofar.cn`目录。
 
@@ -61,7 +61,7 @@ acme.sh --issue -d example.com -d www.example.com -w /home/wwwroot/example.com
 
 ```shell
 # 查看证书列表
-acme.sh --list 
+acme.sh --list
 
 # 删除证书
 acme.sh remove <SAN_Domains>
@@ -88,7 +88,7 @@ mkdir /etc/nginx/ssl
 
 成功后：
 
-![successinstall.png](http://graph.zephyrl.co/images/2019/08/25/successinstall.png)
+![successinstall.png](https://img.zephyrl.co/images/2020/02/02/successinstall.png)
 
 最后一步就是修改Nginx配置文件，启动SSL，之后重启Nginx，其中Nginx配置可以参考以下，转载自别人的博客
 
