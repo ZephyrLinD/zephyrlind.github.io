@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Centos7安装Pyhon3 | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noodp" />
-<meta name="Description" content="梦黎的小窝，一个学习中的程序员的自留地">
+<meta name="Description" content="一个准程序员的自留地">
 <link rel="prev" href="https://tech.zephyrl.co/2019/09/centoslnmp/" />
 <link rel="next" href="https://tech.zephyrl.co/2019/10/ssm1/" />
 <link rel="canonical" href="https://tech.zephyrl.co/2019/09/centos7-py3/" />
@@ -55,7 +55,7 @@
     
         "publisher": {
             "@type": "Organization",
-            "name": "XXXX",
+            "name": "Zephyr",
             "logo": {
             "@type": "ImageObject",
             "url": "https:\/\/tech.zephyrl.co\/logo.png",
@@ -94,7 +94,7 @@
             
                 <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于</a>
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
             
             <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
         </div>
@@ -119,7 +119,7 @@
             
                 <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于</a>
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
             
             <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
         </div>
@@ -136,7 +136,7 @@
 
         <div class="post-meta">
             <div class="post-meta-main">
-                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>梦黎&nbsp;</a>
+                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
                 <span class="post-category">
                         收录于
                         <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
@@ -181,33 +181,38 @@
             
             
             
-            <a class="post-dummy-target" id="heading"></a><h2>前言</h2>
+            
+
+<a class="post-dummy-target" id="前言"></a><h2>前言</h2>
+
 <p>CentOS 的第三方软件源中（如：IUS，SCL，EPEL）还没有 Python 3.7 的 RPM 软件包，本文介绍使用源码方式安装 Python 3.7。</p>
-<a class="post-dummy-target" id="heading-1"></a><h2>安装依赖包</h2>
+
+<a class="post-dummy-target" id="安装依赖包"></a><h2>安装依赖包</h2>
+
 <p>因为在CentOS7中源码安装Python 3.7之前需要安装GCC和make编译工具，该工具保安在“Development toos”软件组中，可以直接安装</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">yum groupinstall <span class="s2">&#34;Development tools&#34;</span>
-</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">yum groupinstall <span class="s2">&#34;Development tools&#34;</span></code></pre></td></tr></table>
 </div>
-</div><p>再安装一些其他的依赖</p>
+</div>
+<p>再安装一些其他的依赖</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash">yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
-yum install libffi-devel -y
-</code></pre></td></tr></table>
+yum install libffi-devel -y</code></pre></td></tr></table>
 </div>
-</div><a class="post-dummy-target" id="heading-2"></a><h2>下载源代码包解压</h2>
+</div>
+<a class="post-dummy-target" id="下载源代码包解压"></a><h2>下载源代码包解压</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -218,21 +223,21 @@ yum install libffi-devel -y
 wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz
 <span class="nb">cd</span> Python-3.7.4
 ./configure --prefix<span class="o">=</span>/usr/local/python3
-make <span class="o">&amp;&amp;</span> make install
-</code></pre></td></tr></table>
+make <span class="o">&amp;&amp;</span> make install</code></pre></td></tr></table>
 </div>
-</div><a class="post-dummy-target" id="heading-3"></a><h2>建立软连接</h2>
+</div>
+<a class="post-dummy-target" id="建立软连接"></a><h2>建立软连接</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash">ln -s /usr/local/python3/bin/python3 /usr/local/bin/python3
-ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
-</code></pre></td></tr></table>
+ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3</code></pre></td></tr></table>
 </div>
-</div><p>之后就可以在终端输入python3或者pip来玩耍啦！</p>
+</div>
+<p>之后就可以在终端输入python3或者pip来玩耍啦！</p>
 
         </div>
 
@@ -278,10 +283,6 @@ ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
     
     
     
-    
-        <a href="//service.weibo.com/share/share.php?url=https%3a%2f%2ftech.zephyrl.co%2f2019%2f09%2fcentos7-py3%2f&amp;appkey=&amp;title=Centos7%e5%ae%89%e8%a3%85Pyhon3" target="_blank" title="Share on Weibo">
-            <i class="fab fa-weibo fa-fw"></i>
-        </a>
     
 </span>
                 
@@ -332,11 +333,7 @@ ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-<<<<<<< HEAD
             <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
-=======
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2019</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">梦黎</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
->>>>>>> bdd1772b7ef933b1e29522d7a7610d94b50764f3
     </div>
 </footer>
 

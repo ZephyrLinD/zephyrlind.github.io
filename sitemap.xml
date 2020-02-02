@@ -6,10 +6,8 @@
                 <lastmod>2019-12-23T15:01:38+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -20,10 +18,8 @@
                 <lastmod>2019-12-23T15:01:38+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -34,10 +30,8 @@
                 <lastmod>2019-12-23T15:01:38+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -48,10 +42,8 @@
                 <lastmod>2019-12-23T15:01:38+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -62,38 +54,8 @@
                 <lastmod>2019-12-23T15:01:38+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/tags/spring/</loc>
-            
-                <lastmod>2019-12-23T15:01:38+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/tags/spring-mvc/</loc>
-            
-                <lastmod>2019-12-23T15:01:38+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -104,10 +66,8 @@
                 <lastmod>2019-12-23T15:01:38+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -127,15 +87,37 @@
         </url>
     
         <url>
+            <loc>https://tech.zephyrl.co/tags/spring/</loc>
+            
+                <lastmod>2019-12-23T15:01:38+08:00</lastmod>
+            
+            
+            
+                <priority>0</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/tags/spring-mvc/</loc>
+            
+                <lastmod>2019-12-23T15:01:38+08:00</lastmod>
+            
+            
+            
+                <priority>0</priority>
+            
+            
+        </url>
+    
+        <url>
             <loc>https://tech.zephyrl.co/tags/</loc>
             
                 <lastmod>2019-12-23T15:01:38+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -146,10 +128,8 @@
                 <lastmod>2019-12-23T15:01:38+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -160,10 +140,8 @@
                 <lastmod>2019-12-23T15:01:38+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -174,10 +152,8 @@
                 <lastmod>2019-12-23T15:01:38+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -188,10 +164,8 @@
                 <lastmod>2019-12-23T15:01:38+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -244,10 +218,8 @@
                 <lastmod>2019-11-13T20:08:41+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -258,10 +230,8 @@
                 <lastmod>2019-11-13T20:08:41+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -272,10 +242,8 @@
                 <lastmod>2019-11-13T20:08:41+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -286,10 +254,8 @@
                 <lastmod>2019-11-13T20:08:41+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -300,10 +266,8 @@
                 <lastmod>2019-11-13T20:08:41+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -328,10 +292,8 @@
                 <lastmod>2019-11-13T20:08:41+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -342,10 +304,8 @@
                 <lastmod>2019-11-13T20:08:41+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -384,10 +344,8 @@
                 <lastmod>2019-11-07T20:00:04+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -426,10 +384,8 @@
                 <lastmod>2019-09-23T16:18:34+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -440,10 +396,8 @@
                 <lastmod>2019-09-23T16:18:34+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -454,10 +408,8 @@
                 <lastmod>2019-09-23T16:18:34+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -482,10 +434,8 @@
                 <lastmod>2019-08-25T22:35:14+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -510,10 +460,8 @@
                 <lastmod>2019-08-25T20:16:52+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -552,10 +500,8 @@
                 <lastmod>2019-08-24T13:45:32+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
@@ -580,10 +526,8 @@
                 <lastmod>2019-08-03T22:40:13+08:00</lastmod>
             
             
-                <changefreq>weekly</changefreq>
             
-            
-                <priority>0.5</priority>
+                <priority>0</priority>
             
             
         </url>
