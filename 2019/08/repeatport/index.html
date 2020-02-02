@@ -180,16 +180,12 @@
             
             
             
-            
-
-<a class="post-dummy-target" id="在配置一台服务器多个网站的ssl的时候出现了一些问题"></a><h2>在配置一台服务器多个网站的SSL的时候出现了一些问题&hellip;</h2>
-
+            <a class="post-dummy-target" id="在配置一台服务器多个网站的ssl的时候出现了一些问题"></a><h2>在配置一台服务器多个网站的SSL的时候出现了一些问题&hellip;</h2>
 <p>当我端口转发第一个网站的时候，发现第二个配置好的会转发到第一个网站&hellip;</p>
-
 <p>解决办法：在第二个网站的config里面吧return 403改掉</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-Nginx" data-lang="Nginx"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -200,15 +196,12 @@
     <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
     <span class="kn">server_name</span> <span class="s">2nd.example.com</span><span class="p">;</span>
     <span class="kn">rewrite</span> <span class="s">^</span> <span class="s">https://</span><span class="nv">$server_name$request_uri?</span> <span class="s">permanent</span><span class="p">;</span>
-<span class="p">}</span></code></pre></td></tr></table>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>即可解决问题</p>
-
+</div><p>即可解决问题</p>
 <p>RTM的&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..</p>
-
-<p>问题解决的链接：<a href="http://blog.chinaunix.net/uid-231372-id-4584714.html">http://blog.chinaunix.net/uid-231372-id-4584714.html</a></p>
-
+<p>问题解决的链接：http://blog.chinaunix.net/uid-231372-id-4584714.html</p>
 <p>感谢这位大佬。侵删。</p>
 
         </div>

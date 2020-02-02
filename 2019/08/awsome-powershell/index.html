@@ -179,137 +179,113 @@
             
             
             
-            
-
-<a class="post-dummy-target" id="前言"></a><h2>前言</h2>
-
+            <a class="post-dummy-target" id="前言"></a><h2>前言</h2>
 <p>说起Windows的终端大家第一印象就是傻大笨，从黑框框CMD的古老到升级的Powershell的复杂多变，大家似乎对Windows的终端充满了厌恶。我也一次次转到Linux系统（比如Ubuntu、Fedora、DeepinOS等都尝试过）但是因为很多原因没办法完全使用下去（绝对不是因为我喜欢玩游戏，哼╭(╯^╰)╮），装了Hackintosh但是不够完美（而且我的ThinkPad和Hackintosh总有一种违和感），但是又怀念我的Fedora上面漂亮的oh-my-zsh，顺便看着同学的MacBook Pro流口水，我开始上网寻找答案。</p>
-
-<p><figure><img src=/images/loading.svg data-sizes=auto data-src=https://img.zephyrl.co/images/2020/02/02/powershell08e74457a8f1b3df.png alt=Powershell class=lazyload><figcaption class=image-caption>Powershell</figcaption></figure></p>
-
+<p><img src="https://img.zephyrl.co/images/2020/02/02/powershell08e74457a8f1b3df.png" alt="Powershell"></p>
 <p>首先找到答案的是安装WSL（Windows Subsystem for Linux），我尝试安装了之后发现美观问题略有解决。但是之后发现系统隔绝还是很大的，反正就是总是报一些小错误，让人很烦。此时我不得不切换回了Powershell，开始思考他的美化问题。于是我找到了Oh-My-Posh。</p>
-
 <p>在所有问题之前我要先说一个类似于Fedora里面的<code>dnf</code>或者<code>yum</code>，Ubuntu里面类似<code>apt</code>的软件包安装器一样的东西 —— Chocolatey。</p>
-
 <p><strong>不要问我有没有用，生命不息，折腾不止！</strong></p>
-
 <a class="post-dummy-target" id="chocolatey-的安装"></a><h2>Chocolatey 的安装</h2>
-
 <p>Chocolatey是一种软件包安装器，通过它可以集中安装、管理、更新各种各样的软件。</p>
-
 <p>特别适合管理一些小众、轻量的开源软件。</p>
-
 <p>可以一条命令更新全部软件，特别适合治疗自己的更新强迫症（尤其是遇上一些不能自动检查更新的软件时）。</p>
-
 <p>除了直接自动化从程序官网拽安装包，自动化安装外。官方的源里面，还有一些绿化的软件、净化软件可以开袋即食。</p>
-
 <p><del>最主要的是还可以装逼</del></p>
-
 <p>安装Chocolatey的方式十分简单</p>
-
 <ul>
-<li><p>首先，右键Windows徽标，出现如图所示，选择  <code>Windows Powershell(管理员)(A)</code></p>
-
-<p><figure><img src=/images/loading.svg data-sizes=auto data-src=https://img.zephyrl.co/images/2020/02/02/chooseadmin649ade80c96f89b8.png alt=选择管理员模式很重要 class=lazyload><figcaption class=image-caption>选择管理员模式很重要</figcaption></figure></p></li>
-
-<li><p>然后，在命令行粘贴以下下代码</p>
+<li>
+<p>首先，右键Windows徽标，出现如图所示，选择  <code>Windows Powershell(管理员)(A)</code></p>
+<p><img src="https://img.zephyrl.co/images/2020/02/02/chooseadmin649ade80c96f89b8.png" alt="选择管理员模式很重要"></p>
+</li>
+<li>
+<p>然后，在命令行粘贴以下下代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Set-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-Force</span><span class="p">;</span> <span class="n">iex</span> <span class="p">((</span><span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="n">DownloadString</span><span class="p">(</span><span class="s1">&#39;https://chocolatey.org/install.ps1&#39;</span><span class="p">))</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Set-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-Force</span><span class="p">;</span> <span class="nb">iex </span><span class="p">(</span><span class="p">(</span><span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">)</span><span class="p">.</span><span class="n">DownloadString</span><span class="p">(</span><span class="s1">&#39;https://chocolatey.org/install.ps1&#39;</span><span class="p">)</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
-
-<li><p>大功告成！</p></li>
+<li>
+<p>大功告成！</p>
+</li>
 </ul>
-
 <a class="post-dummy-target" id="安装-fluent-terminal-以及字体"></a><h2>安装 Fluent Terminal 以及字体</h2>
-
 <a class="post-dummy-target" id="安装"></a><h3>安装</h3>
-
 <p>安装完chocolatey之后，安装Fluent Terminal的方法就十分简单了</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">choco</span> <span class="n">install</span> <span class="n">fluent-terminal</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">choco</span> <span class="n">install</span> <span class="n">fluent</span><span class="n">-terminal</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>如果在安装过程中提示是否安装脚本，请选择<code>(A)全部安装</code></p>
-
+</div><p>如果在安装过程中提示是否安装脚本，请选择<code>(A)全部安装</code></p>
 <p>然后，打开你的开始菜单，就可以找到 Fluent Terminal 啦。第一次打开是这个样子的：</p>
-
-<p><figure><img src=/images/loading.svg data-sizes=auto data-src=https://img.zephyrl.co/images/2020/02/02/fluentterminalbasic9a1456cda72bae44.png alt=第一次打开的 Fluent Terminal，我一直觉得UWP超级好看 class=lazyload><figcaption class=image-caption>第一次打开的 Fluent Terminal，我一直觉得UWP超级好看</figcaption></figure></p>
-
+<p><img src="https://img.zephyrl.co/images/2020/02/02/fluentterminalbasic9a1456cda72bae44.png" alt="第一次打开的 Fluent Terminal，我一直觉得UWP超级好看"></p>
 <p>这时，关掉你的蓝框框吧，开始用 Fluent Terminal 吧！</p>
-
 <a class="post-dummy-target" id="字体配置"></a><h3>字体配置</h3>
-
 <p>Oh-My-Posh 支持 Powerline 字体，才能达到上图那样漂亮的样子，先去 <a href="https://github.com/powerline/fonts">PowerLine的Github仓库</a> 下载 <code>DejavuSansMono</code>吧，貌似这个才是唯一支持的字体（反正我用的这个）。</p>
-
 <p>安装完字体后，具体的设置是点击右上角的三个横杠 - 设置 - 终端 - 字体，选择<code>DejavuSansMono</code>即可。</p>
-
 <a class="post-dummy-target" id="安装-posh-和-oh-my-posh"></a><h2>安装 Posh 和 Oh-My-Posh</h2>
-
 <ul>
-<li><p>首先执行这行代码，解决 Posh 依赖，并安装 Posh-Git</p>
+<li>
+<p>首先执行这行代码，解决 Posh 依赖，并安装 Posh-Git</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">Install-Module</span> <span class="n">posh-git</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Install-Module</span> <span class="n">posh</span><span class="n">-git</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>如果提示安装 NuGet，就回车；如果此前没有开启执行任意脚本，此处也会提示执行脚本。如果没有权限执行脚本，可能需要先执行 （一切正常就不用执行）</p>
+</div><p>如果提示安装 NuGet，就回车；如果此前没有开启执行任意脚本，此处也会提示执行脚本。如果没有权限执行脚本，可能需要先执行 （一切正常就不用执行）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Set-ExecutionPolicy</span> <span class="n">Bypass</span><span class="err">。</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Set-ExecutionPolicy</span> <span class="n">Bypass</span><span class="err">。</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
-
-<li><p>然后安装 Oh-My-Posh 本身</p>
+<li>
+<p>然后安装 Oh-My-Posh 本身</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">Install-Module</span> <span class="n">oh-my-posh</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Install-Module</span> <span class="n">oh</span><span class="n">-my</span><span class="n">-posh</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p><figure><img src=/images/loading.svg data-sizes=auto data-src=https://img.zephyrl.co/images/2020/02/02/installingposheac6b9c8d94cfd01.png alt=安装过程 class=lazyload><figcaption class=image-caption>安装过程</figcaption></figure></p>
-
-<p>注：所有提示 <code>不受信任的存储库</code> 选项都选 <code>[A]全是(A)</code>，后文不再赘述。</p></li>
-
-<li><p>此时我们的 Oh-My-Posh 已经安装成功啦，让我们激活它</p>
+</div><p><img src="https://img.zephyrl.co/images/2020/02/02/installingposheac6b9c8d94cfd01.png" alt="安装过程"></p>
+<p>注：所有提示 <code>不受信任的存储库</code> 选项都选 <code>[A]全是(A)</code>，后文不再赘述。</p>
+</li>
+<li>
+<p>此时我们的 Oh-My-Posh 已经安装成功啦，让我们激活它</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Import-Module</span> <span class="n">oh-my-posh</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Import-Module</span> <span class="n">oh</span><span class="n">-my</span><span class="n">-posh</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>之后就会发现终端发生一些变化，<strong>但是这只是暂时的</strong>，重启终端就会消失。我们需要做一些改变，就像配置 <code>zsh</code> 的 <code>.zshrc</code> 一样。</p></li>
-
-<li><p>设置自启动</p>
-
+</div><p>之后就会发现终端发生一些变化，<strong>但是这只是暂时的</strong>，重启终端就会消失。我们需要做一些改变，就像配置 <code>zsh</code> 的 <code>.zshrc</code> 一样。</p>
+</li>
+<li>
+<p>设置自启动</p>
 <p>首先通过 <code>$PROFILE</code> 命令，读取了默认的配置文件路径。如果你直接没有配置过，那么这个文件是不存在的。</p>
-
 <p>首先通过 <code>cd</code> 命令进入到配置文件所在文件夹下，然后通过 <code>New-Item</code> 命令创建该配置文件，然后通过管道流往配置文件中写入 <code>Import-Module oh-my-posh</code>。</p>
-
 <p>通过 <code>Get-Content</code> 命令查看文件，验证内容的确写入。</p>
-
 <p>以我个人为例代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -318,71 +294,57 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">$PROFILE</span>
-<span class="n">cd</span> <span class="p">.\</span><span class="n">Documents</span><span class="p">\</span><span class="n">WindowsPowerShell</span><span class="p">\</span>
+<span class="nb">cd </span><span class="p">.</span><span class="p">\</span><span class="n">Documents</span><span class="p">\</span><span class="n">WindowsPowerShell</span><span class="p">\</span>
 <span class="nb">New-Item</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">PowerShell_profile</span><span class="p">.</span><span class="n">ps1</span>
 <span class="s1">&#39;Import-Model oh-my-posh&#39;</span> <span class="p">&gt;</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">PowerShell_profile</span><span class="p">.</span><span class="n">ps1</span>
-<span class="s1">&#39;Set-Theme Honukai&#39;</span> <span class="p">&gt;&gt;</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">PowerShell_profile</span><span class="p">.</span><span class="n">ps1</span> 
-<span class="nb">Get-Content</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">PowerShell_profile</span><span class="p">.</span><span class="n">ps1</span></code></pre></td></tr></table>
+<span class="s1">&#39;Set-Theme Honukai&#39;</span> <span class="p">&gt;</span><span class="p">&gt;</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">PowerShell_profile</span><span class="p">.</span><span class="n">ps1</span> 
+<span class="nb">Get-Content</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">PowerShell_profile</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>运行截图如下（如图我搞错了重定向运算符的概念，大家别犯错啊）：</p>
-
-<p><figure><img src=/images/loading.svg data-sizes=auto data-src=https://img.zephyrl.co/images/2020/02/02/settingprofiles91912df5d209082c.png alt=运行示例图 class=lazyload><figcaption class=image-caption>运行示例图</figcaption></figure></p></li>
-
-<li><p>重新启动 Fluent Terminal 看看刚刚配置的有没有生效吧！</p>
-
+</div><p>运行截图如下（如图我搞错了重定向运算符的概念，大家别犯错啊）：</p>
+<p><img src="https://img.zephyrl.co/images/2020/02/02/settingprofiles91912df5d209082c.png" alt="运行示例图"></p>
+</li>
+<li>
+<p>重新启动 Fluent Terminal 看看刚刚配置的有没有生效吧！</p>
 <p>反正我是发现，生效了，但是还是有一些意外。</p>
-
-<p><figure><img src=/images/loading.svg data-sizes=auto data-src=https://img.zephyrl.co/images/2020/02/02/accident8e917c6f150d52be.png alt=Accident! class=lazyload><figcaption class=image-caption>Accident!</figcaption></figure></p>
-
-<p>不用慌，回到刚刚的文件里，注释掉 <code>Import-Model oh-my-posh</code> 这句话就好了。</p></li>
+<p><img src="https://img.zephyrl.co/images/2020/02/02/accident8e917c6f150d52be.png" alt="Accident!"></p>
+<p>不用慌，回到刚刚的文件里，注释掉 <code>Import-Model oh-my-posh</code> 这句话就好了。</p>
+</li>
 </ul>
-
 <a class="post-dummy-target" id="后续操作"></a><h2>后续操作</h2>
-
 <p>如果大家想用 <code>Fluent Terminal + choco</code> 来进行日常开源软件的安装，大家会发现因为权限不够无法安装（除非使用Administrator账户登录），</p>
-
 <p>所以大家可以进入 <code>chocolatey</code> 的安装路径，一般是在 <code>C:\ProgramData</code> 下，右键文件夹 <code>chocolatey</code> ,</p>
-
-<p><figure><img src=/images/loading.svg data-sizes=auto data-src=https://img.zephyrl.co/images/2020/02/02/chocosettings97e2f6b4254201b3.png alt=编辑 class=lazyload><figcaption class=image-caption>编辑</figcaption></figure></p>
-
+<p><img src="https://img.zephyrl.co/images/2020/02/02/chocosettings97e2f6b4254201b3.png" alt="编辑"></p>
 <p>将下面全部在“允许”调对勾即可。</p>
-
 <p>如果大家想在windows下实现类似Linux环境中的 <code>sudo</code> 指令，可以在管理员模式下打开 <code>powershell</code> 输入：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">choco</span> <span class="n">install</span> <span class="n">sudo</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">choco</span> <span class="n">install</span> <span class="n">sudo</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>关掉powershell，打开Fluent terminal会生效。</p>
-
+</div><p>关掉powershell，打开Fluent terminal会生效。</p>
 <p>sudo-for-windows<a href="http://blog.lukesampson.com/sudo-for-windows">项目官网</a>在这里，可以点击进入查看详情。官网说的是用scoop安装，我用的choco，大同小异。</p>
-
 <a class="post-dummy-target" id="如果不想折腾"></a><h2>如果不想折腾</h2>
-
 <p>以管理员身份在文件夹打开powershell</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">ZephyrLinD</span><span class="p">/</span><span class="n">MyPowershell</span>
-<span class="n">cd</span> <span class="n">MyPowershell</span>
-<span class="p">.\</span><span class="n">MyPowershell</span><span class="p">.</span><span class="n">ps1</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="err">:</span><span class="p">/</span><span class="p">/</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">ZephyrLinD</span><span class="p">/</span><span class="n">MyPowershell</span>
+<span class="nb">cd </span><span class="n">MyPowershell</span>
+<span class="p">.</span><span class="p">\</span><span class="n">MyPowershell</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>在执行上面的后续操作即可。</p>
-
+</div><p>在执行上面的后续操作即可。</p>
 <p>测试机：ThinkPad X1 Carbon 6th Gen</p>
-
 <p>系统版本：Windows 10 1903</p>
-
-<p>本项目地址：<a href="https://github.com/ZephyrLinD/MyPowershell">https://github.com/ZephyrLinD/MyPowershell</a></p>
+<p>本项目地址：https://github.com/ZephyrLinD/MyPowershell</p>
 
         </div>
 

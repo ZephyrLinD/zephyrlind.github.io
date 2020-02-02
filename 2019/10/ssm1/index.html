@@ -41,7 +41,7 @@
     
         "keywords": "学习笔记, Java, 后端开发笔记, Spring, Java SSM企业课",
     
-    "wordcount":  838 ,
+    "wordcount":  837 ,
     "url": "https:\/\/tech.zephyrl.co\/2019\/10\/ssm1\/",
     
         "datePublished": "2019-10-14T21:53:33\x2b08:00",
@@ -146,7 +146,7 @@
             </div>
             <div class="post-meta-other">
                 <i class="far fa-calendar-alt fa-fw"></i><time datetime=2019-10-14>2019-10-14</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 838 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 837 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
         </div>
 
@@ -180,28 +180,18 @@
             
             
             
-            
-
-<a class="post-dummy-target" id="安装jdk"></a><h2>安装JDK</h2>
-
+            <a class="post-dummy-target" id="安装jdk"></a><h2>安装JDK</h2>
 <p>只需安装JDK8即可。不做赘述。</p>
-
 <a class="post-dummy-target" id="安装tomcat"></a><h2>安装TomCat</h2>
-
 <p>安装TomCat8，装在想要解压的位置即可，不做赘述。</p>
-
 <a class="post-dummy-target" id="安装maven"></a><h2>安装Maven</h2>
-
 <p>从Apache网站上下载Maven，解压。</p>
-
 <p>打开<code>conf</code>文件夹中的<code>settings.xml</code></p>
-
 <p>第一步是配置本地仓库：</p>
-
 <p>找到注释中的如下代码段：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -209,31 +199,29 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- localRepository
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--</span><span class="c"> localRepository
 </span><span class="c"> | The path to the local repository maven will use to store artifacts.
 </span><span class="c"> |
 </span><span class="c"> | Default: ${user.home}/.m2/repository
 </span><span class="c">&lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;
-</span><span class="c">--&gt;</span></code></pre></td></tr></table>
+</span><span class="c"></span><span class="c">--&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>中的注释行最后一行挪出来，换到别的地方</p>
+</div><p>中的注释行最后一行挪出来，换到别的地方</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;localRepository&gt;</span>c:\develop\.m2\repository<span class="nt">&lt;/localRepository&gt;</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;localRepository</span><span class="nt">&gt;</span>c:\develop\.m2\repository<span class="nt">&lt;/localRepository&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>我只是以自己为例，中间是路径。</p>
-
+</div><p>我只是以自己为例，中间是路径。</p>
 <p>第二步是添加镜像服务器仓库，</p>
-
 <p>在<code>&lt;mirrors&gt;</code>标签下，添加代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -241,69 +229,46 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;mirror&gt;</span>
-    <span class="nt">&lt;id&gt;</span>alimaven<span class="nt">&lt;/id&gt;</span>
-    <span class="nt">&lt;name&gt;</span>aliyun maven<span class="nt">&lt;/name&gt;</span>
-    <span class="nt">&lt;url&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="nt">&lt;/url&gt;</span>
-    <span class="nt">&lt;mirrorOf&gt;</span>central<span class="nt">&lt;/mirrorOf&gt;</span>
-<span class="nt">&lt;/mirror&gt;</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;mirror</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;id</span><span class="nt">&gt;</span>alimaven<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;name</span><span class="nt">&gt;</span>aliyun maven<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;url</span><span class="nt">&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="nt">&lt;/url&gt;</span>
+    <span class="nt">&lt;mirrorOf</span><span class="nt">&gt;</span>central<span class="nt">&lt;/mirrorOf&gt;</span>
+<span class="nt">&lt;/mirror&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="安装idea-mysql过程不再赘述-官网下载安装即可"></a><h2>安装Idea、MySQL过程不再赘述，官网下载安装即可</h2>
-
+</div><a class="post-dummy-target" id="安装ideamysql过程不再赘述官网下载安装即可"></a><h2>安装Idea、MySQL过程不再赘述，官网下载安装即可</h2>
 <a class="post-dummy-target" id="idea-maven配置"></a><h2>IDEA Maven配置</h2>
-
 <p>IDEA的项目和eclipse不同，idea的项目内可以包含模块，而模块相当于eclipse的项目。</p>
-
 <p>所以我们一般新建一个空项目来导入模块。新建空项目，然后点击加号新建一个Maven模块。然后根据下图选择：</p>
-
-<p><a href="https://img.zephyrl.co/image/Uzu"><figure><img src=/images/loading.svg data-sizes=auto data-src=https://img.zephyrl.co/images/2020/02/02/1.png alt=1.png class=lazyload><figcaption class=image-caption>1.png</figcaption></figure></a></p>
-
+<p><a href="https://img.zephyrl.co/image/Uzu"><img src="https://img.zephyrl.co/images/2020/02/02/1.png" alt="1.png"></a></p>
 <p>点击下一步，写出自己的组名，再次点击下一步:</p>
-
-<p><a href="https://img.zephyrl.co/image/3Np"><figure><img src=/images/loading.svg data-sizes=auto data-src=https://img.zephyrl.co/images/2020/02/02/2.png alt=2.png class=lazyload><figcaption class=image-caption>2.png</figcaption></figure></a></p>
-
+<p><a href="https://img.zephyrl.co/image/3Np"><img src="https://img.zephyrl.co/images/2020/02/02/2.png" alt="2.png"></a></p>
 <p>之后是让选择自己的Maven二进制文件、配置文件的位置和包存储位置，填写上面设置的即可：</p>
-
-<p><a href="https://img.zephyrl.co/image/HX1"><figure><img src=/images/loading.svg data-sizes=auto data-src=https://img.zephyrl.co/images/2020/02/02/3.png alt=3.png class=lazyload><figcaption class=image-caption>3.png</figcaption></figure></a></p>
-
-<p><a href="https://img.zephyrl.co/image/tFa"><figure><img src=/images/loading.svg data-sizes=auto data-src=https://img.zephyrl.co/images/2020/02/02/4.png alt=4.png class=lazyload><figcaption class=image-caption>4.png</figcaption></figure></a></p>
-
+<p><a href="https://img.zephyrl.co/image/HX1"><img src="https://img.zephyrl.co/images/2020/02/02/3.png" alt="3.png"></a></p>
+<p><a href="https://img.zephyrl.co/image/tFa"><img src="https://img.zephyrl.co/images/2020/02/02/4.png" alt="4.png"></a></p>
 <p>在之后就进入了漫长的读条时间，第一次编译会很慢，后几次就不会这么慢了，出现<code>BUILD SUCCEED</code>即可说明配置完成，点击应用即可。</p>
-
-<p><a href="https://img.zephyrl.co/image/brq"><figure><img src=/images/loading.svg data-sizes=auto data-src=https://img.zephyrl.co/images/2020/02/02/5.png alt=5.png class=lazyload><figcaption class=image-caption>5.png</figcaption></figure></a></p>
-
+<p><a href="https://img.zephyrl.co/image/brq"><img src="https://img.zephyrl.co/images/2020/02/02/5.png" alt="5.png"></a></p>
 <p>打开Maven生成的<code>pom.xml</code>文件，找到如下代码段，将JDK版本改成自己版本（我是1.8）,然后在<code>&lt;dependency&gt;</code>模块内的<code>junit</code>版本换成4.12</p>
-
-<p><a href="https://img.zephyrl.co/image/FSW"><figure><img src=/images/loading.svg data-sizes=auto data-src=https://img.zephyrl.co/images/2020/02/02/6.png alt=6.png class=lazyload><figcaption class=image-caption>6.png</figcaption></figure></a></p>
-
+<p><a href="https://img.zephyrl.co/image/FSW"><img src="https://img.zephyrl.co/images/2020/02/02/6.png" alt="6.png"></a></p>
 <p>之后在左边的目录下创建四个文件夹，文件夹名和结构如下图：</p>
-
-<p><a href="https://img.zephyrl.co/image/Gsy"><figure><img src=/images/loading.svg data-sizes=auto data-src=https://img.zephyrl.co/images/2020/02/02/7.png alt=7.png class=lazyload><figcaption class=image-caption>7.png</figcaption></figure></a></p>
-
+<p><a href="https://img.zephyrl.co/image/Gsy"><img src="https://img.zephyrl.co/images/2020/02/02/7.png" alt="7.png"></a></p>
 <p>之后要把文件夹的标签换成相应标签，有两种办法，第一种办法是右键文件夹，选择<code>Mark Directory as</code>然后改成相对文件夹：</p>
-
-<p><a href="https://img.zephyrl.co/image/N2Vh"><figure><img src=/images/loading.svg data-sizes=auto data-src=https://img.zephyrl.co/images/2020/02/02/8.png alt=8.png class=lazyload><figcaption class=image-caption>8.png</figcaption></figure></a></p>
-
+<p><a href="https://img.zephyrl.co/image/N2Vh"><img src="https://img.zephyrl.co/images/2020/02/02/8.png" alt="8.png"></a></p>
 <p>第二种办法是打开工程设置，然后点击文件夹和想要标记的文件夹类型一一对应即可：</p>
-
-<p><a href="https://img.zephyrl.co/image/lAX"><figure><img src=/images/loading.svg data-sizes=auto data-src=https://img.zephyrl.co/images/2020/02/02/9.png alt=9.png class=lazyload><figcaption class=image-caption>9.png</figcaption></figure></a></p>
-
+<p><a href="https://img.zephyrl.co/image/lAX"><img src="https://img.zephyrl.co/images/2020/02/02/9.png" alt="9.png"></a></p>
 <p>之后，删掉<code>index.jsp</code>，新建一个JSP文件，取名为<code>index.jsp</code></p>
-
 <p>此时可以发现代码头部已经标记了如下代码段：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-jsp" data-lang="jsp"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-jsp" data-lang="jsp">&lt;% page contentType=&#34;text/html;charset=UTF-8&#34; language=&#34;java&#34; %&gt;</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;% page contentType=&#34;text/html;charset=UTF-8&#34; language=&#34;java&#34; %&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>此时相关配置就完成啦！</p>
-
+</div><p>此时相关配置就完成啦！</p>
 <a class="post-dummy-target" id="总结"></a><h2>总结</h2>
-
 <p>本节课已经将我们需要的实验环境搭建完成啦！接下来可以通过这个环境进行学习和实验！</p>
 
         </div>

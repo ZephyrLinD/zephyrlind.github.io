@@ -41,7 +41,7 @@
     
         "keywords": "学习笔记, Java, 后端开发笔记, Spring, Spring MVC, MyBatics, Java SSM企业课",
     
-    "wordcount":  1547 ,
+    "wordcount":  1544 ,
     "url": "https:\/\/tech.zephyrl.co\/2019\/11\/ssm3\/",
     
         "datePublished": "2019-11-20T15:40:05\x2b08:00",
@@ -146,7 +146,7 @@
             </div>
             <div class="post-meta-other">
                 <i class="far fa-calendar-alt fa-fw"></i><time datetime=2019-11-20>2019-11-20</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 1547 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1544 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 4 分钟&nbsp;</div>
         </div>
 
@@ -180,53 +180,41 @@
             
             
             
-            
-
-<a class="post-dummy-target" id="命名"></a><h2>命名</h2>
-
+            <a class="post-dummy-target" id="命名"></a><h2>命名</h2>
 <p><code>id</code>：给Bean起个名字。使用了约束中的唯一约束。里面不能出现特殊字符的。</p>
-
 <p><code>name</code>：也是给Bean起个名字。没有使用约束中的唯一约束（理论上可以出现重复的，但是实际开发不能出现的）。里面可以出现特殊字符。如果Bean没有<code>id</code>的话，也可当作id使用。</p>
-
 <p>具体用在如下位置：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;people&#34;</span> <span class="na">name=</span><span class="s">&#34;fuck&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.people&#34;</span><span class="nt">&gt;&lt;/bean&gt;</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;people&#34;</span> <span class="na">name=</span><span class="s">&#34;fuck&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.people&#34;</span><span class="nt">&gt;</span><span class="nt">&lt;/bean&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="生命周期"></a><h2>生命周期</h2>
-
+</div><a class="post-dummy-target" id="生命周期"></a><h2>生命周期</h2>
 <p>init-method: Bean被初始化的时候执行的方法</p>
-
 <p>destroy-method: Bean被销毁的时候执行的方法（Bean是单例创建，工厂关闭）</p>
-
 <ol>
-<li><p>在bean的配置上进行配置：</p>
-
-<p>init method=&ldquo;执行方法的名称&rdquo;</p>
-
-<p>destroy-method=&ldquo;执行方法的名称&rdquo;</p>
-
+<li>
+<p>在bean的配置上进行配置：</p>
+<p>init method=&quot;执行方法的名称&rdquo;</p>
+<p>destroy-method=&quot;执行方法的名称&rdquo;</p>
 <p>在配置文件<code>Spring.xml</code>中添加如下内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- spring.xml --&gt;</span>
-<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;people&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.people&#34;</span> <span class="na">init-method=</span><span class="s">&#34;onInit&#34;</span>   <span class="na">destroy-method=</span><span class="s">&#34;onDestroy&#34;</span><span class="nt">&gt;</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--</span><span class="c"> spring.xml </span><span class="c">--&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;people&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.people&#34;</span> <span class="na">init-method=</span><span class="s">&#34;onInit&#34;</span>   <span class="na">destroy-method=</span><span class="s">&#34;onDestroy&#34;</span><span class="nt">&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div></li>
-</ol>
-
-<p>在Bean体内和单元测试中的写法如下：</p>
+</div><p>在Bean体内和单元测试中的写法如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -243,42 +231,40 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">   <span class="c1">// People.java
-</span><span class="c1"></span>   <span class="kd">public</span> <span class="nf">void</span> <span class="n">onInit</span><span class="p">()</span> <span class="p">{</span>
-       <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;生命周期开始&#34;</span><span class="p">);</span>
-   <span class="p">}</span>
-   <span class="kd">public</span> <span class="nf">void</span> <span class="n">onDestroy</span><span class="p">()</span> <span class="p">{</span>
-       <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;生命周期结束&#34;</span><span class="p">);</span>
-   <span class="p">}</span>
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// People.java
+</span><span class="c1"></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">onInit</span><span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;生命周期开始&#34;</span><span class="o">)</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onDestroy</span><span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;生命周期结束&#34;</span><span class="o">)</span><span class="o">;</span>
+<span class="o">}</span>
 
-   <span class="c1">// test.java
-</span><span class="c1"></span>   <span class="nd">@Test</span>
-   <span class="kd">public</span> <span class="nf">void</span> <span class="n">test1</span><span class="p">()</span> <span class="p">{</span>
-       <span class="n">ApplicationContext</span> <span class="nf">ac</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassXmlApplicationContext</span><span class="p">(</span><span class="s">&#34;spring.xml&#34;</span><span class="p">);</span>
-       <span class="n">People</span> <span class="nf">people</span> <span class="o">=</span> <span class="n">ac</span><span class="p">.</span><span class="na">getBean</span><span class="p">(</span><span class="s">&#34;people&#34;</span><span class="p">,</span> <span class="n">People</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-       <span class="p">((</span><span class="n">ClassPathXmlApplicationContext</span><span class="p">)</span> <span class="n">ac</span><span class="p">).</span><span class="na">close</span><span class="p">();</span>
-   <span class="p">}</span></code></pre></td></tr></table>
+<span class="c1">// test.java
+</span><span class="c1"></span><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">test1</span><span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">ApplicationContext</span> <span class="n">ac</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassXmlApplicationContext</span><span class="o">(</span><span class="s">&#34;spring.xml&#34;</span><span class="o">)</span><span class="o">;</span>
+    <span class="n">People</span> <span class="n">people</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&#34;people&#34;</span><span class="o">,</span> <span class="n">People</span><span class="o">.</span><span class="na">class</span><span class="o">)</span><span class="o">;</span>
+    <span class="o">(</span><span class="o">(</span><span class="n">ClassPathXmlApplicationContext</span><span class="o">)</span> <span class="n">ac</span><span class="o">)</span><span class="o">.</span><span class="na">close</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<ol>
-<li>类实现接口</li>
-</ol>
-
+</div></li>
+<li>
+<p>类实现接口</p>
 <p>分别实现 <code>InitializingBean</code>、<code>DisposableBean</code> 的接口。</p>
-
 <p><code>Spring.xml</code> 代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml">   <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;people&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.people&#34;</span><span class="nt">&gt;&lt;/bean&gt;</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;people&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.people&#34;</span><span class="nt">&gt;</span><span class="nt">&lt;/bean&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>Bean改成如下代码：</p>
+</div><p>Bean改成如下代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -292,28 +278,26 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">   <span class="kd">public</span> <span class="nf">class</span> <span class="n">People</span> <span class="nf">implements</span> <span class="n">InitializingBean</span><span class="p">,</span> <span class="n">DisposableBean</span> <span class="p">{</span>
-       <span class="c1">// 省略其他
-</span><span class="c1"></span>       <span class="nd">@Override</span>
-       <span class="kd">public</span> <span class="nf">void</span> <span class="n">afterPropertiesSet</span><span class="p">()</span> <span class="kd">throws</span> <span class="nf">Exception</span> <span class="p">{</span>
-           <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;实现接口的销毁方法&#34;</span><span class="p">);</span>
-       <span class="p">}</span>
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">People</span> <span class="kd">implements</span> <span class="n">InitializingBean</span><span class="o">,</span> <span class="n">DisposableBean</span> <span class="o">{</span>
+    <span class="c1">// 省略其他
+</span><span class="c1"></span>    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">afterPropertiesSet</span><span class="o">(</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;实现接口的销毁方法&#34;</span><span class="o">)</span><span class="o">;</span>
+    <span class="o">}</span>
 
-       <span class="nd">@Override</span>
-       <span class="kd">public</span> <span class="nf">void</span> <span class="n">destroy</span><span class="p">()</span> <span class="kd">throws</span> <span class="nf">Exception</span> <span class="p">{</span>
-           <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;实现接口的初始化方法&#34;</span><span class="p">);</span>
-       <span class="p">}</span>
-   <span class="p">}</span></code></pre></td></tr></table>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">destroy</span><span class="o">(</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;实现接口的初始化方法&#34;</span><span class="o">)</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>再次执行测试类 <code>TestDemo1</code> 中的 <code>test1()</code> 方法，即可发现效果。</p>
-
+</div><p>再次执行测试类 <code>TestDemo1</code> 中的 <code>test1()</code> 方法，即可发现效果。</p>
 <p><strong>注意：如果以上两个方法同时执行，会先执行类实现接口。</strong></p>
-
 <p>下面这种方式，在类上进行注解时才可使用：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -324,29 +308,26 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">   <span class="nd">@PostConstruct</span>
-    <span class="kd">public</span> <span class="nf">void</span> <span class="n">onInit2</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;初始化&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@PostConstruct</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onInit2</span><span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;初始化&#34;</span><span class="o">)</span><span class="o">;</span>
+ <span class="o">}</span>
 
-   <span class="nd">@PreDestroy</span>
-    <span class="kd">public</span> <span class="nf">void</span> <span class="n">onDestroy2</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;销毁&#34;</span><span class="p">);</span>
-    <span class="p">}</span></code></pre></td></tr></table>
+<span class="nd">@PreDestroy</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onDestroy2</span><span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;销毁&#34;</span><span class="o">)</span><span class="o">;</span>
+ <span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>之后删除继承的<code>InitializingBean</code>、<code>DisposableBean</code>类，执行测试类 <code>TestDemo1</code> 中的 <code>test1()</code> 方法即可。</p>
-
-<ol>
-<li>全局默认初始化和方法的配置（方法可有可无）</li>
-</ol>
-
+</div><p>之后删除继承的<code>InitializingBean</code>、<code>DisposableBean</code>类，执行测试类 <code>TestDemo1</code> 中的 <code>test1()</code> 方法即可。</p>
+</li>
+<li>
+<p>全局默认初始化和方法的配置（方法可有可无）</p>
 <p>在 <code>spring.xml</code> 中的 <code>&lt;Beans&gt;</code> 标签中加入 <code>default-init-method=“”</code> 和<code>default-destroy-method=“”</code> 即可实现全局默认初始化方法和销毁方法的配置。</p>
-
+</li>
+</ol>
 <a class="post-dummy-target" id="作用范围"></a><h2>作用范围</h2>
-
 <p>在 <code>Spring.xml</code> 中的 <code>&lt;Bean&gt;</code> 标签里的 <code>scope</code> 实现，有以下几种：</p>
-
 <ul>
 <li>singleton：默认的，Spring会采用单例模式创建这个对象。</li>
 <li>prototype：多例模式。（Struts2和Spring整合一定会用到）</li>
@@ -354,11 +335,10 @@
 <li>session：应用在web项目中，Spring创建这个类以后，将这个类存入到session范围中。</li>
 <li>globalsession：应用在web项目中，必须在porlet环境下使用。但是如果没有这种环境，相对于session。</li>
 </ul>
-
 <p>尝试方法：可以创建两个同样的对象，直接输出对象的地址</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -370,59 +350,51 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// TestDemo1
-</span><span class="c1"></span><span class="kd">public</span> <span class="nf">void</span> <span class="n">test2</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">Applicationcontext</span> <span class="nf">ac</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassXmlApplicationContext</span><span class="p">(</span><span class="s">&#34;spring.xml&#34;</span><span class="p">);</span>
-    <span class="n">People</span> <span class="nf">p1</span> <span class="o">=</span> <span class="n">ac</span><span class="p">.</span><span class="na">getBean</span><span class="p">(</span><span class="s">&#34;people&#34;</span><span class="p">,</span> <span class="n">People</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-    <span class="n">People</span> <span class="nf">p2</span> <span class="o">=</span> <span class="n">ac</span><span class="p">.</span><span class="na">getBean</span><span class="p">(</span><span class="s">&#34;people&#34;</span><span class="p">,</span> <span class="n">People</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">p1</span><span class="p">);</span>
-    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">p2</span><span class="p">);</span>
-    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span><span class="p">);</span>
-<span class="p">}</span></code></pre></td></tr></table>
+</span><span class="c1"></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">test2</span><span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Applicationcontext</span> <span class="n">ac</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassXmlApplicationContext</span><span class="o">(</span><span class="s">&#34;spring.xml&#34;</span><span class="o">)</span><span class="o">;</span>
+    <span class="n">People</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&#34;people&#34;</span><span class="o">,</span> <span class="n">People</span><span class="o">.</span><span class="na">class</span><span class="o">)</span><span class="o">;</span>
+    <span class="n">People</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&#34;people&#34;</span><span class="o">,</span> <span class="n">People</span><span class="o">.</span><span class="na">class</span><span class="o">)</span><span class="o">;</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p1</span><span class="o">)</span><span class="o">;</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p2</span><span class="o">)</span><span class="o">;</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p1</span> <span class="o">=</span><span class="o">=</span> <span class="n">p2</span><span class="o">)</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<a class="post-dummy-target" id="懒加载"></a><h2>懒加载</h2>
-
+</div><a class="post-dummy-target" id="懒加载"></a><h2>懒加载</h2>
 <p>当你需要的时候加载，不需要的时候不加载。</p>
-
 <p>什么时候用，什么时候实例化。</p>
-
 <ul>
 <li>好处：节省资源空间</li>
 <li>可能导致某些操作响应时间增加</li>
 </ul>
-
 <p>单个bean，<code>lazy-init=true</code>，在获取Bean的时候加载。</p>
-
 <p>整个容器，<code>default-lazy-init=true</code>。</p>
-
 <a class="post-dummy-target" id="bean-的继承"></a><h2>Bean 的继承</h2>
-
 <ol>
 <li>有些情况下，类与类之间因为继承关系，会继承父类的属性，这时候可以在配置bean时使用简便的方式注入：abstract表示这个bean不需要实例化</li>
 <li>没有继承时，两个类仍然有共有属性，可以直接设置一个bean</li>
 </ol>
-
 <a class="post-dummy-target" id="bean-的别名"></a><h2>Bean 的别名</h2>
-
 <p>仅举例，不做赘述：</p>
-
 <ul>
-<li><p>xml形式</p>
+<li>
+<p>xml形式</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;people&#34;</span> <span class="na">name=</span><span class="s">&#34;pep, people2&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.people&#34;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;alias</span> <span class="na">name=</span><span class="s">&#34;people&#34;</span> <span class="na">alias=</span><span class="s">&#34;people1&#34;</span> <span class="nt">/&gt;</span></code></pre></td></tr></table>
+<span class="nt">&lt;alias</span> <span class="na">name=</span><span class="s">&#34;people&#34;</span> <span class="na">alias=</span><span class="s">&#34;people1&#34;</span> <span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
-
-<li><p>注解形式</p>
+<li>
+<p>注解形式</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -432,12 +404,13 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
-<span class="kd">public</span> <span class="nf">class</span> <span class="n">BeanConfiguration</span> <span class="p">{</span>
-   <span class="nd">@Bean</span><span class="p">(</span><span class="s">&#34;Bean1&#34;</span><span class="p">,</span> <span class="s">&#34;Bean2&#34;</span><span class="p">)</span>
-   <span class="kd">public</span> <span class="nf">Bean</span> <span class="n">bean</span><span class="p">()</span> <span class="p">{</span>
-       <span class="k">return</span> <span class="n">Bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bean</span><span class="p">();</span>
-   <span class="p">}</span>
-<span class="p">}</span></code></pre></td></tr></table>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BeanConfiguration</span> <span class="o">{</span>
+    <span class="nd">@Bean</span><span class="o">(</span><span class="s">&#34;Bean1&#34;</span><span class="o">,</span> <span class="s">&#34;Bean2&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Bean</span> <span class="nf">bean</span><span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">Bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bean</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
