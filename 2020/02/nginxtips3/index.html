@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>NginxTips（三） —— 用Nginx搭建一个具备缓存功能的反向代理服务器 | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="一个准程序员的自留地">
+<link rel="prev" href="https://tech.zephyrl.co/2020/02/nginxtips2/" />
+<link rel="canonical" href="https://tech.zephyrl.co/2020/02/nginxtips3/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NginxTips（三） —— 用Nginx搭建一个具备缓存功能的反向代理服务器"/>
+<meta name="twitter:description" content="“由于上游服务业务逻辑复杂，需要较高的开发效率所以性能不怎么样。我们可以用Nginx进行反向代理，一台Nginx服务器采用负载均衡算法代理给多台上游服务器使用。这样我们就实现了业务的水平扩展，在用户没感觉的情况下添加多台服务器。也可以在上游服务器出现问题的时候将请求转发给正常的服务器。”"/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "NginxTips（三） —— 用Nginx搭建一个具备缓存功能的反向代理服务器",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/tech.zephyrl.co\/2020\/02\/nginxtips3\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "折腾笔记, DevOPs入门笔记, NginxTips",
+    
+    "wordcount":  654 ,
+    "url": "https:\/\/tech.zephyrl.co\/2020\/02\/nginxtips3\/",
+    
+        "datePublished": "2020-02-03T14:42:35\x2b08:00",
+    
+    
+        "dateModified": "2020-02-03T14:42:35\x2b08:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "Zephyr",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">NginxTips（三） —— 用Nginx搭建一个具备缓存功能的反向代理服务器</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <span class="post-category">
+                        收录于
+                        <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/nginx/">Nginx</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/lnmp/">LNMP</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">Web服务器</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/centos/">CentOS</a>
+                            
+                    </span>
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-02-03>2020-02-03</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 654 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="post-dummy-target" id="前言"></a><h2>前言</h2>
+<p>由于上游服务业务逻辑复杂，需要较高的开发效率所以性能不怎么样。我们可以用Nginx进行反向代理，一台Nginx服务器采用负载均衡算法代理给多台上游服务器使用。这样我们就实现了业务的水平扩展，在用户没感觉的情况下添加多台服务器。也可以在上游服务器出现问题的时候将请求转发给正常的服务器。</p>
+<a class="post-dummy-target" id="将从前的页面变更为上游服务器"></a><h2>将从前的页面变更为上游服务器</h2>
+<p>由于一般上游服务器是不对外网访问的。所以我们要先控制nginx让这个网页不对外访问，代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8080</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>表示只有本机可以访问8080端口。在重启Nginx即可达成效果。</p>
+<a class="post-dummy-target" id="搭建nginx反向代理"></a><h2>搭建Nginx反向代理</h2>
+<p>我们用OpenResty搭建一个反向代理</p>
+<p>首先我们添加一个<code>upstream</code>，来指定上游服务器的地址：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">upstream</span> <span class="s">local</span> <span class="p">{</span>
+    <span class="kn">server</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8080</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>我们也可以用多种算法来选择上游服务。在这里就不多赘述。而<code>upstream</code>定义的这一批服务器的命名就是代码中的<code>local</code>。</p>
+<p>反向代理服务器用<code>proxy_pass</code>把他转发到上游服务里。此时访问域名，在抓包，我们会发现响应头都是反向代理服务器发给我们客户端的（server是OpenResty）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+    <span class="kn">server_name</span> <span class="s">2nd.zephyrl.co</span><span class="p">;</span>
+    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">proxy_set_header</span> <span class="s">Host</span> <span class="nv">$host</span><span class="p">;</span>
+        <span class="kn">proxy_set_header</span> <span class="s">X-Real-IP</span> <span class="nv">$remote_addr</span><span class="p">;</span>
+        <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-For</span> <span class="nv">$proxt_add_x_forwarded_for</span><span class="p">;</span>
+
+        <span class="kn">proxy_pass</span> <span class="s">http://local</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其中<code>proxy_set_header</code>等等所有的配置特性都可以在官网的http_proxy_module中找到。</p>
+<a class="post-dummy-target" id="配置缓存服务器"></a><h2>配置缓存服务器</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">proxy_cache_path</span> <span class="s">/tmp/nginxcache</span> <span class="s">levels=1:2</span> <span class="s">keys_zone=my_cache:10m</span> <span class="s">max_size=10g</span> <span class="s">inactive=60m</span> <span class="s">use_temp_path=off</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上述代码的意思是：10M的共享内存（keys_zone=my_cache:10m）</p>
+<p>缓存的使用方法就是在缓存的URL路径下加入如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">locathon</span> <span class="s">/</span> <span class="p">{</span>
+    <span class="kn">proxy_cache</span> <span class="s">my_cache</span>
+    <span class="s">proxy_cache_key</span> <span class="nv">$host$uri$is_args$args</span><span class="p">;</span>
+    <span class="kn">proxy_cache_valid</span> <span class="mi">200</span> <span class="mi">304</span> <span class="mi">302</span> <span class="s">1d</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>此时即可采用缓存。</p>
+
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-02-03 更新</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://tech.zephyrl.co/2020/02/nginxtips3/index.md" target="_blank">阅读原始文档</a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f02%2fnginxtips3%2f&amp;text=NginxTips%ef%bc%88%e4%b8%89%ef%bc%89%20%e2%80%94%e2%80%94%20%e7%94%a8Nginx%e6%90%ad%e5%bb%ba%e4%b8%80%e4%b8%aa%e5%85%b7%e5%a4%87%e7%bc%93%e5%ad%98%e5%8a%9f%e8%83%bd%e7%9a%84%e5%8f%8d%e5%90%91%e4%bb%a3%e7%90%86%e6%9c%8d%e5%8a%a1%e5%99%a8&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftech.zephyrl.co%2f2020%2f02%2fnginxtips3%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f02%2fnginxtips3%2f&amp;title=NginxTips%ef%bc%88%e4%b8%89%ef%bc%89%20%e2%80%94%e2%80%94%20%e7%94%a8Nginx%e6%90%ad%e5%bb%ba%e4%b8%80%e4%b8%aa%e5%85%b7%e5%a4%87%e7%bc%93%e5%ad%98%e5%8a%9f%e8%83%bd%e7%9a%84%e5%8f%8d%e5%90%91%e4%bb%a3%e7%90%86%e6%9c%8d%e5%8a%a1%e5%99%a8" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>折腾笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>DevOPs入门笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/nginxtips/"><i class="fas fa-tag fa-fw"></i>NginxTips</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://tech.zephyrl.co/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://tech.zephyrl.co/2020/02/nginxtips2/" class="prev" rel="prev" title="NginxTips（二） —— Nginx作为静态Web服务器的二三十"><i class="fas fa-angle-left fa-fw"></i>NginxTips（二） —— Nginx作为静态Web服务器的二三十</a>
+        
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>

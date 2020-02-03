@@ -3,7 +3,175 @@
         <url>
             <loc>https://tech.zephyrl.co/categories/</loc>
             
-                <lastmod>2019-12-23T15:01:38+08:00</lastmod>
+                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/categories/centos/</loc>
+            
+                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</loc>
+            
+                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/categories/lnmp/</loc>
+            
+                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/categories/nginx/</loc>
+            
+                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/tags/nginxtips/</loc>
+            
+                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/2020/02/nginxtips3/</loc>
+            
+                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/posts/</loc>
+            
+                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/tags/</loc>
+            
+                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+            
+                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</loc>
+            
+                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/</loc>
+            
+                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/2020/02/nginxtips2/</loc>
+            
+                <lastmod>2020-02-01T13:43:48+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -44,20 +212,6 @@
     
         <url>
             <loc>https://tech.zephyrl.co/tags/mybatics/</loc>
-            
-                <lastmod>2019-12-23T15:01:38+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/posts/</loc>
             
                 <lastmod>2019-12-23T15:01:38+08:00</lastmod>
             
@@ -127,20 +281,6 @@
         </url>
     
         <url>
-            <loc>https://tech.zephyrl.co/tags/</loc>
-            
-                <lastmod>2019-12-23T15:01:38+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
             <loc>https://tech.zephyrl.co/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/</loc>
             
                 <lastmod>2019-12-23T15:01:38+08:00</lastmod>
@@ -170,20 +310,6 @@
     
         <url>
             <loc>https://tech.zephyrl.co/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-            
-                <lastmod>2019-12-23T15:01:38+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/</loc>
             
                 <lastmod>2019-12-23T15:01:38+08:00</lastmod>
             
@@ -239,105 +365,7 @@
         </url>
     
         <url>
-            <loc>https://tech.zephyrl.co/categories/centos/</loc>
-            
-                <lastmod>2019-11-13T20:08:41+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</loc>
-            
-                <lastmod>2019-11-13T20:08:41+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/categories/lnmp/</loc>
-            
-                <lastmod>2019-11-13T20:08:41+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/categories/nginx/</loc>
-            
-                <lastmod>2019-11-13T20:08:41+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/tags/nginxtips/</loc>
-            
-                <lastmod>2019-11-13T20:08:41+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
             <loc>https://tech.zephyrl.co/2019/11/nginxtips1/</loc>
-            
-                <lastmod>2019-11-13T20:08:41+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
-            
-                <lastmod>2019-11-13T20:08:41+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</loc>
             
                 <lastmod>2019-11-13T20:08:41+08:00</lastmod>
             

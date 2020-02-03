@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>NginxTips（二） —— Nginx作为静态Web服务器的二三十 | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="一个准程序员的自留地">
+<link rel="prev" href="https://tech.zephyrl.co/2019/12/ssm6/" />
+<link rel="next" href="https://tech.zephyrl.co/2020/02/nginxtips3/" />
+<link rel="canonical" href="https://tech.zephyrl.co/2020/02/nginxtips2/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NginxTips（二） —— Nginx作为静态Web服务器的二三十"/>
+<meta name="twitter:description" content="其中包括GZip、AutoIndex、限制速度、Access日志。"/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "NginxTips（二） —— Nginx作为静态Web服务器的二三十",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/tech.zephyrl.co\/2020\/02\/nginxtips2\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "折腾笔记, DevOPs入门笔记, NginxTips",
+    
+    "wordcount":  710 ,
+    "url": "https:\/\/tech.zephyrl.co\/2020\/02\/nginxtips2\/",
+    
+        "datePublished": "2020-02-01T13:43:48\x2b08:00",
+    
+    
+        "dateModified": "2020-02-01T13:43:48\x2b08:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "Zephyr",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">NginxTips（二） —— Nginx作为静态Web服务器的二三十</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <span class="post-category">
+                        收录于
+                        <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/nginx/">Nginx</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/lnmp/">LNMP</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">Web服务器</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/centos/">CentOS</a>
+                            
+                    </span>
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-02-01>2020-02-01</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 710 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="post-dummy-target" id="gzip压缩文本网页"></a><h2>GZip压缩文本网页</h2>
+<p>在 <code>Nginx.conf</code> 中可以找到 <code>gzip</code> 的选项。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="c1"># 省略
+</span><span class="c1"></span><span class="k">gzip</span>                <span class="no">on</span><span class="p">;</span>
+<span class="k">gzip_min_length</span>     <span class="mi">1</span><span class="p">;</span>      <span class="c1"># 小于一字节的文件就不进行压缩。小文件在一个TCP报文中就发出去了。在压缩消耗CPU意义不大
+</span><span class="c1"></span><span class="k">gzip_comp_level</span>     <span class="mi">2</span><span class="p">;</span>      <span class="c1"># gzip压缩级别
+</span><span class="c1"></span><span class="k">gzip_types</span>          <span class="s">text/plain</span> <span class="s">application/x-javascript</span> <span class="s">text/css</span> <span class="s">application/xml</span> <span class="s">text/javascript</span> <span class="s">application/x-httpd-php</span> <span class="s">image/jpge</span> <span class="s">image/gif</span> <span class="s">image/png</span><span class="p">;</span>    <span class="c1"># 压缩文件类型
+</span></code></pre></td></tr></table>
+</div>
+</div><p>加好这些配置后，我们进行 <code>nginx -s reload</code>。此时再次进行抓包，可以发现传输的大小小了很多。响应头中的 <code>Context-Encoding</code> 也变成了 <code>gzip</code></p>
+<p>以后我们的静态资源传输过程效率会高很多。</p>
+<a class="post-dummy-target" id="分享文件目录--autoindex"></a><h2>分享文件目录 —— AutoIndex</h2>
+<p>我们可以通过 <code>AutoIndex</code> 模块将文件夹和目录信息分享给用户，让用户决定使用哪部分。</p>
+<p>当我们访问一个反斜杠（'/'）的时候可以显示文件目录信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">/</span> <span class="p">{</span>
+    <span class="kn">autoindex</span> <span class="no">on</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>效果如下：</p>
+<p><img src="https://img.zephyrl.co/images/2020/02/03/autoindex.jpg" alt="autoindex"></p>
+<a class="post-dummy-target" id="大文件限制访问速度"></a><h2>大文件限制访问速度</h2>
+<p>当大量用户并发的时候，我们需要确保一些基础的文件文件如css的正常访问，我们可以使用 <code>set</code> 配合一些内置的变量实现这个功能，比如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">/</span> <span class="p">{</span>
+    <span class="kn">alias</span> <span class="s">dlib/</span><span class="p">;</span>
+    <span class="kn">autoindex</span> <span class="no">on</span><span class="p">;</span>
+    <span class="kn">set</span> <span class="nv">$limit_rate</span> <span class="mi">1k</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其中 <code>set $limit_rate 1k;</code> 就是在克制客户端到服务器发送请求响应的速度。</p>
+<p>在nginx官网的<code>http_core</code>中提供的<code>Embedded Variables</code>中可以找到 <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#variables">变量$limit_rate</a>, 他的用法就是上述代码，单位是Byte。</p>
+<a class="post-dummy-target" id="access-日志"></a><h2>Access 日志</h2>
+<p>我们可以在<code>nginx.conf</code>中使用<code>log_format</code>定义日志格式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">http</span> <span class="p">{</span>
+    <span class="kn">log_format</span> <span class="s">main</span> <span class="s">&#39;</span><span class="nv">$remote_addr</span> <span class="s">-</span> <span class="nv">$remote_user</span> <span class="s">[</span><span class="nv">$time_local]</span> <span class="s">&#34;</span><span class="nv">$request&#34;</span> <span class="s">&#39;</span>
+                    <span class="s">&#39;</span><span class="nv">$status</span> <span class="nv">$body_bytes_sent</span> <span class="s">&#34;</span><span class="nv">$http_referer&#34;</span> <span class="s">&#39;</span>
+                    <span class="s">&#39;&#34;</span><span class="nv">$http_user_agent&#34;</span> <span class="s">&#34;http_x_forwarded_for&#34;</span> <span class="s">&#39;</span><span class="p">;</span>
+    <span class="kn">access_log</span> <span class="s">logs/test</span><span class="s">.access.log</span> <span class="s">main</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其中，日志被命名成main，日志格式就是后面的。所有的变量的意义都可以在<a href="http://nginx.org/en/docs/http/">nginx官方文档</a>中找到。也可以加入各种日志变量。</p>
+<p>比如 <code>$remote_addr</code> 的意思就是远端（客户端）地址。 <code>$time_local</code> 就是当时时间。<code>$status</code> 就是返回的详情，如403、301等。</p>
+<p>有一款适合监控Nginx Access日志的文件GoAccess，未来会写如何搭建GoAccess并且在Web中展示。就不放在NginxTips里了。</p>
+
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-02-01 更新</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://tech.zephyrl.co/2020/02/nginxtips2/index.md" target="_blank">阅读原始文档</a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f02%2fnginxtips2%2f&amp;text=NginxTips%ef%bc%88%e4%ba%8c%ef%bc%89%20%e2%80%94%e2%80%94%20Nginx%e4%bd%9c%e4%b8%ba%e9%9d%99%e6%80%81Web%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%9a%84%e4%ba%8c%e4%b8%89%e5%8d%81&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftech.zephyrl.co%2f2020%2f02%2fnginxtips2%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f02%2fnginxtips2%2f&amp;title=NginxTips%ef%bc%88%e4%ba%8c%ef%bc%89%20%e2%80%94%e2%80%94%20Nginx%e4%bd%9c%e4%b8%ba%e9%9d%99%e6%80%81Web%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%9a%84%e4%ba%8c%e4%b8%89%e5%8d%81" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>折腾笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>DevOPs入门笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/nginxtips/"><i class="fas fa-tag fa-fw"></i>NginxTips</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://tech.zephyrl.co/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://tech.zephyrl.co/2019/12/ssm6/" class="prev" rel="prev" title="SSM框架学习笔记（六） 事务"><i class="fas fa-angle-left fa-fw"></i>SSM框架学习笔记（六） 事务</a>
+        
+        
+            <a href="https://tech.zephyrl.co/2020/02/nginxtips3/" class="next" rel="next" title="NginxTips（三） —— 用Nginx搭建一个具备缓存功能的反向代理服务器">NginxTips（三） —— 用Nginx搭建一个具备缓存功能的反向代理服务器<i class="fas fa-angle-right fa-fw"></i></a>
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>

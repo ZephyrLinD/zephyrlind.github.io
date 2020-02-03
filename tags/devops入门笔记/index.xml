@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 13 Nov 2019 20:08:41 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 03 Feb 2020 14:42:35 +0800</lastBuildDate>
     
 	<atom:link href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>NginxTips（三） —— 用Nginx搭建一个具备缓存功能的反向代理服务器</title>
+      <link>https://tech.zephyrl.co/2020/02/nginxtips3/</link>
+      <pubDate>Mon, 03 Feb 2020 14:42:35 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/02/nginxtips3/</guid>
+      <description>“由于上游服务业务逻辑复杂，需要较高的开发效率所以性能不怎么样。我们可以用Nginx进行反向代理，一台Nginx服务器采用负载均衡算法代理给多台上游服务器使用。这样我们就实现了业务的水平扩展，在用户没感觉的情况下添加多台服务器。也可以在上游服务器出现问题的时候将请求转发给正常的服务器。”</description>
+    </item>
+    
+    <item>
+      <title>NginxTips（二） —— Nginx作为静态Web服务器的二三十</title>
+      <link>https://tech.zephyrl.co/2020/02/nginxtips2/</link>
+      <pubDate>Sat, 01 Feb 2020 13:43:48 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/02/nginxtips2/</guid>
+      <description>其中包括GZip、AutoIndex、限制速度、Access日志。</description>
+    </item>
     
     <item>
       <title>NginxTips（一） —— Nginx的组成、Vim语法高亮、编译、命令行、热部署、日志切割脚本</title>
