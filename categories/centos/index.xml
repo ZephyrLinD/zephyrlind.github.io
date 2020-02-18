@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Mon, 03 Feb 2020 14:42:35 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 15 Feb 2020 17:41:23 +0800</lastBuildDate>
     
 	<atom:link href="https://tech.zephyrl.co/categories/centos/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>大数据学习笔记（一） —— Hadoop运行环境的搭建</title>
+      <link>https://tech.zephyrl.co/2020/02/bigdata1/</link>
+      <pubDate>Sat, 15 Feb 2020 17:41:23 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/02/bigdata1/</guid>
+      <description>在本机搭建虚拟机和相关网络配置；相关环境的配置安装；虚拟机的复制</description>
+    </item>
     
     <item>
       <title>NginxTips（三） —— 用Nginx搭建一个具备缓存功能的反向代理服务器</title>
@@ -22,7 +31,7 @@
     </item>
     
     <item>
-      <title>NginxTips（二） —— Nginx作为静态Web服务器的二三十</title>
+      <title>NginxTips（二） —— Nginx作为静态Web服务器的二三事</title>
       <link>https://tech.zephyrl.co/2020/02/nginxtips2/</link>
       <pubDate>Sat, 01 Feb 2020 13:43:48 +0800</pubDate>
       

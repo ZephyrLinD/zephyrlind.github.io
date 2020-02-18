@@ -1,4 +1,4 @@
-# NginxTips（二） —— Nginx作为静态Web服务器的二三十
+# NginxTips（二） —— Nginx作为静态Web服务器的二三事
 
 
 ## GZip压缩文本网页

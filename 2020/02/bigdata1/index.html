@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>大数据学习笔记（一） —— Hadoop运行环境的搭建 | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="一个准程序员的自留地">
+<link rel="prev" href="https://tech.zephyrl.co/2020/02/nginxtips3/" />
+<link rel="canonical" href="https://tech.zephyrl.co/2020/02/bigdata1/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="大数据学习笔记（一） —— Hadoop运行环境的搭建"/>
+<meta name="twitter:description" content="在本机搭建虚拟机和相关网络配置；相关环境的配置安装；虚拟机的复制"/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "大数据学习笔记（一） —— Hadoop运行环境的搭建",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/tech.zephyrl.co\/2020\/02\/bigdata1\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "大数据入门笔记",
+    
+    "wordcount":  937 ,
+    "url": "https:\/\/tech.zephyrl.co\/2020\/02\/bigdata1\/",
+    
+        "datePublished": "2020-02-15T17:41:23\x2b08:00",
+    
+    
+        "dateModified": "2020-02-15T17:41:23\x2b08:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "Zephyr",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">大数据学习笔记（一） —— Hadoop运行环境的搭建</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <span class="post-category">
+                        收录于
+                        <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/hadoop/">hadoop</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/centos/">CentOS</a>
+                            
+                    </span>
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-02-15>2020-02-15</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 937 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="post-dummy-target" id="网络环境配置"></a><h2>网络环境配置</h2>
+<p>这里以我用的 VMWare 做例子。首先修改的是虚拟网络编辑器</p>
+<p>我将连接模式改为了 NAT 模式，子网 IP 改为 192.168.0.1，子网掩码改成 255.255.255.0（24位）</p>
+<p><img src="https://img.zephyrl.co/images/2020/02/16/1_virtualnet.png" alt="1_virtualnet.png"></p>
+<p>由于我没有其他的虚拟机，我就只弄了一个虚拟网卡。</p>
+<p>然后安装 CentOS，我安装的是 CentOS7 版本。等安装完毕后，我们首先打开终端，输入 <code>ifconfig</code>，查看与我们之前设置相同的网络</p>
+<p><img src="https://img.zephyrl.co/images/2020/02/16/2_ifconfig.png" alt="2_ifconfig.png"></p>
+<p>我的图时候来截的，已经配置好，请无视qaq</p>
+<p>然后打开 虚拟机 —— 选项 —— 网络适配器 —— 高级 复制一下 mac 地址</p>
+<p><img src="https://img.zephyrl.co/images/2020/02/16/3_mac.png" alt="3_mac.png"></p>
+<p>然后，打开 <code>/etc/sysconfig/network-scripts/ifcfg-</code> 这个文件，文件名的后面就是 ifconfig 查到的网络名称。比如我就是 ens33</p>
+<p>文件内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ cat /etc/sysconfig/network-scripts/ifcfg-ens33
+<span class="nv">HWADDR</span><span class="o">=</span>00:0C:29:99:54:8F
+<span class="nv">TYPE</span><span class="o">=</span><span class="s2">&#34;Ethernet&#34;</span>
+<span class="nv">PROXY_METHOD</span><span class="o">=</span><span class="s2">&#34;none&#34;</span>
+<span class="nv">BROWSER_ONLY</span><span class="o">=</span><span class="s2">&#34;no&#34;</span>
+<span class="nv">BOOTPROTO</span><span class="o">=</span><span class="s2">&#34;static&#34;</span>
+<span class="nv">DEFROUTE</span><span class="o">=</span><span class="s2">&#34;yes&#34;</span>
+<span class="nv">IPV4_FAILURE_FATAL</span><span class="o">=</span><span class="s2">&#34;no&#34;</span>
+<span class="nv">IPV6INIT</span><span class="o">=</span><span class="s2">&#34;yes&#34;</span>
+<span class="nv">IPV6_AUTOCONF</span><span class="o">=</span><span class="s2">&#34;yes&#34;</span>
+<span class="nv">IPV6_DEFROUTE</span><span class="o">=</span><span class="s2">&#34;yes&#34;</span>
+<span class="nv">IPV6_FAILURE_FATAL</span><span class="o">=</span><span class="s2">&#34;no&#34;</span>
+<span class="nv">IPV6_ADDR_GEN_MODE</span><span class="o">=</span><span class="s2">&#34;stable-privacy&#34;</span>
+<span class="nv">NAME</span><span class="o">=</span><span class="s2">&#34;ens33&#34;</span>
+<span class="nv">UUID</span><span class="o">=</span><span class="s2">&#34;5234c912-54b6-4a64-8076-5dfbc1272737&#34;</span>
+<span class="nv">DEVICE</span><span class="o">=</span><span class="s2">&#34;ens33&#34;</span>
+<span class="nv">ONBOOT</span><span class="o">=</span><span class="s2">&#34;yes&#34;</span>
+
+<span class="nv">IPADDR</span><span class="o">=</span>192.168.1.100
+<span class="nv">GATEWAY</span><span class="o">=</span>192.168.1.2
+<span class="nv">DNS1</span><span class="o">=</span>192.168.1.2
+</code></pre></td></tr></table>
+</div>
+</div><p>之后打开 windows 网络设置，修改一些配置</p>
+<p><img src="https://img.zephyrl.co/images/2020/02/16/4_netwin.png" alt="4_netwin.png"></p>
+<p>可以从控制面板中找到网络设置，也可以通过 win10 的搜索功能，win+s 搜索<code>网络</code>找到。</p>
+<p>如图，我给自己分配的 ip 是 192.168.1.5，此时主机和虚拟机互相 ping 一下，可以 ping 通即成功。</p>
+<a class="post-dummy-target" id="安装-jdk"></a><h2>安装 JDK</h2>
+<p>首先卸载自带的 openjdk</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@hadoop000 ~<span class="o">]</span><span class="c1"># java -version</span>
+openjdk version <span class="s2">&#34;1.8.0_242&#34;</span>
+OpenJDK Runtime Environment <span class="o">(</span>build 1.8.0_242-b08<span class="o">)</span>
+OpenJDK 64-Bit Server VM <span class="o">(</span>build 25.242-b08, mixed mode<span class="o">)</span>
+<span class="o">[</span>root@hadoop000 ~<span class="o">]</span><span class="c1"># rpm -qa | grep java</span>
+python-javapackages-3.4.1-11.el7.noarch
+javapackages-tools-3.4.1-11.el7.noarch
+tzdata-java-2019c-1.el7.noarch
+java-1.8.0-openjdk-1.8.0.242.b08-0.el7_7.x86_64
+java-1.8.0-openjdk-headless-1.8.0.242.b08-0.el7_7.x86_64
+</code></pre></td></tr></table>
+</div>
+</div><p>需要删掉 <code>java-1.8.0</code> 开头的。执行以下命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.242.b08-0.el7_7.x86_64
+rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.242.b08-0.el7_7.x86_64
+</code></pre></td></tr></table>
+</div>
+</div><p>此时再执行 <code>java -version</code> 操作的时候就不会看见OpenJDK的版本了，说明卸载成功</p>
+<p>此时下载 <a href="https://www.oracle.com/java/technologies/javase-jdk8-downloads.html">Oracle JDK 1.8</a> 官网的 <strong>Linux x64 Compressed Archive</strong> 包</p>
+<p>通过 <em>SFTP</em> 等工具解压到 <code>/usr/local</code> 文件夹内，进入文件夹，记录位置并且复制</p>
+<p>（因为下载 Oracle 的 JDK1.8需要浏览器 cookie 认证，所以我们需要这种办法）</p>
+<p>接着，打开 <code>/etc/profile</code> 配置环境变量，在最下面加入如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">## JAVA Home</span>
+<span class="c1">## /usr/local/jdk1.8.0_241 这个路径是我记录下来的</span>
+<span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/local/jdk1.8.0_241
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$JAVA_HOME</span>/bin
+</code></pre></td></tr></table>
+</div>
+</div><p>此时配置好了不要忘了 <code>source /etc/profile</code>，在执行 <code>java -version</code> 即可发现正确的 JAVA 版本</p>
+<a class="post-dummy-target" id="安装-hadoop"></a><h2>安装 Hadoop</h2>
+<p>首先从 <a href="https://hadoop.apache.org/releases.html">Apache Hadoop 的 release 页面</a>下载相关版本的 hadoop</p>
+<p>wget到 <code>/usr/local</code>，解压缩，进入解压的文件夹里，<code>pwd</code> 记录路径</p>
+<p>继续打开 <code>/etc/profile</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">## Hadoop Home</span>
+<span class="nb">export</span> <span class="nv">HADOOP_HOME</span><span class="o">=</span>/usr/local/hadoop-2.10.0
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$HADOOP_HOME</span>/bin
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$HADOOP_HOME</span>/sbin
+</code></pre></td></tr></table>
+</div>
+</div><p>此时配置好了不要忘了 <code>source /etc/profile</code></p>
+<a class="post-dummy-target" id="虚拟机的复制"></a><h2>虚拟机的复制</h2>
+<p>复制之前，关闭主机防火墙。在实验中我们为了省事关闭了防火墙，在实际生产环境中，需要从云服务器设置开放的端口或者从 firewalld 开放相关端口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl disable firewalld
+</code></pre></td></tr></table>
+</div>
+</div><p>之后，打开 /etc/hosts 文件，增加如下内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.1.100 hadoop100
+192.168.1.101 hadoop101
+192.168.1.102 hadoop102
+192.168.1.103 hadoop103
+192.168.1.104 hadoop104
+192.168.1.105 hadoop105
+192.168.1.106 hadoop106
+192.168.1.107 hadoop107
+
+192.168.1.5 laptop
+</code></pre></td></tr></table>
+</div>
+</div><p>这样就可以方便的通过简单的名称找到集群其他的虚拟机了</p>
+<p>之后就可以嗨皮的跟着 VMWare 复制虚拟机啦</p>
+
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-02-15 更新</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://tech.zephyrl.co/2020/02/bigdata1/index.md" target="_blank">阅读原始文档</a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f02%2fbigdata1%2f&amp;text=%e5%a4%a7%e6%95%b0%e6%8d%ae%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%b8%80%ef%bc%89%20%e2%80%94%e2%80%94%20Hadoop%e8%bf%90%e8%a1%8c%e7%8e%af%e5%a2%83%e7%9a%84%e6%90%ad%e5%bb%ba&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftech.zephyrl.co%2f2020%2f02%2fbigdata1%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f02%2fbigdata1%2f&amp;title=%e5%a4%a7%e6%95%b0%e6%8d%ae%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%b8%80%ef%bc%89%20%e2%80%94%e2%80%94%20Hadoop%e8%bf%90%e8%a1%8c%e7%8e%af%e5%a2%83%e7%9a%84%e6%90%ad%e5%bb%ba" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>大数据入门笔记</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://tech.zephyrl.co/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://tech.zephyrl.co/2020/02/nginxtips3/" class="prev" rel="prev" title="NginxTips（三） —— 用Nginx搭建一个具备缓存功能的反向代理服务器"><i class="fas fa-angle-left fa-fw"></i>NginxTips（三） —— 用Nginx搭建一个具备缓存功能的反向代理服务器</a>
+        
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>

@@ -60,7 +60,7 @@ proxy_cache_path /tmp/nginxcache levels=1:2 keys_zone=my_cache:10m max_size=10g 
 
 缓存的使用方法就是在缓存的URL路径下加入如下：
 
-```nginx 
+```nginx
 locathon / {
     proxy_cache my_cache
     proxy_cache_key $host$uri$is_args$args;

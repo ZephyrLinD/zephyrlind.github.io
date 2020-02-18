@@ -3,7 +3,7 @@
         <url>
             <loc>https://tech.zephyrl.co/categories/</loc>
             
-                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
+                <lastmod>2020-02-15T17:41:23+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -17,7 +17,105 @@
         <url>
             <loc>https://tech.zephyrl.co/categories/centos/</loc>
             
-                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
+                <lastmod>2020-02-15T17:41:23+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/categories/hadoop/</loc>
+            
+                <lastmod>2020-02-15T17:41:23+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/posts/</loc>
+            
+                <lastmod>2020-02-15T17:41:23+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/tags/</loc>
+            
+                <lastmod>2020-02-15T17:41:23+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/</loc>
+            
+                <lastmod>2020-02-15T17:41:23+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</loc>
+            
+                <lastmod>2020-02-15T17:41:23+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/2020/02/bigdata1/</loc>
+            
+                <lastmod>2020-02-15T17:41:23+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/</loc>
+            
+                <lastmod>2020-02-15T17:41:23+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -99,34 +197,6 @@
         </url>
     
         <url>
-            <loc>https://tech.zephyrl.co/posts/</loc>
-            
-                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/tags/</loc>
-            
-                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
             <loc>https://tech.zephyrl.co/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
             
                 <lastmod>2020-02-03T14:42:35+08:00</lastmod>
@@ -142,20 +212,6 @@
     
         <url>
             <loc>https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</loc>
-            
-                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/</loc>
             
                 <lastmod>2020-02-03T14:42:35+08:00</lastmod>
             

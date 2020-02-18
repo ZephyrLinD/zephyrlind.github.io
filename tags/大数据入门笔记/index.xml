@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>大数据入门笔记 on 梦黎的小窝</title>
+    <link>https://tech.zephyrl.co/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in 大数据入门笔记 on 梦黎的小窝</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 15 Feb 2020 17:41:23 +0800</lastBuildDate>
+    
+	<atom:link href="https://tech.zephyrl.co/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>大数据学习笔记（一） —— Hadoop运行环境的搭建</title>
+      <link>https://tech.zephyrl.co/2020/02/bigdata1/</link>
+      <pubDate>Sat, 15 Feb 2020 17:41:23 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/02/bigdata1/</guid>
+      <description>在本机搭建虚拟机和相关网络配置；相关环境的配置安装；虚拟机的复制</description>
+    </item>
+    
+  </channel>
+</rss>
