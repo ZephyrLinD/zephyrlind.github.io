@@ -100,5 +100,3 @@ server.port=8081
 [![9_draw.md.png](https://img.zephyrl.co/images/2020/02/19/9_draw.md.png)](https://img.zephyrl.co/image/NgDR)
 
 比如我改成了这个巨大的像素画
-
-## Yaml
