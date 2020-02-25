@@ -3,7 +3,147 @@
         <url>
             <loc>https://tech.zephyrl.co/categories/</loc>
             
-                <lastmod>2020-02-15T17:41:23+08:00</lastmod>
+                <lastmod>2020-02-18T22:02:28+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/tags/java/</loc>
+            
+                <lastmod>2020-02-18T22:02:28+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/posts/</loc>
+            
+                <lastmod>2020-02-18T22:02:28+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/tags/spring/</loc>
+            
+                <lastmod>2020-02-18T22:02:28+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/categories/springboot/</loc>
+            
+                <lastmod>2020-02-18T22:02:28+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/tags/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+            
+                <lastmod>2020-02-18T22:02:28+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/2020/02/springboot1/</loc>
+            
+                <lastmod>2020-02-18T22:02:28+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/tags/</loc>
+            
+                <lastmod>2020-02-18T22:02:28+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/</loc>
+            
+                <lastmod>2020-02-18T22:02:28+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</loc>
+            
+                <lastmod>2020-02-18T22:02:28+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/</loc>
+            
+                <lastmod>2020-02-18T22:02:28+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -30,34 +170,6 @@
     
         <url>
             <loc>https://tech.zephyrl.co/categories/hadoop/</loc>
-            
-                <lastmod>2020-02-15T17:41:23+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/posts/</loc>
-            
-                <lastmod>2020-02-15T17:41:23+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/tags/</loc>
             
                 <lastmod>2020-02-15T17:41:23+08:00</lastmod>
             
@@ -100,20 +212,6 @@
     
         <url>
             <loc>https://tech.zephyrl.co/2020/02/bigdata1/</loc>
-            
-                <lastmod>2020-02-15T17:41:23+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/</loc>
             
                 <lastmod>2020-02-15T17:41:23+08:00</lastmod>
             
@@ -239,20 +337,6 @@
         </url>
     
         <url>
-            <loc>https://tech.zephyrl.co/tags/java/</loc>
-            
-                <lastmod>2019-12-23T15:01:38+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
             <loc>https://tech.zephyrl.co/tags/java-ssm%E4%BC%81%E4%B8%9A%E8%AF%BE/</loc>
             
                 <lastmod>2019-12-23T15:01:38+08:00</lastmod>
@@ -268,20 +352,6 @@
     
         <url>
             <loc>https://tech.zephyrl.co/tags/mybatics/</loc>
-            
-                <lastmod>2019-12-23T15:01:38+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/tags/spring/</loc>
             
                 <lastmod>2019-12-23T15:01:38+08:00</lastmod>
             
@@ -324,34 +394,6 @@
     
         <url>
             <loc>https://tech.zephyrl.co/2019/12/ssm6/</loc>
-            
-                <lastmod>2019-12-23T15:01:38+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/</loc>
-            
-                <lastmod>2019-12-23T15:01:38+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</loc>
             
                 <lastmod>2019-12-23T15:01:38+08:00</lastmod>
             
