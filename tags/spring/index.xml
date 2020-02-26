@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 18 Feb 2020 22:02:28 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 20 Feb 2020 16:52:56 +0800</lastBuildDate>
     
 	<atom:link href="https://tech.zephyrl.co/tags/spring/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SpringBoot学习笔记（二） —— 配置文件</title>
+      <link>https://tech.zephyrl.co/2020/02/springboot2/</link>
+      <pubDate>Thu, 20 Feb 2020 16:52:56 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/02/springboot2/</guid>
+      <description>我最近不会再用图床的中等大小功能了。SpringMVC马上写。</description>
+    </item>
     
     <item>
       <title>SpringBoot学习笔记（一） —— 一切的开始</title>
