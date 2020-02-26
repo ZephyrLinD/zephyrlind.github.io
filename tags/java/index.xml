@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 20 Feb 2020 16:52:56 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 26 Feb 2020 14:59:13 +0800</lastBuildDate>
     
 	<atom:link href="https://tech.zephyrl.co/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SpringBoot学习笔记（三）—— Web 开发：静态资源映射和首页的定制</title>
+      <link>https://tech.zephyrl.co/2020/02/springboot3/</link>
+      <pubDate>Wed, 26 Feb 2020 14:59:13 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/02/springboot3/</guid>
+      <description>SpringBoot 的 Web 开发：源码和实践</description>
+    </item>
     
     <item>
       <title>SpringBoot学习笔记（二） —— 配置文件</title>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>SpringBoot学习笔记（三）—— Web 开发：静态资源映射和首页的定制 | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="一个准程序员的自留地">
+<link rel="prev" href="https://tech.zephyrl.co/2020/02/springboot2/" />
+<link rel="canonical" href="https://tech.zephyrl.co/2020/02/springboot3/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SpringBoot学习笔记（三）—— Web 开发：静态资源映射和首页的定制"/>
+<meta name="twitter:description" content="SpringBoot 的 Web 开发：源码和实践"/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "SpringBoot学习笔记（三）—— Web 开发：静态资源映射和首页的定制",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/tech.zephyrl.co\/2020\/02\/springboot3\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "Java, 后端开发笔记, Spring, SpringBoot学习笔记",
+    
+    "wordcount":  996 ,
+    "url": "https:\/\/tech.zephyrl.co\/2020\/02\/springboot3\/",
+    
+        "datePublished": "2020-02-26T14:59:13\x2b08:00",
+    
+    
+        "dateModified": "2020-02-26T14:59:13\x2b08:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "Zephyr",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">SpringBoot学习笔记（三）—— Web 开发：静态资源映射和首页的定制</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <span class="post-category">
+                        收录于
+                        <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/springboot/">SpringBoot</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a>
+                            
+                    </span>
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-02-26>2020-02-26</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 996 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="post-dummy-target" id="静态资源映射规则"></a><h2>静态资源映射规则</h2>
+<p>首先，创建一个SpringBoot项目。</p>
+<p>如果是 webapp 我们的主文件夹下有一个 <code>webapp</code> 文件夹，我们以前都是将所有的页面放在这里面的。但是用 <code>Spring Initalizer</code> 创建的 Spring Boot 项目是 <code>pom</code> 包，静态资源存放位置和以前是不一样的。</p>
+<p>先来看一看静态资源映射规则：</p>
+<p>Spring Boot 中，SpringMVC 的 web 配置都在 <code>WebMvcAutoConfiguration</code> 这个配置里面，可以看到 <code>WebMvcAutoConfigurationAdapter</code> 中有很多配置方法，</p>
+<p><em>该包位于 <code>org.springframework.boot.autoconfigure.web.servlet</code></em></p>
+<a class="post-dummy-target" id="webjars资源方法addresourceshandlers"></a><h3>webjars资源，方法：<code>addResourcesHandlers</code></h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">addResourceHandlers</span><span class="o">(</span><span class="n">ResourceHandlerRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="o">!</span><span class="k">this</span><span class="o">.</span><span class="na">resourceProperties</span><span class="o">.</span><span class="na">isAddMappings</span><span class="o">(</span><span class="o">)</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;Default resource handling disabled&#34;</span><span class="o">)</span><span class="o">;</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="n">Duration</span> <span class="n">cachePeriod</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">resourceProperties</span><span class="o">.</span><span class="na">getCache</span><span class="o">(</span><span class="o">)</span><span class="o">.</span><span class="na">getPeriod</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+    <span class="n">CacheControl</span> <span class="n">cacheControl</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">resourceProperties</span><span class="o">.</span><span class="na">getCache</span><span class="o">(</span><span class="o">)</span><span class="o">.</span><span class="na">getCachecontrol</span><span class="o">(</span><span class="o">)</span><span class="o">.</span><span class="na">toHttpCacheControl</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">(</span><span class="o">!</span><span class="n">registry</span><span class="o">.</span><span class="na">hasMappingForPattern</span><span class="o">(</span><span class="s">&#34;/webjars/**&#34;</span><span class="o">)</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">customizeResourceHandlerRegistration</span><span class="o">(</span><span class="n">registry</span><span class="o">.</span><span class="na">addResourceHandler</span><span class="o">(</span><span class="s">&#34;/webjars/**&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">addResourceLocations</span><span class="o">(</span><span class="s">&#34;classpath:/META-INF/resources/webjars/&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setCachePeriod</span><span class="o">(</span><span class="n">getSeconds</span><span class="o">(</span><span class="n">cachePeriod</span><span class="o">)</span><span class="o">)</span><span class="o">.</span><span class="na">setCacheControl</span><span class="o">(</span><span class="n">cacheControl</span><span class="o">)</span><span class="o">)</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="n">String</span> <span class="n">staticPathPattern</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">mvcProperties</span><span class="o">.</span><span class="na">getStaticPathPattern</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">(</span><span class="o">!</span><span class="n">registry</span><span class="o">.</span><span class="na">hasMappingForPattern</span><span class="o">(</span><span class="n">staticPathPattern</span><span class="o">)</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">customizeResourceHandlerRegistration</span><span class="o">(</span><span class="n">registry</span><span class="o">.</span><span class="na">addResourceHandler</span><span class="o">(</span><span class="n">staticPathPattern</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">addResourceLocations</span><span class="o">(</span><span class="n">getResourceLocations</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">resourceProperties</span><span class="o">.</span><span class="na">getStaticLocations</span><span class="o">(</span><span class="o">)</span><span class="o">)</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">setCachePeriod</span><span class="o">(</span><span class="n">getSeconds</span><span class="o">(</span><span class="n">cachePeriod</span><span class="o">)</span><span class="o">)</span><span class="o">.</span><span class="na">setCacheControl</span><span class="o">(</span><span class="n">cacheControl</span><span class="o">)</span><span class="o">)</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>举例，在源代码第十一行我们可以得出，所有的 <code>/webjars/**</code>，都需要去 <code>classpath:/META-INF/resources/webjars/</code> 找对应的资源</p>
+<p>那么什么是 webjars 呢？他本质就是以 jar 包的方式引入我们的资源。</p>
+<p>比如我们想导入 jQuery，只需导入 jQuery 对应版本的 pom 依赖即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;groupId</span><span class="nt">&gt;</span>org.webjars<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId</span><span class="nt">&gt;</span>jquery<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version</span><span class="nt">&gt;</span>3.4.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>导入后我们在 External Libraries 中找到它，包结构如下：</p>
+<p><img src="https://img.zephyrl.co/images/2020/02/26/1_webjarjqstructs.png" alt="jQueryJarStructs"></p>
+<p>此时启动服务器，因为 SpringBoot 可以通过路径来查找静态资源。我是到这里访问：</p>
+<p>http://localhost:8080/webjars/jquery/3.4.1/jquery.js</p>
+<p>即可发现访问到了 <code>jquery.js</code></p>
+<p><img src="https://img.zephyrl.co/images/2020/02/26/2_getJS.png" alt="showjs"></p>
+<a class="post-dummy-target" id="如何导入项目中的静态资源"></a><h3>如何导入项目中的静态资源</h3>
+<p>我们去找 <code>staticPathPattern</code>，可以发现第二种映射规则：/**。访问当前项目的任意资源，他会找 <code>resourcesProperties</code> 这个类，我们点进去看一看</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 代码已经手动格式化
+</span><span class="c1"></span><span class="nd">@ConfigurationProperties</span> <span class="o">(</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;spring.resources&#34;</span><span class="o">,</span>
+    <span class="n">ignoreUnknownFields</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ResourceProperties</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span><span class="o">[</span><span class="o">]</span> <span class="n">CLASSPATH_RESOURCE_LOCATIONS</span> <span class="o">=</span> <span class="o">{</span>
+        <span class="s">&#34;classpath:/META-INF/resources/&#34;</span><span class="o">,</span>
+        <span class="s">&#34;classpath:/resources/&#34;</span><span class="o">,</span>
+        <span class="s">&#34;classpath:/static/&#34;</span><span class="o">,</span>
+        <span class="s">&#34;classpath:/public/&#34;</span>
+    <span class="o">}</span><span class="o">;</span>
+    <span class="c1">// 其他源码
+</span><span class="c1"></span><span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>resourceProperties</code> 可以设置和我们静态资源有关的参数，<code>this.staticLocations = CLASSPATH_RESOURCE_LOCATIONS;</code> 这里面指向了它会去寻找资源的文件夹；即上面数组的内容。再向下看一个方法；它还会在根路径下去寻找资源。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="n">String</span><span class="o">[</span><span class="o">]</span> <span class="nf">appendSlashIfNecessary</span><span class="o">(</span><span class="n">String</span><span class="o">[</span><span class="o">]</span> <span class="n">staticLocations</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">String</span><span class="o">[</span><span class="o">]</span> <span class="n">normalized</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="n">staticLocations</span><span class="o">.</span><span class="na">length</span><span class="o">]</span><span class="o">;</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">staticLocations</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">+</span><span class="o">+</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">location</span> <span class="o">=</span> <span class="n">staticLocations</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="o">;</span>
+        <span class="n">normalized</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">location</span><span class="o">.</span><span class="na">endsWith</span><span class="o">(</span><span class="s">&#34;/&#34;</span><span class="o">)</span> <span class="o">?</span> <span class="n">location</span> <span class="o">:</span> <span class="n">location</span> <span class="o">+</span> <span class="s">&#34;/&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">normalized</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>所以我们可以得出结论，会从一下目录中读取静态资源到 /**。在 <code>localhost:8080</code> 下所有的请求都会被接收</p>
+<ul>
+<li>&ldquo;classpath:/META-INF/resources/&quot;,</li>
+<li>&ldquo;classpath:/resources/&quot;,</li>
+<li>&ldquo;classpath:/static/&quot;,</li>
+<li>&ldquo;classpath:/public/&quot;,</li>
+<li>&ldquo;/&rdquo; ：当前项目的根目录</li>
+</ul>
+<p>所以我们可以在 resources 根目录创建对应的文件夹，他们其实都可以存放我们的静态文件。</p>
+<p>为了测试他们的优先级，我们分别创建几个文件放在这几个文件夹内，如图</p>
+<p><img src="https://img.zephyrl.co/images/2020/02/26/3_compare.png" alt="静态资源比较大小"></p>
+<p>分别运行，可以比较出优先级。</p>
+<a class="post-dummy-target" id="总结"></a><h3>总结</h3>
+<ol>
+<li>
+<p>在 springboot 中，我们可以使用以下方式处理静态资源</p>
+<ul>
+<li>webjars &mdash;&gt; <code>localhost:8080/webjars/</code></li>
+<li>public static /** resources 文件夹 &mdash;&gt; <code>localhost:8080</code></li>
+</ul>
+</li>
+<li>
+<p>优先级：resources &gt; static &gt; public，但是我们一般使用 static</p>
+</li>
+</ol>
+<a class="post-dummy-target" id="首页如何定制"></a><h2>首页如何定制</h2>
+<p>我们在 <code>WebMvcAutoConfiguration.java</code> 中继续寻找，可以找到如下代码段：</p>
+<p><img src="https://img.zephyrl.co/images/2020/02/26/4_getIndexSource.png" alt="indexCode"></p>
+<p>可以发现 他注册了 Bean，也支持自定义。</p>
+<p>同时，index 页面也在我们上面说的那几个目录里可以。</p>
+<p>我们进入 static 文件夹，新建一个 index.html 试一试</p>
+<p><img src="https://img.zephyrl.co/images/2020/02/26/5_showIndex.png" alt="showIndex"></p>
+<p>成功啦！</p>
+
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-02-26 更新</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://tech.zephyrl.co/2020/02/springboot3/index.md" target="_blank">阅读原始文档</a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f02%2fspringboot3%2f&amp;text=SpringBoot%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%b8%89%ef%bc%89%e2%80%94%e2%80%94%20Web%20%e5%bc%80%e5%8f%91%ef%bc%9a%e9%9d%99%e6%80%81%e8%b5%84%e6%ba%90%e6%98%a0%e5%b0%84%e5%92%8c%e9%a6%96%e9%a1%b5%e7%9a%84%e5%ae%9a%e5%88%b6&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftech.zephyrl.co%2f2020%2f02%2fspringboot3%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f02%2fspringboot3%2f&amp;title=SpringBoot%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%b8%89%ef%bc%89%e2%80%94%e2%80%94%20Web%20%e5%bc%80%e5%8f%91%ef%bc%9a%e9%9d%99%e6%80%81%e8%b5%84%e6%ba%90%e6%98%a0%e5%b0%84%e5%92%8c%e9%a6%96%e9%a1%b5%e7%9a%84%e5%ae%9a%e5%88%b6" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/java/"><i class="fas fa-tag fa-fw"></i>Java</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>后端开发笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/spring/"><i class="fas fa-tag fa-fw"></i>Spring</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>SpringBoot学习笔记</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://tech.zephyrl.co/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://tech.zephyrl.co/2020/02/springboot2/" class="prev" rel="prev" title="SpringBoot学习笔记（二） —— 配置文件"><i class="fas fa-angle-left fa-fw"></i>SpringBoot学习笔记（二） —— 配置文件</a>
+        
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>
