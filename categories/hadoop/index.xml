@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sat, 15 Feb 2020 17:41:23 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 May 2020 17:10:02 +0800</lastBuildDate>
     
 	<atom:link href="https://tech.zephyrl.co/categories/hadoop/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>大数据企业课 —— 完全分布式开发环境配置（一）</title>
+      <link>https://tech.zephyrl.co/2020/05/bigdataenvforneuedu/</link>
+      <pubDate>Wed, 27 May 2020 17:10:02 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/05/bigdataenvforneuedu/</guid>
+      <description>为了企业课而做的大数据开发文档，此为环境篇，尽可能的全面。最后会尽全力写总结。</description>
+    </item>
     
     <item>
       <title>大数据学习笔记（一） —— Hadoop运行环境的搭建</title>
