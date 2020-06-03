@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>大数据企业课 —— 完全分布式开发环境配置（二） | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="一个准程序员的自留地">
+<link rel="prev" href="https://tech.zephyrl.co/2020/05/bigdataenvforneuedu/" />
+<link rel="canonical" href="https://tech.zephyrl.co/2020/06/bigdataenvforneuedu2/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="大数据企业课 —— 完全分布式开发环境配置（二）"/>
+<meta name="twitter:description" content="为了企业课而做的大数据开发文档，此为分布式篇，尽可能的全面。最后会尽全力写总结。"/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "大数据企业课 —— 完全分布式开发环境配置（二）",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/tech.zephyrl.co\/2020\/06\/bigdataenvforneuedu2\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "大数据企业课笔记",
+    
+    "wordcount":  786 ,
+    "url": "https:\/\/tech.zephyrl.co\/2020\/06\/bigdataenvforneuedu2\/",
+    
+        "datePublished": "2020-06-02T20:46:00\x2b08:00",
+    
+    
+        "dateModified": "2020-06-02T20:46:00\x2b08:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "Zephyr",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">大数据企业课 —— 完全分布式开发环境配置（二）</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <span class="post-category">
+                        收录于
+                        <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/hadoop/">hadoop</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/centos/">CentOS</a>
+                            
+                    </span>
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-06-02>2020-06-02</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 786 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="post-dummy-target" id="设置-hosts"></a><h2>设置 Hosts</h2>
+<p>打开我们上次配置好的 vm00 虚拟机的 <code>/etc/hosts</code> 文件，加入以下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">192.168.1.100 vm00
+192.168.1.101 vm01
+192.168.1.102 vm02
+192.168.1.103 vm03
+192.168.1.104 vm04
+192.168.1.105 vm05
+</code></pre></td></tr></table>
+</div>
+</div><p>之后进入本机（Windows）的 <code>C:\Windows\system32\Drivers\etc\</code> 下编辑 <code>hosts</code> 文件，将以上内容加入</p>
+<a class="post-dummy-target" id="克隆虚拟机"></a><h2>克隆虚拟机</h2>
+<p>把 vm00 关机，右键管理，选择克隆</p>
+<p><img src="https://img.zephyrl.co/images/2020/06/02/1_cloneVm.png" alt="cloneVM"></p>
+<p>这里选择完整克隆即可，后面按照配置虚拟机的时候配置位置就可以啦！</p>
+<p><img src="https://img.zephyrl.co/images/2020/06/02/2_cloneVm2.png" alt="2_cloneVm2.png"></p>
+<p>克隆三个（001-003）即可</p>
+<p>修改网络时可以通过相对直观的 <code>nmtui</code> 来修改 IP 地址和主机名称。</p>
+<p>也可以通过以下命令更改</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nmcli connection modify eth0 ipv4.address 192.168.1.101/24
+nmcli connection up eth0
+hostnamecli set-hostname vm01
+</code></pre></td></tr></table>
+</div>
+</div><p>不论如何修改，不要忘记</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">systemctl restart network
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="ssh-通信"></a><h2>SSH 通信</h2>
+<p>在第一个终端输入以下命令获得当前的 SSH Keygen</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key <span class="o">(</span>/home/zephyr/.ssh/id_rsa<span class="o">)</span>: 
+Created directory <span class="s1">&#39;/home/zephyr/.ssh&#39;</span>.
+Enter passphrase <span class="o">(</span>empty <span class="k">for</span> no passphrase<span class="o">)</span>: 
+Enter same passphrase again: 
+Your identification has been saved in /home/zephyr/.ssh/id_rsa.
+Your public key has been saved in /home/zephyr/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:KJe7A4mQqYqEY+V9pUUg84Np6Jq87BzZcZfk39iNG/Y zephyr@vm01
+The key<span class="err">&#39;</span>s randomart image is:
++---<span class="o">[</span>RSA 2048<span class="o">]</span>----+
+<span class="p">|</span>     o ..        <span class="p">|</span>
+<span class="p">|</span>    . *  .       <span class="p">|</span>
+<span class="p">|</span> o . + +.        <span class="p">|</span>
+<span class="p">|</span>+ ... oooo       <span class="p">|</span>
+<span class="p">|</span>o.o+oo++S        <span class="p">|</span>
+<span class="p">|</span><span class="o">=</span>o*.<span class="o">=</span>+.+. + o    <span class="p">|</span>
+<span class="p">|</span><span class="o">=</span>B . .o  o * .   <span class="p">|</span>
+<span class="p">|</span><span class="o">=</span> o   ..  . +    <span class="p">|</span>
+<span class="p">|</span>.<span class="o">=</span>    ..   . E   <span class="p">|</span>
++----<span class="o">[</span>SHA256<span class="o">]</span>-----+
+<span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ ls .ssh
+id_rsa  id_rsa.pub
+</code></pre></td></tr></table>
+</div>
+</div><p>其中，id_rsa 为 私钥，id_rsa.pub 为公钥</p>
+<p>之后，把私钥放入认证文件中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ <span class="nb">cd</span> .ssh
+<span class="o">[</span>zephyr@vm01 .ssh<span class="o">]</span>$ cat id_rsa.pub &gt;&gt; authorized_keys
+</code></pre></td></tr></table>
+</div>
+</div><p>之后修改权限如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>zephyr@vm01 .ssh<span class="o">]</span>$ <span class="nb">cd</span> ..
+<span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ chmod <span class="m">700</span> ./.ssh
+<span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ chmod <span class="m">644</span> ./.ssh/authorized_keys
+<span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ chmod <span class="m">600</span> ./.ssh/id_rsa
+</code></pre></td></tr></table>
+</div>
+</div><p>最后在其他虚拟机里执行以下步骤：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">mkdir .ssh
+<span class="nb">cd</span> .ssh
+touch authorized_keys
+<span class="nb">cd</span> ..
+chmod <span class="m">700</span> .ssh
+chmod <span class="m">644</span> .ssh/authorized_keys
+</code></pre></td></tr></table>
+</div>
+</div><p>然后再第一个虚拟机下，复制 authorized_keys 到其他虚拟机</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">scp .ssh/authorized_keys root@vm02:~/.ssh/authorized_keys
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="hadoop-分布式配置"></a><h2>Hadoop 分布式配置</h2>
+<p>之后，在 <code>vm01</code> 虚拟机，进入 <code>/usr/local/hadoop-2.9.2/etc/hadoop</code> 文件夹，</p>
+<p>打开 <code>core-site.xml</code>，输入以下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;name</span><span class="nt">&gt;</span>fs.defaultFS<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value</span><span class="nt">&gt;</span>hdfs://vm01/<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>打开 <code>hdfs-site.xml</code>，输入以下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;name</span><span class="nt">&gt;</span>dfs.replication<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value</span><span class="nt">&gt;</span>3<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后复制文件 <code>cp mapred-site.xml.template mapred-site.xml</code>，并打开 <code>mapred-site.xml</code>，输入以下内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;name</span><span class="nt">&gt;</span>mapreduce.framework.name<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value</span><span class="nt">&gt;</span>yarn<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>打开 <code>yarn-site.xml</code>，输入以下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;name</span><span class="nt">&gt;</span>yarn.resourcemanager.hostname<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value</span><span class="nt">&gt;</span>vm01<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;name</span><span class="nt">&gt;</span>yarn.nodemanager.aux-services<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value</span><span class="nt">&gt;</span>mapreduce_shuffle<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>打开 <code>slaves</code>，输入以下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">vm02
+vm03
+vm04
+</code></pre></td></tr></table>
+</div>
+</div><p>至此，所有配置写入完毕，我们来分发配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">scp /usr/local/hadoop-2.9.2/etc/hadoop/* root@vm02:/usr/local/hadoop-2.9.2/etc/hadoop/
+scp /usr/local/hadoop-2.9.2/etc/hadoop/* root@vm03:/usr/local/hadoop-2.9.2/etc/hadoop/
+scp /usr/local/hadoop-2.9.2/etc/hadoop/* root@vm04:/usr/local/hadoop-2.9.2/etc/hadoop/
+</code></pre></td></tr></table>
+</div>
+</div><p>之后我们就可以格式化 NameNode 并且启动集群了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">hadoop namenode -format
+start-all.sh
+</code></pre></td></tr></table>
+</div>
+</div><p>一切启动好了可以去 vm01:50070 和 vm01:8088 看一看即可</p>
+<p><img src="https://img.zephyrl.co/images/2020/06/03/3_overview.png" alt="3_overview.png"></p>
+
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-06-02 更新</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://tech.zephyrl.co/2020/06/bigdataenvforneuedu2/index.md" target="_blank">阅读原始文档</a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f06%2fbigdataenvforneuedu2%2f&amp;text=%e5%a4%a7%e6%95%b0%e6%8d%ae%e4%bc%81%e4%b8%9a%e8%af%be%20%e2%80%94%e2%80%94%20%e5%ae%8c%e5%85%a8%e5%88%86%e5%b8%83%e5%bc%8f%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae%ef%bc%88%e4%ba%8c%ef%bc%89&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftech.zephyrl.co%2f2020%2f06%2fbigdataenvforneuedu2%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f06%2fbigdataenvforneuedu2%2f&amp;title=%e5%a4%a7%e6%95%b0%e6%8d%ae%e4%bc%81%e4%b8%9a%e8%af%be%20%e2%80%94%e2%80%94%20%e5%ae%8c%e5%85%a8%e5%88%86%e5%b8%83%e5%bc%8f%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae%ef%bc%88%e4%ba%8c%ef%bc%89" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%BC%81%E4%B8%9A%E8%AF%BE%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>大数据企业课笔记</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://tech.zephyrl.co/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://tech.zephyrl.co/2020/05/bigdataenvforneuedu/" class="prev" rel="prev" title="大数据企业课 —— 完全分布式开发环境配置（一）"><i class="fas fa-angle-left fa-fw"></i>大数据企业课 —— 完全分布式开发环境配置（一）</a>
+        
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>
