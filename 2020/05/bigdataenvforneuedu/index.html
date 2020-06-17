@@ -41,7 +41,7 @@
     
         "keywords": "大数据企业课笔记",
     
-    "wordcount":  2061 ,
+    "wordcount":  2303 ,
     "url": "https:\/\/tech.zephyrl.co\/2020\/05\/bigdataenvforneuedu\/",
     
         "datePublished": "2020-05-27T17:10:02\x2b08:00",
@@ -147,7 +147,7 @@
             </div>
             <div class="post-meta-other">
                 <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-05-27>2020-05-27</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 2061 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 2303 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 5 分钟&nbsp;</div>
         </div>
 
@@ -680,6 +680,77 @@ From <span class="nb">source</span> with checksum 9da14e8ac4737126b00a1a47f66265
 </code></pre></td></tr></table>
 </div>
 </div><p>5、执行hive</p>
+<a class="post-dummy-target" id="sqoop-安装"></a><h2>Sqoop 安装</h2>
+<p>首先找到 <a href="http://www.apache.org/dyn/closer.lua/sqoop/">Hadoop 下载页面</a>，复制合适的链接，然后下载到虚拟机中的 <code>/usr/local/</code> 下</p>
+<p>之后，解压文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">tar zxvf sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz
+mv sqoop-1.4.7.bin__hadoop-2.6.0 sqoop-1.4.7
+</code></pre></td></tr></table>
+</div>
+</div><p>之后记住现在的安装路径，设置一下环境变量，在 <code>/etc/profile</code> 里面添加如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Hadoop</span>
+<span class="nb">export</span> <span class="nv">SQOOP_HOME</span><span class="o">=</span>/usr/local/sqoop-1.4.7
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$SQOOP_HOME</span>/bin
+</code></pre></td></tr></table>
+</div>
+</div><p>之后对 Sqoop 进行简单配置</p>
+<p>首先修改配置文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">source</span> /etc/profile
+<span class="nb">cd</span> <span class="nv">$SQOOP_HOME</span>/conf
+mv sqoop-env-template.sh sqoop-env.sh
+</code></pre></td></tr></table>
+</div>
+</div><p>打开sqoop-env.sh并编辑下面几行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HADOOP_COMMON_HOME</span><span class="o">=</span>/usr/local/hadoop-2.9.2
+<span class="nb">export</span>  <span class="nv">HADOOP_MAPRED_HOME</span><span class="o">=</span>/usr/local/hadoop-2.9.2
+<span class="nb">export</span> <span class="nv">HIVE_HOME</span><span class="o">=</span>/usr/local/apache-hive-2.3.7-bin
+</code></pre></td></tr></table>
+</div>
+</div><p>加入 MySql 的 JDBC 驱动包。首先冲<a href="https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.20.tar.gz">这里</a>下资 MySQL 驱动包 然后提取里面的jar文件放在 $SQOOP_HOME/lib/ 中，即可大功告成。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ sqoop-version
+20/06/16 16:55:23 INFO sqoop.Sqoop: Running Sqoop version: 1.4.7
+Sqoop 1.4.7
+git commit id 2328971411f57f0cb683dfb79d19d4d19d185dd8
+Compiled by maugli on Thu Dec <span class="m">21</span> 15:59:58 STD <span class="m">2017</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>到这里，整个Sqoop安装工作完成。</p>
 
         </div>
 

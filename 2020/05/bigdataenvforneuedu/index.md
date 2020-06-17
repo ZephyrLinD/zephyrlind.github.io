@@ -395,3 +395,52 @@ export HADOOP_HOME=/usr/local/hadoop-2.9.2
 ```
 
 5、执行hive
+
+## Sqoop 安装
+
+首先找到 [Hadoop 下载页面](http://www.apache.org/dyn/closer.lua/sqoop/)，复制合适的链接，然后下载到虚拟机中的 `/usr/local/` 下
+
+之后，解压文件
+
+```shell
+tar zxvf sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz
+mv sqoop-1.4.7.bin__hadoop-2.6.0 sqoop-1.4.7
+```
+
+之后记住现在的安装路径，设置一下环境变量，在 `/etc/profile` 里面添加如下内容：
+
+```bash
+# Hadoop
+export SQOOP_HOME=/usr/local/sqoop-1.4.7
+export PATH=$PATH:$SQOOP_HOME/bin
+```
+
+之后对 Sqoop 进行简单配置
+
+首先修改配置文件：
+
+```bash
+source /etc/profile
+cd $SQOOP_HOME/conf
+mv sqoop-env-template.sh sqoop-env.sh
+```
+
+打开sqoop-env.sh并编辑下面几行：
+
+```shell
+export HADOOP_COMMON_HOME=/usr/local/hadoop-2.9.2
+export  HADOOP_MAPRED_HOME=/usr/local/hadoop-2.9.2
+export HIVE_HOME=/usr/local/apache-hive-2.3.7-bin
+```
+
+加入 MySql 的 JDBC 驱动包。首先冲[这里](https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.20.tar.gz)下资 MySQL 驱动包 然后提取里面的jar文件放在 $SQOOP_HOME/lib/ 中，即可大功告成。
+
+```bash
+$ sqoop-version
+20/06/16 16:55:23 INFO sqoop.Sqoop: Running Sqoop version: 1.4.7
+Sqoop 1.4.7
+git commit id 2328971411f57f0cb683dfb79d19d4d19d185dd8
+Compiled by maugli on Thu Dec 21 15:59:58 STD 2017
+```
+
+到这里，整个Sqoop安装工作完成。
