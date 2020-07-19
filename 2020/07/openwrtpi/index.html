@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>使用树莓派在 Docker 中运行 OpenWrt 旁路网关 | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="一个准程序员的自留地">
+<link rel="prev" href="https://tech.zephyrl.co/2020/05/bigdataenvforneuedu2/" />
+<link rel="canonical" href="https://tech.zephyrl.co/2020/07/openwrtpi/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用树莓派在 Docker 中运行 OpenWrt 旁路网关"/>
+<meta name="twitter:description" content="前言 在学校为了打比赛买的树莓派 4B 4G 已经完全吃灰了，把它废物利用一下。看同学 Pi 4B 做旁路由挺稳定的，心痒痒，想折腾&hellip;&hellip"/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "使用树莓派在 Docker 中运行 OpenWrt 旁路网关",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/tech.zephyrl.co\/2020\/07\/openwrtpi\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+    "wordcount":  2129 ,
+    "url": "https:\/\/tech.zephyrl.co\/2020\/07\/openwrtpi\/",
+    
+        "datePublished": "2020-07-19T21:15:28\x2b08:00",
+    
+    
+        "dateModified": "2020-07-19T21:15:28\x2b08:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "Zephyr",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">使用树莓派在 Docker 中运行 OpenWrt 旁路网关</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-07-19>2020-07-19</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 2129 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 5 分钟&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="post-dummy-target" id="前言"></a><h2>前言</h2>
+<p>在学校为了打比赛买的树莓派 4B 4G 已经完全吃灰了，把它废物利用一下。看同学 Pi 4B 做旁路由挺稳定的，心痒痒，想折腾&hellip;&hellip;</p>
+<a class="post-dummy-target" id="旁路网关"></a><h2>旁路网关</h2>
+<p>普通的路由器往往集无线信号转发、网关、DNS 服务器等角色为一身，其中的“网关”角色负责路由器内部数据的处理。但因为一般家用的路由器硬件性能很有限，在运行一些比较吃资源的应用（如酸酸乳、去广告等）时，几乎会占满所有硬件资源，导致路由器网络/系统不稳定等诸多问题。既然路由器的硬件性能有限，那我们就把网关的重任交给硬件性能更好的设备去做，也就是树莓派 Docker 中的 OpenWrt 去做。把路由器肩负的网关重任交给其他更适合的设备来做，同时，旁路网关处理完的结果会返回给路由器，由路由器继续进行无线转发。</p>
+<p>这样，每个角色各司其职，路由器肩上的任务轻了，即使是油管 4K 也能轻松跑满网速了，而旁路由（树莓派）也结束了它吃灰的命运（好像只是换了个地方吃灰）。由此资源的充分利用，一举两得。</p>
+<p>我将在 Docker 容器中运行 OpenWrt，并通过设置，让 Docker 容器中的 OpenWrt 网关接管路由器自身的网关，减轻路由器的负担，同时，由于网关被 OpenWrt 接管，所以 OpenWrt 中的大部分应用都是可用的，比如酸酸乳，V2ray，Trojan，去广告等。</p>
+<p>OpenWrt 镜像所用系统为基于 Lean 大源码编译的 32位/ IPV4 Only 固件。至于为啥不自编译&hellip;因为懒。最近天气很热但是爸妈身体不好，没开空调，有点烦躁，以后会补上（我自己挖了好几个坑了还没填上呢呜呜呜）。</p>
+<a class="post-dummy-target" id="烧录系统"></a><h2>烧录系统</h2>
+<p>这次我使用“树莓派爱好者基地”编译的 64 位 Debian，此版本 Debian 可以充分发挥 64 位 CPU 的性能，同时默认开启 Docker，KVM 等功能，其中，Docker 功能开箱即用，非常方便。</p>
+<p>“树莓派爱好者基地”专版64位 Debian 功能介绍在如下链接中，下载时推荐选择“无桌面基础系统加强版”：</p>
+<p><a href="https://github.com/openfans-community-offical/Debian-Pi-Aarch64/blob/master/README_zh.md">https://github.com/openfans-community-offical/Debian-Pi-Aarch64/blob/master/README_zh.md</a></p>
+<p>下载镜像烧写到树莓派的 SD 卡并上电开机后，系统会自动完成扩展 SD 卡空间的操作，这个过程大约需要3~5分钟（期间会重启几次）。估摸着时间差不多以后，用网线将树莓派的板载网口与路由器的 Lan 口连接，此时我们需要进入路由器管理页面对树莓派进行 Mac 地址绑定，最好绑定在 DHCP 服务器配置的范围之外，比如我的 DHCP 服务器分配 IP 是从 192.168.2.100 分配到 192.168.2.199，子网掩码 24 位，我们就可以把树莓派的 IP 绑定到 200 - 254 之间。</p>
+<p>之后连接树莓派的 SSH：</p>
+<p>用户名：pi</p>
+<p>密码：raspberry</p>
+<p>准备工作到此结束。</p>
+<a class="post-dummy-target" id="安装配置-openwrt-镜像并配置"></a><h2>安装配置 OpenWrt 镜像并配置</h2>
+<p>成功登陆到树莓派的 SSH 后，在拉取镜像之前，我们还需要进行一些额外的工作：</p>
+<a class="post-dummy-target" id="打开网卡混杂模式"></a><h3>打开网卡混杂模式</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo ip link <span class="nb">set</span> eth0 promisc on
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="结合自己网络情况创建网络"></a><h3>结合自己网络情况创建网络</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">docker network create -d macvlan --subnet<span class="o">=</span>192.168.2.0/24 --gateway<span class="o">=</span>192.168.2.1 -o <span class="nv">parent</span><span class="o">=</span>eth0 macnet
+</code></pre></td></tr></table>
+</div>
+</div><p>此时，我们使用 docker network ls命令可以看到网络macnet已建立成功：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+10e676133746        bridge              bridge              <span class="nb">local</span>
+f5308b94e8fa        host                host                <span class="nb">local</span>
+16745ea66852        macnet              macvlan             <span class="nb">local</span>
+5e72e41ea02a        none                null                <span class="nb">local</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="拉取镜像"></a><h3>拉取镜像</h3>
+<p>为提高拉取速度，我拉取阿里云仓库中的镜像：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">docker pull registry.cn-shanghai.aliyuncs.com/suling/openwrt:latest
+</code></pre></td></tr></table>
+</div>
+</div><p>镜像拉取完成后，我们可以执行<code>docker images</code>命令查看现存镜像：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ docker images
+REPOSITORY                                              TAG                 IMAGE ID            CREATED             SIZE
+registry.cn-shanghai.aliyuncs.com/suling/openwrt        latest              4f4bc5dca2d9        <span class="m">1</span> hours ago         112MB
+</code></pre></td></tr></table>
+</div>
+</div><p>此时证明镜像已成功拉取到本地。</p>
+<a class="post-dummy-target" id="创建并启动容器"></a><h3>创建并启动容器</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">docker run --restart always --name openwrt -d --network macnet --privileged registry.cn-shanghai.aliyuncs.com/suling/openwrt:latest /sbin/init
+</code></pre></td></tr></table>
+</div>
+</div><p>其中：</p>
+<p><code>--restart always</code> 参数表示容器退出时始终重启，使服务尽量保持始终可用；</p>
+<p><code>--name openwrt</code> 参数定义了容器的名称；</p>
+<p><code>-d</code> 参数定义使容器运行在 Daemon 模式；</p>
+<p><code>--network macnet</code> 参数定义将容器加入 macnet 网络；</p>
+<p><code>--privileged</code> 参数定义容器运行在特权模式下；</p>
+<p><code>registry.cn-shanghai.aliyuncs.com/suling/openwrt:latest</code>为 Docker 镜像名，因容器托管在阿里云 Docker 镜像仓库内，所以在镜像名中含有阿里云仓库信息；</p>
+<p><code>/sbin/init</code> 定义容器启动后执行的命令。</p>
+<p>启动容器后，我们可以使用 <code>docker ps -a</code> 命令查看当前运行的容器：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+a26cee7cade6        openwrt:latest      <span class="s2">&#34;/sbin/init&#34;</span>        <span class="m">3</span> hours ago         Up <span class="m">3</span> hours                              openwrt
+</code></pre></td></tr></table>
+</div>
+</div><p>若容器运行信息 <code>STATUS</code> 列为 <code>UP</code> 状态，则说明容器运行正常。</p>
+<a class="post-dummy-target" id="进入容器并按照需求修改相关参数"></a><h3>进入容器并按照需求修改相关参数</h3>
+<p>首先进去容器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">docker <span class="nb">exec</span> -it openwrt bash
+</code></pre></td></tr></table>
+</div>
+</div><p>其中：</p>
+<p><code>openwrt</code>为容器名称；</p>
+<p><code>bash</code>为进入容器后执行的命令。</p>
+<p>执行此命令后我们便进入 OpenWrt 的命令行界面，首先，我们需要编辑 OpenWrt 的网络配置文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">vim /etc/config/network
+</code></pre></td></tr></table>
+</div>
+</div><p>我们需要更改 Lan 口设置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">config interface <span class="s1">&#39;lan&#39;</span>
+    option <span class="nb">type</span> <span class="s1">&#39;bridge&#39;</span>
+    option ifname <span class="s1">&#39;eth0&#39;</span>
+    option proto <span class="s1">&#39;static&#39;</span>
+    option ipaddr <span class="s1">&#39;192.168.123.100&#39;</span>
+    option netmask <span class="s1">&#39;255.255.255.0&#39;</span>
+    option ip6assign <span class="s1">&#39;60&#39;</span>
+    option gateway <span class="s1">&#39;192.168.123.1&#39;</span>
+    option broadcast <span class="s1">&#39;192.168.123.255&#39;</span>
+    option dns <span class="s1">&#39;192.168.123.1&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其中：</p>
+<p>所有的 192.168.123.x 需要根据树莓派所处网段修改，<code>option gateway</code> 和 <code>option dns</code> 填写路由器的 IP，若树莓派获得的 IP 为 <code>192.168.2.200</code>，路由器 IP 为 <code>192.168.2.1</code>，则需要这样修改：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">config interface <span class="s1">&#39;lan&#39;</span>
+    option <span class="nb">type</span> <span class="s1">&#39;bridge&#39;</span>
+    option ifname <span class="s1">&#39;eth0&#39;</span>
+    option proto <span class="s1">&#39;static&#39;</span>
+    option ipaddr <span class="s1">&#39;192.168.2.254&#39;</span>
+    option netmask <span class="s1">&#39;255.255.255.0&#39;</span>
+    option ip6assign <span class="s1">&#39;60&#39;</span>
+    option gateway <span class="s1">&#39;192.168.2.1&#39;</span>
+    option broadcast <span class="s1">&#39;192.168.2.255&#39;</span>
+    option dns <span class="s1">&#39;192.168.2.1&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>option ipaddr 项目定义了 OpenWrt 的 IP 地址，在完成网段设置后，IP最后一段可根据自己的爱好修改（前提是符合规则且不和现有已分配 IP 冲突）。</p>
+<a class="post-dummy-target" id="重启网络"></a><h3>重启网络</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">/etc/init.d/network restart
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="进入控制面板"></a><h3>进入控制面板</h3>
+<p>在浏览器中输入第 5 步 <code>option ipaddr</code> 项目中的 IP 进入 Luci 控制面板，若 <code>option ipaddr</code> 的参数为 <code>192.168.123.100</code>，则可以在浏览器输入 http://192.168.123.100 进入控制面板。</p>
+<p>用户名：root</p>
+<p>密码：password</p>
+<p>之后就可以干想干的事了&hellip;&hellip;</p>
+<a class="post-dummy-target" id="链接相关"></a><h2>链接相关</h2>
+<p>需要手动配置 IP 地址，我们把 DNS 服务器和网关都改成我们刚刚设置的 OpenWrt 地址就可以啦</p>
+<a class="post-dummy-target" id="其他杂七杂八"></a><h2>其他杂七杂八</h2>
+<p>我使用了 ShadowSocksR+ 和一个机场进行了科学上网，结果发现上外网速度贼 jier 快，但是国内 DNS 解析速度慢的一批</p>
+<p>后来查询发现是因为国内网站走了一遍防火墙，我们设置防火墙即可解决问题</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="最后"></a><h2>最后</h2>
+<p>暂时没遇到其他问题，如果遇到了会更新博客！</p>
+
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-07-19 更新</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://tech.zephyrl.co/2020/07/openwrtpi/index.md" target="_blank">阅读原始文档</a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f07%2fopenwrtpi%2f&amp;text=%e4%bd%bf%e7%94%a8%e6%a0%91%e8%8e%93%e6%b4%be%e5%9c%a8%20Docker%20%e4%b8%ad%e8%bf%90%e8%a1%8c%20OpenWrt%20%e6%97%81%e8%b7%af%e7%bd%91%e5%85%b3&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftech.zephyrl.co%2f2020%2f07%2fopenwrtpi%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f07%2fopenwrtpi%2f&amp;title=%e4%bd%bf%e7%94%a8%e6%a0%91%e8%8e%93%e6%b4%be%e5%9c%a8%20Docker%20%e4%b8%ad%e8%bf%90%e8%a1%8c%20OpenWrt%20%e6%97%81%e8%b7%af%e7%bd%91%e5%85%b3" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://tech.zephyrl.co/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://tech.zephyrl.co/2020/05/bigdataenvforneuedu2/" class="prev" rel="prev" title="大数据企业课 —— 完全分布式开发环境配置（二）"><i class="fas fa-angle-left fa-fw"></i>大数据企业课 —— 完全分布式开发环境配置（二）</a>
+        
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>

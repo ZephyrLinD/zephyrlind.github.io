@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sat, 30 May 2020 20:46:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jul 2020 21:15:28 +0800</lastBuildDate>
     
 	<atom:link href="https://tech.zephyrl.co/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用树莓派在 Docker 中运行 OpenWrt 旁路网关</title>
+      <link>https://tech.zephyrl.co/2020/07/openwrtpi/</link>
+      <pubDate>Sun, 19 Jul 2020 21:15:28 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/07/openwrtpi/</guid>
+      <description>前言 在学校为了打比赛买的树莓派 4B 4G 已经完全吃灰了，把它废物利用一下。看同学 Pi 4B 做旁路由挺稳定的，心痒痒，想折腾&amp;hellip;&amp;hellip</description>
+    </item>
     
     <item>
       <title>大数据企业课 —— 完全分布式开发环境配置（二）</title>
