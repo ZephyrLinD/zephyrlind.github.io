@@ -44,10 +44,10 @@
     "wordcount":  1680 ,
     "url": "https:\/\/tech.zephyrl.co\/2020\/02\/springboot2\/",
     
-        "datePublished": "2020-02-20T16:52:56\x2b08:00",
+        "datePublished": "2020-02-20T16:52:56\u002b08:00",
     
     
-        "dateModified": "2020-02-20T16:52:56\x2b08:00",
+        "dateModified": "2020-02-20T16:52:56\u002b08:00",
     
     
         "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
@@ -210,7 +210,7 @@ server.port=8080
 </span><span class="w"></span><span class="c"># key: value (key冒号空格value)</span><span class="w">
 </span><span class="w"></span><span class="c"># 比如...</span><span class="w">
 </span><span class="w"></span><span class="k">server</span><span class="p">:</span><span class="w">
-</span><span class="w"></span><span class="w">    </span><span class="k">port</span><span class="p">:</span><span class="w"> </span><span class="m">8080</span><span class="w">
+</span><span class="w">    </span><span class="k">port</span><span class="p">:</span><span class="w"> </span><span class="m">8080</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>配置文件可以修改 SpringBoot 自动配置的默认值</p>
@@ -226,7 +226,7 @@ server.port=8080
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">server</span><span class="p">:</span><span class="w">
-</span><span class="w"></span><span class="w">    </span><span class="k">port</span><span class="p">:</span><span class="w"> </span><span class="m">8081</span><span class="w">
+</span><span class="w">    </span><span class="k">port</span><span class="p">:</span><span class="w"> </span><span class="m">8081</span><span class="w">
 </span><span class="w">    </span><span class="k">path</span><span class="p">:</span><span class="w"> </span>/hello<span class="w">
 </span></code></pre></td></tr></table>
 </div>
@@ -245,9 +245,9 @@ server.port=8080
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">k</span><span class="p">:</span><span class="w"> </span><span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">k</span><span class="p">:</span><span class="w"> 
 </span><span class="w">    </span><span class="k">v1</span><span class="p">:</span><span class="w">
-</span><span class="w"></span><span class="w">    </span><span class="k">v2</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">v2</span><span class="p">:</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>在下一行来写对象的属性和值得关系，注意缩进；比如：</p>
@@ -259,7 +259,7 @@ server.port=8080
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">student</span><span class="p">:</span><span class="w">
-</span><span class="w"></span><span class="w">    </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>zephyr<span class="w">
+</span><span class="w">    </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>zephyr<span class="w">
 </span><span class="w">    </span><span class="k">age</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
@@ -283,7 +283,7 @@ server.port=8080
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">pets</span><span class="p">:</span><span class="w">
-</span><span class="w"></span><span class="w"> </span>- cat<span class="w">
+</span><span class="w"> </span>- cat<span class="w">
 </span><span class="w"> </span>- dog<span class="w">
 </span><span class="w"> </span>- pig<span class="w">
 </span></code></pre></td></tr></table>
@@ -309,11 +309,11 @@ server.port=8080
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--</span><span class="c">导入配置文件处理器，配置文件进行绑定就会有提示</span><span class="c">--&gt;</span>
-<span class="nt">&lt;dependency</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;groupId</span><span class="nt">&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId</span><span class="nt">&gt;</span>spring-boot-configuration-processor<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;optional</span><span class="nt">&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--导入配置文件处理器，配置文件进行绑定就会有提示--&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-boot-configuration-processor<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre></td></tr></table>
 </div>
@@ -336,17 +336,17 @@ server.port=8080
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">person</span><span class="p">:</span><span class="w">
-</span><span class="w"></span><span class="w">    </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>zephyr<span class="w">
+</span><span class="w">    </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>zephyr<span class="w">
 </span><span class="w">    </span><span class="k">age</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="w">
 </span><span class="w">    </span><span class="k">happy</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="w">    </span><span class="k">birth</span><span class="p">:</span><span class="w"> </span><span class="m">2000</span>/<span class="m">01</span>/<span class="m">01</span><span class="w">
 </span><span class="w">    </span><span class="k">maps</span><span class="p">:</span><span class="w"> </span>{<span class="k">k1: v1,k2</span><span class="p">:</span><span class="w"> </span>v2}<span class="w">
 </span><span class="w">    </span><span class="k">lists</span><span class="p">:</span><span class="w">
-</span><span class="w"></span><span class="w">      </span>- code<span class="w">
+</span><span class="w">      </span>- code<span class="w">
 </span><span class="w">      </span>- girl<span class="w">
 </span><span class="w">      </span>- music<span class="w">
 </span><span class="w">    </span><span class="k">dog</span><span class="p">:</span><span class="w">
-</span><span class="w"></span><span class="w">      </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>旺财<span class="w">
+</span><span class="w">      </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>旺财<span class="w">
 </span><span class="w">      </span><span class="k">age</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
@@ -454,11 +454,11 @@ server.port=8080
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">SpringbootDemo03ApplicationTests</span> <span class="o">{</span>
 
     <span class="nd">@Autowired</span>
-    <span class="n">Person</span> <span class="n">person</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+    <span class="n">Person</span> <span class="n">person</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">();</span>
 
     <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">contextLoads</span><span class="o">(</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">person</span><span class="o">)</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">contextLoads</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">person</span><span class="o">);</span>
     <span class="o">}</span>
 
 <span class="o">}</span>
@@ -494,7 +494,7 @@ server.port=8080
 </span><span class="c1"></span>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">;</span>
     <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;true&#34;</span><span class="o">)</span>  <span class="c1">// 字面量
 </span><span class="c1"></span>    <span class="kd">private</span> <span class="n">Boolean</span> <span class="n">happy</span><span class="o">;</span>
-    <span class="err">。</span><span class="err">。</span><span class="err">。</span><span class="err">。</span><span class="err">。</span><span class="err">。</span>  
+    <span class="err">。。。。。。</span>  
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -566,7 +566,7 @@ server.port=8080
 <span class="nd">@ConfigurationProperties</span><span class="o">(</span><span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;person&#34;</span><span class="o">)</span>
 <span class="nd">@Validated</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-    <span class="nd">@Email</span><span class="o">(</span><span class="o">)</span>
+    <span class="nd">@Email</span><span class="o">()</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">Boolean</span> <span class="n">happy</span><span class="o">;</span>

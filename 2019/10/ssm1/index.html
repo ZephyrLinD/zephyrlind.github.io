@@ -41,13 +41,13 @@
     
         "keywords": "学习笔记, Java, 后端开发笔记, Spring, Java SSM企业课",
     
-    "wordcount":  837 ,
+    "wordcount":  838 ,
     "url": "https:\/\/tech.zephyrl.co\/2019\/10\/ssm1\/",
     
-        "datePublished": "2019-10-14T21:53:33\x2b08:00",
+        "datePublished": "2019-10-14T21:53:33\u002b08:00",
     
     
-        "dateModified": "2019-10-14T21:53:33\x2b08:00",
+        "dateModified": "2019-10-14T21:53:33\u002b08:00",
     
     
         "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
@@ -146,7 +146,7 @@
             </div>
             <div class="post-meta-other">
                 <i class="far fa-calendar-alt fa-fw"></i><time datetime=2019-10-14>2019-10-14</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 837 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 838 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
         </div>
 
@@ -199,12 +199,12 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--</span><span class="c"> localRepository
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- localRepository
 </span><span class="c"> | The path to the local repository maven will use to store artifacts.
 </span><span class="c"> |
 </span><span class="c"> | Default: ${user.home}/.m2/repository
 </span><span class="c">&lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;
-</span><span class="c"></span><span class="c">--&gt;</span>
+</span><span class="c">--&gt;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>中的注释行最后一行挪出来，换到别的地方</p>
@@ -213,7 +213,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;localRepository</span><span class="nt">&gt;</span>c:\develop\.m2\repository<span class="nt">&lt;/localRepository&gt;</span>
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;localRepository&gt;</span>c:\develop\.m2\repository<span class="nt">&lt;/localRepository&gt;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>我只是以自己为例，中间是路径。</p>
@@ -229,11 +229,11 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;mirror</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;id</span><span class="nt">&gt;</span>alimaven<span class="nt">&lt;/id&gt;</span>
-    <span class="nt">&lt;name</span><span class="nt">&gt;</span>aliyun maven<span class="nt">&lt;/name&gt;</span>
-    <span class="nt">&lt;url</span><span class="nt">&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="nt">&lt;/url&gt;</span>
-    <span class="nt">&lt;mirrorOf</span><span class="nt">&gt;</span>central<span class="nt">&lt;/mirrorOf&gt;</span>
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;mirror&gt;</span>
+    <span class="nt">&lt;id&gt;</span>alimaven<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;name&gt;</span>aliyun maven<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;url&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="nt">&lt;/url&gt;</span>
+    <span class="nt">&lt;mirrorOf&gt;</span>central<span class="nt">&lt;/mirrorOf&gt;</span>
 <span class="nt">&lt;/mirror&gt;</span>
 </code></pre></td></tr></table>
 </div>

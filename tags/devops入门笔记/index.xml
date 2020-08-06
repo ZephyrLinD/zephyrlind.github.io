@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Mon, 03 Feb 2020 14:42:35 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2020 08:10:02 +0800</lastBuildDate>
     
 	<atom:link href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Zabbix 配置文档（〇）—— 安装</title>
+      <link>https://tech.zephyrl.co/2020/08/zabbix0/</link>
+      <pubDate>Tue, 04 Aug 2020 08:10:02 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/08/zabbix0/</guid>
+      <description>Zabbix5.0 LTS 的安装，基于 CentOS7.5</description>
+    </item>
     
     <item>
       <title>NginxTips（三） —— 用Nginx搭建一个具备缓存功能的反向代理服务器</title>

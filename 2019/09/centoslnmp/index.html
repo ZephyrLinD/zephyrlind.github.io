@@ -44,10 +44,10 @@
     "wordcount":  4455 ,
     "url": "https:\/\/tech.zephyrl.co\/2019\/09\/centoslnmp\/",
     
-        "datePublished": "2019-09-07T23:23:40\x2b08:00",
+        "datePublished": "2019-09-07T23:23:40\u002b08:00",
     
     
-        "dateModified": "2019-09-07T23:23:40\x2b08:00",
+        "dateModified": "2019-09-07T23:23:40\u002b08:00",
     
     
         "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
@@ -260,8 +260,8 @@ tar zxvf mysql-boost-5.7.27.tar.gz
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">cmake .. <span class="se">\</span>
--DCMAKE_INSTALL_PREFIX<span class="o">=</span>/usr/local/mysql <span class="se">\ </span>                        //指定mysql数据库安装目录
+<pre class="chroma"><code class="language-bash" data-lang="bash">cmake .. <span class="se">\
+</span><span class="se"></span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span>/usr/local/mysql <span class="se">\ </span>                        //指定mysql数据库安装目录
 -DMYSQL_UNIX_ADDR<span class="o">=</span>/usr/local/mysql/mysql.sock <span class="se">\ </span>                  //连接文件位置
 -DSYSCONFDIR<span class="o">=</span>/etc <span class="se">\ </span>                                              //指定配置文件目录
 -DSYSTEMD_PID_DIR<span class="o">=</span>/usr/local/mysql <span class="se">\ </span>                             //进程文件目录
@@ -273,7 +273,7 @@ tar zxvf mysql-boost-5.7.27.tar.gz
 -DWITH_PERFSCHEMA_STORAGE_ENGINE<span class="o">=</span><span class="m">1</span> <span class="se">\ </span>                             //存储引擎
 -DMYSQL_DATADIR<span class="o">=</span>/usr/local/mysql/data <span class="se">\ </span>                          //数据库文件
 -DWITH_BOOST<span class="o">=</span>../boost <span class="se">\ </span>                                          //指定Boost库的位置，mysql5.7必须添加该参数
--DWITH_SYSTEMD<span class="o">=</span>1
+-DWITH_SYSTEMD<span class="o">=</span><span class="m">1</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>最后：</p>
@@ -340,22 +340,22 @@ chown -Rf mysql:mysql /etc/my.cnf
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash">$ vim /etc/my.cnf
 <span class="o">[</span>client<span class="o">]</span>
-<span class="nv">port</span> <span class="o">=</span> 3306
+<span class="nv">port</span> <span class="o">=</span> <span class="m">3306</span>
 default-character-set<span class="o">=</span>utf8
 <span class="nv">socket</span> <span class="o">=</span> /usr/local/mysql/mysql.sock
 <span class="o">[</span>mysql<span class="o">]</span>
-<span class="nv">port</span> <span class="o">=</span> 3306
+<span class="nv">port</span> <span class="o">=</span> <span class="m">3306</span>
 default-character-set<span class="o">=</span>utf8
 <span class="nv">socket</span> <span class="o">=</span> /usr/local/mysql/mysql.sock
 <span class="o">[</span>mysqld<span class="o">]</span>
 <span class="nv">user</span> <span class="o">=</span> mysql
 <span class="nv">basedir</span> <span class="o">=</span> /usr/local/mysql
 <span class="nv">datadir</span> <span class="o">=</span> /usr/local/mysql/data
-<span class="nv">port</span> <span class="o">=</span> 3306
+<span class="nv">port</span> <span class="o">=</span> <span class="m">3306</span>
 <span class="nv">character_set_server</span><span class="o">=</span>utf8
 pid-file <span class="o">=</span> /usr/local/mysql/mysqld.pid
 <span class="nv">socket</span> <span class="o">=</span> /usr/local/mysql/mysql.sock
-server-id <span class="o">=</span> 1
+server-id <span class="o">=</span> <span class="m">1</span>
 <span class="nv">sql_mode</span><span class="o">=</span>NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_AUTO_VALUE_ON_ZERO,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,PIPES_AS_CONCAT,ANSI_QUOTES
 </code></pre></td></tr></table>
 </div>
@@ -388,11 +388,11 @@ server-id <span class="o">=</span> 1
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/local/mysql/
-bin/mysqld <span class="se">\</span>
---initialize-insecure <span class="se">\</span>
---user<span class="o">=</span>mysql <span class="se">\</span>
---basedir<span class="o">=</span>/usr/local/mysql <span class="se">\</span>
---datadir<span class="o">=</span>/usr/local/mysql/data
+bin/mysqld <span class="se">\
+</span><span class="se"></span>--initialize-insecure <span class="se">\
+</span><span class="se"></span>--user<span class="o">=</span>mysql <span class="se">\
+</span><span class="se"></span>--basedir<span class="o">=</span>/usr/local/mysql <span class="se">\
+</span><span class="se"></span>--datadir<span class="o">=</span>/usr/local/mysql/data
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -487,15 +487,15 @@ tar zxvf nginx-1.16.1.tar.gz
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">./configure <span class="se">\</span>
---prefix<span class="o">=</span>/usr/local/nginx <span class="se">\</span>
---user<span class="o">=</span>www <span class="se">\</span>
---group<span class="o">=</span>www <span class="se">\</span>
---with-file-aio <span class="se">\</span>
---with-http_stub_status_module <span class="se">\</span>
---with-http_gzip_static_module <span class="se">\</span>
---with-http_flv_module <span class="se">\</span>
---with-http_ssl_module
+<pre class="chroma"><code class="language-bash" data-lang="bash">./configure <span class="se">\
+</span><span class="se"></span>--prefix<span class="o">=</span>/usr/local/nginx <span class="se">\
+</span><span class="se"></span>--user<span class="o">=</span>www <span class="se">\
+</span><span class="se"></span>--group<span class="o">=</span>www <span class="se">\
+</span><span class="se"></span>--with-file-aio <span class="se">\
+</span><span class="se"></span>--with-http_stub_status_module <span class="se">\
+</span><span class="se"></span>--with-http_gzip_static_module <span class="se">\
+</span><span class="se"></span>--with-http_flv_module <span class="se">\
+</span><span class="se"></span>--with-http_ssl_module
 </code></pre></td></tr></table>
 </div>
 </div><p>如果出现<code>configure error: Please reinstall the libzip dirtribution</code>或者<code>configure error: system libzip must be upgraded to version &gt;= 0.11</code>。使用Yum最新版只到0.10，不能达到要求。</p>
@@ -700,10 +700,10 @@ make <span class="o">&amp;&amp;</span> make install
 <span class="nv">NGINX_CONF_FILE</span><span class="o">=</span><span class="s2">&#34;/usr/local/nginx/conf/nginx.conf&#34;</span>
 <span class="o">[</span> -f /etc/sysconfig/nginx <span class="o">]</span> <span class="o">&amp;&amp;</span> . /etc/sysconfig/nginx
 <span class="nv">lockfile</span><span class="o">=</span>/var/lock/subsys/nginx
-make_dirs<span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+make_dirs<span class="o">()</span> <span class="o">{</span>
 <span class="c1"># make required directories</span>  
 <span class="nv">user</span><span class="o">=</span><span class="sb">`</span><span class="nv">$nginx</span> -V 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep <span class="s2">&#34;configure arguments:&#34;</span> <span class="p">|</span> sed <span class="s1">&#39;s/[^*]*--user=\([^ ]*\).*/\1/g&#39;</span> -<span class="sb">`</span>
-        <span class="k">if</span> <span class="o">[</span> -z <span class="s2">&#34;</span><span class="s2">`grep </span><span class="nv">$user</span><span class="s2"> /etc/passwd`</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="k">if</span> <span class="o">[</span> -z <span class="s2">&#34;`grep </span><span class="nv">$user</span><span class="s2"> /etc/passwd`&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
                 useradd -M -s /bin/nologin <span class="nv">$user</span>
         <span class="k">fi</span>
 <span class="nv">options</span><span class="o">=</span><span class="sb">`</span><span class="nv">$nginx</span> -V 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep <span class="s1">&#39;configure arguments:&#39;</span><span class="sb">`</span>
@@ -717,78 +717,78 @@ make_dirs<span class="o">(</span><span class="o">)</span> <span class="o">{</spa
         <span class="k">fi</span>
 <span class="k">done</span>
 <span class="o">}</span>
-start<span class="o">(</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">[</span> -x <span class="nv">$nginx</span> <span class="o">]</span> <span class="o">||</span> <span class="nb">exit</span> 5
-    <span class="o">[</span> -f <span class="nv">$NGINX_CONF_FILE</span> <span class="o">]</span> <span class="o">||</span> <span class="nb">exit</span> 6
+start<span class="o">()</span> <span class="o">{</span>
+    <span class="o">[</span> -x <span class="nv">$nginx</span> <span class="o">]</span> <span class="o">||</span> <span class="nb">exit</span> <span class="m">5</span>
+    <span class="o">[</span> -f <span class="nv">$NGINX_CONF_FILE</span> <span class="o">]</span> <span class="o">||</span> <span class="nb">exit</span> <span class="m">6</span>
     make_dirs
-    <span class="nb">echo</span> -n $<span class="s2">&#34;</span><span class="s2">Starting </span><span class="nv">$prog</span><span class="s2">: </span><span class="s2">&#34;</span>
+    <span class="nb">echo</span> -n $<span class="s2">&#34;Starting </span><span class="nv">$prog</span><span class="s2">: &#34;</span>
     daemon <span class="nv">$nginx</span> -c <span class="nv">$NGINX_CONF_FILE</span>
     <span class="nv">retval</span><span class="o">=</span><span class="nv">$?</span>
     <span class="nb">echo</span>
     <span class="o">[</span> <span class="nv">$retval</span> -eq <span class="m">0</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> touch <span class="nv">$lockfile</span>
     <span class="k">return</span> <span class="nv">$retval</span>
 <span class="o">}</span>
-stop<span class="o">(</span><span class="o">)</span> <span class="o">{</span>
-    <span class="nb">echo</span> -n $<span class="s2">&#34;</span><span class="s2">Stopping </span><span class="nv">$prog</span><span class="s2">: </span><span class="s2">&#34;</span>
+stop<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">echo</span> -n $<span class="s2">&#34;Stopping </span><span class="nv">$prog</span><span class="s2">: &#34;</span>
     killproc <span class="nv">$prog</span> -QUIT
     <span class="nv">retval</span><span class="o">=</span><span class="nv">$?</span>
     <span class="nb">echo</span>
     <span class="o">[</span> <span class="nv">$retval</span> -eq <span class="m">0</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> rm -f <span class="nv">$lockfile</span>
     <span class="k">return</span> <span class="nv">$retval</span>
 <span class="o">}</span>
-restart<span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+restart<span class="o">()</span> <span class="o">{</span>
     <span class="c1">#configtest || return $?</span>
     stop
-    sleep 1
+    sleep <span class="m">1</span>
     start
 <span class="o">}</span>
-reload<span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+reload<span class="o">()</span> <span class="o">{</span>
     <span class="c1">#configtest || return $?</span>
-    <span class="nb">echo</span> -n $<span class="s2">&#34;</span><span class="s2">Reloading </span><span class="nv">$prog</span><span class="s2">: </span><span class="s2">&#34;</span>
+    <span class="nb">echo</span> -n $<span class="s2">&#34;Reloading </span><span class="nv">$prog</span><span class="s2">: &#34;</span>
     killproc <span class="nv">$nginx</span> -HUP
     <span class="nv">RETVAL</span><span class="o">=</span><span class="nv">$?</span>
     <span class="nb">echo</span>
 <span class="o">}</span>
-force_reload<span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+force_reload<span class="o">()</span> <span class="o">{</span>
     restart
 <span class="o">}</span>
-configtest<span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+configtest<span class="o">()</span> <span class="o">{</span>
     <span class="nv">$nginx</span> -t -c <span class="nv">$NGINX_CONF_FILE</span>
 <span class="o">}</span>
-rh_status<span class="o">(</span><span class="o">)</span> <span class="o">{</span>
+rh_status<span class="o">()</span> <span class="o">{</span>
     status <span class="nv">$prog</span>
 <span class="o">}</span>
-rh_status_q<span class="o">(</span><span class="o">)</span> <span class="o">{</span>
-    rh_status &gt;/dev/null 2&gt;<span class="p">&amp;</span>1
+rh_status_q<span class="o">()</span> <span class="o">{</span>
+    rh_status &gt;/dev/null 2&gt;<span class="p">&amp;</span><span class="m">1</span>
 <span class="o">}</span>
 <span class="k">case</span> <span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span> in
 start<span class="o">)</span>
-        rh_status_q <span class="o">&amp;&amp;</span> <span class="nb">exit</span> 0
+        rh_status_q <span class="o">&amp;&amp;</span> <span class="nb">exit</span> <span class="m">0</span>
         <span class="nv">$1</span>
-        <span class="p">;</span><span class="p">;</span>
+        <span class="p">;;</span>
 stop<span class="o">)</span>
-        rh_status_q <span class="o">||</span> <span class="nb">exit</span> 0
+        rh_status_q <span class="o">||</span> <span class="nb">exit</span> <span class="m">0</span>
         <span class="nv">$1</span>
-        <span class="p">;</span><span class="p">;</span>
+        <span class="p">;;</span>
 restart<span class="p">|</span>configtest<span class="o">)</span>
 <span class="nv">$1</span>
-<span class="p">;</span><span class="p">;</span>
+<span class="p">;;</span>
 reload<span class="o">)</span>
-        rh_status_q <span class="o">||</span> <span class="nb">exit</span> 7
+        rh_status_q <span class="o">||</span> <span class="nb">exit</span> <span class="m">7</span>
         <span class="nv">$1</span>
-        <span class="p">;</span><span class="p">;</span>
+        <span class="p">;;</span>
 force-reload<span class="o">)</span>
         force_reload
-        <span class="p">;</span><span class="p">;</span>
+        <span class="p">;;</span>
 status<span class="o">)</span>
         rh_status
-        <span class="p">;</span><span class="p">;</span>
+        <span class="p">;;</span>
 condrestart<span class="p">|</span>try-restart<span class="o">)</span>
-        rh_status_q <span class="o">||</span> <span class="nb">exit</span> 0
-        <span class="p">;</span><span class="p">;</span>
+        rh_status_q <span class="o">||</span> <span class="nb">exit</span> <span class="m">0</span>
+        <span class="p">;;</span>
 *<span class="o">)</span>
-<span class="nb">echo</span> $<span class="s2">&#34;</span><span class="s2">Usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|status|restart|condrestart|try-restart|reload|force-reload|configtest}</span><span class="s2">&#34;</span>
-<span class="nb">exit</span> 2
+<span class="nb">echo</span> $<span class="s2">&#34;Usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|status|restart|condrestart|try-restart|reload|force-reload|configtest}&#34;</span>
+<span class="nb">exit</span> <span class="m">2</span>
 <span class="k">esac</span>
 </code></pre></td></tr></table>
 </div>
@@ -950,53 +950,53 @@ tar zxvf php-7.1.32.tar.gz
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">./configure <span class="se">\</span>
- --prefix<span class="o">=</span>/usr/local/php<span class="se">\</span>
- --enable-fpm<span class="se">\</span>
- --with-fpm-user<span class="o">=</span>www<span class="se">\</span>
- --with-fpm-group<span class="o">=</span>www<span class="se">\</span>
- --with-config-file-path<span class="o">=</span>/usr/local/php/conf<span class="se">\</span>
- --disable-rpath<span class="se">\</span>
- --enable-soap<span class="se">\</span>
- --with-libxml-dir<span class="se">\</span>
- --with-xmlrpc<span class="se">\</span>
- --with-openssl<span class="se">\</span>
- --with-mhash<span class="se">\</span>
- --with-pcre-regex<span class="se">\</span>
- --with-zlib<span class="se">\</span>
- --enable-bcmath<span class="se">\</span>
- --with-bz2<span class="se">\</span>
- --enable-calendar<span class="se">\</span>
- --with-curl<span class="se">\</span>
- --enable-exif<span class="se">\</span>
- --with-pcre-dir<span class="se">\</span>
- --enable-ftp<span class="se">\</span>
- --with-gd<span class="se">\</span>
- --with-openssl-dir<span class="se">\</span>
- --with-jpeg-dir<span class="se">\</span>
- --with-png-dir<span class="se">\</span>
- --with-zlib-dir<span class="se">\</span>
- --with-freetype-dir<span class="se">\</span>
- --enable-gd-jis-conv<span class="se">\</span>
- --with-gettext<span class="se">\</span>
- --with-gmp<span class="se">\</span>
- --with-mhash<span class="se">\</span>
- --enable-mbstring<span class="se">\</span>
- --with-onig<span class="se">\</span>
- --with-mysqli<span class="o">=</span>mysqlnd<span class="se">\</span>
- --with-pdo-mysql<span class="o">=</span>mysqlnd<span class="se">\</span>
- --with-zlib-dir<span class="se">\</span>
- --with-readline<span class="se">\</span>
- --enable-shmop<span class="se">\</span>
- --enable-sockets<span class="se">\</span>
- --enable-sysvmsg<span class="se">\</span>
- --enable-sysvsem <span class="se">\</span>
- --enable-sysvshm <span class="se">\</span>
- --enable-wddx<span class="se">\</span>
- --with-libxml-dir<span class="se">\</span>
- --with-xsl<span class="se">\</span>
- --enable-zip<span class="se">\</span>
- --with-pear
+<pre class="chroma"><code class="language-bash" data-lang="bash">./configure <span class="se">\
+</span><span class="se"></span> --prefix<span class="o">=</span>/usr/local/php<span class="se">\
+</span><span class="se"></span> --enable-fpm<span class="se">\
+</span><span class="se"></span> --with-fpm-user<span class="o">=</span>www<span class="se">\
+</span><span class="se"></span> --with-fpm-group<span class="o">=</span>www<span class="se">\
+</span><span class="se"></span> --with-config-file-path<span class="o">=</span>/usr/local/php/conf<span class="se">\
+</span><span class="se"></span> --disable-rpath<span class="se">\
+</span><span class="se"></span> --enable-soap<span class="se">\
+</span><span class="se"></span> --with-libxml-dir<span class="se">\
+</span><span class="se"></span> --with-xmlrpc<span class="se">\
+</span><span class="se"></span> --with-openssl<span class="se">\
+</span><span class="se"></span> --with-mhash<span class="se">\
+</span><span class="se"></span> --with-pcre-regex<span class="se">\
+</span><span class="se"></span> --with-zlib<span class="se">\
+</span><span class="se"></span> --enable-bcmath<span class="se">\
+</span><span class="se"></span> --with-bz2<span class="se">\
+</span><span class="se"></span> --enable-calendar<span class="se">\
+</span><span class="se"></span> --with-curl<span class="se">\
+</span><span class="se"></span> --enable-exif<span class="se">\
+</span><span class="se"></span> --with-pcre-dir<span class="se">\
+</span><span class="se"></span> --enable-ftp<span class="se">\
+</span><span class="se"></span> --with-gd<span class="se">\
+</span><span class="se"></span> --with-openssl-dir<span class="se">\
+</span><span class="se"></span> --with-jpeg-dir<span class="se">\
+</span><span class="se"></span> --with-png-dir<span class="se">\
+</span><span class="se"></span> --with-zlib-dir<span class="se">\
+</span><span class="se"></span> --with-freetype-dir<span class="se">\
+</span><span class="se"></span> --enable-gd-jis-conv<span class="se">\
+</span><span class="se"></span> --with-gettext<span class="se">\
+</span><span class="se"></span> --with-gmp<span class="se">\
+</span><span class="se"></span> --with-mhash<span class="se">\
+</span><span class="se"></span> --enable-mbstring<span class="se">\
+</span><span class="se"></span> --with-onig<span class="se">\
+</span><span class="se"></span> --with-mysqli<span class="o">=</span>mysqlnd<span class="se">\
+</span><span class="se"></span> --with-pdo-mysql<span class="o">=</span>mysqlnd<span class="se">\
+</span><span class="se"></span> --with-zlib-dir<span class="se">\
+</span><span class="se"></span> --with-readline<span class="se">\
+</span><span class="se"></span> --enable-shmop<span class="se">\
+</span><span class="se"></span> --enable-sockets<span class="se">\
+</span><span class="se"></span> --enable-sysvmsg<span class="se">\
+</span><span class="se"></span> --enable-sysvsem <span class="se">\
+</span><span class="se"></span> --enable-sysvshm <span class="se">\
+</span><span class="se"></span> --enable-wddx<span class="se">\
+</span><span class="se"></span> --with-libxml-dir<span class="se">\
+</span><span class="se"></span> --with-xsl<span class="se">\
+</span><span class="se"></span> --enable-zip<span class="se">\
+</span><span class="se"></span> --with-pear
 </code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="配置"></a><h2>配置</h2>

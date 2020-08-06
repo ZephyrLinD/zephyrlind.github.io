@@ -23,7 +23,7 @@
     {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "使用Fluent Terminal \x2b Oh-My-Posh打造优雅的Windows终端",
+    "headline": "使用Fluent Terminal \u002b Oh-My-Posh打造优雅的Windows终端",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https:\/\/tech.zephyrl.co\/2019\/08\/awsome-powershell\/"
@@ -43,10 +43,10 @@
     "wordcount":  1911 ,
     "url": "https:\/\/tech.zephyrl.co\/2019\/08\/awsome-powershell\/",
     
-        "datePublished": "2019-08-03T22:40:13\x2b08:00",
+        "datePublished": "2019-08-03T22:40:13\u002b08:00",
     
     
-        "dateModified": "2019-08-03T22:40:13\x2b08:00",
+        "dateModified": "2019-08-03T22:40:13\u002b08:00",
     
     
         "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
@@ -204,7 +204,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Set-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-Force</span><span class="p">;</span> <span class="nb">iex </span><span class="p">(</span><span class="p">(</span><span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">)</span><span class="p">.</span><span class="n">DownloadString</span><span class="p">(</span><span class="s1">&#39;https://chocolatey.org/install.ps1&#39;</span><span class="p">)</span><span class="p">)</span>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Set-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-Force</span><span class="p">;</span> <span class="nb">iex </span><span class="p">((</span><span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="n">DownloadString</span><span class="p">(</span><span class="s1">&#39;https://chocolatey.org/install.ps1&#39;</span><span class="p">))</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -220,7 +220,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">choco</span> <span class="n">install</span> <span class="n">fluent</span><span class="n">-terminal</span>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">choco</span> <span class="n">install</span> <span class="n">fluent-terminal</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>如果在安装过程中提示是否安装脚本，请选择<code>(A)全部安装</code></p>
@@ -239,7 +239,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Install-Module</span> <span class="n">posh</span><span class="n">-git</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Install-Module</span> <span class="n">posh-git</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>如果提示安装 NuGet，就回车；如果此前没有开启执行任意脚本，此处也会提示执行脚本。如果没有权限执行脚本，可能需要先执行 （一切正常就不用执行）</p>
@@ -259,7 +259,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Install-Module</span> <span class="n">oh</span><span class="n">-my</span><span class="n">-posh</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Install-Module</span> <span class="n">oh-my-posh</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
 </code></pre></td></tr></table>
 </div>
 </div><p><img src="https://img.zephyrl.co/images/2020/02/02/installingposheac6b9c8d94cfd01.png" alt="安装过程"></p>
@@ -272,7 +272,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Import-Module</span> <span class="n">oh</span><span class="n">-my</span><span class="n">-posh</span>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Import-Module</span> <span class="n">oh-my-posh</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>之后就会发现终端发生一些变化，<strong>但是这只是暂时的</strong>，重启终端就会消失。我们需要做一些改变，就像配置 <code>zsh</code> 的 <code>.zshrc</code> 一样。</p>
@@ -294,10 +294,10 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">$PROFILE</span>
-<span class="nb">cd </span><span class="p">.</span><span class="p">\</span><span class="n">Documents</span><span class="p">\</span><span class="n">WindowsPowerShell</span><span class="p">\</span>
+<span class="nb">cd </span><span class="p">.\</span><span class="n">Documents</span><span class="p">\</span><span class="n">WindowsPowerShell</span><span class="p">\</span>
 <span class="nb">New-Item</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">PowerShell_profile</span><span class="p">.</span><span class="n">ps1</span>
 <span class="s1">&#39;Import-Model oh-my-posh&#39;</span> <span class="p">&gt;</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">PowerShell_profile</span><span class="p">.</span><span class="n">ps1</span>
-<span class="s1">&#39;Set-Theme Honukai&#39;</span> <span class="p">&gt;</span><span class="p">&gt;</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">PowerShell_profile</span><span class="p">.</span><span class="n">ps1</span> 
+<span class="s1">&#39;Set-Theme Honukai&#39;</span> <span class="p">&gt;&gt;</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">PowerShell_profile</span><span class="p">.</span><span class="n">ps1</span> 
 <span class="nb">Get-Content</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">PowerShell_profile</span><span class="p">.</span><span class="n">ps1</span>
 </code></pre></td></tr></table>
 </div>
@@ -336,9 +336,9 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="err">:</span><span class="p">/</span><span class="p">/</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">ZephyrLinD</span><span class="p">/</span><span class="n">MyPowershell</span>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">ZephyrLinD</span><span class="p">/</span><span class="n">MyPowershell</span>
 <span class="nb">cd </span><span class="n">MyPowershell</span>
-<span class="p">.</span><span class="p">\</span><span class="n">MyPowershell</span><span class="p">.</span><span class="n">ps1</span>
+<span class="p">.\</span><span class="n">MyPowershell</span><span class="p">.</span><span class="n">ps1</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>在执行上面的后续操作即可。</p>

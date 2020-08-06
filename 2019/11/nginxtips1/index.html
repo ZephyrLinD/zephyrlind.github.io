@@ -44,10 +44,10 @@
     "wordcount":  1415 ,
     "url": "https:\/\/tech.zephyrl.co\/2019\/11\/nginxtips1\/",
     
-        "datePublished": "2019-11-13T20:08:41\x2b08:00",
+        "datePublished": "2019-11-13T20:08:41\u002b08:00",
     
     
-        "dateModified": "2019-11-13T20:08:41\x2b08:00",
+        "dateModified": "2019-11-13T20:08:41\u002b08:00",
     
     
         "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
@@ -233,13 +233,13 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">./configure <span class="se">\</span>
---prefix<span class="o">=</span>/usr/local/nginx <span class="se">\</span>
---user<span class="o">=</span>www <span class="se">\</span>
---group<span class="o">=</span>www <span class="se">\</span>
---with-http_gzip_static_module <span class="se">\</span>
---with-http_flv_module <span class="se">\</span>
---with-http_ssl_module
+<pre class="chroma"><code class="language-shell" data-lang="shell">./configure <span class="se">\
+</span><span class="se"></span>--prefix<span class="o">=</span>/usr/local/nginx <span class="se">\
+</span><span class="se"></span>--user<span class="o">=</span>www <span class="se">\
+</span><span class="se"></span>--group<span class="o">=</span>www <span class="se">\
+</span><span class="se"></span>--with-http_gzip_static_module <span class="se">\
+</span><span class="se"></span>--with-http_flv_module <span class="se">\
+</span><span class="se"></span>--with-http_ssl_module
 </code></pre></td></tr></table>
 </div>
 </div><p><code>configure</code>后编译出的中间文件在<code>objs</code>文件夹。其中最重要的文件是<code>ngx_model.c</code>，它决定了接下来哪些模块会被编译进我们的Nginx。</p>

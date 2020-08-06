@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zabbix on 梦黎的小窝</title>
+    <link>https://tech.zephyrl.co/categories/zabbix/</link>
+    <description>Recent content in Zabbix on 梦黎的小窝</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Tue, 04 Aug 2020 08:10:02 +0800</lastBuildDate>
+    
+	<atom:link href="https://tech.zephyrl.co/categories/zabbix/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Zabbix 配置文档（〇）—— 安装</title>
+      <link>https://tech.zephyrl.co/2020/08/zabbix0/</link>
+      <pubDate>Tue, 04 Aug 2020 08:10:02 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/08/zabbix0/</guid>
+      <description>Zabbix5.0 LTS 的安装，基于 CentOS7.5</description>
+    </item>
+    
+  </channel>
+</rss>

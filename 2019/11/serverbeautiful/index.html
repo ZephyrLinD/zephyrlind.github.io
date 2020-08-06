@@ -44,10 +44,10 @@
     "wordcount":  1520 ,
     "url": "https:\/\/tech.zephyrl.co\/2019\/11\/serverbeautiful\/",
     
-        "datePublished": "2019-11-07T20:00:04\x2b08:00",
+        "datePublished": "2019-11-07T20:00:04\u002b08:00",
     
     
-        "dateModified": "2019-11-07T20:00:04\x2b08:00",
+        "dateModified": "2019-11-07T20:00:04\u002b08:00",
     
     
         "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
@@ -215,8 +215,8 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># Allow root to run any commands anywhere</span>
-root     <span class="nv">ALL</span><span class="o">=</span><span class="o">(</span>ALL<span class="o">)</span>       ALL
-example  <span class="nv">ALL</span><span class="o">=</span><span class="o">(</span>ALL<span class="o">)</span>       ALL  <span class="c1"># 添加的代码</span>
+root     <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span>       ALL
+example  <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span>       ALL  <span class="c1"># 添加的代码</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>然后切换用户到<code>example</code>，运行一下update试试：</p>
@@ -276,7 +276,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">plugins</span><span class="o">=</span><span class="o">(</span><span class="o">[</span>plugins...<span class="o">]</span> zsh-syntax-highlighting zsh-autosuggestions<span class="o">)</span>
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">plugins</span><span class="o">=([</span>plugins...<span class="o">]</span> zsh-syntax-highlighting zsh-autosuggestions<span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>然后就是一步到位，应用更改的时候啦！</p>

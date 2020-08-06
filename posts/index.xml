@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 19 Jul 2020 14:15:28 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2020 08:10:02 +0800</lastBuildDate>
     
 	<atom:link href="https://tech.zephyrl.co/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Zabbix 配置文档（〇）—— 安装</title>
+      <link>https://tech.zephyrl.co/2020/08/zabbix0/</link>
+      <pubDate>Tue, 04 Aug 2020 08:10:02 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/08/zabbix0/</guid>
+      <description>Zabbix5.0 LTS 的安装，基于 CentOS7.5</description>
+    </item>
     
     <item>
       <title>使用树莓派在 Docker 中运行 OpenWrt 旁路网关</title>

@@ -3,7 +3,7 @@
         <url>
             <loc>https://tech.zephyrl.co/categories/</loc>
             
-                <lastmod>2020-07-19T14:15:28+08:00</lastmod>
+                <lastmod>2020-08-04T08:10:02+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -15,9 +15,23 @@
         </url>
     
         <url>
-            <loc>https://tech.zephyrl.co/categories/openwrt/</loc>
+            <loc>https://tech.zephyrl.co/categories/centos/</loc>
             
-                <lastmod>2020-07-19T14:15:28+08:00</lastmod>
+                <lastmod>2020-08-04T08:10:02+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</loc>
+            
+                <lastmod>2020-08-04T08:10:02+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -31,7 +45,7 @@
         <url>
             <loc>https://tech.zephyrl.co/posts/</loc>
             
-                <lastmod>2020-07-19T14:15:28+08:00</lastmod>
+                <lastmod>2020-08-04T08:10:02+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -44,6 +58,76 @@
     
         <url>
             <loc>https://tech.zephyrl.co/tags/</loc>
+            
+                <lastmod>2020-08-04T08:10:02+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/categories/zabbix/</loc>
+            
+                <lastmod>2020-08-04T08:10:02+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/2020/08/zabbix0/</loc>
+            
+                <lastmod>2020-08-04T08:10:02+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</loc>
+            
+                <lastmod>2020-08-04T08:10:02+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/</loc>
+            
+                <lastmod>2020-08-04T08:10:02+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/categories/openwrt/</loc>
             
                 <lastmod>2020-07-19T14:15:28+08:00</lastmod>
             
@@ -71,51 +155,9 @@
         </url>
     
         <url>
-            <loc>https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</loc>
-            
-                <lastmod>2020-07-19T14:15:28+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
             <loc>https://tech.zephyrl.co/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/</loc>
             
                 <lastmod>2020-07-19T14:15:28+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/</loc>
-            
-                <lastmod>2020-07-19T14:15:28+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/categories/centos/</loc>
-            
-                <lastmod>2020-05-30T20:46:00+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -438,20 +480,6 @@
             <loc>https://tech.zephyrl.co/2020/02/bigdata1/</loc>
             
                 <lastmod>2020-02-15T17:41:23+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</loc>
-            
-                <lastmod>2020-02-03T14:42:35+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
