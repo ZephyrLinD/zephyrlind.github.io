@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Zabbix配置文档（二）—— 报警 | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="一个准程序员的自留地">
+<link rel="prev" href="https://tech.zephyrl.co/2020/08/zabbix1/" />
+<link rel="canonical" href="https://tech.zephyrl.co/2020/08/zabbix2/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Zabbix配置文档（二）—— 报警"/>
+<meta name="twitter:description" content="通过发邮件和钉钉机器人发送报警、恢复信息"/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Zabbix配置文档（二）—— 报警",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/tech.zephyrl.co\/2020\/08\/zabbix2\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "折腾笔记, DevOPs入门笔记",
+    
+    "wordcount":  1142 ,
+    "url": "https:\/\/tech.zephyrl.co\/2020\/08\/zabbix2\/",
+    
+        "datePublished": "2020-08-06T16:15:22\u002b08:00",
+    
+    
+        "dateModified": "2020-08-06T16:15:22\u002b08:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "Zephyr",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">Zabbix配置文档（二）—— 报警</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <span class="post-category">
+                        收录于
+                        <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/zabbix/">Zabbix</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/centos/">CentOS</a>
+                            
+                    </span>
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-06>2020-08-06</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1142 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 3 分钟&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="post-dummy-target" id="设置发送邮件报警"></a><h2>设置发送邮件报警</h2>
+<a class="post-dummy-target" id="定义发件人"></a><h3>定义发件人</h3>
+<p>通过管理 - 报警媒介类型，选择 Email 来连接，先录入自己的邮件的 SMTP 信息</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/05/6_sendEmail.png" alt="6_sendEmail.png"></p>
+<a class="post-dummy-target" id="添加收件人"></a><h3>添加收件人</h3>
+<p>我们在个人页面可以找到接受报警媒介的地方，添加个人信息即可</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/05/7_recvEmail.png" alt="7_recvEmail.png"></p>
+<a class="post-dummy-target" id="开启动作"></a><h3>开启动作</h3>
+<p>我们设置完收发件人之后，当有报警还是不会发送到邮箱。是因为没有设置动作。</p>
+<p>我们可以通过以下步骤找到动作选项。</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/06/8_findAction.gif" alt="8_findAction.gif"></p>
+<p>点击一下右面的“已禁用”，让他启动。之后点击名字进入选项。</p>
+<p>首先我们修改一下发通知的条件</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/06/9_setAction.png" alt="9_setAction.png"></p>
+<p>接着点击操作，按照图示进行操作</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/06/10_setAction2.png" alt="10_setAction2.png"></p>
+<p>之后我打开压力测试，让机器满载，测试一下是否会发送邮件</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/06/11_fullStressTest.png" alt="11_fullStressTest.png"></p>
+<p>此时我们可以发现已经发送成功</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/06/12_sendSuccess.png" alt="12_sendSuccess.png"></p>
+<p>打开报表日志也可以查看详细信息</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/06/13_sendSuccess2.png" alt="13_sendSuccess2.png"></p>
+<p>打开邮箱，查看详细信息</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/06/14_sendSuccess3.png" alt="14_sendSuccess3.png"></p>
+<a class="post-dummy-target" id="钉钉群聊报警机器人"></a><h2>钉钉群聊报警机器人</h2>
+<a class="post-dummy-target" id="添加脚本"></a><h3>添加脚本</h3>
+<p>首先，我们要找到 Zabbix 默认存放脚本的地方，可以使用 <code>grep</code> 筛选</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@zep0 ~<span class="o">]</span><span class="c1"># grep -Ev &#39;^$|#&#39; /etc/zabbix/zabbix_server.conf</span>
+<span class="nv">LogFile</span><span class="o">=</span>/var/log/zabbix/zabbix_server.log
+<span class="nv">LogFileSize</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">PidFile</span><span class="o">=</span>/var/run/zabbix/zabbix_server.pid
+<span class="nv">SocketDir</span><span class="o">=</span>/var/run/zabbix
+<span class="nv">DBHost</span><span class="o">=</span>127.0.0.1
+<span class="nv">DBName</span><span class="o">=</span>zabbix
+<span class="nv">DBUser</span><span class="o">=</span>zabbix
+<span class="nv">DBPassword</span><span class="o">=</span>Lza0423.
+<span class="nv">SNMPTrapperFile</span><span class="o">=</span>/var/log/snmptrap/snmptrap.log
+<span class="nv">Timeout</span><span class="o">=</span><span class="m">4</span>
+<span class="nv">AlertScriptsPath</span><span class="o">=</span>/usr/lib/zabbix/alertscripts
+<span class="nv">ExternalScripts</span><span class="o">=</span>/usr/lib/zabbix/externalscripts
+<span class="nv">LogSlowQueries</span><span class="o">=</span><span class="m">3000</span>
+<span class="nv">StatsAllowedIP</span><span class="o">=</span>127.0.0.1
+</code></pre></td></tr></table>
+</div>
+</div><p>在倒数第四行就是我们要找的 <code>alertscripts</code> 文件夹，我们进入文件夹，创建 <code>dingding.py</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">vim /usr/lib/zabbix/alertscripts/dingding.py
+</code></pre></td></tr></table>
+</div>
+</div><p>插入以下脚本内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/bin/python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json;charset=utf-8&#39;</span><span class="p">}</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&#34;https://oapi.dingtalk.com/robot/send?access_token=youraccesstoken&#34;</span>
+
+<span class="k">def</span> <span class="nf">msg</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">json_text</span><span class="o">=</span> <span class="p">{</span>
+     <span class="s2">&#34;msgtype&#34;</span><span class="p">:</span> <span class="s2">&#34;text&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;at&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&#34;atMobiles&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&#34;电话号码&#34;</span>
+            <span class="p">],</span>
+            <span class="s2">&#34;isAtAll&#34;</span><span class="p">:</span> <span class="bp">False</span>
+        <span class="p">},</span>
+        <span class="s2">&#34;text&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="n">text</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">print</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_text</span><span class="p">),</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">msg</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="添加自定义机器人并复制-webhook"></a><h3>添加自定义机器人并复制 Webhook</h3>
+<p>点击 智能群管理，添加自定义机器人</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/07/18_addOtherRobot.png" alt="18_addOtherRobot.png"></p>
+<p>之后下拉寻找，创建好后复制自己的 <code>webhook</code> 代码，并且将脚本的 api_url 改为自己的 <code>webhook</code> 代码</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/07/17_addRobotFindWebhook.png" alt="17_addRobotFindWebhook.png"></p>
+<p>然后添加一些你要发送的内容中的关键词</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/07/19_addRobotKeyword.png" alt="19_addRobotKeyword.png"></p>
+<a class="post-dummy-target" id="在-zabbix-web-面板中设置"></a><h3>在 Zabbix Web 面板中设置</h3>
+<p>脚本写完后，我们进入 Zabbix web 面板，选择管理——报警媒介类型——创建媒介类型</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/06/15_addAlertMedia.png" alt="15_addAlertMedia.png"></p>
+<p>暂时可以先按照这里写，脚本可以根据自己微调后修改</p>
+<p>接着，添加用户报警媒介,收件人随便写写就行：</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/06/16_addAlertUserMedia.png" alt="16_addAlertUserMedia.png"></p>
+<p>最后，在配置 —— 动作中添加动作“发送到钉钉”：</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/07/16_addAction.png" alt="16_addAction.png"></p>
+<p>添加故障发生的 Custom message</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">标题：故障发生: {TRIGGER.STATUS} 服务器: {HOSTNAME1}
+消息：
+告警主机：{HOSTNAME1}
+告警事件：{EVENT.DATE} {EVENT.TIME}
+告警等级：{TRIGGER.SEVERITY}
+告警信息：{TRIGGER.NAME}
+告警项目：{TRIGGER.KEY1}
+问题详情：{ITEM.NAME}:{ITEM.VALUE}
+当前状态：{TRIGGER.STATUS}:{ITEM.VALUE1}
+</code></pre></td></tr></table>
+</div>
+</div><p>添加故障解决的 Custom message</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">标题：问题：{ITEM.NAME}:{ITEM.VALUE} 已解决
+消息：
+问题已解决！
+问题：{ITEM.NAME}:{ITEM.VALUE}
+主机：{HOST.NAME}
+解决时间：{EVENT.DATE} {EVENT.TIME}
+持续时间：{EVENT.DURATION}
+问题等级：{EVENT.SEVERITY}
+问题ID：{EVENT.ID}
+{TRIGGER.URL}
+</code></pre></td></tr></table>
+</div>
+</div><p>以上内容添加到 <code>钉钉告警</code> 的 Templates 里面也可以</p>
+<p>之后我们可以进行压力测试，看一看能不能正常报警，或者干脆关掉机器</p>
+<p>我在这里使用 <code>stress</code> 将 <code>swap</code> 沾满，此时报警最快最省力</p>
+<p>很快就收到了报警：</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/07/20_dingdingWarningAlert.png" alt="20_dingdingWarningAlert.png"></p>
+<p>当问题被解决，也可以收到提示：</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/07/21_dingdingSolvedAlert.png" alt="21_dingdingSolvedAlert.png"></p>
+<p>此时钉钉的报警已经设置成功啦</p>
+
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-08-06 更新</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://tech.zephyrl.co/2020/08/zabbix2/index.md" target="_blank">阅读原始文档</a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fzabbix2%2f&amp;text=Zabbix%e9%85%8d%e7%bd%ae%e6%96%87%e6%a1%a3%ef%bc%88%e4%ba%8c%ef%bc%89%e2%80%94%e2%80%94%20%e6%8a%a5%e8%ad%a6&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fzabbix2%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fzabbix2%2f&amp;title=Zabbix%e9%85%8d%e7%bd%ae%e6%96%87%e6%a1%a3%ef%bc%88%e4%ba%8c%ef%bc%89%e2%80%94%e2%80%94%20%e6%8a%a5%e8%ad%a6" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>折腾笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>DevOPs入门笔记</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://tech.zephyrl.co/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://tech.zephyrl.co/2020/08/zabbix1/" class="prev" rel="prev" title="Zabbix配置文档（一）—— 监控和触发器"><i class="fas fa-angle-left fa-fw"></i>Zabbix配置文档（一）—— 监控和触发器</a>
+        
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>

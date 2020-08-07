@@ -3,10 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Zabbix配置文档（一） | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Zabbix配置文档（一）—— 监控和触发器 | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noodp" />
 <meta name="Description" content="一个准程序员的自留地">
 <link rel="prev" href="https://tech.zephyrl.co/2020/08/zabbix0/" />
+<link rel="next" href="https://tech.zephyrl.co/2020/08/zabbix2/" />
 <link rel="canonical" href="https://tech.zephyrl.co/2020/08/zabbix1/" />
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -17,13 +18,13 @@
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Zabbix配置文档（一）"/>
+<meta name="twitter:title" content="Zabbix配置文档（一）—— 监控和触发器"/>
 <meta name="twitter:description" content="自定义监控，自定义触发器"/>
 <script type="application/ld+json">
     {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "Zabbix配置文档（一）",
+    "headline": "Zabbix配置文档（一）—— 监控和触发器",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https:\/\/tech.zephyrl.co\/2020\/08\/zabbix1\/"
@@ -43,10 +44,10 @@
     "wordcount":  518 ,
     "url": "https:\/\/tech.zephyrl.co\/2020\/08\/zabbix1\/",
     
-        "datePublished": "2020-08-07T10:12:48\u002b08:00",
+        "datePublished": "2020-08-05T10:12:48\u002b08:00",
     
     
-        "dateModified": "2020-08-07T10:12:48\u002b08:00",
+        "dateModified": "2020-08-05T10:12:48\u002b08:00",
     
     
         "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
@@ -131,7 +132,7 @@
     
 
     <article class="post-warp">
-        <h1 class="post-title animated flipInX">Zabbix配置文档（一）</h1>
+        <h1 class="post-title animated flipInX">Zabbix配置文档（一）—— 监控和触发器</h1>
 
         <div class="post-meta">
             <div class="post-meta-main">
@@ -144,7 +145,7 @@
                     </span>
             </div>
             <div class="post-meta-other">
-                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-07>2020-08-07</time>&nbsp;
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-05>2020-08-05</time>&nbsp;
                 <i class="fas fa-pencil-alt fa-fw"></i>约 518 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
         </div>
@@ -288,7 +289,7 @@ dm-1              8.50         0.32        33.68      <span class="m">50792</spa
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>本文于 2020-08-07 更新</span>
+                <span>本文于 2020-08-05 更新</span>
             </div>
             <div class="post-info-license">
                 
@@ -306,7 +307,7 @@ dm-1              8.50         0.32        33.68      <span class="m">50792</spa
                 
                     <span>
     
-        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fzabbix1%2f&amp;text=Zabbix%e9%85%8d%e7%bd%ae%e6%96%87%e6%a1%a3%ef%bc%88%e4%b8%80%ef%bc%89&amp;via=" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fzabbix1%2f&amp;text=Zabbix%e9%85%8d%e7%bd%ae%e6%96%87%e6%a1%a3%ef%bc%88%e4%b8%80%ef%bc%89%e2%80%94%e2%80%94%20%e7%9b%91%e6%8e%a7%e5%92%8c%e8%a7%a6%e5%8f%91%e5%99%a8&amp;via=" target="_blank" title="Share on Twitter">
             <i class="fab fa-twitter fa-fw"></i>
         </a>
     
@@ -316,7 +317,7 @@ dm-1              8.50         0.32        33.68      <span class="m">50792</spa
         </a>
     
     
-        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fzabbix1%2f&amp;title=Zabbix%e9%85%8d%e7%bd%ae%e6%96%87%e6%a1%a3%ef%bc%88%e4%b8%80%ef%bc%89" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fzabbix1%2f&amp;title=Zabbix%e9%85%8d%e7%bd%ae%e6%96%87%e6%a1%a3%ef%bc%88%e4%b8%80%ef%bc%89%e2%80%94%e2%80%94%20%e7%9b%91%e6%8e%a7%e5%92%8c%e8%a7%a6%e5%8f%91%e5%99%a8" target="_blank" title="Share on Reddit">
             <i class="fab fa-reddit fa-fw"></i>
         </a>
     
@@ -356,6 +357,8 @@ dm-1              8.50         0.32        33.68      <span class="m">50792</spa
         
             <a href="https://tech.zephyrl.co/2020/08/zabbix0/" class="prev" rel="prev" title="Zabbix 配置文档（〇）—— 安装"><i class="fas fa-angle-left fa-fw"></i>Zabbix 配置文档（〇）—— 安装</a>
         
+        
+            <a href="https://tech.zephyrl.co/2020/08/zabbix2/" class="next" rel="next" title="Zabbix配置文档（二）—— 报警">Zabbix配置文档（二）—— 报警<i class="fas fa-angle-right fa-fw"></i></a>
         
     </div>
 </div>
