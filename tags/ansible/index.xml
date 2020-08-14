@@ -18,7 +18,7 @@
       <pubDate>Thu, 13 Aug 2020 13:30:30 +0800</pubDate>
       
       <guid>https://tech.zephyrl.co/2020/08/ansible2/</guid>
-      <description>Ansible 命令 Ansible系列命令如下： 1 ansible ansible-doc ansible-playbook ansible-vault ansible-console ansible-galaxy ansible-pull 如果要查看相关模块帮助，可以使用 ansible-doc 命令： 1 2 3 4 ansible-doc [options] [module...] -a 显示所有模块的文档 -l, --list 列出可用模块</description>
+      <description>Ansible 相关内容的使用介绍</description>
     </item>
     
     <item>
