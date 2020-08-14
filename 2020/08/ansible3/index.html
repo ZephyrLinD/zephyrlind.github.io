@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Ansible 学习笔记（三）：Ansible PlayBook 入门 | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="一个准程序员的自留地">
+<link rel="prev" href="https://tech.zephyrl.co/2020/08/ansible2/" />
+<link rel="canonical" href="https://tech.zephyrl.co/2020/08/ansible3/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ansible 学习笔记（三）：Ansible PlayBook 入门"/>
+<meta name="twitter:description" content="Ansible PlayBook 入门的使用方法"/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Ansible 学习笔记（三）：Ansible PlayBook 入门",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/tech.zephyrl.co\/2020\/08\/ansible3\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "折腾笔记, DevOPs入门笔记, Ansible",
+    
+    "wordcount":  1522 ,
+    "url": "https:\/\/tech.zephyrl.co\/2020\/08\/ansible3\/",
+    
+        "datePublished": "2020-08-14T16:20:15\u002b08:00",
+    
+    
+        "dateModified": "2020-08-14T16:20:15\u002b08:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "Zephyr",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">Ansible 学习笔记（三）：Ansible PlayBook 入门</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <span class="post-category">
+                        收录于
+                        <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/ansible/">Ansible</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/centos/">CentOS</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/devops/">DevOPs</a>
+                            
+                    </span>
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-14>2020-08-14</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1522 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 4 分钟&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="post-dummy-target" id="playboot-介绍"></a><h2>Playboot 介绍</h2>
+<p>playbook 是由一个或多个&quot;play&quot;组成的列表</p>
+<p>play 的主要功能在于将预定义的一组主机，装扮成事先通过 ansible 中的 task 定义好的角色。</p>
+<p>Task实际是调用 ansible 的一个 module，将多个 play 组织在一个 playbook 中，</p>
+<p>即可以让它们联合起来，按事先编排的机制执行预定义的动作</p>
+<p>Playbook 采用 YAML 语言编写</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/14/1.png" alt="1.png"></p>
+<p>用户通过 ansible 命令直接调用 yml 语言写好的 playbook，playbook 由多条 play 组成</p>
+<p>每条 play 都有一个任务(task)相对应的操作，然后调用模块 modules，应用在主机清单上，通过 ssh 远程连接</p>
+<p>从而控制远程主机或者网络设备</p>
+<a class="post-dummy-target" id="playbook-核心元素"></a><h2>PlayBook 核心元素</h2>
+<table>
+<thead>
+<tr>
+<th align="center">元素</th>
+<th align="center">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Hosts</td>
+<td align="center">执行的远程主机列表(应用在哪些主机上)</td>
+</tr>
+<tr>
+<td align="center">Tasks</td>
+<td align="center">任务集</td>
+</tr>
+<tr>
+<td align="center">Variables</td>
+<td align="center">内置变量或自定义变量在playbook中调用</td>
+</tr>
+<tr>
+<td align="center">Templates模板</td>
+<td align="center">可替换模板文件中的变量并实现一些简单逻辑的文件</td>
+</tr>
+<tr>
+<td align="center">Handlers和notify结合使用</td>
+<td align="center">由特定条件触发的操作，满足条件方才执行，否则不执行</td>
+</tr>
+<tr>
+<td align="center">tags</td>
+<td align="center">指定某条任务执行，用于选择运行playbook中的部分代码。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>ansible具有幂等性，因此会自动跳过没有变化的部分，即便如此，有些代码为测试其确实没有发生变化的时间依然会非常地长。此时，如果确信其没有变化，就可以通过tags跳过此些代码片断</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible-playbook -t tagsname useradd.yml
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="playbook-基础组件"></a><h2>Playbook 基础组件</h2>
+<a class="post-dummy-target" id="hosts"></a><h3>Hosts</h3>
+<p>playbook中的每一个play的目的都是为了让特定主机以某个指定的用户身份执行任务。</p>
+<p>hosts用于指定要执行指定任务的主机，须事先定义在主机清单中</p>
+<p>可以是如下形式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">one.example.com
+one.example.com:two.example.com
+192.168.1.50
+192.168.1.*
+Websrvs:dbsrvs       或者，两个组的并集
+Websrvs:&amp;dbsrvs      与，两个组的交集
+webservers:!phoenix  在websrvs组，但不在dbsrvs组
+</code></pre></td></tr></table>
+</div>
+</div><p>示例: - hosts: websrvs：dbsrvs</p>
+<a class="post-dummy-target" id="remote_user"></a><h3>remote_user</h3>
+<p>可用于Host和task中。</p>
+<p>也可以通过指定其通过sudo的方式在远程主机上执行任务，其可用于play全局或某任务；</p>
+<p>此外，甚至可以在sudo时使用sudo_user指定sudo时切换的用户</p>
+<ul>
+<li>
+<p>hosts: websrvs</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">remote_user: root   (可省略,默认为root)  以root身份连接
+tasks:    指定任务
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>name: test connection</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ping:
+remote_user: zephyr
+sudo: yes               # 默认sudo为root
+sudo_user:zephyr        # sudo为zephyr
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<a class="post-dummy-target" id="task-列表和-action"></a><h3>task 列表和 action</h3>
+<p>任务列表task:由多个动作,多个任务组合起来的,每个任务都调用的模块,一个模块一个模块执行</p>
+<ol>
+<li>
+<p>play的主体部分是 task list，task list 中的各任务按次序逐个 hosts 中指定的所有主机上执行，即在所有主机上完成第一个任务后，再开始第二个任务</p>
+</li>
+<li>
+<p>task 的目的是使用指定的参数执行模块，而在模块参数中可以使用量。
+模块执行是幂等的，这意味着多次执行是安全的，因为其结果均一致</p>
+</li>
+<li>
+<p>每个 task 都应该有其 name，用于 playbook 的执行结果输出，建议其内能清晰地描述任务执行步骤。</p>
+</li>
+</ol>
+<p>如果未提供 name，则 action 的结果将用于输出</p>
+<a class="post-dummy-target" id="ansible-playbook-初级用例"></a><h2>Ansible-Playbook 初级用例</h2>
+<a class="post-dummy-target" id="playbook-创建用户"></a><h3>Playbook 创建用户</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="k">hosts</span><span class="p">:</span><span class="w"> </span>all<span class="w">
+</span><span class="w">  </span><span class="k">remote_user</span><span class="p">:</span><span class="w"> </span>root<span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="k">tasks</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>create<span class="w"> </span>mysql<span class="w"> </span>user<span class="w">
+</span><span class="w">      </span><span class="k">user</span><span class="p">:</span><span class="w"> </span>name=mysql<span class="w"> </span>system=yes<span class="w"> </span>uid=<span class="m">36</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>create<span class="w"> </span>a<span class="w"> </span>group<span class="w">
+</span><span class="w">      </span><span class="k">group</span><span class="p">:</span><span class="w"> </span>name=httpd<span class="w"> </span>system=yes<span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="安装-apache-httpd-服务"></a><h3>安装 Apache httpd 服务</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="k">hosts</span><span class="p">:</span><span class="w"> </span>vms<span class="w">
+</span><span class="w">  </span><span class="k">remote_user</span><span class="p">:</span><span class="w"> </span>root<span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="k">tasks</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Install<span class="w"> </span>httpd<span class="w">
+</span><span class="w">      </span><span class="k">yum</span><span class="p">:</span><span class="w"> </span>name=httpd<span class="w"> </span>state=present<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Install<span class="w"> </span>configure<span class="w"> </span>file<span class="w">
+</span><span class="w">      </span><span class="k">copy</span><span class="p">:</span><span class="w"> </span>src=files/httpd.conf<span class="w"> </span>dest=/etc/httpd/conf/<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>start<span class="w"> </span>service<span class="w">
+</span><span class="w">      </span><span class="k">service</span><span class="p">:</span><span class="w"> </span>name=httpd<span class="w"> </span>state=started<span class="w"> </span>enabled=yes<span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>这里的 <code>files</code> 文件夹存在于 <code>~/.ansible</code> 中</p>
+<a class="post-dummy-target" id="安装-nginx-服务"></a><h3>安装 Nginx 服务</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="k">hosts</span><span class="p">:</span><span class="w"> </span>all<span class="w">
+</span><span class="w">  </span><span class="k">remote_user</span><span class="p">:</span><span class="w"> </span>root<span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="k">tasks</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>add<span class="w"> </span>group<span class="w"> </span>nginx<span class="w">
+</span><span class="w">      </span><span class="k">user</span><span class="p">:</span><span class="w"> </span>name=nginx<span class="w"> </span>state=present<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>add<span class="w"> </span>user<span class="w"> </span>nginx<span class="w">
+</span><span class="w">      </span><span class="k">user</span><span class="p">:</span><span class="w"> </span>name=nginx<span class="w"> </span>state=present<span class="w"> </span>group=nginx<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Install<span class="w"> </span>Nginx<span class="w">
+</span><span class="w">      </span><span class="k">yum</span><span class="p">:</span><span class="w"> </span>name=nginx<span class="w"> </span>state=present<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Start<span class="w"> </span>Nginx<span class="w">
+</span><span class="w">      </span><span class="k">service</span><span class="p">:</span><span class="w"> </span>name=nginx<span class="w"> </span>state=started<span class="w"> </span>enabled=yes<span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="handlers-和-notify"></a><h2>Handlers 和 notify</h2>
+<p>Handlers 实际上就是一个触发器</p>
+<p>是 task 列表，这些 task 与前述的 task 并没有本质上的不同,用于当关注的资源发生变化时，才会采取一定的操作</p>
+<p>Notify 此 action 可用于在每个 play 的最后被触发，这样可避免多次有改变发生时每次都执行指定的操作，仅在所有的变化发生完成后一次性地执行指定操作。</p>
+<p>在 notify 中列出的操作称为 handler，也即 notify 中调用 handler 中定义的操作</p>
+<a class="post-dummy-target" id="当-httpdconf-改变的时候重启-httpd-服务"></a><h3>当 <code>httpd.conf</code> 改变的时候重启 httpd 服务</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="k">hosts</span><span class="p">:</span><span class="w"> </span>websrvs<span class="w">
+</span><span class="w">  </span><span class="k">remote_user</span><span class="p">:</span><span class="w"> </span>root<span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="k">tasks</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Install<span class="w"> </span>httpd<span class="w">
+</span><span class="w">      </span><span class="k">yum</span><span class="p">:</span><span class="w"> </span>name=httpd<span class="w"> </span>state=present<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Install<span class="w"> </span>configure<span class="w"> </span>file<span class="w">
+</span><span class="w">      </span><span class="k">copy</span><span class="p">:</span><span class="w"> </span>src=files/httpd.conf<span class="w"> </span>dest=/etc/httpd/conf/<span class="w">
+</span><span class="w">      </span><span class="k">notify</span><span class="p">:</span><span class="w"> </span>restart<span class="w"> </span>httpd<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>ensure<span class="w"> </span>apache<span class="w"> </span>is<span class="w"> </span>running<span class="w">
+</span><span class="w">      </span><span class="k">service</span><span class="p">:</span><span class="w"> </span>name=httpd<span class="w"> </span>state=started<span class="w"> </span>enabled=yes<span class="w">
+</span><span class="w">  
+</span><span class="w">  </span><span class="k">handlers</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>restart<span class="w"> </span>httpd<span class="w">
+</span><span class="w">      </span><span class="k">service</span><span class="p">:</span><span class="w"> </span>name=httpd<span class="w"> </span>state=restarted<span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="更新-nginx-新的配置并重启服务"></a><h3>更新 Nginx 新的配置并重启服务</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="k">hosts</span><span class="p">:</span><span class="w"> </span>websrvs<span class="w">
+</span><span class="w">  </span><span class="k">remote_user</span><span class="p">:</span><span class="w"> </span>root<span class="w">
+</span><span class="w">  
+</span><span class="w">  </span><span class="k">tasks</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>add<span class="w"> </span>group<span class="w"> </span>nginx<span class="w">
+</span><span class="w">      </span><span class="k">tags</span><span class="p">:</span><span class="w"> </span>user<span class="w">
+</span><span class="w">      </span><span class="k">user</span><span class="p">:</span><span class="w"> </span>name=nginx<span class="w"> </span>state=present<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>add<span class="w"> </span>user<span class="w"> </span>nginx<span class="w">
+</span><span class="w">      </span><span class="k">user</span><span class="p">:</span><span class="w"> </span>name=nginx<span class="w"> </span>state=present<span class="w"> </span>group=nginx<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Install<span class="w"> </span>Nginx<span class="w">
+</span><span class="w">      </span><span class="k">yum</span><span class="p">:</span><span class="w"> </span>name=nginx<span class="w"> </span>state=present<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>config<span class="w">
+</span><span class="w">      </span><span class="k">copy</span><span class="p">:</span><span class="w"> </span>src=/root/config.txt<span class="w"> </span>dest=/etc/nginx/nginx.conf<span class="w">
+</span><span class="w">      </span><span class="k">notify</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- Restart<span class="w"> </span>Nginx<span class="w">
+</span><span class="w">        </span>- Check<span class="w"> </span>Nginx<span class="w"> </span>Process<span class="w">
+</span><span class="w">  
+</span><span class="w">  </span><span class="k">handlers</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Restart<span class="w"> </span>Nginx<span class="w">
+</span><span class="w">      </span><span class="k">service</span><span class="p">:</span><span class="w"> </span>name=nginx<span class="w"> </span>state=restarted<span class="w"> </span>enabled=yes<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Check<span class="w"> </span>Nginx<span class="w"> </span>process<span class="w">
+</span><span class="w">      </span><span class="k">shell</span><span class="p">:</span><span class="w"> </span>killall<span class="w"> </span>-<span class="m">0</span><span class="w"> </span>nginx<span class="w"> </span>&gt;<span class="w"> </span>/tmp/nginx.log<span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注：可以通过向进程发送信号0，然后根据返回值来判断一个进程是否存在。</p>
+</blockquote>
+<a class="post-dummy-target" id="tags-标签"></a><h2>Tags 标签</h2>
+<p>可以指定某一个任务添加一个标签,添加标签以后,想执行某个动作可以做出挑选来执行</p>
+<p>多个动作可以使用同一个标签</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># httpd.yaml</span><span class="w">
+</span><span class="w"></span>- <span class="k">hosts</span><span class="p">:</span><span class="w"> </span>websrvs<span class="w">
+</span><span class="w">  </span><span class="k">remote_user</span><span class="p">:</span><span class="w"> </span>root<span class="w">
+</span><span class="w">  
+</span><span class="w">  </span><span class="k">tasks</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Install<span class="w"> </span>httpd<span class="w">
+</span><span class="w">      </span><span class="k">yum</span><span class="p">:</span><span class="w"> </span>name=httpd<span class="w"> </span>state=present<span class="w">
+</span><span class="w">      </span><span class="k">tage</span><span class="p">:</span><span class="w"> </span>install<span class="w"> 
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Install<span class="w"> </span>configure<span class="w"> </span>file<span class="w">
+</span><span class="w">      </span><span class="k">copy</span><span class="p">:</span><span class="w"> </span>src=files/httpd.conf<span class="w"> </span>dest=/etc/httpd/conf/<span class="w">
+</span><span class="w">      </span><span class="k">tags</span><span class="p">:</span><span class="w"> </span>conf<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>start<span class="w"> </span>httpd<span class="w"> </span>service<span class="w">
+</span><span class="w">      </span><span class="k">tags</span><span class="p">:</span><span class="w"> </span>service<span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>此为 <code>httpd.yaml</code>，我们执行以下代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible-playbook –t install,conf httpd.yml
+</code></pre></td></tr></table>
+</div>
+</div><p>就是执行了里面的 <code>install</code> 和 <code>conf</code> 模块</p>
+
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-08-14 更新</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://tech.zephyrl.co/2020/08/ansible3/index.md" target="_blank">阅读原始文档</a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fansible3%2f&amp;text=Ansible%20%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%b8%89%ef%bc%89%ef%bc%9aAnsible%20PlayBook%20%e5%85%a5%e9%97%a8&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fansible3%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fansible3%2f&amp;title=Ansible%20%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%b8%89%ef%bc%89%ef%bc%9aAnsible%20PlayBook%20%e5%85%a5%e9%97%a8" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>折腾笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>DevOPs入门笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/ansible/"><i class="fas fa-tag fa-fw"></i>Ansible</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://tech.zephyrl.co/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://tech.zephyrl.co/2020/08/ansible2/" class="prev" rel="prev" title="Ansible 学习笔记（二）：Ad-Hoc 使用"><i class="fas fa-angle-left fa-fw"></i>Ansible 学习笔记（二）：Ad-Hoc 使用</a>
+        
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>
