@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 11 Aug 2020 09:21:32 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2020 13:30:30 +0800</lastBuildDate>
     
 	<atom:link href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ansible 学习笔记（二）：Ad-Hoc 使用</title>
+      <link>https://tech.zephyrl.co/2020/08/ansible2/</link>
+      <pubDate>Thu, 13 Aug 2020 13:30:30 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/08/ansible2/</guid>
+      <description>Ansible 命令 Ansible系列命令如下： 1 ansible ansible-doc ansible-playbook ansible-vault ansible-console ansible-galaxy ansible-pull 如果要查看相关模块帮助，可以使用 ansible-doc 命令： 1 2 3 4 ansible-doc [options] [module...] -a 显示所有模块的文档 -l, --list 列出可用模块</description>
+    </item>
     
     <item>
       <title>Ansible 学习笔记（一）：安装配置和初步使用</title>

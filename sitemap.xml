@@ -3,7 +3,7 @@
         <url>
             <loc>https://tech.zephyrl.co/tags/ansible/</loc>
             
-                <lastmod>2020-08-11T09:21:32+08:00</lastmod>
+                <lastmod>2020-08-13T13:30:30+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -17,7 +17,7 @@
         <url>
             <loc>https://tech.zephyrl.co/categories/ansible/</loc>
             
-                <lastmod>2020-08-11T09:21:32+08:00</lastmod>
+                <lastmod>2020-08-13T13:30:30+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -29,9 +29,9 @@
         </url>
     
         <url>
-            <loc>https://tech.zephyrl.co/2020/08/ansible1/</loc>
+            <loc>https://tech.zephyrl.co/2020/08/ansible2/</loc>
             
-                <lastmod>2020-08-11T09:21:32+08:00</lastmod>
+                <lastmod>2020-08-13T13:30:30+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -45,7 +45,7 @@
         <url>
             <loc>https://tech.zephyrl.co/categories/</loc>
             
-                <lastmod>2020-08-11T09:21:32+08:00</lastmod>
+                <lastmod>2020-08-13T13:30:30+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -59,7 +59,7 @@
         <url>
             <loc>https://tech.zephyrl.co/categories/centos/</loc>
             
-                <lastmod>2020-08-11T09:21:32+08:00</lastmod>
+                <lastmod>2020-08-13T13:30:30+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -73,7 +73,7 @@
         <url>
             <loc>https://tech.zephyrl.co/categories/devops/</loc>
             
-                <lastmod>2020-08-11T09:21:32+08:00</lastmod>
+                <lastmod>2020-08-13T13:30:30+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -87,7 +87,7 @@
         <url>
             <loc>https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</loc>
             
-                <lastmod>2020-08-11T09:21:32+08:00</lastmod>
+                <lastmod>2020-08-13T13:30:30+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -101,7 +101,7 @@
         <url>
             <loc>https://tech.zephyrl.co/posts/</loc>
             
-                <lastmod>2020-08-11T09:21:32+08:00</lastmod>
+                <lastmod>2020-08-13T13:30:30+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -115,7 +115,7 @@
         <url>
             <loc>https://tech.zephyrl.co/tags/</loc>
             
-                <lastmod>2020-08-11T09:21:32+08:00</lastmod>
+                <lastmod>2020-08-13T13:30:30+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -129,7 +129,7 @@
         <url>
             <loc>https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</loc>
             
-                <lastmod>2020-08-11T09:21:32+08:00</lastmod>
+                <lastmod>2020-08-13T13:30:30+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>
@@ -142,6 +142,20 @@
     
         <url>
             <loc>https://tech.zephyrl.co/</loc>
+            
+                <lastmod>2020-08-13T13:30:30+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://tech.zephyrl.co/2020/08/ansible1/</loc>
             
                 <lastmod>2020-08-11T09:21:32+08:00</lastmod>
             

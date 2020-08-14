@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Ansible 学习笔记（二）：Ad-Hoc 使用 | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="一个准程序员的自留地">
+<link rel="prev" href="https://tech.zephyrl.co/2020/08/ansible1/" />
+<link rel="canonical" href="https://tech.zephyrl.co/2020/08/ansible2/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ansible 学习笔记（二）：Ad-Hoc 使用"/>
+<meta name="twitter:description" content="Ansible 命令 Ansible系列命令如下： 1 ansible ansible-doc ansible-playbook ansible-vault ansible-console ansible-galaxy ansible-pull 如果要查看相关模块帮助，可以使用 ansible-doc 命令： 1 2 3 4 ansible-doc [options] [module...] -a 显示所有模块的文档 -l, --list 列出可用模块"/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Ansible 学习笔记（二）：Ad-Hoc 使用",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/tech.zephyrl.co\/2020\/08\/ansible2\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "折腾笔记, DevOPs入门笔记, Ansible",
+    
+    "wordcount":  2283 ,
+    "url": "https:\/\/tech.zephyrl.co\/2020\/08\/ansible2\/",
+    
+        "datePublished": "2020-08-13T13:30:30\u002b08:00",
+    
+    
+        "dateModified": "2020-08-13T13:30:30\u002b08:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "Zephyr",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">Ansible 学习笔记（二）：Ad-Hoc 使用</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <span class="post-category">
+                        收录于
+                        <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/ansible/">Ansible</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/centos/">CentOS</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/devops/">DevOPs</a>
+                            
+                    </span>
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-13>2020-08-13</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 2283 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 5 分钟&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="post-dummy-target" id="ansible-命令"></a><h2>Ansible 命令</h2>
+<p>Ansible系列命令如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible ansible-doc ansible-playbook ansible-vault ansible-console ansible-galaxy ansible-pull
+</code></pre></td></tr></table>
+</div>
+</div><p>如果要查看相关模块帮助，可以使用 <code>ansible-doc</code> 命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible-doc <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module...<span class="o">]</span>
+    -a            显示所有模块的文档
+    -l, --list    列出可用模块
+    -s, --snippet 显示指定模块的playbook片段<span class="o">(</span>简化版,便于查找语法<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>示例：</p>
+<table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">ansible-doc -l</td>
+<td align="center">列出所有模块</td>
+</tr>
+<tr>
+<td align="center">ansible-doc ping</td>
+<td align="center">查看ping模块帮助用法</td>
+</tr>
+<tr>
+<td align="center">ansible-doc -s ping</td>
+<td align="center">查看ping模块帮助用法（简化）</td>
+</tr>
+</tbody>
+</table>
+<a class="post-dummy-target" id="ansible-使用细则"></a><h2>Ansible 使用细则</h2>
+<p>ansible通过ssh实现配置管理、应用部署、任务执行等功能</p>
+<p>建议配置ansible端能基于密钥认证的方式联系各被管理节点</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible &lt;host-pattern&gt; <span class="o">[</span>-m module_name<span class="o">]</span> <span class="o">[</span>-a args<span class="o">]</span>
+    --version              显示版本
+    -m module              指定模块，默认为command
+    -v                     详细过程 –vv -vvv更详细
+    --list-hosts           显示主机列表，可简写 --list
+    -k, --ask-pass         提示输入ssh连接密码,默认Key验证
+    -C, --check            检查，并不执行
+    -T, --timeout<span class="o">=</span>TIMEOUT  执行命令的超时时间,默认10s
+    -u, --user<span class="o">=</span>REMOTE_USER 执行远程执行的用户
+    -b, --become           代替旧版的sudo切换
+        --become-user<span class="o">=</span>USERNAME 指定sudo的runas用户,默认为root
+    -K, --ask-become-pass  提示输入sudo时的口令
+</code></pre></td></tr></table>
+</div>
+</div><p>举例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">ansible all --list      <span class="c1"># 列出所有主机</span>
+ansible-doc -s ping     <span class="c1"># 查看ping模块的语法</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="ansible-的-host-pattern"></a><h2>ansible 的 Host-pattern</h2>
+<a class="post-dummy-target" id="all-表示所有inventory中的所有主机"></a><h3>All 表示所有Inventory中的所有主机</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible all –m ping
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="-通配符"></a><h3>* :通配符</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible <span class="s2">&#34;*&#34;</span> -m ping  <span class="o">(</span>*表示所有主机<span class="o">)</span>
+ansible 192.168.1.* -m ping
+ansible <span class="s2">&#34;*srvs&#34;</span> -m ping
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="或关系-"></a><h3>或关系 &ldquo;:&rdquo;</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible <span class="s2">&#34;websrvs:appsrvs&#34;</span> -m ping
+ansible “192.168.1.10:192.168.1.20” -m ping
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="逻辑与-"></a><h3>逻辑与 &ldquo;:&amp;&rdquo;</h3>
+<p>在websrvs组并且在dbsrvs组中的主机</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible <span class="s2">&#34;websrvs:&amp;dbsrvs&#34;</span> –m ping
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="逻辑非-"></a><h3>逻辑非 &ldquo;:!&rdquo;</h3>
+<p>在websrvs组，但不在dbsrvs组中的主机</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible <span class="s1">&#39;websrvs:!dbsrvs&#39;</span> –m ping
+</code></pre></td></tr></table>
+</div>
+</div><p>注意：此处为单引号</p>
+<a class="post-dummy-target" id="综合逻辑"></a><h3>综合逻辑</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible <span class="s1">&#39;websrvs:dbsrvs:&amp;appsrvs:!ftpsrvs&#39;</span> –m ping
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="正则表达式"></a><h3>正则表达式</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible <span class="s2">&#34;websrvs:&amp;dbsrvs&#34;</span> –m ping
+ansible <span class="s2">&#34;~(web|db).*\.magedu\.com&#34;</span> –m ping
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="ansible-常用模块"></a><h2>ansible 常用模块</h2>
+<p>模块文档：https://docs.ansible.com/ansible/latest/modules/modules_by_category.html</p>
+<a class="post-dummy-target" id="command"></a><h3>Command</h3>
+<p>在远程主机执行命令，默认模块，可忽略-m选项</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible srvs -m <span class="nb">command</span> -a <span class="s1">&#39;service vsftpd start&#39;</span>
+ansible srvs -m <span class="nb">command</span> -a <span class="s1">&#39;echo adong |passwd --stdin 123456&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>此命令不支持 <code>$VARNAME</code> <code>&lt;</code> <code>&gt;</code> <code>|</code> <code>;</code> <code>&amp;</code> 等高端用法，但是他们可以用 <code>shell</code> 模块实现</p>
+<a class="post-dummy-target" id="shell"></a><h3>Shell</h3>
+<p>和command相似，用shell执行命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible all -m shell  -a <span class="s1">&#39;getenforce&#39;</span>  查看SELINUX状态
+ansible all -m shell  -a <span class="s2">&#34;sed -i &#39;s/SELINUX=.*/SELINUX=disabled&#39; /etc/selinux/config&#34;</span>
+ansible srv -m shell -a <span class="s1">&#39;echo zephyr | passwd –stdin zephyr&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>调用bash执行命令 类似 <code>cat /tmp/stanley.md | awk -F'|' '{print$1,$2}' &amp;&gt; /tmp/example.txt</code> 这些复杂命令，即使使用shell也可能会失败</p>
+<p>解决办法：写到脚本时，copy到远程执行，再把需要的结果拉回执行命令的机器</p>
+<p>如果可以的话，我们可以修改配置文件,使shell作为默认模块</p>
+<p>打开 <code>/etc/ansible/ansible.cfg</code> 修改</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">module_name = shell
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="script"></a><h3>Script</h3>
+<p>在远程主机上运行ansible服务器上的脚本</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">ansible websrvs -m script -a /data/test.sh
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="copy"></a><h3>Copy</h3>
+<p>从主控端复制文件到远程主机</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">src</td>
+<td align="center">源文件，指定拷贝文件的本地路径(如果有/则拷贝目录内比拷贝目录本身)</td>
+</tr>
+<tr>
+<td align="center">dest</td>
+<td align="center">指定目标路径</td>
+</tr>
+<tr>
+<td align="center">mode</td>
+<td align="center">设置权限</td>
+</tr>
+<tr>
+<td align="center">backup</td>
+<td align="center">备份源文件</td>
+</tr>
+<tr>
+<td align="center">content</td>
+<td align="center">代替src  指定本机文件内容,生成目标主机文件</td>
+</tr>
+</tbody>
+</table>
+<p>如果目标存在，默认覆盖，此处指定先备份</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">ansible websrvs -m copy -a <span class="s2">&#34;src=/root/test1.sh dest=/tmp/test2.showner=wang mode=600 backup=yes&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>指定内容，直接生成目标文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">ansible websrvs -m copy -a <span class="s2">&#34;content=&#39;test content\nxxx&#39; dest=/tmp/test.txt&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="fetch"></a><h3>Fetch</h3>
+<p>从远程主机提取文件至主控端，copy相反，目前不支持目录,可以先打包,再提取文件</p>
+<p>会生成每个被管理主机不同编号的目录,不会发生文件名冲突</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible websrvs -m fetch -a <span class="s1">&#39;src=/root/test.sh dest=/datscripts&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible all -m shell -a <span class="s1">&#39;tar jxvf test.tar.gz /root/test.sh&#39;</span>
+ansible all -m fetch -a <span class="s1">&#39;src=/root/test.tar.gz dest=/data/&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="file"></a><h3>File</h3>
+<p>设置文件属性：</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">path</td>
+<td align="center">要管理的文件路径 (强制添加)</td>
+</tr>
+<tr>
+<td align="center">recurse</td>
+<td align="center">递归,文件夹要用递归</td>
+</tr>
+<tr>
+<td align="center">src</td>
+<td align="center">创建硬链接,软链接时,指定源目标,配合&rsquo;state=link'&lsquo;state=hard&rsquo; 设置软链接,硬链接</td>
+</tr>
+<tr>
+<td align="center">state</td>
+<td align="center">状态（absent 缺席，删除）</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">ansible websrvs -m file -a <span class="s1">&#39;path=/app/test.txtstate=touch&#39;</span>                              <span class="c1"># 创建文件</span>
+ansible websrvs -m file -a <span class="s2">&#34;path=/data/testdirstate=directory&#34;</span>                          <span class="c1"># 创建目录</span>    
+ansible websrvs -m file -a <span class="s2">&#34;path=/root/test.sh owner=wangmode=755&#34;</span>                      <span class="c1"># 设置权限755</span>
+ansible websrvs -m file -a <span class="s1">&#39;src=/data/testfile dest=/datatestfile-link state=link&#39;</span>      <span class="c1"># 创建软链接</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="unarchive"></a><h3>unarchive</h3>
+<p>解包解压缩，有两种用法:</p>
+<ol>
+<li>
+<p>将ansible主机上的压缩包传到远程主机后解压缩至特定目录，设置copy=yes.</p>
+</li>
+<li>
+<p>将远程主机上的某个压缩包解压缩到指定路径下，设置copy=no</p>
+</li>
+</ol>
+<p>常见参数：</p>
+<ul>
+<li>copy：默认为yes，当copy=yes，拷贝的文件是从ansible主机复制到远程主机上，如果设置为copy=no，会在远程主机上寻找src源文件</li>
+<li>src： 源路径，可以是ansible主机上的路径，也可以是远程主机上的路径，如果是远程主机上的路径，则需要设置copy=no</li>
+<li>dest：远程主机上的目标路径</li>
+<li>mode：设置解压缩后的文件权限</li>
+</ul>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible websrvs -m unarchive -a <span class="s1">&#39;src=foo.tgz dest=/var/lib/foo&#39;</span>   <span class="c1">#默认copy为yes ,将本机目录文件解压到目标主机对应目录下</span>
+ansible websrvs -m unarchive -a <span class="s1">&#39;src=/tmp/foo.zip dest=/data copy=no mode=0777&#39;</span> <span class="c1"># 解压被管理主机的foo.zip到data目录下, 并设置权限777</span>
+ansible websrvs -m unarchive -a <span class="s1">&#39;src=https://example.com/example.zip dest=/data copy=no&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="archive"></a><h3>Archive</h3>
+<p>打包压缩</p>
+<p>将远程主机目录打包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible all -m archive -a <span class="s1">&#39;path=/etc/sysconfig dest=/data/sysconfig.tar.bz2 format=bz2 owner=wang mode=0777&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">path</td>
+<td align="center">指定路径</td>
+</tr>
+<tr>
+<td align="center">dest</td>
+<td align="center">指定目标文件</td>
+</tr>
+<tr>
+<td align="center">format</td>
+<td align="center">指定打包格式</td>
+</tr>
+<tr>
+<td align="center">owner</td>
+<td align="center">指定所属者</td>
+</tr>
+<tr>
+<td align="center">mode</td>
+<td align="center">设置权限</td>
+</tr>
+</tbody>
+</table>
+<a class="post-dummy-target" id="hostname"></a><h3>Hostname</h3>
+<p>管理主机名示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible appsrvs -m hostname -a <span class="s2">&#34;name=app.adong.com&#34;</span>             <span class="c1"># 更改一组的主机名</span>
+ansible 192.168.38.103 -m hostname -a <span class="s2">&#34;name=app2.adong.com&#34;</span>     <span class="c1"># 更改单个主机名</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="cron"></a><h3>Cron</h3>
+<p>有点类似于 <code>Crontab</code>，计划任务，其实也是添加 <code>Crontab</code></p>
+<p>支持时间：minute,hour,day,month,weekday</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible websrvs -m cron -a <span class="s2">&#34;minute=*/5 job=&#39;/usr/sbin/ntpdate 172.16.0.1 &amp;&gt;/dev/null&#39; name=Synctime&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>创建任务:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible websrvs -m cron -a <span class="s1">&#39;state=absent name=Synctime&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>删除任务：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible websrvs -m cron -a <span class="s1">&#39;minute=*/10 job=&#39;</span>/usr/sbin/ntpdate 172.30.0.100<span class="s2">&#34; name=synctime disabled=yes&#39;
+</span></code></pre></td></tr></table>
+</div>
+</div><p>删除任务的本质就是注释 <code>Crontab</code> 任务，不在生效</p>
+<a class="post-dummy-target" id="yum"></a><h3>Yum</h3>
+<p>管理包：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">ansible websrvs -m yum -a <span class="s1">&#39;list=httpd&#39;</span>  查看程序列表
+ansible websrvs -m yum -a <span class="s1">&#39;name=httpd state=present&#39;</span> 安装
+ansible websrvs -m yum -a <span class="s1">&#39;name=httpd state=absent&#39;</span>  删除
+</code></pre></td></tr></table>
+</div>
+</div><p>可以同时安装多个程序包</p>
+<a class="post-dummy-target" id="service"></a><h3>Service</h3>
+<p>管理服务（systemctl）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible srv -m service -a <span class="s1">&#39;name=httpd state=stopped&#39;</span>  停止服务
+ansible srv -m service -a <span class="s1">&#39;name=httpd state=started enabled=yes&#39;</span> 启动服务,并设为开机自启
+ansible srv -m service -a <span class="s1">&#39;name=httpd state=reloaded&#39;</span>  重新加载
+ansible srv -m service -a <span class="s1">&#39;name=httpd state=restarted&#39;</span> 重启服务
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="user"></a><h3>User</h3>
+<p>管理用户：</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">home</td>
+<td align="center">指定家目录路径</td>
+</tr>
+<tr>
+<td align="center">system</td>
+<td align="center">指定系统账号</td>
+</tr>
+<tr>
+<td align="center">group</td>
+<td align="center">指定组</td>
+</tr>
+<tr>
+<td align="center">remove</td>
+<td align="center">清除账户</td>
+</tr>
+<tr>
+<td align="center">shell</td>
+<td align="center">指定shell类型</td>
+</tr>
+</tbody>
+</table>
+<p>用例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible websrvs -m user -a <span class="s1">&#39;name=user1 comment=&#34;test user&#34; uid=2048 home=/app/user1 group=root&#39;</span>
+ansible websrvs -m user -a <span class="s1">&#39;name=sysuser1 system=yes home=/app/sysuser1&#39;</span>
+ansible websrvs -m user -a <span class="s1">&#39;name=user1 state=absent remove=yes&#39;</span>  清空用户所有数据
+ansible websrvs -m user -a <span class="s1">&#39;name=app uid=88 system=yes home=/app groups=root shell=/sbin/nologin password=&#34;$1$zfVojmPy$ZILcvxnXljvTI2PhP2Iqv1&#34;&#39;</span>  创建用户
+ansible websrvs -m user -a <span class="s1">&#39;name=app state=absent&#39;</span>  不会删除家目录
+</code></pre></td></tr></table>
+</div>
+</div><p>删除用户及家目录等数据</p>
+<p>Group：管理组</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible srv -m group -a <span class="s2">&#34;name=testgroup system=yes&#34;</span>   创建组
+ansible srv -m group -a <span class="s2">&#34;name=testgroup state=absent&#34;</span> 删除组
+</code></pre></td></tr></table>
+</div>
+</div><p>其他模块也可通过上面的文档链接来仔细查阅</p>
+
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-08-13 更新</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://tech.zephyrl.co/2020/08/ansible2/index.md" target="_blank">阅读原始文档</a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fansible2%2f&amp;text=Ansible%20%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%ba%8c%ef%bc%89%ef%bc%9aAd-Hoc%20%e4%bd%bf%e7%94%a8&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fansible2%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fansible2%2f&amp;title=Ansible%20%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%ba%8c%ef%bc%89%ef%bc%9aAd-Hoc%20%e4%bd%bf%e7%94%a8" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>折腾笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>DevOPs入门笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/ansible/"><i class="fas fa-tag fa-fw"></i>Ansible</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://tech.zephyrl.co/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://tech.zephyrl.co/2020/08/ansible1/" class="prev" rel="prev" title="Ansible 学习笔记（一）：安装配置和初步使用"><i class="fas fa-angle-left fa-fw"></i>Ansible 学习笔记（一）：安装配置和初步使用</a>
+        
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>
