@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DevOPs on 梦黎的小窝</title>
+    <link>https://tech.zephyrl.co/categories/devops/</link>
+    <description>Recent content in DevOPs on 梦黎的小窝</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Tue, 11 Aug 2020 09:21:32 +0800</lastBuildDate>
+    
+	<atom:link href="https://tech.zephyrl.co/categories/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ansible 学习笔记（一）：安装配置和初步使用</title>
+      <link>https://tech.zephyrl.co/2020/08/ansible1/</link>
+      <pubDate>Tue, 11 Aug 2020 09:21:32 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/08/ansible1/</guid>
+      <description>Ansible 可以加强自动化，是个好东西。本节包括 Ansible 的安装、初步了解和配置</description>
+    </item>
+    
+  </channel>
+</rss>

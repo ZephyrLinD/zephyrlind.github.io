@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zabbix on 梦黎的小窝</title>
+    <link>https://tech.zephyrl.co/tags/zabbix/</link>
+    <description>Recent content in Zabbix on 梦黎的小窝</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 06 Aug 2020 16:15:22 +0800</lastBuildDate>
+    
+	<atom:link href="https://tech.zephyrl.co/tags/zabbix/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Zabbix配置文档（二）—— 邮件和钉钉报警</title>
+      <link>https://tech.zephyrl.co/2020/08/zabbix2/</link>
+      <pubDate>Thu, 06 Aug 2020 16:15:22 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/08/zabbix2/</guid>
+      <description>通过发邮件和钉钉机器人发送报警、恢复信息</description>
+    </item>
+    
+    <item>
+      <title>Zabbix配置文档（一）—— 监控和触发器</title>
+      <link>https://tech.zephyrl.co/2020/08/zabbix1/</link>
+      <pubDate>Wed, 05 Aug 2020 10:12:48 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/08/zabbix1/</guid>
+      <description>自定义监控，自定义触发器</description>
+    </item>
+    
+    <item>
+      <title>Zabbix 配置文档（〇）—— 安装</title>
+      <link>https://tech.zephyrl.co/2020/08/zabbix0/</link>
+      <pubDate>Tue, 04 Aug 2020 08:10:02 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/08/zabbix0/</guid>
+      <description>Zabbix5.0 LTS 的安装，基于 CentOS7.5</description>
+    </item>
+    
+  </channel>
+</rss>

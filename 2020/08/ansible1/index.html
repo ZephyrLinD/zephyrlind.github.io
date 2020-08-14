@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Ansible 学习笔记（一）：安装配置和初步使用 | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="一个准程序员的自留地">
+<link rel="prev" href="https://tech.zephyrl.co/2020/08/zabbix2/" />
+<link rel="canonical" href="https://tech.zephyrl.co/2020/08/ansible1/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ansible 学习笔记（一）：安装配置和初步使用"/>
+<meta name="twitter:description" content="Ansible 可以加强自动化，是个好东西。本节包括 Ansible 的安装、初步了解和配置"/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Ansible 学习笔记（一）：安装配置和初步使用",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/tech.zephyrl.co\/2020\/08\/ansible1\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "折腾笔记, DevOPs入门笔记, Ansible",
+    
+    "wordcount":  850 ,
+    "url": "https:\/\/tech.zephyrl.co\/2020\/08\/ansible1\/",
+    
+        "datePublished": "2020-08-11T09:21:32\u002b08:00",
+    
+    
+        "dateModified": "2020-08-11T09:21:32\u002b08:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "Zephyr",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">Ansible 学习笔记（一）：安装配置和初步使用</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <span class="post-category">
+                        收录于
+                        <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/ansible/">Ansible</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/centos/">CentOS</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/devops/">DevOPs</a>
+                            
+                    </span>
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-11>2020-08-11</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 850 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="post-dummy-target" id="安装-ansible"></a><h2>安装 Ansible</h2>
+<a class="post-dummy-target" id="yum-通过-epel-源安装"></a><h3>Yum 通过 Epel 源安装</h3>
+<p>Ansible 位于 <code>epel</code> 源，我们在安装 Ansible 之前需要安装 <code>epel-release</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">yum install epel-release
+</code></pre></td></tr></table>
+</div>
+</div><p>之后就可以通过 yum 安装 Ansible 了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">yum install ansible
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="编译安装"></a><h3>编译安装</h3>
+<p>1、安装运行库</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">yum -y install python-jinja2 PyYAML python-paramiko python-babel
+python-crypto
+</code></pre></td></tr></table>
+</div>
+</div><p>2、下载解压源码包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">wget https://github.com/ansible/ansible/archive/v2.9.12.tar.gz
+mv v2.9.12.tar.gz /usr/local
+tar zxvf v2.9.12.tar.gz
+<span class="nb">cd</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>3、编译并安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">python setup.py build
+python setup.py install
+mkdir /etc/ansible
+cp -r examples/* /etc/ansible
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="ansible-相关文件"></a><h2>Ansible 相关文件</h2>
+<p>配置文件：</p>
+<table>
+<thead>
+<tr>
+<th align="center">目录</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>/etc/ansible/ansible.cfg</code></td>
+<td align="center">主配置文件,配置ansible工作特性(一般无需修改)</td>
+</tr>
+<tr>
+<td align="center"><code>/etc/ansible/hosts</code></td>
+<td align="center">主机清单(将被管理的主机放到此文件)</td>
+</tr>
+<tr>
+<td align="center"><code>/etc/ansible/roles/</code></td>
+<td align="center">存放角色的目录</td>
+</tr>
+</tbody>
+</table>
+<p>程序：</p>
+<table>
+<thead>
+<tr>
+<th align="center">目录</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>/usr/bin/ansible</code></td>
+<td align="center">主程序，临时命令执行工具</td>
+</tr>
+<tr>
+<td align="center"><code>/usr/bin/ansible-doc</code></td>
+<td align="center">查看配置文档，模块功能查看工具</td>
+</tr>
+<tr>
+<td align="center"><code>/usr/bin/ansible-galaxy</code></td>
+<td align="center">下载/上传优秀代码或Roles模块的官网平台</td>
+</tr>
+<tr>
+<td align="center"><code>/usr/bin/ansible-playbook</code></td>
+<td align="center">定制自动化任务，编排剧本工具</td>
+</tr>
+<tr>
+<td align="center"><code>/usr/bin/ansible-pull</code></td>
+<td align="center">远程执行命令的工具</td>
+</tr>
+<tr>
+<td align="center"><code>/usr/bin/ansible-vault</code></td>
+<td align="center">文件加密工具</td>
+</tr>
+<tr>
+<td align="center"><code>/usr/bin/ansible-console</code></td>
+<td align="center">基于Console界面与用户交互的执行工具</td>
+</tr>
+</tbody>
+</table>
+<a class="post-dummy-target" id="第一个命令"></a><h2>第一个命令</h2>
+<p>我们用一个 <code>ping</code> 命令来开始 <code>ansible</code> 的学习</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@zep0 ~<span class="o">]</span><span class="c1"># ansible 192.168.1.136 -m ping -k</span>
+SSH password:
+192.168.1.136 <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
+    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
+        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/bin/python&#34;</span>
+    <span class="o">}</span>,
+    <span class="s2">&#34;changed&#34;</span>: false,
+    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输入 SSH 密码之后，收到以上回应即为成功</p>
+<a class="post-dummy-target" id="一些配置"></a><h2>一些配置</h2>
+<a class="post-dummy-target" id="添加-inventory-主机清单"></a><h3>添加 Inventory 主机清单</h3>
+<p>ansible 的主要功用在于批量主机操作，为了便捷地使用其中的部分主机，可以在 inventory file 中将其分组命名</p>
+<p>默认的 inventory file 为 <code>/etc/ansible/hosts</code></p>
+<p>inventory file 可以有多个，且也可以通过 Dynamic Inventory 来动态生成</p>
+<p>打开 <code>/etc/ansible/hosts</code>，可以发现上面注释了好多的示例，我们可以按照他的注释编写自己的 <code>hosts</code> 主机文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[vms]</span>
+<span class="na">192.168.50.101</span>
+<span class="na">192.168.50.102</span>
+<span class="na">192.168.50.103</span>
+
+<span class="k">[servers]</span>
+<span class="na">192.168.1.169</span>
+<span class="na">192.168.1.136</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="修改推荐的设置"></a><h3>修改推荐的设置</h3>
+<p>Ansible 配置文件/etc/ansible/ansible.cfg （一般保持默认）</p>
+<p>其中 Default 项目和意义如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[defaults]
+#inventory     = /etc/ansible/hosts      # 主机列表配置文件
+#library       = /usr/share/my_modules/  # 库文件存放目录
+#remote_tmp    = $HOME/.ansible/tmp      # 临时py命令文件存放在远程主机目录
+#local_tmp     = $HOME/.ansible/tmp      # 本机的临时命令执行目录  
+#forks         = 5                       # 默认并发数,同时可以执行5次
+#sudo_user     = root                    # 默认sudo 用户
+#ask_sudo_pass = True                    # 每次执行ansible命令是否询问ssh密码
+#ask_pass      = True                    # 每次执行ansible命令是否询问ssh口令
+#remote_port   = 22                      # 远程主机的端口号(默认22)
+</code></pre></td></tr></table>
+</div>
+</div><p>我们打开 <code>/etc/ansible/ansible.cfg</code> 取消注释修改一下配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">host_key_checking = False
+log_path = /var/log/ansible.log
+module_name = command
+</code></pre></td></tr></table>
+</div>
+</div><p>其中，第一个是禁用 SSH 的连接检查，如果不禁用我们需要通过 SSH 链接过目标主机，如未连接过则会报错</p>
+<p>第二个是用来开启 Ansible 的日志记录</p>
+<p>第三个指的是默认的命令，默认是执行 <code>bash</code> 命令</p>
+
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-08-11 更新</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://tech.zephyrl.co/2020/08/ansible1/index.md" target="_blank">阅读原始文档</a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fansible1%2f&amp;text=Ansible%20%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%b8%80%ef%bc%89%ef%bc%9a%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%ae%e5%92%8c%e5%88%9d%e6%ad%a5%e4%bd%bf%e7%94%a8&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fansible1%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fansible1%2f&amp;title=Ansible%20%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%b8%80%ef%bc%89%ef%bc%9a%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%ae%e5%92%8c%e5%88%9d%e6%ad%a5%e4%bd%bf%e7%94%a8" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>折腾笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>DevOPs入门笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/ansible/"><i class="fas fa-tag fa-fw"></i>Ansible</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://tech.zephyrl.co/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://tech.zephyrl.co/2020/08/zabbix2/" class="prev" rel="prev" title="Zabbix配置文档（二）—— 邮件和钉钉报警"><i class="fas fa-angle-left fa-fw"></i>Zabbix配置文档（二）—— 邮件和钉钉报警</a>
+        
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>

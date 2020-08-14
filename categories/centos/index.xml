@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 06 Aug 2020 16:15:22 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2020 09:21:32 +0800</lastBuildDate>
     
 	<atom:link href="https://tech.zephyrl.co/categories/centos/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ansible 学习笔记（一）：安装配置和初步使用</title>
+      <link>https://tech.zephyrl.co/2020/08/ansible1/</link>
+      <pubDate>Tue, 11 Aug 2020 09:21:32 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/08/ansible1/</guid>
+      <description>Ansible 可以加强自动化，是个好东西。本节包括 Ansible 的安装、初步了解和配置</description>
+    </item>
     
     <item>
       <title>Zabbix配置文档（二）—— 邮件和钉钉报警</title>
