@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>利用 ansible 批量编译安装 zabbix-agent 实现完全自动注册 | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="一个准程序员的自留地">
+<link rel="prev" href="https://tech.zephyrl.co/2020/08/zabbix3/" />
+<link rel="canonical" href="https://tech.zephyrl.co/2020/08/ansible-compileagent/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="利用 ansible 批量编译安装 zabbix-agent 实现完全自动注册"/>
+<meta name="twitter:description" content="属于 Ansible 和 Zabbix 投入使用的一个小案例。目前没考虑如果编译不通过问题，如果编译有问题可以重写脚本为 SNMP。"/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "利用 ansible 批量编译安装 zabbix-agent 实现完全自动注册",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/tech.zephyrl.co\/2020\/08\/ansible-compileagent\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "Ansible, 折腾笔记, DevOPs入门笔记, Zabbix",
+    
+    "wordcount":  759 ,
+    "url": "https:\/\/tech.zephyrl.co\/2020\/08\/ansible-compileagent\/",
+    
+        "datePublished": "2020-08-23T10:09:56\u002b08:00",
+    
+    
+        "dateModified": "2020-08-23T10:09:56\u002b08:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "Zephyr",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">利用 ansible 批量编译安装 zabbix-agent 实现完全自动注册</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <span class="post-category">
+                        收录于
+                        <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/zabbix/">Zabbix</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/centos/">CentOS</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/ansible/">Ansible</a>
+                            
+                    </span>
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-23>2020-08-23</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 759 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="post-dummy-target" id="环境准备"></a><h2>环境准备</h2>
+<p>准备五台按照<a href="https://tech.zephyrl.co/2020/05/bigdataenvforneuedu/">这篇文章</a>的 CentOS 7 虚拟机。</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/25/1_prepareVM.png" alt="1_prepareVM.png"></p>
+<p>其中第一台按照前面那个文章装好 MySQL。之后按之前写过的 <a href="https://tech.zephyrl.co/2020/08/zabbix0/">Zabbix</a> 和 <a href="https://tech.zephyrl.co/2020/08/ansible1/">Absible</a> 配置文档安装配置好，将几台主机配置好加入 <code>ansible</code> 的 <code>Hosts</code> 里，ping 一下</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/25/2_pingAll.png" alt="2_pingAll.png"></p>
+<p>好的全绿，可以开始进一步操作了</p>
+<a class="post-dummy-target" id="需求分析"></a><h2>需求分析</h2>
+<p>我们的假设是，如果机器不是常规主流操作系统，也不是常规的芯片组（比如 ARM、MIPS64）等等，我们就需要通过源代码编译。</p>
+<p>但是源代码编译相对来说比较麻烦，我们就需要编写 Playbook 脚本让他按照我们的安排一步步走下去</p>
+<p>也在龙芯和飞腾处理器上成功编译了，区别下面说</p>
+<a class="post-dummy-target" id="编写-playbook"></a><h2>编写 Playbook</h2>
+<p>首先，需要创建 zabbix 系统用户和用户组，而且为了安全要设定 shell 为 <code>/sbin/nologin</code></p>
+<p>之后，从本机复制代码，到 <code>/usr/local/src</code> 中</p>
+<p>由于本机的实验 发现没有 <code>pcre</code> 库，所以要安装 <code>pcre-devel</code>，实际生产环境各种环境齐全，应该是不用配的（如果需要配，脚本类似）</p>
+<p>之后就是喜闻乐见的 <code>make &amp;&amp; make install</code></p>
+<p>最后，用 <code>sed</code> 修改 conf 文件，配置好以后添加到系统服务中</p>
+<p>根据以上需求，编写 <code>yaml</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
+</span><span class="w"></span>- <span class="k">hosts</span><span class="p">:</span><span class="w"> </span>vms<span class="w">
+</span><span class="w">  </span><span class="k">remote_user</span><span class="p">:</span><span class="w"> </span>root<span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="k">tasks</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Create<span class="w"> </span>zabbix<span class="w"> </span>group<span class="w">
+</span><span class="w">      </span><span class="k">group</span><span class="p">:</span><span class="w"> </span>name=zabbix<span class="w"> </span>system=yes<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Create<span class="w"> </span>zabbix<span class="w"> </span>user<span class="w">
+</span><span class="w">      </span><span class="k">user</span><span class="p">:</span><span class="w"> </span>name=zabbix<span class="w"> </span>system=yes<span class="w"> </span>shell=/sbin/nologin<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>unarchive<span class="w"> </span>zabbix<span class="w"> </span>source<span class="w">
+</span><span class="w">      </span><span class="k">unarchive</span><span class="p">:</span><span class="w"> </span>src=/usr/local/src/zabbix<span class="m">-5.0.2</span>.tar.gz<span class="w"> </span>dest=/usr/local/src<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>install<span class="w"> </span>pcre-devel<span class="w">
+</span><span class="w">      </span><span class="k">yum</span><span class="p">:</span><span class="w"> </span>name=pcre-devel<span class="w"> </span>state=present<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>make<span class="w"> </span>and<span class="w"> </span>make<span class="w"> </span>install<span class="w">
+</span><span class="w">      </span><span class="k">shell</span><span class="p">:</span><span class="w"> </span>cd<span class="w"> </span>/usr/local/src/zabbix<span class="m">-5.0.2</span><span class="w"> </span><span class="cp">&amp;&amp;</span><span class="w"> </span>./configure<span class="w"> </span>--prefix=/usr/local/zabbix_agent<span class="w"> </span>--enable-agent<span class="w"> </span><span class="cp">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span><span class="cp">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>copy<span class="w"> </span>the<span class="w"> </span>systemctl<span class="w"> </span>file<span class="w"> </span>to<span class="w"> </span>target<span class="w">
+</span><span class="w">      </span><span class="k">copy</span><span class="p">:</span><span class="w"> </span>src=zabbix-agent.service.bak<span class="w"> </span>dest=/usr/lib/systemd/system/zabbix-agent.service<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>mkdir<span class="w"> </span>for<span class="w"> </span>PidFile<span class="w">
+</span><span class="w">      </span><span class="k">shell</span><span class="p">:</span><span class="w"> </span>mkdir<span class="w"> </span>/var/run/zabbix/<span class="w"> </span><span class="cp">&amp;&amp;</span><span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>zabbix<span class="p">:</span>zabbix<span class="w"> </span>/var/run/zabbix/<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>change<span class="w"> </span>server<span class="w"> </span>and<span class="w"> </span>serverActice<span class="w">
+</span><span class="w">      </span><span class="k">shell</span><span class="p">:</span><span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&#34;s#127.0.0.1#192.168.1.169#g&#34;</span><span class="w"> </span>/usr/local/zabbix_agent/etc/zabbix_agentd.conf<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>change<span class="w"> </span>host<span class="w"> </span>name<span class="w">
+</span><span class="w">      </span><span class="k">shell</span><span class="p">:</span><span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&#34;s#Zabbix server#`hostname -I`#g&#34;</span><span class="w"> </span>/usr/local/zabbix_agent/etc/zabbix_agentd.conf<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>change<span class="w"> </span>hostmetadata<span class="w">
+</span><span class="w">      </span><span class="k">shell</span><span class="p">:</span><span class="w"> </span>echo<span class="w"> </span><span class="s1">&#39;HostMetadata=x86&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/usr/local/zabbix_agent/etc/zabbix_agentd.conf<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>add<span class="w"> </span>pidFile<span class="w">
+</span><span class="w">      </span><span class="k">shell</span><span class="p">:</span><span class="w"> </span>echo<span class="w"> </span><span class="s2">&#34;PidFile=/var/run/zabbix/zabbix_agentd.pid&#34;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/usr/local/zabbix_agent/etc/zabbix_agentd.conf<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>add<span class="w"> </span>other<span class="w">
+</span><span class="w">      </span><span class="k">shell</span><span class="p">:</span><span class="w"> </span>echo<span class="w"> </span><span class="s2">&#34;LogFileSize=0&#34;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/usr/local/zabbix_agent/etc/zabbix_agentd.conf<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>start<span class="w"> </span>service<span class="w">
+</span><span class="w">      </span><span class="k">service</span><span class="p">:</span><span class="w"> </span>name=zabbix-agent<span class="w"> </span>state=started<span class="w"> </span>enabled=yes<span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>在编写里面的 <code>zabbix-agent.service</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-service" data-lang="service"><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Zabbix Agent</span>
+<span class="na">After</span><span class="o">=</span><span class="s">syslog.target</span>
+<span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
+
+<span class="k">[Service]</span>
+<span class="na">Environment</span><span class="o">=</span><span class="s">&#34;CONFFILE=/usr/local/zabbix_agent/etc/zabbix_agentd.conf&#34;</span>
+<span class="c">#EnvironmentFile=/usr/local/zabbix/etc/zabbix_agentd.conf.d/</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">forking</span>
+<span class="na">Restart</span><span class="o">=</span><span class="s">on-failure</span>
+<span class="na">PIDFile</span><span class="o">=</span><span class="s">/run/zabbix/zabbix_agentd.pid</span>
+<span class="na">KillMode</span><span class="o">=</span><span class="s">control-group</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/local/zabbix_agent/sbin/zabbix_agentd -c $CONFFILE</span>
+<span class="na">ExecStop</span><span class="o">=</span><span class="s">/bin/kill -SIGTERM $MAINPID</span>
+<span class="na">RestartSec</span><span class="o">=</span><span class="s">10s</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="问题"></a><h2>问题</h2>
+<p>由于最早我没做相关 PID 的相关代码，会造成偶尔无法启动的bug，排错的时候顺便加上了，没想到就成了&hellip;&hellip;</p>
+<p>我也不知道咋回事，反正加上就好了</p>
+<a class="post-dummy-target" id="运行"></a><h2>运行</h2>
+<p>执行 playbook 命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible-playbook compileAgent_x86_rhel.yaml -k
+</code></pre></td></tr></table>
+</div>
+</div><p>输入密码后，成功运行</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/25/3_doSuccess.png" alt="3_doSuccess.png"></p>
+<p>此时切回 <code>Zabbix web</code> 页面也可发现添加托管成功</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/25/4_regist.png" alt="4_regist.png"></p>
+<p>我们查看动作日志，也可以发现成功的日志，只是不知道为啥没发通过任何方法发送到钉钉，倒是可以发送邮件，而且自动发现也不是什么重要的预警。我就没再研究。</p>
+<a class="post-dummy-target" id="总结"></a><h2>总结</h2>
+<p>利用 Ansible-playbook 可以大大减少安装 Zabbix-agent 的步骤，而且可以大批量的运行，尤其是需要编译的时候，这个脚本省了很多事。</p>
+<p>目前唯一的问题就是自动发现的日志没法实时推送到钉钉群。以后有机会继续研究一下</p>
+
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-08-23 更新</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://tech.zephyrl.co/2020/08/ansible-compileagent/index.md" target="_blank">阅读原始文档</a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fansible-compileagent%2f&amp;text=%e5%88%a9%e7%94%a8%20ansible%20%e6%89%b9%e9%87%8f%e7%bc%96%e8%af%91%e5%ae%89%e8%a3%85%20zabbix-agent%20%e5%ae%9e%e7%8e%b0%e5%ae%8c%e5%85%a8%e8%87%aa%e5%8a%a8%e6%b3%a8%e5%86%8c&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fansible-compileagent%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fansible-compileagent%2f&amp;title=%e5%88%a9%e7%94%a8%20ansible%20%e6%89%b9%e9%87%8f%e7%bc%96%e8%af%91%e5%ae%89%e8%a3%85%20zabbix-agent%20%e5%ae%9e%e7%8e%b0%e5%ae%8c%e5%85%a8%e8%87%aa%e5%8a%a8%e6%b3%a8%e5%86%8c" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/ansible/"><i class="fas fa-tag fa-fw"></i>Ansible</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>折腾笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>DevOPs入门笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/zabbix/"><i class="fas fa-tag fa-fw"></i>Zabbix</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://tech.zephyrl.co/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://tech.zephyrl.co/2020/08/zabbix3/" class="prev" rel="prev" title="Zabbix配置文档（三）—— 自动发现、自动注册和 SNMP"><i class="fas fa-angle-left fa-fw"></i>Zabbix配置文档（三）—— 自动发现、自动注册和 SNMP</a>
+        
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Zabbix配置文档（三）—— 自动发现、自动注册和 SNMP | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="一个准程序员的自留地">
+<link rel="prev" href="https://tech.zephyrl.co/2020/08/ansible3/" />
+<link rel="next" href="https://tech.zephyrl.co/2020/08/ansible-compileagent/" />
+<link rel="canonical" href="https://tech.zephyrl.co/2020/08/zabbix3/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Zabbix配置文档（三）—— 自动发现、自动注册和 SNMP"/>
+<meta name="twitter:description" content="几种配置方式，最常见的还是自动注册"/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Zabbix配置文档（三）—— 自动发现、自动注册和 SNMP",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/tech.zephyrl.co\/2020\/08\/zabbix3\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "折腾笔记, DevOPs入门笔记, Zabbix",
+    
+    "wordcount":  974 ,
+    "url": "https:\/\/tech.zephyrl.co\/2020\/08\/zabbix3\/",
+    
+        "datePublished": "2020-08-18T09:20:15\u002b08:00",
+    
+    
+        "dateModified": "2020-08-18T09:20:15\u002b08:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "Zephyr",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/tech.zephyrl.co\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">Zabbix配置文档（三）—— 自动发现、自动注册和 SNMP</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <span class="post-category">
+                        收录于
+                        <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/zabbix/">Zabbix</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/centos/">CentOS</a>
+                            
+                    </span>
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-18>2020-08-18</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 974 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="post-dummy-target" id="使用自动发现添加主机"></a><h2>使用自动发现添加主机</h2>
+<a class="post-dummy-target" id="配置选项"></a><h3>配置选项</h3>
+<p>我们点击配置 - 自动发现，再点击名称进入选项</p>
+<p>修改网段为我们需要的网段，为了快捷我设置的网段非常短，更新间隔也设置的较短，注意控制时间为每秒一个 IP 以上即可。</p>
+<p>之后点击下面的<code>已启用</code></p>
+<p><img src="https://img.zephyrl.co/images/2020/08/18/1_autoFind1.png" alt="1_autoFind1.png"></p>
+<p>之后，我们选择配置 - 动作，选择 <code>Discovery actions</code> 即自动发现动作，点击名称进入设置界面</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/18/2_autoFind2.png" alt="2_autoFind2.png"></p>
+<p>动作我们没什么可修改的，点击操作 - 添加按如下操作即可</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/18/3_autoFindAndAdd.png" alt="3_autoFindAndAdd.png"></p>
+<a class="post-dummy-target" id="后续操作"></a><h3>后续操作</h3>
+<p>之后我们就可以配置好目标主机的 <code>zabbix-agent</code> 然后重启 <code>zabbix-server</code> 就可以啦</p>
+<a class="post-dummy-target" id="自动发现原理"></a><h3>自动发现原理</h3>
+<p>Zabbix 通过 <code>Zabbix-agent</code> 来对主机发送 <code>uname</code></p>
+<p><img src="https://img.zephyrl.co/images/2020/08/18/5_uname.png" alt="5_uname.png"></p>
+<p>来查看里面有没有 Linux 字样</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/18/4_autoFindThe.png" alt="4_autoFindThe.png"></p>
+<a class="post-dummy-target" id="使用自动注册发现主机"></a><h2>使用自动注册发现主机</h2>
+<p>我们点击动作，添加主机元数据包含 vm，这里的主机元数据就是 <code>HostMetadata</code></p>
+<p><img src="https://img.zephyrl.co/images/2020/08/18/6_automaticAddServer.png" alt="6_automaticAddServer.png"></p>
+<p>本质上，自动注册是通过修改 <code>zabbix_agentd.conf</code> 来达到快速寻找主机的目的的，我们需要修改以下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Server=192.168.50.101
+ServerActive=192.168.50.101
+Hostname=vm04
+HostMetadata=vms
+</code></pre></td></tr></table>
+</div>
+</div><p>之后我们查看一下我们是否成功修改</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@vm04 ~<span class="o">]</span><span class="c1"># grep -Ev &#39;^$|#&#39; /etc/zabbix/zabbix_agentd.conf</span>
+<span class="nv">PidFile</span><span class="o">=</span>/var/run/zabbix/zabbix_agentd.pid
+<span class="nv">LogFile</span><span class="o">=</span>/var/log/zabbix/zabbix_agentd.log
+<span class="nv">LogFileSize</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">DenyKey</span><span class="o">=</span>system.run<span class="o">[</span>*<span class="o">]</span>
+<span class="nv">Server</span><span class="o">=</span>192.168.50.101
+<span class="nv">ServerActive</span><span class="o">=</span>192.168.50.101
+<span class="nv">Hostname</span><span class="o">=</span>vm04
+<span class="nv">HostMetadata</span><span class="o">=</span>vms
+<span class="nv">Include</span><span class="o">=</span>/etc/zabbix/zabbix_agentd.d/*.conf
+</code></pre></td></tr></table>
+</div>
+</div><p>修改后，刷新 Zabbix web 面板即可发现添加成功，这样速度是最快的</p>
+<a class="post-dummy-target" id="使用-snmp-注册主机"></a><h2>使用 SNMP 注册主机</h2>
+<p>不是所有设备都支持包管理或者编译安装 zabbix-agent，但是大部分设备都支持 SNMP 协议，所以当设备不支持的时候（比如设备是网络打印机或者交换机路由器），我们可以使用 SNMP 协议传输设备相关信息。</p>
+<p>SNMP 监控的指标全部来自 <code>oid</code>，即 Object ID，是唯一的编号。每个我们需要的指标都有唯一的 <code>oid</code>。</p>
+<p>汇总所有的 <code>oid</code> 信息的数据库叫做 <code>MIB</code> 数据库。它是由标准的，我们不会因为协议不同获取到错误的信息</p>
+<p>常见的 <code>oid</code> 信息可以在这里查到：https://www.cnblogs.com/aspx-net/p/3554044.html</p>
+<p>自动发现 SNMP 主机是通过以 <code>zabbix-server</code> 为客户端，被监控主机为 SNMP 服务端监控的，通过 <code>present</code> 认证，通过 <code>udp:161</code> 传输 <code>oid</code> 来接收被监控机器的数据</p>
+<p>我还是以 CentOS 为例，其他主机只需要配置 SNMP 的密码即可，仅为试用例，生产环境需要具体情况具体分析</p>
+<a class="post-dummy-target" id="安装配置服务端被监控端"></a><h3>安装配置服务端（被监控端）</h3>
+<p>首先使用 Ansible 为所有主机安装 <code>snmp</code> 服务端</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ansible all -m yum -a <span class="s1">&#39;name=net-snmp state=present&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>或者在所在主机上安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">yum install net-snmp
+</code></pre></td></tr></table>
+</div>
+</div><p>之后修改 <code>/etc/snmp/snmpd.conf</code> 修改 <code>community</code> 密码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">com2sec notConfigUser  default       123456
+view    systemview    included   .1
+</code></pre></td></tr></table>
+</div>
+</div><p>图示：</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/21/8_snmpdconf.png" alt="8_snmpdconf.png"></p>
+<p>之后启动并开机启动服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">systemctl start snmpd
+systemctl <span class="nb">enable</span> snmpd
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="安装配置客户端zabbix-server"></a><h3>安装配置客户端（Zabbix server）</h3>
+<p>之后在 <code>Zabbix-Server</code> 上安装客户端</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">yum install net-snmp-utils.x86_64 -y
+</code></pre></td></tr></table>
+</div>
+</div><p>之后测试，密码（-c）为上面设置的 <code>community</code> 密码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">snmpwalk -v 2c -c <span class="m">123456</span> 10.0.0.100 .1.3.6.1.4.1.2021.11.11.0
+snmpwalk -v 2c -c <span class="m">123456</span> 10.0.0.100
+</code></pre></td></tr></table>
+</div>
+</div><p>测试成功后我们进入web管理页面</p>
+<p>首先选择添加主机，按图示进行添加</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/21/9_snmpSetting.png" alt="9_snmpSetting.png"></p>
+<p>链接模板要注意，不是普通的模板，要连接 SNMP 的模板</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/21/10_snmpSettingTemplate.png" alt="10_snmpSettingTemplate.png"></p>
+<p>之后点击主机，进入宏，修改密码为上面的 <code>community</code> 密码</p>
+<p><img src="https://img.zephyrl.co/images/2020/08/21/11_snmpSettingPassword.png" alt="11_snmpSettingPassword.png"></p>
+<p>之后重启 <code>zabbix-server</code> 即可快速完成</p>
+
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-08-18 更新</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://tech.zephyrl.co/2020/08/zabbix3/index.md" target="_blank">阅读原始文档</a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fzabbix3%2f&amp;text=Zabbix%e9%85%8d%e7%bd%ae%e6%96%87%e6%a1%a3%ef%bc%88%e4%b8%89%ef%bc%89%e2%80%94%e2%80%94%20%e8%87%aa%e5%8a%a8%e5%8f%91%e7%8e%b0%e3%80%81%e8%87%aa%e5%8a%a8%e6%b3%a8%e5%86%8c%e5%92%8c%20SNMP&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fzabbix3%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fzabbix3%2f&amp;title=Zabbix%e9%85%8d%e7%bd%ae%e6%96%87%e6%a1%a3%ef%bc%88%e4%b8%89%ef%bc%89%e2%80%94%e2%80%94%20%e8%87%aa%e5%8a%a8%e5%8f%91%e7%8e%b0%e3%80%81%e8%87%aa%e5%8a%a8%e6%b3%a8%e5%86%8c%e5%92%8c%20SNMP" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>折腾笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>DevOPs入门笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://tech.zephyrl.co/tags/zabbix/"><i class="fas fa-tag fa-fw"></i>Zabbix</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://tech.zephyrl.co/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://tech.zephyrl.co/2020/08/ansible3/" class="prev" rel="prev" title="Ansible 学习笔记（三）：Ansible PlayBook 入门"><i class="fas fa-angle-left fa-fw"></i>Ansible 学习笔记（三）：Ansible PlayBook 入门</a>
+        
+        
+            <a href="https://tech.zephyrl.co/2020/08/ansible-compileagent/" class="next" rel="next" title="利用 ansible 批量编译安装 zabbix-agent 实现完全自动注册">利用 ansible 批量编译安装 zabbix-agent 实现完全自动注册<i class="fas fa-angle-right fa-fw"></i></a>
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>

@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 06 Aug 2020 16:15:22 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2020 10:09:56 +0800</lastBuildDate>
     
 	<atom:link href="https://tech.zephyrl.co/tags/zabbix/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>利用 ansible 批量编译安装 zabbix-agent 实现完全自动注册</title>
+      <link>https://tech.zephyrl.co/2020/08/ansible-compileagent/</link>
+      <pubDate>Sun, 23 Aug 2020 10:09:56 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/08/ansible-compileagent/</guid>
+      <description>属于 Ansible 和 Zabbix 投入使用的一个小案例。目前没考虑如果编译不通过问题，如果编译有问题可以重写脚本为 SNMP。</description>
+    </item>
+    
+    <item>
+      <title>Zabbix配置文档（三）—— 自动发现、自动注册和 SNMP</title>
+      <link>https://tech.zephyrl.co/2020/08/zabbix3/</link>
+      <pubDate>Tue, 18 Aug 2020 09:20:15 +0800</pubDate>
+      
+      <guid>https://tech.zephyrl.co/2020/08/zabbix3/</guid>
+      <description>几种配置方式，最常见的还是自动注册</description>
+    </item>
     
     <item>
       <title>Zabbix配置文档（二）—— 邮件和钉钉报警</title>
