@@ -1,6 +1,104 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     
         <url>
+            <loc>https://blog.z36.moe/categories/</loc>
+            
+                <lastmod>2021-06-02T00:37:57+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.z36.moe/posts/</loc>
+            
+                <lastmod>2021-06-02T00:37:57+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.z36.moe/tags/</loc>
+            
+                <lastmod>2021-06-02T00:37:57+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.z36.moe/2021/06/later/</loc>
+            
+                <lastmod>2021-06-02T00:37:57+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.z36.moe/</loc>
+            
+                <lastmod>2021-06-02T00:37:57+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.z36.moe/tags/%E9%9A%8F%E7%AC%94/</loc>
+            
+                <lastmod>2021-06-02T00:37:57+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.z36.moe/categories/%E9%9A%8F%E7%AC%94/</loc>
+            
+                <lastmod>2021-06-02T00:37:57+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
             <loc>https://blog.z36.moe/tags/ansible/</loc>
             
                 <lastmod>2020-08-23T10:09:56+08:00</lastmod>
@@ -29,20 +127,6 @@
         </url>
     
         <url>
-            <loc>https://blog.z36.moe/categories/</loc>
-            
-                <lastmod>2020-08-23T10:09:56+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
             <loc>https://blog.z36.moe/categories/centos/</loc>
             
                 <lastmod>2020-08-23T10:09:56+08:00</lastmod>
@@ -58,34 +142,6 @@
     
         <url>
             <loc>https://blog.z36.moe/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</loc>
-            
-                <lastmod>2020-08-23T10:09:56+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://blog.z36.moe/posts/</loc>
-            
-                <lastmod>2020-08-23T10:09:56+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://blog.z36.moe/tags/</loc>
             
                 <lastmod>2020-08-23T10:09:56+08:00</lastmod>
             
@@ -142,20 +198,6 @@
     
         <url>
             <loc>https://blog.z36.moe/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</loc>
-            
-                <lastmod>2020-08-23T10:09:56+08:00</lastmod>
-            
-            
-                <changefreq>weekly</changefreq>
-            
-            
-                <priority>0.5</priority>
-            
-            
-        </url>
-    
-        <url>
-            <loc>https://blog.z36.moe/</loc>
             
                 <lastmod>2020-08-23T10:09:56+08:00</lastmod>
             
@@ -718,6 +760,20 @@
             <loc>https://blog.z36.moe/2020/02/nginxtips2/</loc>
             
                 <lastmod>2020-02-01T13:43:48+08:00</lastmod>
+            
+            
+                <changefreq>weekly</changefreq>
+            
+            
+                <priority>0.5</priority>
+            
+            
+        </url>
+    
+        <url>
+            <loc>https://blog.z36.moe/2019/12/about/</loc>
+            
+                <lastmod>2019-12-24T20:44:44+08:00</lastmod>
             
             
                 <changefreq>weekly</changefreq>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>随笔 on 梦黎的小窝</title>
+    <link>https://blog.z36.moe/categories/%E9%9A%8F%E7%AC%94/</link>
+    <description>Recent content in 随笔 on 梦黎的小窝</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Wed, 02 Jun 2021 00:37:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.z36.moe/categories/%E9%9A%8F%E7%AC%94/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>更个博，证明我还活着</title>
+      <link>https://blog.z36.moe/2021/06/later/</link>
+      <pubDate>Wed, 02 Jun 2021 00:37:57 +0800</pubDate>
+      
+      <guid>https://blog.z36.moe/2021/06/later/</guid>
+      <description>好久不更新了，域名过期了，图床挂了，服务器被我搞乱了&amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>

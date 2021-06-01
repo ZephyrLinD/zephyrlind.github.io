@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 23 Aug 2020 10:09:56 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 02 Jun 2021 00:37:57 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.z36.moe/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>更个博，证明我还活着</title>
+      <link>https://blog.z36.moe/2021/06/later/</link>
+      <pubDate>Wed, 02 Jun 2021 00:37:57 +0800</pubDate>
+      
+      <guid>https://blog.z36.moe/2021/06/later/</guid>
+      <description>好久不更新了，域名过期了，图床挂了，服务器被我搞乱了&amp;hellip;</description>
+    </item>
     
     <item>
       <title>利用 ansible 批量编译安装 zabbix-agent 实现完全自动注册</title>
@@ -190,6 +199,15 @@
       
       <guid>https://blog.z36.moe/2020/02/nginxtips2/</guid>
       <description>其中包括GZip、AutoIndex、限制速度、Access日志。</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://blog.z36.moe/2019/12/about/</link>
+      <pubDate>Tue, 24 Dec 2019 20:44:44 +0800</pubDate>
+      
+      <guid>https://blog.z36.moe/2019/12/about/</guid>
+      <description>关于网站 个人博客，记录一些学习的东西，也欢迎大家写邮件交流 关于我 👨‍💻从小受熏陶的计算机爱好者，目前就读于天津师范大学软件工程专业 💻技术宅，</description>
     </item>
     
     <item>
