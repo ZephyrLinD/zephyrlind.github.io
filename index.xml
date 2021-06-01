@@ -1,7 +1,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>梦黎的小窝 on 梦黎的小窝</title>
-        <link>https://tech.zephyrl.co/</link>
+        <link>https://blog.z36.moe/</link>
         <description>Recent content in 梦黎的小窝 on 梦黎的小窝</description>
         <generator>Hugo -- gohugo.io</generator>
         
@@ -14,14 +14,14 @@
         
             <lastBuildDate>Sun, 23 Aug 2020 10:09:56 +0800</lastBuildDate>
         
-        <atom:link href="https://tech.zephyrl.co/" rel="self" type="application/rss+xml" />
+        <atom:link href="https://blog.z36.moe/" rel="self" type="application/rss+xml" />
         
             <item>
                 <title>Posts</title>
-                <link>https://tech.zephyrl.co/posts/</link>
+                <link>https://blog.z36.moe/posts/</link>
                 <pubDate>Sun, 23 Aug 2020 10:09:56 +0800</pubDate>
                 
-                <guid>https://tech.zephyrl.co/posts/</guid>
+                <guid>https://blog.z36.moe/posts/</guid>
                 <description></description>
             </item>
         

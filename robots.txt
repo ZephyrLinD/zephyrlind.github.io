@@ -61,4 +61,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-Sitemap: https://tech.zephyrl.co/sitemap.xml
+Sitemap: https://blog.z36.moe/sitemap.xml

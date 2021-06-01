@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ansible on 梦黎的小窝</title>
-    <link>https://tech.zephyrl.co/categories/ansible/</link>
+    <link>https://blog.z36.moe/categories/ansible/</link>
     <description>Recent content in Ansible on 梦黎的小窝</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Sun, 23 Aug 2020 10:09:56 +0800</lastBuildDate>
     
-	<atom:link href="https://tech.zephyrl.co/categories/ansible/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.z36.moe/categories/ansible/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>利用 ansible 批量编译安装 zabbix-agent 实现完全自动注册</title>
-      <link>https://tech.zephyrl.co/2020/08/ansible-compileagent/</link>
+      <link>https://blog.z36.moe/2020/08/ansible-compileagent/</link>
       <pubDate>Sun, 23 Aug 2020 10:09:56 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/08/ansible-compileagent/</guid>
+      <guid>https://blog.z36.moe/2020/08/ansible-compileagent/</guid>
       <description>属于 Ansible 和 Zabbix 投入使用的一个小案例。目前没考虑如果编译不通过问题，如果编译有问题可以重写脚本为 SNMP。</description>
     </item>
     
     <item>
       <title>Ansible 学习笔记（三）：Ansible PlayBook 入门</title>
-      <link>https://tech.zephyrl.co/2020/08/ansible3/</link>
+      <link>https://blog.z36.moe/2020/08/ansible3/</link>
       <pubDate>Fri, 14 Aug 2020 16:20:15 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/08/ansible3/</guid>
+      <guid>https://blog.z36.moe/2020/08/ansible3/</guid>
       <description>Ansible PlayBook 入门的使用方法</description>
     </item>
     
     <item>
       <title>Ansible 学习笔记（二）：Ad-Hoc 使用</title>
-      <link>https://tech.zephyrl.co/2020/08/ansible2/</link>
+      <link>https://blog.z36.moe/2020/08/ansible2/</link>
       <pubDate>Thu, 13 Aug 2020 13:30:30 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/08/ansible2/</guid>
+      <guid>https://blog.z36.moe/2020/08/ansible2/</guid>
       <description>Ansible 相关内容的使用介绍</description>
     </item>
     
     <item>
       <title>Ansible 学习笔记（一）：安装配置和初步使用</title>
-      <link>https://tech.zephyrl.co/2020/08/ansible1/</link>
+      <link>https://blog.z36.moe/2020/08/ansible1/</link>
       <pubDate>Tue, 11 Aug 2020 09:21:32 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/08/ansible1/</guid>
+      <guid>https://blog.z36.moe/2020/08/ansible1/</guid>
       <description>Ansible 可以加强自动化，是个好东西。本节包括 Ansible 的安装、初步了解和配置</description>
     </item>
     

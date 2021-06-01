@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DevOPs入门日记 on 梦黎的小窝</title>
-    <link>https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E6%97%A5%E8%AE%B0/</link>
+    <link>https://blog.z36.moe/tags/devops%E5%85%A5%E9%97%A8%E6%97%A5%E8%AE%B0/</link>
     <description>Recent content in DevOPs入门日记 on 梦黎的小窝</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Sun, 25 Aug 2019 22:35:14 +0800</lastBuildDate>
     
-	<atom:link href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E6%97%A5%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.z36.moe/tags/devops%E5%85%A5%E9%97%A8%E6%97%A5%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>端口转发问题排查</title>
-      <link>https://tech.zephyrl.co/2019/08/repeatport/</link>
+      <link>https://blog.z36.moe/2019/08/repeatport/</link>
       <pubDate>Sun, 25 Aug 2019 22:35:14 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2019/08/repeatport/</guid>
+      <guid>https://blog.z36.moe/2019/08/repeatport/</guid>
       <description>当我端口转发第一个网站的时候，发现第二个配置好的会转发到第一个网站&amp;hellip;</description>
     </item>
     
     <item>
       <title>通过Let&#39;s Encrypt来获取SSL证书</title>
-      <link>https://tech.zephyrl.co/2019/08/configssl/</link>
+      <link>https://blog.z36.moe/2019/08/configssl/</link>
       <pubDate>Sun, 25 Aug 2019 20:16:52 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2019/08/configssl/</guid>
+      <guid>https://blog.z36.moe/2019/08/configssl/</guid>
       <description>这个Chrome浏览器是个好东西&amp;hellip;但是看着我自己博客和图床网页链接边上的“不安全”，很强迫症。于是，我&amp;hellip;&amp;hellip;</description>
     </item>
     
     <item>
       <title>Chevereto的安装和一些坑</title>
-      <link>https://tech.zephyrl.co/2019/08/cheveretoins/</link>
+      <link>https://blog.z36.moe/2019/08/cheveretoins/</link>
       <pubDate>Sat, 24 Aug 2019 13:45:32 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2019/08/cheveretoins/</guid>
+      <guid>https://blog.z36.moe/2019/08/cheveretoins/</guid>
       <description>Chevereto图床安装过程中遇到了好多的坑，大部分是因为自己对PHP、Nginx了解不多的原因。所以记录下来，供以后参考。</description>
     </item>
     
     <item>
       <title>我的Ubuntu Server LNMP折腾笔记</title>
-      <link>https://tech.zephyrl.co/2019/08/diaryoflnmp/</link>
+      <link>https://blog.z36.moe/2019/08/diaryoflnmp/</link>
       <pubDate>Fri, 09 Aug 2019 08:46:15 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2019/08/diaryoflnmp/</guid>
+      <guid>https://blog.z36.moe/2019/08/diaryoflnmp/</guid>
       <description>本文旨在记录Ubuntu Server上面稍微好配的LNMP环境的一些坑还有一些特殊的地方。因为像CentOS、RHEL都比较适合源代码安装，但是Ubuntu Server源代码安装反而过于折腾而且没必要，所以跟RedHat家的安装方法比，安装虽然简单，但是包名不同，也算有点坑吧。把它们记录下来，以后再弄的时候看这里就可以了。</description>
     </item>
     

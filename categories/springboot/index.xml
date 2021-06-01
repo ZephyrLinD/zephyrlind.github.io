@@ -2,58 +2,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SpringBoot on 梦黎的小窝</title>
-    <link>https://tech.zephyrl.co/categories/springboot/</link>
+    <link>https://blog.z36.moe/categories/springboot/</link>
     <description>Recent content in SpringBoot on 梦黎的小窝</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Wed, 18 Mar 2020 14:59:01 +0800</lastBuildDate>
     
-	<atom:link href="https://tech.zephyrl.co/categories/springboot/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.z36.moe/categories/springboot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>SpringBoot学习笔记（五）—— MVC自动配置原理</title>
-      <link>https://tech.zephyrl.co/2020/03/springboot5/</link>
+      <link>https://blog.z36.moe/2020/03/springboot5/</link>
       <pubDate>Wed, 18 Mar 2020 14:59:01 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/03/springboot5/</guid>
+      <guid>https://blog.z36.moe/2020/03/springboot5/</guid>
       <description>MVC自动配置原理、ContentNegotiatingViewResolver 内容协商视图解析器、转换器和格式化器、修改SpringBoot的默认配置、全面接管SpringMVC</description>
     </item>
     
     <item>
       <title>SpringBoot学习笔记（四）—— Thymeleaf</title>
-      <link>https://tech.zephyrl.co/2020/03/springboot4/</link>
+      <link>https://blog.z36.moe/2020/03/springboot4/</link>
       <pubDate>Tue, 10 Mar 2020 13:33:23 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/03/springboot4/</guid>
+      <guid>https://blog.z36.moe/2020/03/springboot4/</guid>
       <description>Thymeleaf相关：简单介绍</description>
     </item>
     
     <item>
       <title>SpringBoot学习笔记（三）—— Web 开发：静态资源映射和首页的定制</title>
-      <link>https://tech.zephyrl.co/2020/02/springboot3/</link>
+      <link>https://blog.z36.moe/2020/02/springboot3/</link>
       <pubDate>Wed, 26 Feb 2020 14:59:13 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/02/springboot3/</guid>
+      <guid>https://blog.z36.moe/2020/02/springboot3/</guid>
       <description>SpringBoot 的 Web 开发：源码和实践</description>
     </item>
     
     <item>
       <title>SpringBoot学习笔记（二） —— 配置文件</title>
-      <link>https://tech.zephyrl.co/2020/02/springboot2/</link>
+      <link>https://blog.z36.moe/2020/02/springboot2/</link>
       <pubDate>Thu, 20 Feb 2020 16:52:56 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/02/springboot2/</guid>
+      <guid>https://blog.z36.moe/2020/02/springboot2/</guid>
       <description>我最近不会再用图床的中等大小功能了。SpringMVC马上写。</description>
     </item>
     
     <item>
       <title>SpringBoot学习笔记（一） —— 一切的开始</title>
-      <link>https://tech.zephyrl.co/2020/02/springboot1/</link>
+      <link>https://blog.z36.moe/2020/02/springboot1/</link>
       <pubDate>Tue, 18 Feb 2020 22:02:28 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/02/springboot1/</guid>
+      <guid>https://blog.z36.moe/2020/02/springboot1/</guid>
       <description>一切都是因为一只蝙蝠&amp;hellip;&amp;hellip;</description>
     </item>
     

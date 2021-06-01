@@ -2,130 +2,130 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DevOPs入门笔记 on 梦黎的小窝</title>
-    <link>https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</link>
+    <link>https://blog.z36.moe/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</link>
     <description>Recent content in DevOPs入门笔记 on 梦黎的小窝</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Sun, 23 Aug 2020 10:09:56 +0800</lastBuildDate>
     
-	<atom:link href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.z36.moe/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>利用 ansible 批量编译安装 zabbix-agent 实现完全自动注册</title>
-      <link>https://tech.zephyrl.co/2020/08/ansible-compileagent/</link>
+      <link>https://blog.z36.moe/2020/08/ansible-compileagent/</link>
       <pubDate>Sun, 23 Aug 2020 10:09:56 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/08/ansible-compileagent/</guid>
+      <guid>https://blog.z36.moe/2020/08/ansible-compileagent/</guid>
       <description>属于 Ansible 和 Zabbix 投入使用的一个小案例。目前没考虑如果编译不通过问题，如果编译有问题可以重写脚本为 SNMP。</description>
     </item>
     
     <item>
       <title>Zabbix配置文档（三）—— 自动发现、自动注册和 SNMP</title>
-      <link>https://tech.zephyrl.co/2020/08/zabbix3/</link>
+      <link>https://blog.z36.moe/2020/08/zabbix3/</link>
       <pubDate>Tue, 18 Aug 2020 09:20:15 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/08/zabbix3/</guid>
+      <guid>https://blog.z36.moe/2020/08/zabbix3/</guid>
       <description>几种配置方式，最常见的还是自动注册</description>
     </item>
     
     <item>
       <title>Ansible 学习笔记（三）：Ansible PlayBook 入门</title>
-      <link>https://tech.zephyrl.co/2020/08/ansible3/</link>
+      <link>https://blog.z36.moe/2020/08/ansible3/</link>
       <pubDate>Fri, 14 Aug 2020 16:20:15 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/08/ansible3/</guid>
+      <guid>https://blog.z36.moe/2020/08/ansible3/</guid>
       <description>Ansible PlayBook 入门的使用方法</description>
     </item>
     
     <item>
       <title>Ansible 学习笔记（二）：Ad-Hoc 使用</title>
-      <link>https://tech.zephyrl.co/2020/08/ansible2/</link>
+      <link>https://blog.z36.moe/2020/08/ansible2/</link>
       <pubDate>Thu, 13 Aug 2020 13:30:30 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/08/ansible2/</guid>
+      <guid>https://blog.z36.moe/2020/08/ansible2/</guid>
       <description>Ansible 相关内容的使用介绍</description>
     </item>
     
     <item>
       <title>Ansible 学习笔记（一）：安装配置和初步使用</title>
-      <link>https://tech.zephyrl.co/2020/08/ansible1/</link>
+      <link>https://blog.z36.moe/2020/08/ansible1/</link>
       <pubDate>Tue, 11 Aug 2020 09:21:32 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/08/ansible1/</guid>
+      <guid>https://blog.z36.moe/2020/08/ansible1/</guid>
       <description>Ansible 可以加强自动化，是个好东西。本节包括 Ansible 的安装、初步了解和配置</description>
     </item>
     
     <item>
       <title>Zabbix配置文档（二）—— 邮件和钉钉报警</title>
-      <link>https://tech.zephyrl.co/2020/08/zabbix2/</link>
+      <link>https://blog.z36.moe/2020/08/zabbix2/</link>
       <pubDate>Thu, 06 Aug 2020 16:15:22 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/08/zabbix2/</guid>
+      <guid>https://blog.z36.moe/2020/08/zabbix2/</guid>
       <description>通过发邮件和钉钉机器人发送报警、恢复信息</description>
     </item>
     
     <item>
       <title>Zabbix配置文档（一）—— 监控和触发器</title>
-      <link>https://tech.zephyrl.co/2020/08/zabbix1/</link>
+      <link>https://blog.z36.moe/2020/08/zabbix1/</link>
       <pubDate>Wed, 05 Aug 2020 10:12:48 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/08/zabbix1/</guid>
+      <guid>https://blog.z36.moe/2020/08/zabbix1/</guid>
       <description>自定义监控，自定义触发器</description>
     </item>
     
     <item>
       <title>Zabbix 配置文档（〇）—— 安装</title>
-      <link>https://tech.zephyrl.co/2020/08/zabbix0/</link>
+      <link>https://blog.z36.moe/2020/08/zabbix0/</link>
       <pubDate>Tue, 04 Aug 2020 08:10:02 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/08/zabbix0/</guid>
+      <guid>https://blog.z36.moe/2020/08/zabbix0/</guid>
       <description>Zabbix5.0 LTS 的安装，基于 CentOS7.5</description>
     </item>
     
     <item>
       <title>NginxTips（三） —— 用Nginx搭建一个具备缓存功能的反向代理服务器</title>
-      <link>https://tech.zephyrl.co/2020/02/nginxtips3/</link>
+      <link>https://blog.z36.moe/2020/02/nginxtips3/</link>
       <pubDate>Mon, 03 Feb 2020 14:42:35 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/02/nginxtips3/</guid>
+      <guid>https://blog.z36.moe/2020/02/nginxtips3/</guid>
       <description>“由于上游服务业务逻辑复杂，需要较高的开发效率所以性能不怎么样。我们可以用Nginx进行反向代理，一台Nginx服务器采用负载均衡算法代理给多台上游服务器使用。这样我们就实现了业务的水平扩展，在用户没感觉的情况下添加多台服务器。也可以在上游服务器出现问题的时候将请求转发给正常的服务器。”</description>
     </item>
     
     <item>
       <title>NginxTips（二） —— Nginx作为静态Web服务器的二三事</title>
-      <link>https://tech.zephyrl.co/2020/02/nginxtips2/</link>
+      <link>https://blog.z36.moe/2020/02/nginxtips2/</link>
       <pubDate>Sat, 01 Feb 2020 13:43:48 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/02/nginxtips2/</guid>
+      <guid>https://blog.z36.moe/2020/02/nginxtips2/</guid>
       <description>其中包括GZip、AutoIndex、限制速度、Access日志。</description>
     </item>
     
     <item>
       <title>NginxTips（一） —— Nginx的组成、Vim语法高亮、编译、命令行、热部署、日志切割脚本</title>
-      <link>https://tech.zephyrl.co/2019/11/nginxtips1/</link>
+      <link>https://blog.z36.moe/2019/11/nginxtips1/</link>
       <pubDate>Wed, 13 Nov 2019 20:08:41 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2019/11/nginxtips1/</guid>
+      <guid>https://blog.z36.moe/2019/11/nginxtips1/</guid>
       <description>我打算开始做运维的实验的时候，先是从搭建一个LNMP环境并且开始监控、维护来做的。现在我开始学习Nginx和它的源代码，这个就作为我学习的一个记录吧。我把这个组合叫做NginxTips！</description>
     </item>
     
     <item>
       <title>Centos7安装Pyhon3</title>
-      <link>https://tech.zephyrl.co/2019/09/centos7-py3/</link>
+      <link>https://blog.z36.moe/2019/09/centos7-py3/</link>
       <pubDate>Mon, 23 Sep 2019 16:18:34 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2019/09/centos7-py3/</guid>
+      <guid>https://blog.z36.moe/2019/09/centos7-py3/</guid>
       <description>CentOS 的第三方软件源中（如：IUS，SCL，EPEL）还没有 Python 3.7 的 RPM 软件包，本文介绍使用源码方式安装 Python 3.7。</description>
     </item>
     
     <item>
       <title>CentOS7安装LNMP记录</title>
-      <link>https://tech.zephyrl.co/2019/09/centoslnmp/</link>
+      <link>https://blog.z36.moe/2019/09/centoslnmp/</link>
       <pubDate>Sat, 07 Sep 2019 23:23:40 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2019/09/centoslnmp/</guid>
+      <guid>https://blog.z36.moe/2019/09/centoslnmp/</guid>
       <description>曾经沉迷Ubuntu的我终于真香了，转移全线阵地到了CentOS7，关闭主网站了一阵子，然后开始熟悉CentOS下的环境配置、服务器配置。难度比Ubuntu真的难了好多，也复杂了不少，但是有了上次的经验，参考了很多书和博客，总结出了一套适合自己的路线。</description>
     </item>
     

@@ -6,9 +6,9 @@
         <title>SpringBoot学习笔记（五）—— MVC自动配置原理 | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noodp" />
 <meta name="Description" content="一个程序员的自留地">
-<link rel="prev" href="https://tech.zephyrl.co/2020/03/springboot4/" />
-<link rel="next" href="https://tech.zephyrl.co/2020/05/bigdataenvforneuedu/" />
-<link rel="canonical" href="https://tech.zephyrl.co/2020/03/springboot5/" />
+<link rel="prev" href="https://blog.z36.moe/2020/03/springboot4/" />
+<link rel="next" href="https://blog.z36.moe/2020/05/bigdataenvforneuedu/" />
+<link rel="canonical" href="https://blog.z36.moe/2020/03/springboot5/" />
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -27,12 +27,12 @@
     "headline": "SpringBoot学习笔记（五）—— MVC自动配置原理",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https:\/\/tech.zephyrl.co\/2020\/03\/springboot5\/"
+        "@id": "https:\/\/blog.z36.moe\/2020\/03\/springboot5\/"
     },
     
         "image": {
             "@type": "ImageObject",
-            "url": "https:\/\/tech.zephyrl.co\/cover.png",
+            "url": "https:\/\/blog.z36.moe\/cover.png",
             "width":  800 ,
             "height":  600 
         },
@@ -42,7 +42,7 @@
         "keywords": "Java, 后端开发笔记, Spring, SpringBoot学习笔记",
     
     "wordcount":  156 ,
-    "url": "https:\/\/tech.zephyrl.co\/2020\/03\/springboot5\/",
+    "url": "https:\/\/blog.z36.moe\/2020\/03\/springboot5\/",
     
         "datePublished": "2020-03-18T14:59:01\u002b08:00",
     
@@ -58,7 +58,7 @@
             "name": "Zephyr",
             "logo": {
             "@type": "ImageObject",
-            "url": "https:\/\/tech.zephyrl.co\/logo.png",
+            "url": "https:\/\/blog.z36.moe\/logo.png",
             "width":  127 ,
             "height":  40 
             }
@@ -83,18 +83,18 @@
             <nav class="navbar">
     <div class="navbar-container">
         <div class="navbar-header animated bounceIn">
-            <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+            <a href="https://blog.z36.moe/">梦黎的小窝</a>
         </div>
         <div class="navbar-menu">
             
             
-                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+                <a class="menu-item" href="https://blog.z36.moe/posts" title="">文章</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+                <a class="menu-item" href="https://blog.z36.moe/tags" title="">标签</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+                <a class="menu-item" href="https://blog.z36.moe/categories" title="">分类</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+                <a class="menu-item" href="https://blog.z36.moe/about" title="">关于我</a>
             
             <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
         </div>
@@ -104,7 +104,7 @@
      <div class="navbar-container">
         <div class="navbar-header">
             <div class="navbar-header-title animated bounceIn">
-                <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+                <a href="https://blog.z36.moe/">梦黎的小窝</a>
             </div>
             <div class="menu-toggle" id="menu-toggle">
                 <span></span><span></span><span></span>
@@ -113,13 +113,13 @@
         <div class="navbar-menu" id="mobile-menu">
             
             
-                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+                <a class="menu-item" href="https://blog.z36.moe/posts" title="">文章</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+                <a class="menu-item" href="https://blog.z36.moe/tags" title="">标签</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+                <a class="menu-item" href="https://blog.z36.moe/categories" title="">分类</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+                <a class="menu-item" href="https://blog.z36.moe/about" title="">关于我</a>
             
             <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
         </div>
@@ -136,11 +136,11 @@
 
         <div class="post-meta">
             <div class="post-meta-main">
-                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <a class="author" href="https://blog.z36.moe/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
                 <span class="post-category">
                         收录于
-                        <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/springboot/">SpringBoot</a>
-                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a>
+                        <i class="far fa-folder fa-fw"></i><a href="https://blog.z36.moe/categories/springboot/">SpringBoot</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://blog.z36.moe/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a>
                             
                     </span>
             </div>
@@ -199,7 +199,7 @@
             <div class="post-info-md">
                 
                     
-                        <span><a class="link-to-markdown" href="https://tech.zephyrl.co/2020/03/springboot5/index.md" target="_blank">阅读原始文档</a></span>
+                        <span><a class="link-to-markdown" href="https://blog.z36.moe/2020/03/springboot5/index.md" target="_blank">阅读原始文档</a></span>
                     
                 
             </div>
@@ -207,17 +207,17 @@
                 
                     <span>
     
-        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f03%2fspringboot5%2f&amp;text=SpringBoot%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%ba%94%ef%bc%89%e2%80%94%e2%80%94%20MVC%e8%87%aa%e5%8a%a8%e9%85%8d%e7%bd%ae%e5%8e%9f%e7%90%86&amp;via=" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2fblog.z36.moe%2f2020%2f03%2fspringboot5%2f&amp;text=SpringBoot%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%ba%94%ef%bc%89%e2%80%94%e2%80%94%20MVC%e8%87%aa%e5%8a%a8%e9%85%8d%e7%bd%ae%e5%8e%9f%e7%90%86&amp;via=" target="_blank" title="Share on Twitter">
             <i class="fab fa-twitter fa-fw"></i>
         </a>
     
     
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftech.zephyrl.co%2f2020%2f03%2fspringboot5%2f" target="_blank" title="Share on Facebook">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.z36.moe%2f2020%2f03%2fspringboot5%2f" target="_blank" title="Share on Facebook">
             <i class="fab fa-facebook-square fa-fw"></i>
         </a>
     
     
-        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f03%2fspringboot5%2f&amp;title=SpringBoot%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%ba%94%ef%bc%89%e2%80%94%e2%80%94%20MVC%e8%87%aa%e5%8a%a8%e9%85%8d%e7%bd%ae%e5%8e%9f%e7%90%86" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fblog.z36.moe%2f2020%2f03%2fspringboot5%2f&amp;title=SpringBoot%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%ba%94%ef%bc%89%e2%80%94%e2%80%94%20MVC%e8%87%aa%e5%8a%a8%e9%85%8d%e7%bd%ae%e5%8e%9f%e7%90%86" target="_blank" title="Share on Reddit">
             <i class="fab fa-reddit fa-fw"></i>
         </a>
     
@@ -239,34 +239,34 @@
             
                 
                     <span class="tag">
-                        <a href="https://tech.zephyrl.co/tags/java/"><i class="fas fa-tag fa-fw"></i>Java</a>
+                        <a href="https://blog.z36.moe/tags/java/"><i class="fas fa-tag fa-fw"></i>Java</a>
                     </span>
                 
                     <span class="tag">
-                        <a href="https://tech.zephyrl.co/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>后端开发笔记</a>
+                        <a href="https://blog.z36.moe/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>后端开发笔记</a>
                     </span>
                 
                     <span class="tag">
-                        <a href="https://tech.zephyrl.co/tags/spring/"><i class="fas fa-tag fa-fw"></i>Spring</a>
+                        <a href="https://blog.z36.moe/tags/spring/"><i class="fas fa-tag fa-fw"></i>Spring</a>
                     </span>
                 
                     <span class="tag">
-                        <a href="https://tech.zephyrl.co/tags/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>SpringBoot学习笔记</a>
+                        <a href="https://blog.z36.moe/tags/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>SpringBoot学习笔记</a>
                     </span>
                 
             
         </section>
         <section>
-            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://tech.zephyrl.co/">主页</a></span>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://blog.z36.moe/">主页</a></span>
         </section>
     </div>
 
     <div class="post-nav">
         
-            <a href="https://tech.zephyrl.co/2020/03/springboot4/" class="prev" rel="prev" title="SpringBoot学习笔记（四）—— Thymeleaf"><i class="fas fa-angle-left fa-fw"></i>SpringBoot学习笔记（四）—— Thymeleaf</a>
+            <a href="https://blog.z36.moe/2020/03/springboot4/" class="prev" rel="prev" title="SpringBoot学习笔记（四）—— Thymeleaf"><i class="fas fa-angle-left fa-fw"></i>SpringBoot学习笔记（四）—— Thymeleaf</a>
         
         
-            <a href="https://tech.zephyrl.co/2020/05/bigdataenvforneuedu/" class="next" rel="next" title="大数据企业课 —— 完全分布式开发环境配置（一）">大数据企业课 —— 完全分布式开发环境配置（一）<i class="fas fa-angle-right fa-fw"></i></a>
+            <a href="https://blog.z36.moe/2020/05/bigdataenvforneuedu/" class="next" rel="next" title="大数据企业课 —— 完全分布式开发环境配置（一）">大数据企业课 —— 完全分布式开发环境配置（一）<i class="fas fa-angle-right fa-fw"></i></a>
         
     </div>
 </div>
@@ -285,7 +285,7 @@
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

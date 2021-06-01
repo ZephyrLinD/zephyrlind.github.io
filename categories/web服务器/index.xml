@@ -2,85 +2,85 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web服务器 on 梦黎的小窝</title>
-    <link>https://tech.zephyrl.co/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+    <link>https://blog.z36.moe/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
     <description>Recent content in Web服务器 on 梦黎的小窝</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Mon, 03 Feb 2020 14:42:35 +0800</lastBuildDate>
     
-	<atom:link href="https://tech.zephyrl.co/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.z36.moe/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>NginxTips（三） —— 用Nginx搭建一个具备缓存功能的反向代理服务器</title>
-      <link>https://tech.zephyrl.co/2020/02/nginxtips3/</link>
+      <link>https://blog.z36.moe/2020/02/nginxtips3/</link>
       <pubDate>Mon, 03 Feb 2020 14:42:35 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/02/nginxtips3/</guid>
+      <guid>https://blog.z36.moe/2020/02/nginxtips3/</guid>
       <description>“由于上游服务业务逻辑复杂，需要较高的开发效率所以性能不怎么样。我们可以用Nginx进行反向代理，一台Nginx服务器采用负载均衡算法代理给多台上游服务器使用。这样我们就实现了业务的水平扩展，在用户没感觉的情况下添加多台服务器。也可以在上游服务器出现问题的时候将请求转发给正常的服务器。”</description>
     </item>
     
     <item>
       <title>NginxTips（二） —— Nginx作为静态Web服务器的二三事</title>
-      <link>https://tech.zephyrl.co/2020/02/nginxtips2/</link>
+      <link>https://blog.z36.moe/2020/02/nginxtips2/</link>
       <pubDate>Sat, 01 Feb 2020 13:43:48 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2020/02/nginxtips2/</guid>
+      <guid>https://blog.z36.moe/2020/02/nginxtips2/</guid>
       <description>其中包括GZip、AutoIndex、限制速度、Access日志。</description>
     </item>
     
     <item>
       <title>NginxTips（一） —— Nginx的组成、Vim语法高亮、编译、命令行、热部署、日志切割脚本</title>
-      <link>https://tech.zephyrl.co/2019/11/nginxtips1/</link>
+      <link>https://blog.z36.moe/2019/11/nginxtips1/</link>
       <pubDate>Wed, 13 Nov 2019 20:08:41 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2019/11/nginxtips1/</guid>
+      <guid>https://blog.z36.moe/2019/11/nginxtips1/</guid>
       <description>我打算开始做运维的实验的时候，先是从搭建一个LNMP环境并且开始监控、维护来做的。现在我开始学习Nginx和它的源代码，这个就作为我学习的一个记录吧。我把这个组合叫做NginxTips！</description>
     </item>
     
     <item>
       <title>服务器到手后要做的一些事（一）———— 终端初步美化和一些必要工具</title>
-      <link>https://tech.zephyrl.co/2019/11/serverbeautiful/</link>
+      <link>https://blog.z36.moe/2019/11/serverbeautiful/</link>
       <pubDate>Thu, 07 Nov 2019 20:00:04 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2019/11/serverbeautiful/</guid>
+      <guid>https://blog.z36.moe/2019/11/serverbeautiful/</guid>
       <description>以下是我拿到一台新的、属于自己的、以后会长期使用的小鸡（服务器）后我会干的事情，做一个总结。平台：CentOS7.6</description>
     </item>
     
     <item>
       <title>CentOS7安装LNMP记录</title>
-      <link>https://tech.zephyrl.co/2019/09/centoslnmp/</link>
+      <link>https://blog.z36.moe/2019/09/centoslnmp/</link>
       <pubDate>Sat, 07 Sep 2019 23:23:40 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2019/09/centoslnmp/</guid>
+      <guid>https://blog.z36.moe/2019/09/centoslnmp/</guid>
       <description>曾经沉迷Ubuntu的我终于真香了，转移全线阵地到了CentOS7，关闭主网站了一阵子，然后开始熟悉CentOS下的环境配置、服务器配置。难度比Ubuntu真的难了好多，也复杂了不少，但是有了上次的经验，参考了很多书和博客，总结出了一套适合自己的路线。</description>
     </item>
     
     <item>
       <title>端口转发问题排查</title>
-      <link>https://tech.zephyrl.co/2019/08/repeatport/</link>
+      <link>https://blog.z36.moe/2019/08/repeatport/</link>
       <pubDate>Sun, 25 Aug 2019 22:35:14 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2019/08/repeatport/</guid>
+      <guid>https://blog.z36.moe/2019/08/repeatport/</guid>
       <description>当我端口转发第一个网站的时候，发现第二个配置好的会转发到第一个网站&amp;hellip;</description>
     </item>
     
     <item>
       <title>通过Let&#39;s Encrypt来获取SSL证书</title>
-      <link>https://tech.zephyrl.co/2019/08/configssl/</link>
+      <link>https://blog.z36.moe/2019/08/configssl/</link>
       <pubDate>Sun, 25 Aug 2019 20:16:52 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2019/08/configssl/</guid>
+      <guid>https://blog.z36.moe/2019/08/configssl/</guid>
       <description>这个Chrome浏览器是个好东西&amp;hellip;但是看着我自己博客和图床网页链接边上的“不安全”，很强迫症。于是，我&amp;hellip;&amp;hellip;</description>
     </item>
     
     <item>
       <title>我的Ubuntu Server LNMP折腾笔记</title>
-      <link>https://tech.zephyrl.co/2019/08/diaryoflnmp/</link>
+      <link>https://blog.z36.moe/2019/08/diaryoflnmp/</link>
       <pubDate>Fri, 09 Aug 2019 08:46:15 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2019/08/diaryoflnmp/</guid>
+      <guid>https://blog.z36.moe/2019/08/diaryoflnmp/</guid>
       <description>本文旨在记录Ubuntu Server上面稍微好配的LNMP环境的一些坑还有一些特殊的地方。因为像CentOS、RHEL都比较适合源代码安装，但是Ubuntu Server源代码安装反而过于折腾而且没必要，所以跟RedHat家的安装方法比，安装虽然简单，但是包名不同，也算有点坑吧。把它们记录下来，以后再弄的时候看这里就可以了。</description>
     </item>
     

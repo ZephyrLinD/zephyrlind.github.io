@@ -6,9 +6,9 @@
         <title>Zabbix配置文档（三）—— 自动发现、自动注册和 SNMP | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noodp" />
 <meta name="Description" content="一个程序员的自留地">
-<link rel="prev" href="https://tech.zephyrl.co/2020/08/ansible3/" />
-<link rel="next" href="https://tech.zephyrl.co/2020/08/ansible-compileagent/" />
-<link rel="canonical" href="https://tech.zephyrl.co/2020/08/zabbix3/" />
+<link rel="prev" href="https://blog.z36.moe/2020/08/ansible3/" />
+<link rel="next" href="https://blog.z36.moe/2020/08/ansible-compileagent/" />
+<link rel="canonical" href="https://blog.z36.moe/2020/08/zabbix3/" />
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -27,12 +27,12 @@
     "headline": "Zabbix配置文档（三）—— 自动发现、自动注册和 SNMP",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https:\/\/tech.zephyrl.co\/2020\/08\/zabbix3\/"
+        "@id": "https:\/\/blog.z36.moe\/2020\/08\/zabbix3\/"
     },
     
         "image": {
             "@type": "ImageObject",
-            "url": "https:\/\/tech.zephyrl.co\/cover.png",
+            "url": "https:\/\/blog.z36.moe\/cover.png",
             "width":  800 ,
             "height":  600 
         },
@@ -42,7 +42,7 @@
         "keywords": "折腾笔记, DevOPs入门笔记, Zabbix",
     
     "wordcount":  974 ,
-    "url": "https:\/\/tech.zephyrl.co\/2020\/08\/zabbix3\/",
+    "url": "https:\/\/blog.z36.moe\/2020\/08\/zabbix3\/",
     
         "datePublished": "2020-08-18T09:20:15\u002b08:00",
     
@@ -58,7 +58,7 @@
             "name": "Zephyr",
             "logo": {
             "@type": "ImageObject",
-            "url": "https:\/\/tech.zephyrl.co\/logo.png",
+            "url": "https:\/\/blog.z36.moe\/logo.png",
             "width":  127 ,
             "height":  40 
             }
@@ -83,18 +83,18 @@
             <nav class="navbar">
     <div class="navbar-container">
         <div class="navbar-header animated bounceIn">
-            <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+            <a href="https://blog.z36.moe/">梦黎的小窝</a>
         </div>
         <div class="navbar-menu">
             
             
-                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+                <a class="menu-item" href="https://blog.z36.moe/posts" title="">文章</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+                <a class="menu-item" href="https://blog.z36.moe/tags" title="">标签</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+                <a class="menu-item" href="https://blog.z36.moe/categories" title="">分类</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+                <a class="menu-item" href="https://blog.z36.moe/about" title="">关于我</a>
             
             <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
         </div>
@@ -104,7 +104,7 @@
      <div class="navbar-container">
         <div class="navbar-header">
             <div class="navbar-header-title animated bounceIn">
-                <a href="https://tech.zephyrl.co/">梦黎的小窝</a>
+                <a href="https://blog.z36.moe/">梦黎的小窝</a>
             </div>
             <div class="menu-toggle" id="menu-toggle">
                 <span></span><span></span><span></span>
@@ -113,13 +113,13 @@
         <div class="navbar-menu" id="mobile-menu">
             
             
-                <a class="menu-item" href="https://tech.zephyrl.co/posts" title="">文章</a>
+                <a class="menu-item" href="https://blog.z36.moe/posts" title="">文章</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/tags" title="">标签</a>
+                <a class="menu-item" href="https://blog.z36.moe/tags" title="">标签</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/categories" title="">分类</a>
+                <a class="menu-item" href="https://blog.z36.moe/categories" title="">分类</a>
             
-                <a class="menu-item" href="https://tech.zephyrl.co/about" title="">关于我</a>
+                <a class="menu-item" href="https://blog.z36.moe/about" title="">关于我</a>
             
             <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
         </div>
@@ -136,11 +136,11 @@
 
         <div class="post-meta">
             <div class="post-meta-main">
-                <a class="author" href="https://tech.zephyrl.co/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <a class="author" href="https://blog.z36.moe/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
                 <span class="post-category">
                         收录于
-                        <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/zabbix/">Zabbix</a>
-                            <i class="far fa-folder fa-fw"></i><a href="https://tech.zephyrl.co/categories/centos/">CentOS</a>
+                        <i class="far fa-folder fa-fw"></i><a href="https://blog.z36.moe/categories/zabbix/">Zabbix</a>
+                            <i class="far fa-folder fa-fw"></i><a href="https://blog.z36.moe/categories/centos/">CentOS</a>
                             
                     </span>
             </div>
@@ -339,7 +339,7 @@ snmpwalk -v 2c -c <span class="m">123456</span> 10.0.0.100
             <div class="post-info-md">
                 
                     
-                        <span><a class="link-to-markdown" href="https://tech.zephyrl.co/2020/08/zabbix3/index.md" target="_blank">阅读原始文档</a></span>
+                        <span><a class="link-to-markdown" href="https://blog.z36.moe/2020/08/zabbix3/index.md" target="_blank">阅读原始文档</a></span>
                     
                 
             </div>
@@ -347,17 +347,17 @@ snmpwalk -v 2c -c <span class="m">123456</span> 10.0.0.100
                 
                     <span>
     
-        <a href="//twitter.com/share?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fzabbix3%2f&amp;text=Zabbix%e9%85%8d%e7%bd%ae%e6%96%87%e6%a1%a3%ef%bc%88%e4%b8%89%ef%bc%89%e2%80%94%e2%80%94%20%e8%87%aa%e5%8a%a8%e5%8f%91%e7%8e%b0%e3%80%81%e8%87%aa%e5%8a%a8%e6%b3%a8%e5%86%8c%e5%92%8c%20SNMP&amp;via=" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2fblog.z36.moe%2f2020%2f08%2fzabbix3%2f&amp;text=Zabbix%e9%85%8d%e7%bd%ae%e6%96%87%e6%a1%a3%ef%bc%88%e4%b8%89%ef%bc%89%e2%80%94%e2%80%94%20%e8%87%aa%e5%8a%a8%e5%8f%91%e7%8e%b0%e3%80%81%e8%87%aa%e5%8a%a8%e6%b3%a8%e5%86%8c%e5%92%8c%20SNMP&amp;via=" target="_blank" title="Share on Twitter">
             <i class="fab fa-twitter fa-fw"></i>
         </a>
     
     
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fzabbix3%2f" target="_blank" title="Share on Facebook">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.z36.moe%2f2020%2f08%2fzabbix3%2f" target="_blank" title="Share on Facebook">
             <i class="fab fa-facebook-square fa-fw"></i>
         </a>
     
     
-        <a href="//reddit.com/submit?url=https%3a%2f%2ftech.zephyrl.co%2f2020%2f08%2fzabbix3%2f&amp;title=Zabbix%e9%85%8d%e7%bd%ae%e6%96%87%e6%a1%a3%ef%bc%88%e4%b8%89%ef%bc%89%e2%80%94%e2%80%94%20%e8%87%aa%e5%8a%a8%e5%8f%91%e7%8e%b0%e3%80%81%e8%87%aa%e5%8a%a8%e6%b3%a8%e5%86%8c%e5%92%8c%20SNMP" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fblog.z36.moe%2f2020%2f08%2fzabbix3%2f&amp;title=Zabbix%e9%85%8d%e7%bd%ae%e6%96%87%e6%a1%a3%ef%bc%88%e4%b8%89%ef%bc%89%e2%80%94%e2%80%94%20%e8%87%aa%e5%8a%a8%e5%8f%91%e7%8e%b0%e3%80%81%e8%87%aa%e5%8a%a8%e6%b3%a8%e5%86%8c%e5%92%8c%20SNMP" target="_blank" title="Share on Reddit">
             <i class="fab fa-reddit fa-fw"></i>
         </a>
     
@@ -379,30 +379,30 @@ snmpwalk -v 2c -c <span class="m">123456</span> 10.0.0.100
             
                 
                     <span class="tag">
-                        <a href="https://tech.zephyrl.co/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>折腾笔记</a>
+                        <a href="https://blog.z36.moe/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>折腾笔记</a>
                     </span>
                 
                     <span class="tag">
-                        <a href="https://tech.zephyrl.co/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>DevOPs入门笔记</a>
+                        <a href="https://blog.z36.moe/tags/devops%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>DevOPs入门笔记</a>
                     </span>
                 
                     <span class="tag">
-                        <a href="https://tech.zephyrl.co/tags/zabbix/"><i class="fas fa-tag fa-fw"></i>Zabbix</a>
+                        <a href="https://blog.z36.moe/tags/zabbix/"><i class="fas fa-tag fa-fw"></i>Zabbix</a>
                     </span>
                 
             
         </section>
         <section>
-            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://tech.zephyrl.co/">主页</a></span>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://blog.z36.moe/">主页</a></span>
         </section>
     </div>
 
     <div class="post-nav">
         
-            <a href="https://tech.zephyrl.co/2020/08/ansible3/" class="prev" rel="prev" title="Ansible 学习笔记（三）：Ansible PlayBook 入门"><i class="fas fa-angle-left fa-fw"></i>Ansible 学习笔记（三）：Ansible PlayBook 入门</a>
+            <a href="https://blog.z36.moe/2020/08/ansible3/" class="prev" rel="prev" title="Ansible 学习笔记（三）：Ansible PlayBook 入门"><i class="fas fa-angle-left fa-fw"></i>Ansible 学习笔记（三）：Ansible PlayBook 入门</a>
         
         
-            <a href="https://tech.zephyrl.co/2020/08/ansible-compileagent/" class="next" rel="next" title="利用 ansible 批量编译安装 zabbix-agent 实现完全自动注册">利用 ansible 批量编译安装 zabbix-agent 实现完全自动注册<i class="fas fa-angle-right fa-fw"></i></a>
+            <a href="https://blog.z36.moe/2020/08/ansible-compileagent/" class="next" rel="next" title="利用 ansible 批量编译安装 zabbix-agent 实现完全自动注册">利用 ansible 批量编译安装 zabbix-agent 实现完全自动注册<i class="fas fa-angle-right fa-fw"></i></a>
         
     </div>
 </div>
@@ -421,7 +421,7 @@ snmpwalk -v 2c -c <span class="m">123456</span> 10.0.0.100
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://tech.zephyrl.co/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

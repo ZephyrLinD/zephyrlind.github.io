@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>图床 on 梦黎的小窝</title>
-    <link>https://tech.zephyrl.co/categories/%E5%9B%BE%E5%BA%8A/</link>
+    <link>https://blog.z36.moe/categories/%E5%9B%BE%E5%BA%8A/</link>
     <description>Recent content in 图床 on 梦黎的小窝</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Sat, 24 Aug 2019 13:45:32 +0800</lastBuildDate>
     
-	<atom:link href="https://tech.zephyrl.co/categories/%E5%9B%BE%E5%BA%8A/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.z36.moe/categories/%E5%9B%BE%E5%BA%8A/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Chevereto的安装和一些坑</title>
-      <link>https://tech.zephyrl.co/2019/08/cheveretoins/</link>
+      <link>https://blog.z36.moe/2019/08/cheveretoins/</link>
       <pubDate>Sat, 24 Aug 2019 13:45:32 +0800</pubDate>
       
-      <guid>https://tech.zephyrl.co/2019/08/cheveretoins/</guid>
+      <guid>https://blog.z36.moe/2019/08/cheveretoins/</guid>
       <description>Chevereto图床安装过程中遇到了好多的坑，大部分是因为自己对PHP、Nginx了解不多的原因。所以记录下来，供以后参考。</description>
     </item>
     
