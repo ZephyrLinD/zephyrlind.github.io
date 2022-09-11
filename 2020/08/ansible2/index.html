@@ -41,7 +41,7 @@
     
         "keywords": "折腾笔记, DevOPs入门笔记, Ansible",
     
-    "wordcount":  2283 ,
+    "wordcount":  2289 ,
     "url": "https:\/\/blog.z36.moe\/2020\/08\/ansible2\/",
     
         "datePublished": "2020-08-13T13:30:30\u002b08:00",
@@ -147,7 +147,7 @@
             </div>
             <div class="post-meta-other">
                 <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-13>2020-08-13</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 2283 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 2289 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 5 分钟&nbsp;</div>
         </div>
 
@@ -185,47 +185,47 @@
 <p>Ansible系列命令如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible ansible-doc ansible-playbook ansible-vault ansible-console ansible-galaxy ansible-pull
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible ansible-doc ansible-playbook ansible-vault ansible-console ansible-galaxy ansible-pull
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果要查看相关模块帮助，可以使用 <code>ansible-doc</code> 命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible-doc <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module...<span class="o">]</span>
-    -a            显示所有模块的文档
-    -l, --list    列出可用模块
-    -s, --snippet 显示指定模块的playbook片段<span class="o">(</span>简化版,便于查找语法<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible-doc <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">    -a            显示所有模块的文档
+</span></span><span class="line"><span class="cl">    -l, --list    列出可用模块
+</span></span><span class="line"><span class="cl">    -s, --snippet 显示指定模块的playbook片段<span class="o">(</span>简化版,便于查找语法<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>示例：</p>
 <table>
 <thead>
 <tr>
-<th align="center">命令</th>
-<th align="center">作用</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">ansible-doc -l</td>
-<td align="center">列出所有模块</td>
+<td style="text-align:center">ansible-doc -l</td>
+<td style="text-align:center">列出所有模块</td>
 </tr>
 <tr>
-<td align="center">ansible-doc ping</td>
-<td align="center">查看ping模块帮助用法</td>
+<td style="text-align:center">ansible-doc ping</td>
+<td style="text-align:center">查看ping模块帮助用法</td>
 </tr>
 <tr>
-<td align="center">ansible-doc -s ping</td>
-<td align="center">查看ping模块帮助用法（简化）</td>
+<td style="text-align:center">ansible-doc -s ping</td>
+<td style="text-align:center">查看ping模块帮助用法（简化）</td>
 </tr>
 </tbody>
 </table>
@@ -234,7 +234,7 @@
 <p>建议配置ansible端能基于密钥认证的方式联系各被管理节点</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -248,105 +248,105 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible &lt;host-pattern&gt; <span class="o">[</span>-m module_name<span class="o">]</span> <span class="o">[</span>-a args<span class="o">]</span>
-    --version              显示版本
-    -m module              指定模块，默认为command
-    -v                     详细过程 –vv -vvv更详细
-    --list-hosts           显示主机列表，可简写 --list
-    -k, --ask-pass         提示输入ssh连接密码,默认Key验证
-    -C, --check            检查，并不执行
-    -T, --timeout<span class="o">=</span>TIMEOUT  执行命令的超时时间,默认10s
-    -u, --user<span class="o">=</span>REMOTE_USER 执行远程执行的用户
-    -b, --become           代替旧版的sudo切换
-        --become-user<span class="o">=</span>USERNAME 指定sudo的runas用户,默认为root
-    -K, --ask-become-pass  提示输入sudo时的口令
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible &lt;host-pattern&gt; <span class="o">[</span>-m module_name<span class="o">]</span> <span class="o">[</span>-a args<span class="o">]</span>
+</span></span><span class="line"><span class="cl">    --version              显示版本
+</span></span><span class="line"><span class="cl">    -m module              指定模块，默认为command
+</span></span><span class="line"><span class="cl">    -v                     详细过程 –vv -vvv更详细
+</span></span><span class="line"><span class="cl">    --list-hosts           显示主机列表，可简写 --list
+</span></span><span class="line"><span class="cl">    -k, --ask-pass         提示输入ssh连接密码,默认Key验证
+</span></span><span class="line"><span class="cl">    -C, --check            检查，并不执行
+</span></span><span class="line"><span class="cl">    -T, --timeout<span class="o">=</span>TIMEOUT  执行命令的超时时间,默认10s
+</span></span><span class="line"><span class="cl">    -u, --user<span class="o">=</span>REMOTE_USER 执行远程执行的用户
+</span></span><span class="line"><span class="cl">    -b, --become           代替旧版的sudo切换
+</span></span><span class="line"><span class="cl">        --become-user<span class="o">=</span>USERNAME 指定sudo的runas用户,默认为root
+</span></span><span class="line"><span class="cl">    -K, --ask-become-pass  提示输入sudo时的口令
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>举例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">ansible all --list      <span class="c1"># 列出所有主机</span>
-ansible-doc -s ping     <span class="c1"># 查看ping模块的语法</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ansible all --list      <span class="c1"># 列出所有主机</span>
+</span></span><span class="line"><span class="cl">ansible-doc -s ping     <span class="c1"># 查看ping模块的语法</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="ansible-的-host-pattern"></a><h2>ansible 的 Host-pattern</h2>
 <a class="post-dummy-target" id="all-表示所有inventory中的所有主机"></a><h3>All 表示所有Inventory中的所有主机</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible all –m ping
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible all –m ping
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="-通配符"></a><h3>* :通配符</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible <span class="s2">&#34;*&#34;</span> -m ping  <span class="o">(</span>*表示所有主机<span class="o">)</span>
-ansible 192.168.1.* -m ping
-ansible <span class="s2">&#34;*srvs&#34;</span> -m ping
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible <span class="s2">&#34;*&#34;</span> -m ping  <span class="o">(</span>*表示所有主机<span class="o">)</span>
+</span></span><span class="line"><span class="cl">ansible 192.168.1.* -m ping
+</span></span><span class="line"><span class="cl">ansible <span class="s2">&#34;*srvs&#34;</span> -m ping
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="或关系-"></a><h3>或关系 &ldquo;:&rdquo;</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible <span class="s2">&#34;websrvs:appsrvs&#34;</span> -m ping
-ansible “192.168.1.10:192.168.1.20” -m ping
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible <span class="s2">&#34;websrvs:appsrvs&#34;</span> -m ping
+</span></span><span class="line"><span class="cl">ansible “192.168.1.10:192.168.1.20” -m ping
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="逻辑与-"></a><h3>逻辑与 &ldquo;:&amp;&rdquo;</h3>
 <p>在websrvs组并且在dbsrvs组中的主机</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible <span class="s2">&#34;websrvs:&amp;dbsrvs&#34;</span> –m ping
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible <span class="s2">&#34;websrvs:&amp;dbsrvs&#34;</span> –m ping
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="逻辑非-"></a><h3>逻辑非 &ldquo;:!&rdquo;</h3>
 <p>在websrvs组，但不在dbsrvs组中的主机</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible <span class="s1">&#39;websrvs:!dbsrvs&#39;</span> –m ping
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible <span class="s1">&#39;websrvs:!dbsrvs&#39;</span> –m ping
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>注意：此处为单引号</p>
 <a class="post-dummy-target" id="综合逻辑"></a><h3>综合逻辑</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible <span class="s1">&#39;websrvs:dbsrvs:&amp;appsrvs:!ftpsrvs&#39;</span> –m ping
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible <span class="s1">&#39;websrvs:dbsrvs:&amp;appsrvs:!ftpsrvs&#39;</span> –m ping
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="正则表达式"></a><h3>正则表达式</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible <span class="s2">&#34;websrvs:&amp;dbsrvs&#34;</span> –m ping
-ansible <span class="s2">&#34;~(web|db).*\.magedu\.com&#34;</span> –m ping
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible <span class="s2">&#34;websrvs:&amp;dbsrvs&#34;</span> –m ping
+</span></span><span class="line"><span class="cl">ansible <span class="s2">&#34;~(web|db).*\.magedu\.com&#34;</span> –m ping
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="ansible-常用模块"></a><h2>ansible 常用模块</h2>
 <p>模块文档：https://docs.ansible.com/ansible/latest/modules/modules_by_category.html</p>
@@ -354,28 +354,28 @@ ansible <span class="s2">&#34;~(web|db).*\.magedu\.com&#34;</span> –m ping
 <p>在远程主机执行命令，默认模块，可忽略-m选项</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible srvs -m <span class="nb">command</span> -a <span class="s1">&#39;service vsftpd start&#39;</span>
-ansible srvs -m <span class="nb">command</span> -a <span class="s1">&#39;echo adong |passwd --stdin 123456&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible srvs -m <span class="nb">command</span> -a <span class="s1">&#39;service vsftpd start&#39;</span>
+</span></span><span class="line"><span class="cl">ansible srvs -m <span class="nb">command</span> -a <span class="s1">&#39;echo adong |passwd --stdin 123456&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>此命令不支持 <code>$VARNAME</code> <code>&lt;</code> <code>&gt;</code> <code>|</code> <code>;</code> <code>&amp;</code> 等高端用法，但是他们可以用 <code>shell</code> 模块实现</p>
 <a class="post-dummy-target" id="shell"></a><h3>Shell</h3>
 <p>和command相似，用shell执行命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible all -m shell  -a <span class="s1">&#39;getenforce&#39;</span>  查看SELINUX状态
-ansible all -m shell  -a <span class="s2">&#34;sed -i &#39;s/SELINUX=.*/SELINUX=disabled&#39; /etc/selinux/config&#34;</span>
-ansible srv -m shell -a <span class="s1">&#39;echo zephyr | passwd –stdin zephyr&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible all -m shell  -a <span class="s1">&#39;getenforce&#39;</span>  查看SELINUX状态
+</span></span><span class="line"><span class="cl">ansible all -m shell  -a <span class="s2">&#34;sed -i &#39;s/SELINUX=.*/SELINUX=disabled&#39; /etc/selinux/config&#34;</span>
+</span></span><span class="line"><span class="cl">ansible srv -m shell -a <span class="s1">&#39;echo zephyr | passwd –stdin zephyr&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>调用bash执行命令 类似 <code>cat /tmp/stanley.md | awk -F'|' '{print$1,$2}' &amp;&gt; /tmp/example.txt</code> 这些复杂命令，即使使用shell也可能会失败</p>
 <p>解决办法：写到脚本时，copy到远程执行，再把需要的结果拉回执行命令的机器</p>
@@ -383,134 +383,134 @@ ansible srv -m shell -a <span class="s1">&#39;echo zephyr | passwd –stdin zeph
 <p>打开 <code>/etc/ansible/ansible.cfg</code> 修改</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">module_name = shell
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">module_name = shell
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="script"></a><h3>Script</h3>
 <p>在远程主机上运行ansible服务器上的脚本</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">ansible websrvs -m script -a /data/test.sh
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ansible websrvs -m script -a /data/test.sh
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="copy"></a><h3>Copy</h3>
 <p>从主控端复制文件到远程主机</p>
 <table>
 <thead>
 <tr>
-<th align="center">参数</th>
-<th align="center">意义</th>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">意义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">src</td>
-<td align="center">源文件，指定拷贝文件的本地路径(如果有/则拷贝目录内比拷贝目录本身)</td>
+<td style="text-align:center">src</td>
+<td style="text-align:center">源文件，指定拷贝文件的本地路径(如果有/则拷贝目录内比拷贝目录本身)</td>
 </tr>
 <tr>
-<td align="center">dest</td>
-<td align="center">指定目标路径</td>
+<td style="text-align:center">dest</td>
+<td style="text-align:center">指定目标路径</td>
 </tr>
 <tr>
-<td align="center">mode</td>
-<td align="center">设置权限</td>
+<td style="text-align:center">mode</td>
+<td style="text-align:center">设置权限</td>
 </tr>
 <tr>
-<td align="center">backup</td>
-<td align="center">备份源文件</td>
+<td style="text-align:center">backup</td>
+<td style="text-align:center">备份源文件</td>
 </tr>
 <tr>
-<td align="center">content</td>
-<td align="center">代替src  指定本机文件内容,生成目标主机文件</td>
+<td style="text-align:center">content</td>
+<td style="text-align:center">代替src  指定本机文件内容,生成目标主机文件</td>
 </tr>
 </tbody>
 </table>
 <p>如果目标存在，默认覆盖，此处指定先备份</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">ansible websrvs -m copy -a <span class="s2">&#34;src=/root/test1.sh dest=/tmp/test2.showner=wang mode=600 backup=yes&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ansible websrvs -m copy -a <span class="s2">&#34;src=/root/test1.sh dest=/tmp/test2.showner=wang mode=600 backup=yes&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>指定内容，直接生成目标文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">ansible websrvs -m copy -a <span class="s2">&#34;content=&#39;test content\nxxx&#39; dest=/tmp/test.txt&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ansible websrvs -m copy -a <span class="s2">&#34;content=&#39;test content\nxxx&#39; dest=/tmp/test.txt&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="fetch"></a><h3>Fetch</h3>
 <p>从远程主机提取文件至主控端，copy相反，目前不支持目录,可以先打包,再提取文件</p>
 <p>会生成每个被管理主机不同编号的目录,不会发生文件名冲突</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible websrvs -m fetch -a <span class="s1">&#39;src=/root/test.sh dest=/datscripts&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible websrvs -m fetch -a <span class="s1">&#39;src=/root/test.sh dest=/datscripts&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible all -m shell -a <span class="s1">&#39;tar jxvf test.tar.gz /root/test.sh&#39;</span>
-ansible all -m fetch -a <span class="s1">&#39;src=/root/test.tar.gz dest=/data/&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible all -m shell -a <span class="s1">&#39;tar jxvf test.tar.gz /root/test.sh&#39;</span>
+</span></span><span class="line"><span class="cl">ansible all -m fetch -a <span class="s1">&#39;src=/root/test.tar.gz dest=/data/&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="file"></a><h3>File</h3>
 <p>设置文件属性：</p>
 <table>
 <thead>
 <tr>
-<th align="center">参数</th>
-<th align="center">意义</th>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">意义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">path</td>
-<td align="center">要管理的文件路径 (强制添加)</td>
+<td style="text-align:center">path</td>
+<td style="text-align:center">要管理的文件路径 (强制添加)</td>
 </tr>
 <tr>
-<td align="center">recurse</td>
-<td align="center">递归,文件夹要用递归</td>
+<td style="text-align:center">recurse</td>
+<td style="text-align:center">递归,文件夹要用递归</td>
 </tr>
 <tr>
-<td align="center">src</td>
-<td align="center">创建硬链接,软链接时,指定源目标,配合&rsquo;state=link'&lsquo;state=hard&rsquo; 设置软链接,硬链接</td>
+<td style="text-align:center">src</td>
+<td style="text-align:center">创建硬链接,软链接时,指定源目标,配合&rsquo;state=link&rsquo;&lsquo;state=hard&rsquo; 设置软链接,硬链接</td>
 </tr>
 <tr>
-<td align="center">state</td>
-<td align="center">状态（absent 缺席，删除）</td>
+<td style="text-align:center">state</td>
+<td style="text-align:center">状态（absent 缺席，删除）</td>
 </tr>
 </tbody>
 </table>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">ansible websrvs -m file -a <span class="s1">&#39;path=/app/test.txtstate=touch&#39;</span>                              <span class="c1"># 创建文件</span>
-ansible websrvs -m file -a <span class="s2">&#34;path=/data/testdirstate=directory&#34;</span>                          <span class="c1"># 创建目录</span>    
-ansible websrvs -m file -a <span class="s2">&#34;path=/root/test.sh owner=wangmode=755&#34;</span>                      <span class="c1"># 设置权限755</span>
-ansible websrvs -m file -a <span class="s1">&#39;src=/data/testfile dest=/datatestfile-link state=link&#39;</span>      <span class="c1"># 创建软链接</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ansible websrvs -m file -a <span class="s1">&#39;path=/app/test.txtstate=touch&#39;</span>                              <span class="c1"># 创建文件</span>
+</span></span><span class="line"><span class="cl">ansible websrvs -m file -a <span class="s2">&#34;path=/data/testdirstate=directory&#34;</span>                          <span class="c1"># 创建目录    </span>
+</span></span><span class="line"><span class="cl">ansible websrvs -m file -a <span class="s2">&#34;path=/root/test.sh owner=wangmode=755&#34;</span>                      <span class="c1"># 设置权限755</span>
+</span></span><span class="line"><span class="cl">ansible websrvs -m file -a <span class="s1">&#39;src=/data/testfile dest=/datatestfile-link state=link&#39;</span>      <span class="c1"># 创建软链接</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="unarchive"></a><h3>unarchive</h3>
 <p>解包解压缩，有两种用法:</p>
@@ -532,54 +532,54 @@ ansible websrvs -m file -a <span class="s1">&#39;src=/data/testfile dest=/datate
 <p>示例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible websrvs -m unarchive -a <span class="s1">&#39;src=foo.tgz dest=/var/lib/foo&#39;</span>   <span class="c1">#默认copy为yes ,将本机目录文件解压到目标主机对应目录下</span>
-ansible websrvs -m unarchive -a <span class="s1">&#39;src=/tmp/foo.zip dest=/data copy=no mode=0777&#39;</span> <span class="c1"># 解压被管理主机的foo.zip到data目录下, 并设置权限777</span>
-ansible websrvs -m unarchive -a <span class="s1">&#39;src=https://example.com/example.zip dest=/data copy=no&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible websrvs -m unarchive -a <span class="s1">&#39;src=foo.tgz dest=/var/lib/foo&#39;</span>   <span class="c1">#默认copy为yes ,将本机目录文件解压到目标主机对应目录下</span>
+</span></span><span class="line"><span class="cl">ansible websrvs -m unarchive -a <span class="s1">&#39;src=/tmp/foo.zip dest=/data copy=no mode=0777&#39;</span> <span class="c1"># 解压被管理主机的foo.zip到data目录下, 并设置权限777</span>
+</span></span><span class="line"><span class="cl">ansible websrvs -m unarchive -a <span class="s1">&#39;src=https://example.com/example.zip dest=/data copy=no&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="archive"></a><h3>Archive</h3>
 <p>打包压缩</p>
 <p>将远程主机目录打包</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible all -m archive -a <span class="s1">&#39;path=/etc/sysconfig dest=/data/sysconfig.tar.bz2 format=bz2 owner=wang mode=0777&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible all -m archive -a <span class="s1">&#39;path=/etc/sysconfig dest=/data/sysconfig.tar.bz2 format=bz2 owner=wang mode=0777&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><table>
 <thead>
 <tr>
-<th align="center">参数</th>
-<th align="center">意义</th>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">意义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">path</td>
-<td align="center">指定路径</td>
+<td style="text-align:center">path</td>
+<td style="text-align:center">指定路径</td>
 </tr>
 <tr>
-<td align="center">dest</td>
-<td align="center">指定目标文件</td>
+<td style="text-align:center">dest</td>
+<td style="text-align:center">指定目标文件</td>
 </tr>
 <tr>
-<td align="center">format</td>
-<td align="center">指定打包格式</td>
+<td style="text-align:center">format</td>
+<td style="text-align:center">指定打包格式</td>
 </tr>
 <tr>
-<td align="center">owner</td>
-<td align="center">指定所属者</td>
+<td style="text-align:center">owner</td>
+<td style="text-align:center">指定所属者</td>
 </tr>
 <tr>
-<td align="center">mode</td>
-<td align="center">设置权限</td>
+<td style="text-align:center">mode</td>
+<td style="text-align:center">设置权限</td>
 </tr>
 </tbody>
 </table>
@@ -587,135 +587,135 @@ ansible websrvs -m unarchive -a <span class="s1">&#39;src=https://example.com/ex
 <p>管理主机名示例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible appsrvs -m hostname -a <span class="s2">&#34;name=app.adong.com&#34;</span>             <span class="c1"># 更改一组的主机名</span>
-ansible 192.168.38.103 -m hostname -a <span class="s2">&#34;name=app2.adong.com&#34;</span>     <span class="c1"># 更改单个主机名</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible appsrvs -m hostname -a <span class="s2">&#34;name=app.adong.com&#34;</span>             <span class="c1"># 更改一组的主机名</span>
+</span></span><span class="line"><span class="cl">ansible 192.168.38.103 -m hostname -a <span class="s2">&#34;name=app2.adong.com&#34;</span>     <span class="c1"># 更改单个主机名</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="cron"></a><h3>Cron</h3>
 <p>有点类似于 <code>Crontab</code>，计划任务，其实也是添加 <code>Crontab</code></p>
 <p>支持时间：minute,hour,day,month,weekday</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible websrvs -m cron -a <span class="s2">&#34;minute=*/5 job=&#39;/usr/sbin/ntpdate 172.16.0.1 &amp;&gt;/dev/null&#39; name=Synctime&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible websrvs -m cron -a <span class="s2">&#34;minute=*/5 job=&#39;/usr/sbin/ntpdate 172.16.0.1 &amp;&gt;/dev/null&#39; name=Synctime&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>创建任务:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible websrvs -m cron -a <span class="s1">&#39;state=absent name=Synctime&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible websrvs -m cron -a <span class="s1">&#39;state=absent name=Synctime&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>删除任务：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible websrvs -m cron -a <span class="s1">&#39;minute=*/10 job=&#39;</span>/usr/sbin/ntpdate 172.30.0.100<span class="s2">&#34; name=synctime disabled=yes&#39;
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible websrvs -m cron -a <span class="s1">&#39;minute=*/10 job=&#39;</span>/usr/sbin/ntpdate 172.30.0.100<span class="s2">&#34; name=synctime disabled=yes&#39;
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>删除任务的本质就是注释 <code>Crontab</code> 任务，不在生效</p>
 <a class="post-dummy-target" id="yum"></a><h3>Yum</h3>
 <p>管理包：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">ansible websrvs -m yum -a <span class="s1">&#39;list=httpd&#39;</span>  查看程序列表
-ansible websrvs -m yum -a <span class="s1">&#39;name=httpd state=present&#39;</span> 安装
-ansible websrvs -m yum -a <span class="s1">&#39;name=httpd state=absent&#39;</span>  删除
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ansible websrvs -m yum -a <span class="s1">&#39;list=httpd&#39;</span>  查看程序列表
+</span></span><span class="line"><span class="cl">ansible websrvs -m yum -a <span class="s1">&#39;name=httpd state=present&#39;</span> 安装
+</span></span><span class="line"><span class="cl">ansible websrvs -m yum -a <span class="s1">&#39;name=httpd state=absent&#39;</span>  删除
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以同时安装多个程序包</p>
 <a class="post-dummy-target" id="service"></a><h3>Service</h3>
 <p>管理服务（systemctl）：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible srv -m service -a <span class="s1">&#39;name=httpd state=stopped&#39;</span>  停止服务
-ansible srv -m service -a <span class="s1">&#39;name=httpd state=started enabled=yes&#39;</span> 启动服务,并设为开机自启
-ansible srv -m service -a <span class="s1">&#39;name=httpd state=reloaded&#39;</span>  重新加载
-ansible srv -m service -a <span class="s1">&#39;name=httpd state=restarted&#39;</span> 重启服务
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible srv -m service -a <span class="s1">&#39;name=httpd state=stopped&#39;</span>  停止服务
+</span></span><span class="line"><span class="cl">ansible srv -m service -a <span class="s1">&#39;name=httpd state=started enabled=yes&#39;</span> 启动服务,并设为开机自启
+</span></span><span class="line"><span class="cl">ansible srv -m service -a <span class="s1">&#39;name=httpd state=reloaded&#39;</span>  重新加载
+</span></span><span class="line"><span class="cl">ansible srv -m service -a <span class="s1">&#39;name=httpd state=restarted&#39;</span> 重启服务
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="user"></a><h3>User</h3>
 <p>管理用户：</p>
 <table>
 <thead>
 <tr>
-<th align="center">参数</th>
-<th align="center">意义</th>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">意义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">home</td>
-<td align="center">指定家目录路径</td>
+<td style="text-align:center">home</td>
+<td style="text-align:center">指定家目录路径</td>
 </tr>
 <tr>
-<td align="center">system</td>
-<td align="center">指定系统账号</td>
+<td style="text-align:center">system</td>
+<td style="text-align:center">指定系统账号</td>
 </tr>
 <tr>
-<td align="center">group</td>
-<td align="center">指定组</td>
+<td style="text-align:center">group</td>
+<td style="text-align:center">指定组</td>
 </tr>
 <tr>
-<td align="center">remove</td>
-<td align="center">清除账户</td>
+<td style="text-align:center">remove</td>
+<td style="text-align:center">清除账户</td>
 </tr>
 <tr>
-<td align="center">shell</td>
-<td align="center">指定shell类型</td>
+<td style="text-align:center">shell</td>
+<td style="text-align:center">指定shell类型</td>
 </tr>
 </tbody>
 </table>
 <p>用例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible websrvs -m user -a <span class="s1">&#39;name=user1 comment=&#34;test user&#34; uid=2048 home=/app/user1 group=root&#39;</span>
-ansible websrvs -m user -a <span class="s1">&#39;name=sysuser1 system=yes home=/app/sysuser1&#39;</span>
-ansible websrvs -m user -a <span class="s1">&#39;name=user1 state=absent remove=yes&#39;</span>  清空用户所有数据
-ansible websrvs -m user -a <span class="s1">&#39;name=app uid=88 system=yes home=/app groups=root shell=/sbin/nologin password=&#34;$1$zfVojmPy$ZILcvxnXljvTI2PhP2Iqv1&#34;&#39;</span>  创建用户
-ansible websrvs -m user -a <span class="s1">&#39;name=app state=absent&#39;</span>  不会删除家目录
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible websrvs -m user -a <span class="s1">&#39;name=user1 comment=&#34;test user&#34; uid=2048 home=/app/user1 group=root&#39;</span>
+</span></span><span class="line"><span class="cl">ansible websrvs -m user -a <span class="s1">&#39;name=sysuser1 system=yes home=/app/sysuser1&#39;</span>
+</span></span><span class="line"><span class="cl">ansible websrvs -m user -a <span class="s1">&#39;name=user1 state=absent remove=yes&#39;</span>  清空用户所有数据
+</span></span><span class="line"><span class="cl">ansible websrvs -m user -a <span class="s1">&#39;name=app uid=88 system=yes home=/app groups=root shell=/sbin/nologin password=&#34;$1$zfVojmPy$ZILcvxnXljvTI2PhP2Iqv1&#34;&#39;</span>  创建用户
+</span></span><span class="line"><span class="cl">ansible websrvs -m user -a <span class="s1">&#39;name=app state=absent&#39;</span>  不会删除家目录
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>删除用户及家目录等数据</p>
 <p>Group：管理组</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible srv -m group -a <span class="s2">&#34;name=testgroup system=yes&#34;</span>   创建组
-ansible srv -m group -a <span class="s2">&#34;name=testgroup state=absent&#34;</span> 删除组
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible srv -m group -a <span class="s2">&#34;name=testgroup system=yes&#34;</span>   创建组
+</span></span><span class="line"><span class="cl">ansible srv -m group -a <span class="s2">&#34;name=testgroup state=absent&#34;</span> 删除组
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其他模块也可通过上面的文档链接来仔细查阅</p>
 
@@ -817,7 +817,7 @@ ansible srv -m group -a <span class="s2">&#34;name=testgroup state=absent&#34;</
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

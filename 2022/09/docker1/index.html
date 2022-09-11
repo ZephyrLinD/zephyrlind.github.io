@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Docker学习笔记（一）：一大坨基础命令 | 梦黎的小窝</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="一个程序员的自留地">
+<link rel="prev" href="https://blog.z36.moe/2021/06/later/" />
+<link rel="canonical" href="https://blog.z36.moe/2022/09/docker1/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Docker学习笔记（一）：一大坨基础命令"/>
+<meta name="twitter:description" content="进入工作很久了，难免压力上头失眠的时候，回忆起上学的时代，有什么比学东西更催眠的呢&hellip;根据经验，学编程很提神，于是打开了收藏已久老狂神的 Docker 课程。本笔记根据 BiliBili UP主“遇见狂神说” 《Docker 入门课程》做笔记。同时他是我很喜欢的博主，希望他长久的做下去"/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Docker学习笔记（一）：一大坨基础命令",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/blog.z36.moe\/2022\/09\/docker1\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/blog.z36.moe\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "折腾笔记, DevOPs入门日记, Docker学习笔记",
+    
+    "wordcount":  3112 ,
+    "url": "https:\/\/blog.z36.moe\/2022\/09\/docker1\/",
+    
+        "datePublished": "2022-09-11T21:28:52\u002b08:00",
+    
+    
+        "dateModified": "2022-09-11T21:28:52\u002b08:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "Zephyr",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/blog.z36.moe\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://blog.z36.moe/">梦黎的小窝</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://blog.z36.moe/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://blog.z36.moe/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://blog.z36.moe/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://blog.z36.moe/2019/12/about/" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://blog.z36.moe/">梦黎的小窝</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://blog.z36.moe/posts" title="">文章</a>
+            
+                <a class="menu-item" href="https://blog.z36.moe/tags" title="">标签</a>
+            
+                <a class="menu-item" href="https://blog.z36.moe/categories" title="">分类</a>
+            
+                <a class="menu-item" href="https://blog.z36.moe/2019/12/about/" title="">关于我</a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">Docker学习笔记（一）：一大坨基础命令</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://blog.z36.moe/" rel="author"><i class="fas fa-user-circle fa-fw"></i>Zephyr&nbsp;</a>
+                <span class="post-category">
+                        收录于
+                        <i class="far fa-folder fa-fw"></i><a href="https://blog.z36.moe/categories/docker/">Docker</a>
+                            
+                    </span>
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2022-09-11>2022-09-11</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 3112 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 7 分钟&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="post-dummy-target" id="前言"></a><h2>前言</h2>
+<p>进入工作很久了，难免压力上头失眠的时候，回忆起上学的时代，有什么比学东西更催眠的呢&hellip;根据经验，学编程很提神，于是打开了收藏已久老狂神的 Docker 课程。本笔记根据 <a href="https://space.bilibili.com/95256449">BiliBili UP主“遇见狂神说”</a> 的<a href="https://www.bilibili.com/video/BV1og4y1q7M4">《Docker 入门课程》</a>做笔记。同时他是我很喜欢的博主，希望他长久的做下去。</p>
+<p>一直想入坑 <code>Docker</code>，没系统学习过，一知半解，索性从他开始！学习后重构个人文档及服务器。</p>
+<a class="post-dummy-target" id="提前准备"></a><h2>提前准备</h2>
+<p>本人实验环境为虚拟机中尝鲜搭建的 <code>Ubuntu</code>，具体搭建步骤请参照 <code>Docker 官方文档</code>，内含有非常详细的步骤</p>
+<p>官方文档地址：https://docs.docker.com/desktop/install/linux-install/</p>
+<p>个人建议无论什么版本的 Linux，尽量使用包管理器管理安装包。如果是 CentOS，建议升级内核版本</p>
+<a class="post-dummy-target" id="hello-world"></a><h2>Hello World</h2>
+<p>Docker 的 Hello World 只需通过一行命令即可完成，由此也可知道 Docker 的基本结构，我会在下面的运行结果中注释出：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker run hello-world
+</span></span><span class="line"><span class="cl"><span class="o">[</span>sudo<span class="o">]</span> zephyrlin 的密码：
+</span></span><span class="line"><span class="cl">Unable to find image <span class="s1">&#39;hello-world:latest&#39;</span> locally                                   <span class="c1"># 尝试从本地找 Images，未找到      </span>
+</span></span><span class="line"><span class="cl">latest: Pulling from library/hello-world                                            <span class="c1"># 从 Docker Hub 下载镜像</span>
+</span></span><span class="line"><span class="cl">2db29710123e: Pull <span class="nb">complete</span>
+</span></span><span class="line"><span class="cl">Digest: sha256:7d246653d0511db2a6b2e0436cfd0e52ac8c066000264b3ce63331ac66dca625     <span class="c1"># 成功通过镜像，运行容器实例</span>
+</span></span><span class="line"><span class="cl">Status: Downloaded newer image <span class="k">for</span> hello-world:latest
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Hello from Docker!                                                                  <span class="c1"># 运行结果</span>
+</span></span><span class="line"><span class="cl">This message shows that your installation appears to be working correctly.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">To generate this message, Docker took the following steps:
+</span></span><span class="line"><span class="cl"> 1. The Docker client contacted the Docker daemon.
+</span></span><span class="line"><span class="cl"> 2. The Docker daemon pulled the <span class="s2">&#34;hello-world&#34;</span> image from the Docker Hub.
+</span></span><span class="line"><span class="cl">    <span class="o">(</span>amd64<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> 3. The Docker daemon created a new container from that image which runs the
+</span></span><span class="line"><span class="cl">    executable that produces the output you are currently reading.
+</span></span><span class="line"><span class="cl"> 4. The Docker daemon streamed that output to the Docker client, which sent it
+</span></span><span class="line"><span class="cl">    to your terminal.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">To try something more ambitious, you can run an Ubuntu container with:
+</span></span><span class="line"><span class="cl"> $ docker run -it ubuntu bash
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Share images, automate workflows, and more with a free Docker ID:
+</span></span><span class="line"><span class="cl"> https://hub.docker.com/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">For more examples and ideas, visit:
+</span></span><span class="line"><span class="cl"> https://docs.docker.com/get-started/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>由此可以看出，<code>Docker</code> 中有非常重要的三个基本概念，理解了这三个概念，就理解了 <code>Docker</code> 的整个生命周期。</p>
+<ul>
+<li>镜像（Image）</li>
+<li>容器（Container）</li>
+<li>仓库（Repository）</li>
+</ul>
+<p>理解了这三个概念，就理解了 <code>Docker</code> 的整个生命周期</p>
+<a class="post-dummy-target" id="常用命令"></a><h2>常用命令</h2>
+<blockquote>
+<p>命令的帮助文档地址：https://docs.docker.com/engine/reference/commandline/docker/</p>
+</blockquote>
+<a class="post-dummy-target" id="基础命令"></a><h3>基础命令</h3>
+<a class="post-dummy-target" id="docker-version查看docker的版本信息"></a><h4><code>docker version</code>：查看docker的版本信息</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker version
+</span></span><span class="line"><span class="cl">Client: Docker Engine - Community
+</span></span><span class="line"><span class="cl"> Version:           20.10.18
+</span></span><span class="line"><span class="cl"> API version:       1.41
+</span></span><span class="line"><span class="cl"> Go version:        go1.18.6
+</span></span><span class="line"><span class="cl"> Git commit:        b40c2f6
+</span></span><span class="line"><span class="cl"> Built:             Thu Sep  <span class="m">8</span> 23:11:43 <span class="m">2022</span>
+</span></span><span class="line"><span class="cl"> OS/Arch:           linux/amd64
+</span></span><span class="line"><span class="cl"> Context:           default
+</span></span><span class="line"><span class="cl"> Experimental:      <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Server: Docker Engine - Community
+</span></span><span class="line"><span class="cl"> Engine:
+</span></span><span class="line"><span class="cl">  Version:          20.10.18
+</span></span><span class="line"><span class="cl">  API version:      1.41 <span class="o">(</span>minimum version 1.12<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  Go version:       go1.18.6
+</span></span><span class="line"><span class="cl">  Git commit:       e42327a
+</span></span><span class="line"><span class="cl">  Built:            Thu Sep  <span class="m">8</span> 23:09:30 <span class="m">2022</span>
+</span></span><span class="line"><span class="cl">  OS/Arch:          linux/amd64
+</span></span><span class="line"><span class="cl">  Experimental:     <span class="nb">false</span>
+</span></span><span class="line"><span class="cl"> containerd:
+</span></span><span class="line"><span class="cl">  Version:          1.6.8
+</span></span><span class="line"><span class="cl">  GitCommit:        9cd3357b7fd7218e4aec3eae239db1f68a5a6ec6
+</span></span><span class="line"><span class="cl"> runc:
+</span></span><span class="line"><span class="cl">  Version:          1.1.4
+</span></span><span class="line"><span class="cl">  GitCommit:        v1.1.4-0-g5fd4c4d
+</span></span><span class="line"><span class="cl"> docker-init:
+</span></span><span class="line"><span class="cl">  Version:          0.19.0
+</span></span><span class="line"><span class="cl">  GitCommit:        de40ad0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="docker-info查看docker的系统信息包括镜像和容器的数量"></a><h4><code>docker info</code>：查看docker的系统信息,包括镜像和容器的数量</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker info
+</span></span><span class="line"><span class="cl">Client:
+</span></span><span class="line"><span class="cl"> Context:    default
+</span></span><span class="line"><span class="cl"> Debug Mode: <span class="nb">false</span>
+</span></span><span class="line"><span class="cl"> Plugins:
+</span></span><span class="line"><span class="cl">  app: Docker App <span class="o">(</span>Docker Inc., v0.9.1-beta3<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  buildx: Docker Buildx <span class="o">(</span>Docker Inc., v0.9.1-docker<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  compose: Docker Compose <span class="o">(</span>Docker Inc., v2.10.2<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  scan: Docker Scan <span class="o">(</span>Docker Inc., v0.17.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Server:
+</span></span><span class="line"><span class="cl"> Containers: <span class="m">3</span>
+</span></span><span class="line"><span class="cl">  Running: <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  Paused: <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  Stopped: <span class="m">2</span>
+</span></span><span class="line"><span class="cl"> Images: <span class="m">7</span>
+</span></span><span class="line"><span class="cl"> Server Version: 20.10.18
+</span></span><span class="line"><span class="cl"> Storage Driver: overlay2
+</span></span><span class="line"><span class="cl">  Backing Filesystem: extfs
+</span></span><span class="line"><span class="cl">  Supports d_type: <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">  Native Overlay Diff: <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">  userxattr: <span class="nb">false</span>
+</span></span><span class="line"><span class="cl"> Logging Driver: json-file
+</span></span><span class="line"><span class="cl"> Cgroup Driver: systemd
+</span></span><span class="line"><span class="cl"> Cgroup Version: <span class="m">2</span>
+</span></span><span class="line"><span class="cl"> Plugins:
+</span></span><span class="line"><span class="cl">  Volume: <span class="nb">local</span>
+</span></span><span class="line"><span class="cl">  Network: bridge host ipvlan macvlan null overlay
+</span></span><span class="line"><span class="cl">  Log: awslogs fluentd gcplogs gelf journald json-file <span class="nb">local</span> logentries splunk syslog
+</span></span><span class="line"><span class="cl"> Swarm: inactive
+</span></span><span class="line"><span class="cl"> Runtimes: io.containerd.runc.v2 io.containerd.runtime.v1.linux runc
+</span></span><span class="line"><span class="cl"> Default Runtime: runc
+</span></span><span class="line"><span class="cl"> Init Binary: docker-init
+</span></span><span class="line"><span class="cl"> containerd version: 9cd3357b7fd7218e4aec3eae239db1f68a5a6ec6
+</span></span><span class="line"><span class="cl"> runc version: v1.1.4-0-g5fd4c4d
+</span></span><span class="line"><span class="cl"> init version: de40ad0
+</span></span><span class="line"><span class="cl"> Security Options:
+</span></span><span class="line"><span class="cl">  apparmor
+</span></span><span class="line"><span class="cl">  seccomp
+</span></span><span class="line"><span class="cl">   Profile: default
+</span></span><span class="line"><span class="cl">  cgroupns
+</span></span><span class="line"><span class="cl"> Kernel Version: 5.15.0-47-generic
+</span></span><span class="line"><span class="cl"> Operating System: Ubuntu 22.04.1 LTS
+</span></span><span class="line"><span class="cl"> OSType: linux
+</span></span><span class="line"><span class="cl"> Architecture: x86_64
+</span></span><span class="line"><span class="cl"> CPUs: <span class="m">8</span>
+</span></span><span class="line"><span class="cl"> Total Memory: 7.73GiB
+</span></span><span class="line"><span class="cl"> Name: zephyrlin-vm
+</span></span><span class="line"><span class="cl"> ID: BPEP:INYQ:V44F:M2YR:IMSB:EVFP:LGXA:EMCW:6E7X:4AYF:UYFW:AQ7O
+</span></span><span class="line"><span class="cl"> Docker Root Dir: /var/lib/docker
+</span></span><span class="line"><span class="cl"> Debug Mode: <span class="nb">false</span>
+</span></span><span class="line"><span class="cl"> Registry: https://index.docker.io/v1/
+</span></span><span class="line"><span class="cl"> Labels:
+</span></span><span class="line"><span class="cl"> Experimental: <span class="nb">false</span>
+</span></span><span class="line"><span class="cl"> Insecure Registries:
+</span></span><span class="line"><span class="cl">  127.0.0.0/8
+</span></span><span class="line"><span class="cl"> Live Restore Enabled: <span class="nb">false</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="docker-命令---help帮助命令可查看可选的参数以下命令为查看-docker-rmi-的帮助和相关参数"></a><h4><code>docker 命令 --help</code>：帮助命令(可查看可选的参数)，以下命令为查看 <code>docker rmi</code> 的帮助和相关参数</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker rmi --help
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Usage:  docker rmi <span class="o">[</span>OPTIONS<span class="o">]</span> IMAGE <span class="o">[</span>IMAGE...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Remove one or more images
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Options:
+</span></span><span class="line"><span class="cl">  -f, --force      Force removal of the image
+</span></span><span class="line"><span class="cl">      --no-prune   Do not delete untagged parents
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="镜像命令"></a><h3>镜像命令</h3>
+<a class="post-dummy-target" id="docker-images查看本地主机的所有镜像"></a><h4><code>docker images</code>：查看本地主机的所有镜像</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker images
+</span></span><span class="line"><span class="cl">REPOSITORY               TAG       IMAGE ID       CREATED             SIZE
+</span></span><span class="line"><span class="cl">hello-world              latest    feb5d9fea6a5   <span class="m">11</span> months ago       13.3kB
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中，各项字段意义为：</p>
+<ul>
+<li><code>REPOSITORY</code>：镜像的仓库源</li>
+<li><code>TAG</code>：镜像的标签</li>
+<li><code>IMAGE ID</code>：镜像的 ID</li>
+<li><code>CREATED</code>：镜像的创建时间</li>
+<li><code>SIZE</code>：镜像的大小</li>
+</ul>
+<p>此外，还有其它参数：</p>
+<ul>
+<li><code>-a</code>：查看所有镜像</li>
+<li><code>-q</code>：之查看镜像的 ID</li>
+</ul>
+<p>可以配合使用，查看所有镜像 ID：<code>docker images -aq</code></p>
+<a class="post-dummy-target" id="docker-search搜索镜像"></a><h4><code>docker search</code>：搜索镜像</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker search portainer
+</span></span><span class="line"><span class="cl">NAME                                   DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+</span></span><span class="line"><span class="cl">portainer/portainer                    This Repo is now deprecated, use portainer/p…   <span class="m">2262</span>
+</span></span><span class="line"><span class="cl">portainer/portainer-ce                 Portainer CE - a lightweight service deliver…   <span class="m">1343</span>
+</span></span><span class="line"><span class="cl">portainer/agent                        An agent used to manage all the resources in…   <span class="m">163</span>
+</span></span><span class="line"><span class="cl">portainer/templates                    App Templates <span class="k">for</span> Portainer http://portainer…   <span class="m">26</span>
+</span></span><span class="line"><span class="cl">portainer/portainer-ee                 Portainer BE - a fully featured service deli…   <span class="m">25</span>
+</span></span><span class="line"><span class="cl">portainer/golang-builder               Utility to build Golang binaries.               <span class="m">6</span>                    <span class="o">[</span>OK<span class="o">]</span>
+</span></span><span class="line"><span class="cl">portainer/portainer-k8s-beta           Portainer <span class="k">for</span> Kubernetes BETA                   <span class="m">5</span>
+</span></span><span class="line"><span class="cl">portainer/volume-browser               Experimental app used to browser the content…   <span class="m">4</span>
+</span></span><span class="line"><span class="cl">portainer/base                         Multi-stage build image to create the Portai…   <span class="m">3</span>                    <span class="o">[</span>OK<span class="o">]</span>
+</span></span><span class="line"><span class="cl">portainer/dev-toolkit                  The entire Portainer development stack insid…   <span class="m">3</span>
+</span></span><span class="line"><span class="cl">portainer/helper-reset-password                                                        <span class="m">2</span>
+</span></span><span class="line"><span class="cl">portainer/portainer-docker-extension                                                   <span class="m">1</span>
+</span></span><span class="line"><span class="cl">portainer/agent-k8s-beta               Portainer <span class="k">for</span> Kubernetes BETA <span class="o">(</span>agent<span class="o">)</span>           <span class="m">1</span>
+</span></span><span class="line"><span class="cl">portainer/authenticator                Helps you use the Docker CLI with the Portai…   <span class="m">1</span>
+</span></span><span class="line"><span class="cl">rancher/portainer-agent                                                                <span class="m">1</span>
+</span></span><span class="line"><span class="cl">portainer/docbuilder                   Portainer.io documentation builder              <span class="m">1</span>
+</span></span><span class="line"><span class="cl">portainer/kube-tools                   Image including Docker, kubectl and kind        <span class="m">1</span>
+</span></span><span class="line"><span class="cl">portainer/gosec                                                                        <span class="m">1</span>
+</span></span><span class="line"><span class="cl">portainer/pri-fidoiot                  Docker images <span class="k">for</span> the FIDO Device Onboard <span class="o">(</span>F…   <span class="m">0</span>
+</span></span><span class="line"><span class="cl">portainer/helper-templates             A container helper <span class="k">for</span> template file operati…   <span class="m">0</span>
+</span></span><span class="line"><span class="cl">portainer/portainer-extension                                                          <span class="m">0</span>
+</span></span><span class="line"><span class="cl">portainer/angular-builder              Builder image <span class="k">for</span> Portainer frontend.           <span class="m">0</span>                    <span class="o">[</span>OK<span class="o">]</span>
+</span></span><span class="line"><span class="cl">portainer/portable-env                                                                 <span class="m">0</span>
+</span></span><span class="line"><span class="cl">portainer/kubectl-shell                                                                <span class="m">0</span>
+</span></span><span class="line"><span class="cl">portainer/integration-starter                                                          <span class="m">0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>还有其它参数：</p>
+<ul>
+<li><code>-f</code>：filter，过滤器</li>
+</ul>
+<p>使用示例如下，查看 <code>STAR</code> 大于1000的镜像</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker search portainer --filter<span class="o">=</span><span class="nv">STARS</span><span class="o">=</span><span class="m">1000</span>
+</span></span><span class="line"><span class="cl">NAME                     DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+</span></span><span class="line"><span class="cl">portainer/portainer      This Repo is now deprecated, use portainer/p…   <span class="m">2262</span>
+</span></span><span class="line"><span class="cl">portainer/portainer-ce   Portainer CE - a lightweight service deliver…   <span class="m">1343</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>除此之外，建议到官方 Docker Hub 中查看，版本号更为清晰，更能筛选自己需要的容器镜像</p>
+<a class="post-dummy-target" id="docker-pull-镜像名tag下载镜像"></a><h4><code>docker pull 镜像名[:tag]</code>：下载镜像</h4>
+<p>使用示例如下，下载 MySQL 5.7 版本的镜像：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker pull mysql:5.7
+</span></span><span class="line"><span class="cl">5.7: Pulling from library/mysql
+</span></span><span class="line"><span class="cl">9815334b7810: Pull <span class="nb">complete</span>
+</span></span><span class="line"><span class="cl">f85cb6fccbfd: Pull <span class="nb">complete</span>
+</span></span><span class="line"><span class="cl">b63612353671: Pull <span class="nb">complete</span>
+</span></span><span class="line"><span class="cl">447901201612: Pull <span class="nb">complete</span>
+</span></span><span class="line"><span class="cl">9b6bc806cc29: Pull <span class="nb">complete</span>
+</span></span><span class="line"><span class="cl">24ec1f4b3b0d: Pull <span class="nb">complete</span>
+</span></span><span class="line"><span class="cl">207ed1eb2fd4: Pull <span class="nb">complete</span>
+</span></span><span class="line"><span class="cl">27cbde3edd97: Pull <span class="nb">complete</span>
+</span></span><span class="line"><span class="cl">0a5aa35cc154: Pull <span class="nb">complete</span>
+</span></span><span class="line"><span class="cl">e6c92bf6471b: Pull <span class="nb">complete</span>
+</span></span><span class="line"><span class="cl">07b80de0d1af: Pull <span class="nb">complete</span>
+</span></span><span class="line"><span class="cl">Digest: sha256:c1bda6ecdbc63d3b0d3a3a3ce195de3dd755c4a0658ed782a16a0682216b9a48
+</span></span><span class="line"><span class="cl">Status: Downloaded newer image <span class="k">for</span> mysql:5.7
+</span></span><span class="line"><span class="cl">docker.io/library/mysql:5.7
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="docker-rmi删除镜像"></a><h4><code>docker rmi</code>：删除镜像</h4>
+<p>使用例如下，<code>-f</code> 为强制删除，可省略：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 删除指定的镜像id</span>
+</span></span><span class="line"><span class="cl">$ docker rmi -f  镜像id
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除多个镜像id</span>
+</span></span><span class="line"><span class="cl">$ docker rmi -f  镜像id 镜像id 镜像id
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除全部的镜像id</span>
+</span></span><span class="line"><span class="cl">$ docker rmi -f  <span class="k">$(</span>docker images -aq<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="容器命令"></a><h3>容器命令</h3>
+<a class="post-dummy-target" id="docker-run-可选参数-image运行容器"></a><h4><code>docker run [可选参数] image</code>：运行容器</h4>
+<p>可选参数说明：</p>
+<ul>
+<li><code>--name=&quot;名字&quot;</code>：指定容器名字</li>
+<li><code>-d</code>：后台方式运行</li>
+<li><code>-it</code>：使用交互方式运行,进入容器查看内容</li>
+<li><code>-p</code>：指定容器的端口
+<ul>
+<li><code>-p ip</code>：主机端口:容器端口  配置主机端口映射到容器端口</li>
+<li><code>-p</code>：主机端口:容器端口</li>
+<li><code>-p</code>：容器端口)</li>
+</ul>
+</li>
+<li><code>-P</code>：随机指定端口(大写的P)</li>
+</ul>
+<p>示例，运行一个 Tomcat 容器，名称为<code>tomcat01</code>，并将容器内的 8080 端口映射到宿主机的 3344 端口：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker run -d -p 3355:8080 --name tomcat01 tomcat
+</span></span><span class="line"><span class="cl">6601419c9d9eeb869a0c80fc3a5b4a7f8c3659a09c2df4a28223c2b19b48e050
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="进入容器"></a><h4>进入容器</h4>
+<p>这里直接贴出示例，运行一个 CentOS 容器并使用容器内的 <code>/bin/bash</code> 进入该容器操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker run -it centos /bin/bash
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@104acdc5ee47 /<span class="o">]</span><span class="c1">#</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="exit-退出容器"></a><h4><code>exit</code> 退出容器</h4>
+<p>此处注意两种退出的区别：</p>
+<ul>
+<li><code>exit</code> 停止并退出容器（后台方式运行则仅退出）</li>
+<li><code>Ctrl+P+Q</code> 不停止容器退出</li>
+</ul>
+<p>继续上面的示例，停止并退出容器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker run -it centos /bin/bash
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@104acdc5ee47 /<span class="o">]</span><span class="c1"># exit</span>
+</span></span><span class="line"><span class="cl"><span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="docker-ps列出容器"></a><h4><code>docker ps</code>：列出容器</h4>
+<p>参数如下：</p>
+<ul>
+<li>直接输入 <code>docker ps</code>：列出当前正在运行的容器</li>
+<li><code>-a</code>：列出所有容器的运行记录</li>
+<li><code>-n=?</code>：显示最近创建的n个容器</li>
+<li><code>-q</code>：只显示容器的编号</li>
+</ul>
+<p>示例输出如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker ps
+</span></span><span class="line"><span class="cl">CONTAINER ID   IMAGE                           COMMAND             CREATED          STATUS          PORTS                                                                                            NAMES
+</span></span><span class="line"><span class="cl">6601419c9d9e   tomcat                          <span class="s2">&#34;catalina.sh run&#34;</span>   <span class="m">36</span> minutes ago   Up <span class="m">36</span> minutes   0.0.0.0:3355-&gt;8080/tcp, :::3355-&gt;8080/tcp                                                        tomcat01
+</span></span><span class="line"><span class="cl">7e3445a24b27   portainer/portainer-ce:latest   <span class="s2">&#34;/portainer&#34;</span>        <span class="m">6</span> hours ago      Up <span class="m">6</span> hours      0.0.0.0:8000-&gt;8000/tcp, :::8000-&gt;8000/tcp, 0.0.0.0:9443-&gt;9443/tcp, :::9443-&gt;9443/tcp, 9000/tcp   portainer
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ docker ps -a
+</span></span><span class="line"><span class="cl">CONTAINER ID   IMAGE                           COMMAND             CREATED             STATUS                           PORTS                                                                                            NAMES
+</span></span><span class="line"><span class="cl">104acdc5ee47   centos                          <span class="s2">&#34;/bin/bash&#34;</span>         <span class="m">34</span> minutes ago      Exited <span class="o">(</span>0<span class="o">)</span> <span class="m">31</span> minutes ago                                                                                                         sharp_kowalevski
+</span></span><span class="line"><span class="cl">6601419c9d9e   tomcat                          <span class="s2">&#34;catalina.sh run&#34;</span>   <span class="m">36</span> minutes ago      Up <span class="m">36</span> minutes                    0.0.0.0:3355-&gt;8080/tcp, :::3355-&gt;8080/tcp                                                        tomcat01
+</span></span><span class="line"><span class="cl">e821c9f65e4b   hello-world                     <span class="s2">&#34;/hello&#34;</span>            About an hour ago   Exited <span class="o">(</span>0<span class="o">)</span> About an hour ago                                                                                                      xenodochial_ride
+</span></span><span class="line"><span class="cl">17065d6147a4   tomcat                          <span class="s2">&#34;catalina.sh run&#34;</span>   <span class="m">6</span> hours ago         Exited <span class="o">(</span>130<span class="o">)</span> About an hour ago                                                                                                    charming_mendel
+</span></span><span class="line"><span class="cl">7e3445a24b27   portainer/portainer-ce:latest   <span class="s2">&#34;/portainer&#34;</span>        <span class="m">6</span> hours ago         Up <span class="m">6</span> hours                       0.0.0.0:8000-&gt;8000/tcp, :::8000-&gt;8000/tcp, 0.0.0.0:9443-&gt;9443/tcp, :::9443-&gt;9443/tcp, 9000/tcp   portainer
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="删除容器"></a><h4>删除容器</h4>
+<p>此处直接输出示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker rm 容器id                 <span class="c1">#删除指定的容器,不能删除正在运行的容器,$ 强制删除使用 rm -f</span>
+</span></span><span class="line"><span class="cl">$ docker rm -f <span class="k">$(</span>docker ps -aq<span class="k">)</span>   <span class="c1">#删除所有的容器</span>
+</span></span><span class="line"><span class="cl">$ docker ps -a -q<span class="p">|</span>xargs docker rm <span class="c1">#删除所有的容器</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="启动和重启容器命令"></a><h4>启动和重启容器命令</h4>
+<p>此处直接输出示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker start 容器id          <span class="c1">#启动容器</span>
+</span></span><span class="line"><span class="cl">$ docker restart 容器id        <span class="c1">#重启容器</span>
+</span></span><span class="line"><span class="cl">$ docker stop 容器id           <span class="c1">#停止当前运行的容器</span>
+</span></span><span class="line"><span class="cl">$ docker <span class="nb">kill</span> 容器id           <span class="c1">#强制停止当前容器</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="其他命令"></a><h3>其他命令</h3>
+<a class="post-dummy-target" id="docker-logs-查看日志"></a><h4><code>docker logs</code> 查看日志</h4>
+<p>常用参数如下：</p>
+<ul>
+<li><code>-t</code>：显示时间戳</li>
+<li><code>-f</code>：持续跟踪日志输出</li>
+<li><code>--tail</code>：仅列出最新 N 条容器日志</li>
+</ul>
+<p>使用示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker logs -tf 容器id
+</span></span><span class="line"><span class="cl">docker logs --tail 数量 容器id
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时，<code>docker</code> 容器后台运行，必须要有一个前台的进程，否则会自动停止</p>
+<p>编写 <code>shell</code> 脚本循环执行，使得 <code>centos</code> 容器保持运行状态</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker run -d centos /bin/sh -c <span class="s2">&#34;while true;do echo hi;sleep 5;done&#34;</span>
+</span></span><span class="line"><span class="cl">ea997750d91c7f28dbed1cba06ff71a96d89e51f84d777cfe985e56693fc3dec
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ docker ps
+</span></span><span class="line"><span class="cl"><span class="o">(</span>此处省略<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ docker logs -tf --tail <span class="m">10</span> ea997750d91c
+</span></span><span class="line"><span class="cl">2022-09-11T15:18:57.224063266Z hi
+</span></span><span class="line"><span class="cl">2022-09-11T15:19:02.230408571Z hi
+</span></span><span class="line"><span class="cl">2022-09-11T15:19:07.233461526Z hi
+</span></span><span class="line"><span class="cl">2022-09-11T15:19:12.237500674Z hi
+</span></span><span class="line"><span class="cl">2022-09-11T15:19:17.240665738Z hi
+</span></span><span class="line"><span class="cl">2022-09-11T15:19:22.244025273Z hi
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="docker-top-容器id-查看日志"></a><h4><code>docker top 容器ID</code> 查看日志</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker top 7e3445a24b27
+</span></span><span class="line"><span class="cl">UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+</span></span><span class="line"><span class="cl">root                <span class="m">106160</span>              <span class="m">106135</span>              <span class="m">0</span>                   16:52               ?                   00:00:03            /portainer
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="查看容器的元数据"></a><h4>查看容器的元数据</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker inspect 7e3445a24b27
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="进入当前正在运行的容器"></a><h4>进入当前正在运行的容器</h4>
+<p>方式一：进入容器后开启一个新的终端，可以在里面操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker <span class="nb">exec</span> -it 容器ID /bin/bash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>方式二：进入容器正在执行的终端，不会启动新的进程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker attach 容器ID
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="拷贝容器文件到主机"></a><h4>拷贝容器文件到主机</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker cp 容器id:容器内路径 目的主机路径
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="写在最后"></a><h2>写在最后</h2>
+<p>本篇笔记仅作为学习之后记录常用命令。还有大量命令未列出。具体请看 Docker 官方文档，前面也有列出</p>
+
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2022-09-11 更新</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://blog.z36.moe/2022/09/docker1/index.md" target="_blank">阅读原始文档</a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2fblog.z36.moe%2f2022%2f09%2fdocker1%2f&amp;text=Docker%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%b8%80%ef%bc%89%ef%bc%9a%e4%b8%80%e5%a4%a7%e5%9d%a8%e5%9f%ba%e7%a1%80%e5%91%bd%e4%bb%a4&amp;via=z361in" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.z36.moe%2f2022%2f09%2fdocker1%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2fblog.z36.moe%2f2022%2f09%2fdocker1%2f&amp;title=Docker%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%ef%bc%88%e4%b8%80%ef%bc%89%ef%bc%9a%e4%b8%80%e5%a4%a7%e5%9d%a8%e5%9f%ba%e7%a1%80%e5%91%bd%e4%bb%a4" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://blog.z36.moe/tags/%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>折腾笔记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://blog.z36.moe/tags/devops%E5%85%A5%E9%97%A8%E6%97%A5%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>DevOPs入门日记</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://blog.z36.moe/tags/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fas fa-tag fa-fw"></i>Docker学习笔记</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="https://blog.z36.moe/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://blog.z36.moe/2021/06/later/" class="prev" rel="prev" title="更个博，证明我还活着"><i class="fas fa-angle-left fa-fw"></i>更个博，证明我还活着</a>
+        
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>

@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 07 Nov 2019 20:00:04 +0800</lastBuildDate>
-    
-	<atom:link href="https://blog.z36.moe/categories/%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 07 Nov 2019 20:00:04 +0800</lastBuildDate><atom:link href="https://blog.z36.moe/categories/%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>服务器到手后要做的一些事（一）———— 终端初步美化和一些必要工具</title>
       <link>https://blog.z36.moe/2019/11/serverbeautiful/</link>

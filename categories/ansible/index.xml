@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 23 Aug 2020 10:09:56 +0800</lastBuildDate>
-    
-	<atom:link href="https://blog.z36.moe/categories/ansible/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 23 Aug 2020 10:09:56 +0800</lastBuildDate><atom:link href="https://blog.z36.moe/categories/ansible/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>利用 ansible 批量编译安装 zabbix-agent 实现完全自动注册</title>
       <link>https://blog.z36.moe/2020/08/ansible-compileagent/</link>

@@ -41,7 +41,7 @@
     
         "keywords": "折腾笔记, DevOPs入门笔记, Zabbix",
     
-    "wordcount":  916 ,
+    "wordcount":  919 ,
     "url": "https:\/\/blog.z36.moe\/2020\/08\/zabbix0\/",
     
         "datePublished": "2020-08-04T08:10:02\u002b08:00",
@@ -146,7 +146,7 @@
             </div>
             <div class="post-meta-other">
                 <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-04>2020-08-04</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 916 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 919 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
         </div>
 
@@ -186,16 +186,16 @@
 <p>从<a href="https://mirrors.tuna.tsinghua.edu.cn/">清华大学镜像源</a>中找到zabbix，选择需要的版本</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">wget https://mirrors.tuna.tsinghua.edu.cn/zabbix/zabbix/5.0/rhel/7/x86_64/zabbix-release-5.0-1.el7.noarch.rpm
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget https://mirrors.tuna.tsinghua.edu.cn/zabbix/zabbix/5.0/rhel/7/x86_64/zabbix-release-5.0-1.el7.noarch.rpm
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后安装 RPM 包 并且查看包内</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -208,23 +208,23 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@zep0 ~<span class="o">]</span><span class="c1"># rpm -ivh zabbix-release-5.0-1.el7.noarch.rpm</span>
-warning: zabbix-release-5.0-1.el7.noarch.rpm: Header V4 RSA/SHA512 Signature, key ID a14fe591: NOKEY
-Preparing...                          <span class="c1">################################# [100%]</span>
-Updating / installing...
-   1:zabbix-release-5.0-1.el7         <span class="c1">################################# [100%]</span>
-<span class="o">[</span>root@zep0 ~<span class="o">]</span><span class="c1"># rpm -ql zabbix-release</span>
-/etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX
-/etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX-A14FE591
-/etc/yum.repos.d/zabbix.repo
-/usr/share/doc/zabbix-release-5.0
-/usr/share/doc/zabbix-release-5.0/GPL
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@zep0 ~<span class="o">]</span><span class="c1"># rpm -ivh zabbix-release-5.0-1.el7.noarch.rpm</span>
+</span></span><span class="line"><span class="cl">warning: zabbix-release-5.0-1.el7.noarch.rpm: Header V4 RSA/SHA512 Signature, key ID a14fe591: NOKEY
+</span></span><span class="line"><span class="cl">Preparing...                          <span class="c1">################################# [100%]</span>
+</span></span><span class="line"><span class="cl">Updating / installing...
+</span></span><span class="line"><span class="cl">   1:zabbix-release-5.0-1.el7         <span class="c1">################################# [100%]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@zep0 ~<span class="o">]</span><span class="c1"># rpm -ql zabbix-release</span>
+</span></span><span class="line"><span class="cl">/etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX
+</span></span><span class="line"><span class="cl">/etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX-A14FE591
+</span></span><span class="line"><span class="cl">/etc/yum.repos.d/zabbix.repo
+</span></span><span class="line"><span class="cl">/usr/share/doc/zabbix-release-5.0
+</span></span><span class="line"><span class="cl">/usr/share/doc/zabbix-release-5.0/GPL
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>查看下载地址</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -254,35 +254,35 @@ Updating / installing...
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@zep0 ~<span class="o">]</span>vim /etc/yum.repos.d/zabbix.repo
-<span class="o">[</span>zabbix<span class="o">]</span>
-<span class="nv">name</span><span class="o">=</span>Zabbix Official Repository - <span class="nv">$basearch</span>
-<span class="nv">baseurl</span><span class="o">=</span>http://repo.zabbix.com/zabbix/5.0/rhel/7/<span class="nv">$basearch</span>/
-<span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX-A14FE591
-
-<span class="o">[</span>zabbix-frontend<span class="o">]</span>
-<span class="nv">name</span><span class="o">=</span>Zabbix Official Repository frontend - <span class="nv">$basearch</span>
-<span class="nv">baseurl</span><span class="o">=</span>http://repo.zabbix.com/zabbix/5.0/rhel/7/<span class="nv">$basearch</span>/frontend
-<span class="nv">enabled</span><span class="o">=</span><span class="m">0</span>
-<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX-A14FE591
-
-<span class="o">[</span>zabbix-debuginfo<span class="o">]</span>
-<span class="nv">name</span><span class="o">=</span>Zabbix Official Repository debuginfo - <span class="nv">$basearch</span>
-<span class="nv">baseurl</span><span class="o">=</span>http://repo.zabbix.com/zabbix/5.0/rhel/7/<span class="nv">$basearch</span>/debuginfo/
-<span class="nv">enabled</span><span class="o">=</span><span class="m">0</span>
-<span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX-A14FE591
-<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
-
-<span class="o">[</span>zabbix-non-supported<span class="o">]</span>
-<span class="nv">name</span><span class="o">=</span>Zabbix Official Repository non-supported - <span class="nv">$basearch</span>
-<span class="nv">baseurl</span><span class="o">=</span>http://repo.zabbix.com/non-supported/rhel/7/<span class="nv">$basearch</span>/
-<span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX
-<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@zep0 ~<span class="o">]</span>vim /etc/yum.repos.d/zabbix.repo
+</span></span><span class="line"><span class="cl"><span class="o">[</span>zabbix<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">name</span><span class="o">=</span>Zabbix Official Repository - <span class="nv">$basearch</span>
+</span></span><span class="line"><span class="cl"><span class="nv">baseurl</span><span class="o">=</span>http://repo.zabbix.com/zabbix/5.0/rhel/7/<span class="nv">$basearch</span>/
+</span></span><span class="line"><span class="cl"><span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX-A14FE591
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>zabbix-frontend<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">name</span><span class="o">=</span>Zabbix Official Repository frontend - <span class="nv">$basearch</span>
+</span></span><span class="line"><span class="cl"><span class="nv">baseurl</span><span class="o">=</span>http://repo.zabbix.com/zabbix/5.0/rhel/7/<span class="nv">$basearch</span>/frontend
+</span></span><span class="line"><span class="cl"><span class="nv">enabled</span><span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX-A14FE591
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>zabbix-debuginfo<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">name</span><span class="o">=</span>Zabbix Official Repository debuginfo - <span class="nv">$basearch</span>
+</span></span><span class="line"><span class="cl"><span class="nv">baseurl</span><span class="o">=</span>http://repo.zabbix.com/zabbix/5.0/rhel/7/<span class="nv">$basearch</span>/debuginfo/
+</span></span><span class="line"><span class="cl"><span class="nv">enabled</span><span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX-A14FE591
+</span></span><span class="line"><span class="cl"><span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>zabbix-non-supported<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">name</span><span class="o">=</span>Zabbix Official Repository non-supported - <span class="nv">$basearch</span>
+</span></span><span class="line"><span class="cl"><span class="nv">baseurl</span><span class="o">=</span>http://repo.zabbix.com/non-supported/rhel/7/<span class="nv">$basearch</span>/
+</span></span><span class="line"><span class="cl"><span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX
+</span></span><span class="line"><span class="cl"><span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以发现虽然从清华源下的 里面的下载地址仍让是官网 太慢 我们换成清华源的</p>
 <p><a href="https://img.zephyrl.co/image/yVU3"><img src="https://img.zephyrl.co/images/2020/08/05/1-sg.png" alt="1-sg.png"></a></p>
@@ -295,42 +295,42 @@ Updating / installing...
 <p>首先安装 Zabbix 服务器和代理</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">yum install zabbix-server-mysql zabbix-agent
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install zabbix-server-mysql zabbix-agent
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后安装前端</p>
 <p>回到 <code>/etc/yum.repos.d/zabbix.repo</code> 中，编辑</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vim" data-lang="vim">[<span class="nx">zabbix</span><span class="p">-</span><span class="nx">frontend</span>]<span class="err">
-</span><span class="err"></span>...<span class="err">
-</span><span class="err"></span><span class="nx">enabled</span><span class="p">=</span><span class="m">1</span><span class="err">
-</span><span class="err"></span>...<span class="err">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl">[<span class="nx">zabbix</span><span class="p">-</span><span class="nx">frontend</span>]<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>...<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">enabled</span><span class="p">=</span><span class="m">1</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>...<span class="err">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后将 zabbix web 安装</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">yum install zabbix-web-mysql-scl zabbix-apache-conf-scl
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">yum install zabbix-web-mysql-scl zabbix-apache-conf-scl
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="设置-mysql-数据库"></a><h2>设置 MySQL 数据库</h2>
 <p>首先 创建 zabbix 数据库并创建 zabbix 用户并且赋予权限</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -338,27 +338,27 @@ Updating / installing...
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@zep0 ~<span class="o">]</span><span class="c1"># mysql -uroot -p</span>
-password
-mysql&gt; create database zabbix character <span class="nb">set</span> utf8 collate utf8_bin<span class="p">;</span>
-mysql&gt; create user zabbix@localhost identified by <span class="s1">&#39;password&#39;</span><span class="p">;</span>
-mysql&gt; grant all privileges on zabbix.* to zabbix@localhost<span class="p">;</span>
-mysql&gt; quit<span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@zep0 ~<span class="o">]</span><span class="c1"># mysql -uroot -p</span>
+</span></span><span class="line"><span class="cl">password
+</span></span><span class="line"><span class="cl">mysql&gt; create database zabbix character <span class="nb">set</span> utf8 collate utf8_bin<span class="p">;</span>
+</span></span><span class="line"><span class="cl">mysql&gt; create user zabbix@localhost identified by <span class="s1">&#39;password&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">mysql&gt; grant all privileges on zabbix.* to zabbix@localhost<span class="p">;</span>
+</span></span><span class="line"><span class="cl">mysql&gt; quit<span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后用自带的 SQL 语句写入数据库 创建表</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz <span class="p">|</span> mysql -uzabbix -p zabbix
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz <span class="p">|</span> mysql -uzabbix -p zabbix
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果忘了在哪 可以这样查询：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -370,87 +370,87 @@ mysql&gt; quit<span class="p">;</span>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@zep0 ~<span class="o">]</span><span class="c1"># rpm -ql zabbix-server-mysql | grep sql</span>
-/usr/sbin/zabbix_server_mysql
-/usr/share/doc/zabbix-server-mysql-5.0.2
-/usr/share/doc/zabbix-server-mysql-5.0.2/AUTHORS
-/usr/share/doc/zabbix-server-mysql-5.0.2/COPYING
-/usr/share/doc/zabbix-server-mysql-5.0.2/ChangeLog
-/usr/share/doc/zabbix-server-mysql-5.0.2/NEWS
-/usr/share/doc/zabbix-server-mysql-5.0.2/README
-/usr/share/doc/zabbix-server-mysql-5.0.2/create.sql.gz
-/usr/share/doc/zabbix-server-mysql-5.0.2/double.sql
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@zep0 ~<span class="o">]</span><span class="c1"># rpm -ql zabbix-server-mysql | grep sql</span>
+</span></span><span class="line"><span class="cl">/usr/sbin/zabbix_server_mysql
+</span></span><span class="line"><span class="cl">/usr/share/doc/zabbix-server-mysql-5.0.2
+</span></span><span class="line"><span class="cl">/usr/share/doc/zabbix-server-mysql-5.0.2/AUTHORS
+</span></span><span class="line"><span class="cl">/usr/share/doc/zabbix-server-mysql-5.0.2/COPYING
+</span></span><span class="line"><span class="cl">/usr/share/doc/zabbix-server-mysql-5.0.2/ChangeLog
+</span></span><span class="line"><span class="cl">/usr/share/doc/zabbix-server-mysql-5.0.2/NEWS
+</span></span><span class="line"><span class="cl">/usr/share/doc/zabbix-server-mysql-5.0.2/README
+</span></span><span class="line"><span class="cl">/usr/share/doc/zabbix-server-mysql-5.0.2/create.sql.gz
+</span></span><span class="line"><span class="cl">/usr/share/doc/zabbix-server-mysql-5.0.2/double.sql
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>也可以找到 <code>create.sql.gz</code></p>
 <p>稍等片刻，完成后可以用如下命令来显示已有的表</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysql -uroot -p zabbix -e <span class="s1">&#39;show tables;&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mysql -uroot -p zabbix -e <span class="s1">&#39;show tables;&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果出现一大堆表就证明成功</p>
 <p>之后 配置启动zabbix-server</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">vim /etc/zabbix/zabbix_server.conf
-<span class="nv">DBHost</span><span class="o">=</span>localhost
-<span class="nv">DBName</span><span class="o">=</span>zabbix
-<span class="nv">DBUser</span><span class="o">=</span>zabbix
-<span class="nv">DBPassword</span><span class="o">=</span>password
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vim /etc/zabbix/zabbix_server.conf
+</span></span><span class="line"><span class="cl"><span class="nv">DBHost</span><span class="o">=</span>localhost
+</span></span><span class="line"><span class="cl"><span class="nv">DBName</span><span class="o">=</span>zabbix
+</span></span><span class="line"><span class="cl"><span class="nv">DBUser</span><span class="o">=</span>zabbix
+</span></span><span class="line"><span class="cl"><span class="nv">DBPassword</span><span class="o">=</span>password
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后通过编辑 <code>/etc/opt/rh/rh-php72/php-fpm.d/zabbix.conf</code> 来修改时区</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">php_value<span class="o">[</span>date.timezone<span class="o">]</span> <span class="o">=</span> Asia/Shanghai
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">php_value<span class="o">[</span>date.timezone<span class="o">]</span> <span class="o">=</span> Asia/Shanghai
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后 启动服务器</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">systemctl restart zabbix-server zabbix-agent httpd rh-php72-php-fpm
-systemctl <span class="nb">enable</span> zabbix-server zabbix-agent httpd rh-php72-php-fpm
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">systemctl restart zabbix-server zabbix-agent httpd rh-php72-php-fpm
+</span></span><span class="line"><span class="cl">systemctl <span class="nb">enable</span> zabbix-server zabbix-agent httpd rh-php72-php-fpm
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="安装-zabbix-网页面板"></a><h2>安装 Zabbix 网页面板</h2>
 <p>启动服务器后，进入 ip/zabbix 即可访问面板安装程序，按照步骤输入即可</p>
 <p>但是再连接数据库的时候 我出现了验证问题</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">The server requested authentication method unknown to the client <span class="o">[</span>duplicate<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">The server requested authentication method unknown to the client <span class="o">[</span>duplicate<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>后发现是 MySQL8 和 PHP7 的兼容问题</p>
 <p>MySQL8 的默认插件是auth_socket，于 PHP7不兼容</p>
 <p>解决办法是登录 MySQL 数据库 输入以下 SQL 语句即可解决</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">ALTER</span> <span class="k">USER</span> <span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">WITH</span> <span class="n">mysql_native_password</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">mysql_native_password</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>解决问题是从 StackOverflow 找到的，链接<a href="https://stackoverflow.com/questions/52364415/php-with-mysql-8-0-error-the-server-requested-authentication-method-unknown-to">在这里</a></p>
 <a class="post-dummy-target" id="添加主机"></a><h2>添加主机</h2>
@@ -458,31 +458,31 @@ systemctl <span class="nb">enable</span> zabbix-server zabbix-agent httpd rh-php
 <p>添加主机只需要在目标机器上安装 <code>zabbix-agent</code> 即可，而 <code>zabbix-agent</code> 没什么依赖包，安装非常简单快捷</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">rpm -ivh https://mirrors.tuna.tsinghua.edu.cn/zabbix/zabbix/5.0/rhel/7/x86_64/zabbix-agent-5.0.1-1.el7.x86_64.rpm
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rpm -ivh https://mirrors.tuna.tsinghua.edu.cn/zabbix/zabbix/5.0/rhel/7/x86_64/zabbix-agent-5.0.1-1.el7.x86_64.rpm
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后进入 <code>/etc/zabbix/zabbix_agentd.conf</code> 中修改主机地址为监控机地址</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">server</span> <span class="o">=</span> xxxxx
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">server</span> <span class="o">=</span> xxxxx
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>最后，启动服务</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">systemctl start zabbix-agent
-systemctl <span class="nb">enable</span> zabbix-agent
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl start zabbix-agent
+</span></span><span class="line"><span class="cl">systemctl <span class="nb">enable</span> zabbix-agent
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="web-面板操作"></a><h3>Web 面板操作</h3>
 <p>进入面板，选择配置-主机-创建主机</p>
@@ -597,7 +597,7 @@ systemctl <span class="nb">enable</span> zabbix-agent
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

@@ -191,7 +191,7 @@
 <p>找到注释中的如下代码段：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -199,29 +199,29 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- localRepository
-</span><span class="c"> | The path to the local repository maven will use to store artifacts.
-</span><span class="c"> |
-</span><span class="c"> | Default: ${user.home}/.m2/repository
-</span><span class="c">&lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;
-</span><span class="c">--&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- localRepository
+</span></span></span><span class="line"><span class="cl"><span class="c"> | The path to the local repository maven will use to store artifacts.
+</span></span></span><span class="line"><span class="cl"><span class="c"> |
+</span></span></span><span class="line"><span class="cl"><span class="c"> | Default: ${user.home}/.m2/repository
+</span></span></span><span class="line"><span class="cl"><span class="c">&lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c">--&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>中的注释行最后一行挪出来，换到别的地方</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;localRepository&gt;</span>c:\develop\.m2\repository<span class="nt">&lt;/localRepository&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;localRepository&gt;</span>c:\develop\.m2\repository<span class="nt">&lt;/localRepository&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>我只是以自己为例，中间是路径。</p>
 <p>第二步是添加镜像服务器仓库，</p>
 <p>在<code>&lt;mirrors&gt;</code>标签下，添加代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -229,13 +229,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;mirror&gt;</span>
-    <span class="nt">&lt;id&gt;</span>alimaven<span class="nt">&lt;/id&gt;</span>
-    <span class="nt">&lt;name&gt;</span>aliyun maven<span class="nt">&lt;/name&gt;</span>
-    <span class="nt">&lt;url&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="nt">&lt;/url&gt;</span>
-    <span class="nt">&lt;mirrorOf&gt;</span>central<span class="nt">&lt;/mirrorOf&gt;</span>
-<span class="nt">&lt;/mirror&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;mirror&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;id&gt;</span>alimaven<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;name&gt;</span>aliyun maven<span class="nt">&lt;/name&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;url&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="nt">&lt;/url&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;mirrorOf&gt;</span>central<span class="nt">&lt;/mirrorOf&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/mirror&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="安装ideamysql过程不再赘述官网下载安装即可"></a><h2>安装Idea、MySQL过程不再赘述，官网下载安装即可</h2>
 <a class="post-dummy-target" id="idea-maven配置"></a><h2>IDEA Maven配置</h2>
@@ -261,11 +261,11 @@
 <p>此时可以发现代码头部已经标记了如下代码段：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;% page contentType=&#34;text/html;charset=UTF-8&#34; language=&#34;java&#34; %&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;% page contentType=&#34;text/html;charset=UTF-8&#34; language=&#34;java&#34; %&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>此时相关配置就完成啦！</p>
 <a class="post-dummy-target" id="总结"></a><h2>总结</h2>
@@ -377,7 +377,7 @@
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

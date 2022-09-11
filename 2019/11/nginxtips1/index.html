@@ -202,11 +202,11 @@
 <p>假设我们在nginx源代码文件中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">cp -r contrib/vim/* ~/.vim
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cp -r contrib/vim/* ~/.vim
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>效果如下：</p>
 <p><img src="https://img.zephyrl.co/images/2020/02/02/113c975dbbd1057df.png" alt="vim高亮"></p>
@@ -214,17 +214,17 @@
 <a class="post-dummy-target" id="confugre相关"></a><h3>./confugre相关：</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">./configure --help <span class="o">||</span> more
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./configure --help <span class="o">||</span> more
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>一般带<code>--with</code>的都是默认不编译的，带<code>--without</code>的是默认编译的。</p>
 <p>我一般的代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -233,14 +233,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">./configure <span class="se">\
-</span><span class="se"></span>--prefix<span class="o">=</span>/usr/local/nginx <span class="se">\
-</span><span class="se"></span>--user<span class="o">=</span>www <span class="se">\
-</span><span class="se"></span>--group<span class="o">=</span>www <span class="se">\
-</span><span class="se"></span>--with-http_gzip_static_module <span class="se">\
-</span><span class="se"></span>--with-http_flv_module <span class="se">\
-</span><span class="se"></span>--with-http_ssl_module
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">./configure <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--prefix<span class="o">=</span>/usr/local/nginx <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--user<span class="o">=</span>www <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--group<span class="o">=</span>www <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--with-http_gzip_static_module <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--with-http_flv_module <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--with-http_ssl_module
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>configure</code>后编译出的中间文件在<code>objs</code>文件夹。其中最重要的文件是<code>ngx_model.c</code>，它决定了接下来哪些模块会被编译进我们的Nginx。</p>
 <p>他们会形成一个叫<code>ngx-models的数组</code>。</p>
@@ -268,26 +268,26 @@
 <p>然后我们需要给旧Nginx的master进程发送信号USR2。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">cp /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.old
-<span class="c1"># 然后拷贝新的二进制文件进入目录下</span>
-<span class="nb">kill</span> -USR2 <span class="o">[</span>nginx.master.PID<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cp /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.old
+</span></span><span class="line"><span class="cl"><span class="c1"># 然后拷贝新的二进制文件进入目录下</span>
+</span></span><span class="line"><span class="cl"><span class="nb">kill</span> -USR2 <span class="o">[</span>nginx.master.PID<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>此时会新起一个master进程，他将执行最新的二进制文件。</p>
 <p>老的Worker进程也会保留，只是不在监听80或者443端口，他们会平滑的过度。</p>
 <p>此时我们要对老的进程发送一个WINCH指令，让他（老master进程）优雅的停止，交付给新的进程</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">kill</span> -WINCH <span class="o">[</span>nginxOLD.master.PID<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">kill</span> -WINCH <span class="o">[</span>nginxOLD.master.PID<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>此时执行<code>ps -ef | grep nginx</code>会发现，只有新的Nignx Worker进程保留着。</p>
 <p>然而老的Master进程也会得以保留，可以给他发送RELOAD命令把他拉起，以便解决新的Nginx版本出现一些兼容性问题。</p>
@@ -296,7 +296,7 @@
 <p>但是我们可以把它写成一个bash脚本，放在<code>crontab</code>中，脚本如下。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -307,16 +307,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
-</span><span class="cp"></span><span class="c1"># Rotate Nginx logs to prevent a single logfile from consuming too much disk space.</span>
-<span class="nv">LOGS_PATH</span><span class="o">=</span>/usr/local/nginx/logs/history
-<span class="nv">CUR_LOGS_PATH</span><span class="o">=</span>/usr/local/nginx/logs
-<span class="nv">YESTERDAY</span><span class="o">=</span><span class="k">$(</span>date -d <span class="s2">&#34;yesterday&#34;</span> + %Y-%m-%d<span class="k">)</span>
-mv <span class="si">${</span><span class="nv">CUR_LOGS_PATH</span><span class="si">}</span>/access.log <span class="si">${</span><span class="nv">LOGS_PATH</span><span class="si">}</span>/access_<span class="si">${</span><span class="nv">YESTERDAY</span><span class="si">}</span>.log
-mv <span class="si">${</span><span class="nv">CUR_LOGS_PATH</span><span class="si">}</span>/error.log <span class="si">${</span><span class="nv">LOGS_PATH</span><span class="si">}</span>/error_<span class="si">${</span><span class="nv">YESTERDAY</span><span class="si">}</span>.log
-<span class="c1"># 向Nginx主进程发送USR1信号。USR1信号时重新打开日志文件</span>
-<span class="nb">kill</span> -USR1 <span class="k">$(</span>cat /usr/local/nginx/logs/nginx.pid<span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1"># Rotate Nginx logs to prevent a single logfile from consuming too much disk space.</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LOGS_PATH</span><span class="o">=</span>/usr/local/nginx/logs/history
+</span></span><span class="line"><span class="cl"><span class="nv">CUR_LOGS_PATH</span><span class="o">=</span>/usr/local/nginx/logs
+</span></span><span class="line"><span class="cl"><span class="nv">YESTERDAY</span><span class="o">=</span><span class="k">$(</span>date -d <span class="s2">&#34;yesterday&#34;</span> + %Y-%m-%d<span class="k">)</span>
+</span></span><span class="line"><span class="cl">mv <span class="si">${</span><span class="nv">CUR_LOGS_PATH</span><span class="si">}</span>/access.log <span class="si">${</span><span class="nv">LOGS_PATH</span><span class="si">}</span>/access_<span class="si">${</span><span class="nv">YESTERDAY</span><span class="si">}</span>.log
+</span></span><span class="line"><span class="cl">mv <span class="si">${</span><span class="nv">CUR_LOGS_PATH</span><span class="si">}</span>/error.log <span class="si">${</span><span class="nv">LOGS_PATH</span><span class="si">}</span>/error_<span class="si">${</span><span class="nv">YESTERDAY</span><span class="si">}</span>.log
+</span></span><span class="line"><span class="cl"><span class="c1"># 向Nginx主进程发送USR1信号。USR1信号时重新打开日志文件</span>
+</span></span><span class="line"><span class="cl"><span class="nb">kill</span> -USR1 <span class="k">$(</span>cat /usr/local/nginx/logs/nginx.pid<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><em>注：crontab是一个用来设置、删除或显示供守护进程cron执行的定时任务的命令。每一个用户都可以拥有属于自己的定时任务，定时任务文件默认以用户名命名，并放在/var/spool/cron目录，该目录普通用户无访问权限。可以用<code>crontab -l</code>来查看目前的定时任务。</em></p>
 
@@ -418,7 +418,7 @@ mv <span class="si">${</span><span class="nv">CUR_LOGS_PATH</span><span class="s
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

@@ -187,50 +187,50 @@
 <p>因为在CentOS7中源码安装Python 3.7之前需要安装GCC和make编译工具，该工具保安在“Development toos”软件组中，可以直接安装</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">yum groupinstall <span class="s2">&#34;Development tools&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum groupinstall <span class="s2">&#34;Development tools&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>再安装一些其他的依赖</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
-yum install libffi-devel -y
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
+</span></span><span class="line"><span class="cl">yum install libffi-devel -y
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="下载源代码包解压"></a><h2>下载源代码包解压</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/local/src/
-wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz
-<span class="nb">cd</span> Python-3.7.4
-./configure --prefix<span class="o">=</span>/usr/local/python3
-make <span class="o">&amp;&amp;</span> make install
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /usr/local/src/
+</span></span><span class="line"><span class="cl">wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> Python-3.7.4
+</span></span><span class="line"><span class="cl">./configure --prefix<span class="o">=</span>/usr/local/python3
+</span></span><span class="line"><span class="cl">make <span class="o">&amp;&amp;</span> make install
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="建立软连接"></a><h2>建立软连接</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ln -s /usr/local/python3/bin/python3 /usr/local/bin/python3
-ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ln -s /usr/local/python3/bin/python3 /usr/local/bin/python3
+</span></span><span class="line"><span class="cl">ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后就可以在终端输入python3或者pip来玩耍啦！</p>
 
@@ -328,7 +328,7 @@ ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

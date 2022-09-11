@@ -186,84 +186,84 @@
 <p>Ansible 位于 <code>epel</code> 源，我们在安装 Ansible 之前需要安装 <code>epel-release</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">yum install epel-release
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">yum install epel-release
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后就可以通过 yum 安装 Ansible 了</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">yum install ansible
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">yum install ansible
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="编译安装"></a><h3>编译安装</h3>
 <p>1、安装运行库</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">yum -y install python-jinja2 PyYAML python-paramiko python-babel
-python-crypto
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum -y install python-jinja2 PyYAML python-paramiko python-babel
+</span></span><span class="line"><span class="cl">python-crypto
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>2、下载解压源码包</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">wget https://github.com/ansible/ansible/archive/v2.9.12.tar.gz
-mv v2.9.12.tar.gz /usr/local
-tar zxvf v2.9.12.tar.gz
-<span class="nb">cd</span> 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget https://github.com/ansible/ansible/archive/v2.9.12.tar.gz
+</span></span><span class="line"><span class="cl">mv v2.9.12.tar.gz /usr/local
+</span></span><span class="line"><span class="cl">tar zxvf v2.9.12.tar.gz
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>3、编译并安装</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">python setup.py build
-python setup.py install
-mkdir /etc/ansible
-cp -r examples/* /etc/ansible
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python setup.py build
+</span></span><span class="line"><span class="cl">python setup.py install
+</span></span><span class="line"><span class="cl">mkdir /etc/ansible
+</span></span><span class="line"><span class="cl">cp -r examples/* /etc/ansible
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="ansible-相关文件"></a><h2>Ansible 相关文件</h2>
 <p>配置文件：</p>
 <table>
 <thead>
 <tr>
-<th align="center">目录</th>
-<th align="center">功能</th>
+<th style="text-align:center">目录</th>
+<th style="text-align:center">功能</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center"><code>/etc/ansible/ansible.cfg</code></td>
-<td align="center">主配置文件,配置ansible工作特性(一般无需修改)</td>
+<td style="text-align:center"><code>/etc/ansible/ansible.cfg</code></td>
+<td style="text-align:center">主配置文件,配置ansible工作特性(一般无需修改)</td>
 </tr>
 <tr>
-<td align="center"><code>/etc/ansible/hosts</code></td>
-<td align="center">主机清单(将被管理的主机放到此文件)</td>
+<td style="text-align:center"><code>/etc/ansible/hosts</code></td>
+<td style="text-align:center">主机清单(将被管理的主机放到此文件)</td>
 </tr>
 <tr>
-<td align="center"><code>/etc/ansible/roles/</code></td>
-<td align="center">存放角色的目录</td>
+<td style="text-align:center"><code>/etc/ansible/roles/</code></td>
+<td style="text-align:center">存放角色的目录</td>
 </tr>
 </tbody>
 </table>
@@ -271,38 +271,38 @@ cp -r examples/* /etc/ansible
 <table>
 <thead>
 <tr>
-<th align="center">目录</th>
-<th align="center">功能</th>
+<th style="text-align:center">目录</th>
+<th style="text-align:center">功能</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center"><code>/usr/bin/ansible</code></td>
-<td align="center">主程序，临时命令执行工具</td>
+<td style="text-align:center"><code>/usr/bin/ansible</code></td>
+<td style="text-align:center">主程序，临时命令执行工具</td>
 </tr>
 <tr>
-<td align="center"><code>/usr/bin/ansible-doc</code></td>
-<td align="center">查看配置文档，模块功能查看工具</td>
+<td style="text-align:center"><code>/usr/bin/ansible-doc</code></td>
+<td style="text-align:center">查看配置文档，模块功能查看工具</td>
 </tr>
 <tr>
-<td align="center"><code>/usr/bin/ansible-galaxy</code></td>
-<td align="center">下载/上传优秀代码或Roles模块的官网平台</td>
+<td style="text-align:center"><code>/usr/bin/ansible-galaxy</code></td>
+<td style="text-align:center">下载/上传优秀代码或Roles模块的官网平台</td>
 </tr>
 <tr>
-<td align="center"><code>/usr/bin/ansible-playbook</code></td>
-<td align="center">定制自动化任务，编排剧本工具</td>
+<td style="text-align:center"><code>/usr/bin/ansible-playbook</code></td>
+<td style="text-align:center">定制自动化任务，编排剧本工具</td>
 </tr>
 <tr>
-<td align="center"><code>/usr/bin/ansible-pull</code></td>
-<td align="center">远程执行命令的工具</td>
+<td style="text-align:center"><code>/usr/bin/ansible-pull</code></td>
+<td style="text-align:center">远程执行命令的工具</td>
 </tr>
 <tr>
-<td align="center"><code>/usr/bin/ansible-vault</code></td>
-<td align="center">文件加密工具</td>
+<td style="text-align:center"><code>/usr/bin/ansible-vault</code></td>
+<td style="text-align:center">文件加密工具</td>
 </tr>
 <tr>
-<td align="center"><code>/usr/bin/ansible-console</code></td>
-<td align="center">基于Console界面与用户交互的执行工具</td>
+<td style="text-align:center"><code>/usr/bin/ansible-console</code></td>
+<td style="text-align:center">基于Console界面与用户交互的执行工具</td>
 </tr>
 </tbody>
 </table>
@@ -310,7 +310,7 @@ cp -r examples/* /etc/ansible
 <p>我们用一个 <code>ping</code> 命令来开始 <code>ansible</code> 的学习</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -321,16 +321,16 @@ cp -r examples/* /etc/ansible
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@zep0 ~<span class="o">]</span><span class="c1"># ansible 192.168.1.136 -m ping -k</span>
-SSH password:
-192.168.1.136 <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
-    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
-        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/bin/python&#34;</span>
-    <span class="o">}</span>,
-    <span class="s2">&#34;changed&#34;</span>: false,
-    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@zep0 ~<span class="o">]</span><span class="c1"># ansible 192.168.1.136 -m ping -k</span>
+</span></span><span class="line"><span class="cl">SSH password:
+</span></span><span class="line"><span class="cl">192.168.1.136 <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/bin/python&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;changed&#34;</span>: false,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>输入 SSH 密码之后，收到以上回应即为成功</p>
 <a class="post-dummy-target" id="一些配置"></a><h2>一些配置</h2>
@@ -341,7 +341,7 @@ SSH password:
 <p>打开 <code>/etc/ansible/hosts</code>，可以发现上面注释了好多的示例，我们可以按照他的注释编写自己的 <code>hosts</code> 主机文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -351,22 +351,22 @@ SSH password:
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[vms]</span>
-<span class="na">192.168.50.101</span>
-<span class="na">192.168.50.102</span>
-<span class="na">192.168.50.103</span>
-
-<span class="k">[servers]</span>
-<span class="na">192.168.1.169</span>
-<span class="na">192.168.1.136</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[vms]</span>
+</span></span><span class="line"><span class="cl"><span class="na">192.168.50.101</span>
+</span></span><span class="line"><span class="cl"><span class="na">192.168.50.102</span>
+</span></span><span class="line"><span class="cl"><span class="na">192.168.50.103</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">[servers]</span>
+</span></span><span class="line"><span class="cl"><span class="na">192.168.1.169</span>
+</span></span><span class="line"><span class="cl"><span class="na">192.168.1.136</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="修改推荐的设置"></a><h3>修改推荐的设置</h3>
 <p>Ansible 配置文件/etc/ansible/ansible.cfg （一般保持默认）</p>
 <p>其中 Default 项目和意义如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -378,30 +378,30 @@ SSH password:
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[defaults]
-#inventory     = /etc/ansible/hosts      # 主机列表配置文件
-#library       = /usr/share/my_modules/  # 库文件存放目录
-#remote_tmp    = $HOME/.ansible/tmp      # 临时py命令文件存放在远程主机目录
-#local_tmp     = $HOME/.ansible/tmp      # 本机的临时命令执行目录  
-#forks         = 5                       # 默认并发数,同时可以执行5次
-#sudo_user     = root                    # 默认sudo 用户
-#ask_sudo_pass = True                    # 每次执行ansible命令是否询问ssh密码
-#ask_pass      = True                    # 每次执行ansible命令是否询问ssh口令
-#remote_port   = 22                      # 远程主机的端口号(默认22)
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[defaults]
+</span></span><span class="line"><span class="cl">#inventory     = /etc/ansible/hosts      # 主机列表配置文件
+</span></span><span class="line"><span class="cl">#library       = /usr/share/my_modules/  # 库文件存放目录
+</span></span><span class="line"><span class="cl">#remote_tmp    = $HOME/.ansible/tmp      # 临时py命令文件存放在远程主机目录
+</span></span><span class="line"><span class="cl">#local_tmp     = $HOME/.ansible/tmp      # 本机的临时命令执行目录  
+</span></span><span class="line"><span class="cl">#forks         = 5                       # 默认并发数,同时可以执行5次
+</span></span><span class="line"><span class="cl">#sudo_user     = root                    # 默认sudo 用户
+</span></span><span class="line"><span class="cl">#ask_sudo_pass = True                    # 每次执行ansible命令是否询问ssh密码
+</span></span><span class="line"><span class="cl">#ask_pass      = True                    # 每次执行ansible命令是否询问ssh口令
+</span></span><span class="line"><span class="cl">#remote_port   = 22                      # 远程主机的端口号(默认22)
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>我们打开 <code>/etc/ansible/ansible.cfg</code> 取消注释修改一下配置</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">host_key_checking = False
-log_path = /var/log/ansible.log
-module_name = command
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">host_key_checking = False
+</span></span><span class="line"><span class="cl">log_path = /var/log/ansible.log
+</span></span><span class="line"><span class="cl">module_name = command
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中，第一个是禁用 SSH 的连接检查，如果不禁用我们需要通过 SSH 链接过目标主机，如未连接过则会报错</p>
 <p>第二个是用来开启 Ansible 的日志记录</p>
@@ -505,7 +505,7 @@ module_name = command
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

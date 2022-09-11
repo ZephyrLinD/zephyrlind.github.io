@@ -41,7 +41,7 @@
     
         "keywords": "折腾笔记, DevOPs入门笔记, NginxTips",
     
-    "wordcount":  710 ,
+    "wordcount":  722 ,
     "url": "https:\/\/blog.z36.moe\/2020\/02\/nginxtips2\/",
     
         "datePublished": "2020-02-01T13:43:48\u002b08:00",
@@ -148,7 +148,7 @@
             </div>
             <div class="post-meta-other">
                 <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-02-01>2020-02-01</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 710 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 722 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
         </div>
 
@@ -186,36 +186,36 @@
 <p>在 <code>Nginx.conf</code> 中可以找到 <code>gzip</code> 的选项。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="c1"># 省略
-</span><span class="c1"></span><span class="k">gzip</span>                <span class="no">on</span><span class="p">;</span>
-<span class="k">gzip_min_length</span>     <span class="mi">1</span><span class="p">;</span>      <span class="c1"># 小于一字节的文件就不进行压缩。小文件在一个TCP报文中就发出去了。在压缩消耗CPU意义不大
-</span><span class="c1"></span><span class="k">gzip_comp_level</span>     <span class="mi">2</span><span class="p">;</span>      <span class="c1"># gzip压缩级别
-</span><span class="c1"></span><span class="k">gzip_types</span>          <span class="s">text/plain</span> <span class="s">application/x-javascript</span> <span class="s">text/css</span> <span class="s">application/xml</span> <span class="s">text/javascript</span> <span class="s">application/x-httpd-php</span> <span class="s">image/jpge</span> <span class="s">image/gif</span> <span class="s">image/png</span><span class="p">;</span>    <span class="c1"># 压缩文件类型
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="c1"># 省略
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">gzip</span>                <span class="no">on</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">gzip_min_length</span>     <span class="mi">1</span><span class="p">;</span>      <span class="c1"># 小于一字节的文件就不进行压缩。小文件在一个TCP报文中就发出去了。在压缩消耗CPU意义不大
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">gzip_comp_level</span>     <span class="mi">2</span><span class="p">;</span>      <span class="c1"># gzip压缩级别
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">gzip_types</span>          <span class="s">text/plain</span> <span class="s">application/x-javascript</span> <span class="s">text/css</span> <span class="s">application/xml</span> <span class="s">text/javascript</span> <span class="s">application/x-httpd-php</span> <span class="s">image/jpge</span> <span class="s">image/gif</span> <span class="s">image/png</span><span class="p">;</span>    <span class="c1"># 压缩文件类型
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>加好这些配置后，我们进行 <code>nginx -s reload</code>。此时再次进行抓包，可以发现传输的大小小了很多。响应头中的 <code>Context-Encoding</code> 也变成了 <code>gzip</code></p>
 <p>以后我们的静态资源传输过程效率会高很多。</p>
 <a class="post-dummy-target" id="分享文件目录--autoindex"></a><h2>分享文件目录 —— AutoIndex</h2>
 <p>我们可以通过 <code>AutoIndex</code> 模块将文件夹和目录信息分享给用户，让用户决定使用哪部分。</p>
-<p>当我们访问一个反斜杠（'/'）的时候可以显示文件目录信息</p>
+<p>当我们访问一个反斜杠（&rsquo;/&rsquo;）的时候可以显示文件目录信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">/</span> <span class="p">{</span>
-    <span class="kn">autoindex</span> <span class="no">on</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">autoindex</span> <span class="no">on</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>效果如下：</p>
 <p><img src="https://img.zephyrl.co/images/2020/02/03/autoindex.jpg" alt="autoindex"></p>
@@ -223,19 +223,19 @@
 <p>当大量用户并发的时候，我们需要确保一些基础的文件文件如css的正常访问，我们可以使用 <code>set</code> 配合一些内置的变量实现这个功能，比如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">/</span> <span class="p">{</span>
-    <span class="kn">alias</span> <span class="s">dlib/</span><span class="p">;</span>
-    <span class="kn">autoindex</span> <span class="no">on</span><span class="p">;</span>
-    <span class="kn">set</span> <span class="nv">$limit_rate</span> <span class="mi">1k</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">alias</span> <span class="s">dlib/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">autoindex</span> <span class="no">on</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">set</span> <span class="nv">$limit_rate</span> <span class="mi">1k</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中 <code>set $limit_rate 1k;</code> 就是在克制客户端到服务器发送请求响应的速度。</p>
 <p>在nginx官网的<code>http_core</code>中提供的<code>Embedded Variables</code>中可以找到 <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#variables">变量$limit_rate</a>, 他的用法就是上述代码，单位是Byte。</p>
@@ -243,7 +243,7 @@
 <p>我们可以在<code>nginx.conf</code>中使用<code>log_format</code>定义日志格式</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -251,13 +251,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">http</span> <span class="p">{</span>
-    <span class="kn">log_format</span> <span class="s">main</span> <span class="s">&#39;</span><span class="nv">$remote_addr</span> <span class="s">-</span> <span class="nv">$remote_user</span> <span class="s">[</span><span class="nv">$time_local]</span> <span class="s">&#34;</span><span class="nv">$request&#34;</span> <span class="s">&#39;</span>
-                    <span class="s">&#39;</span><span class="nv">$status</span> <span class="nv">$body_bytes_sent</span> <span class="s">&#34;</span><span class="nv">$http_referer&#34;</span> <span class="s">&#39;</span>
-                    <span class="s">&#39;&#34;</span><span class="nv">$http_user_agent&#34;</span> <span class="s">&#34;http_x_forwarded_for&#34;</span> <span class="s">&#39;</span><span class="p">;</span>
-    <span class="kn">access_log</span> <span class="s">logs/test.access.log</span> <span class="s">main</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">http</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">log_format</span> <span class="s">main</span> <span class="s">&#39;</span><span class="nv">$remote_addr</span> <span class="s">-</span> <span class="nv">$remote_user</span> <span class="s">[</span><span class="nv">$time_local]</span> <span class="s">&#34;</span><span class="nv">$request&#34;</span> <span class="s">&#39;</span>
+</span></span><span class="line"><span class="cl">                    <span class="s">&#39;</span><span class="nv">$status</span> <span class="nv">$body_bytes_sent</span> <span class="s">&#34;</span><span class="nv">$http_referer&#34;</span> <span class="s">&#39;</span>
+</span></span><span class="line"><span class="cl">                    <span class="s">&#39;&#34;</span><span class="nv">$http_user_agent&#34;</span> <span class="s">&#34;http_x_forwarded_for&#34;</span> <span class="s">&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">access_log</span> <span class="s">logs/test.access.log</span> <span class="s">main</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中，日志被命名成main，日志格式就是后面的。所有的变量的意义都可以在<a href="http://nginx.org/en/docs/http/">nginx官方文档</a>中找到。也可以加入各种日志变量。</p>
 <p>比如 <code>$remote_addr</code> 的意思就是远端（客户端）地址。 <code>$time_local</code> 就是当时时间。<code>$status</code> 就是返回的详情，如403、301等。</p>
@@ -361,7 +361,7 @@
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

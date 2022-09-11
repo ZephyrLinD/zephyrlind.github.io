@@ -259,7 +259,7 @@
 <p>我们首先写一个正确的业务：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -309,60 +309,60 @@
 </span><span class="lnt">48
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// UserService.java 接口
-</span><span class="c1"></span><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserService</span> <span class="o">{</span>
-    <span class="kt">void</span> <span class="nf">aTob</span><span class="o">(</span><span class="n">String</span> <span class="n">aname</span><span class="o">,</span> <span class="n">String</span> <span class="n">bname</span><span class="o">,</span> <span class="kt">int</span> <span class="n">money</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="c1">// UserServiceImpl.java 接口实现类
-</span><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserServiceImpl</span> <span class="kd">implements</span> <span class="n">UserService</span> <span class="o">{</span>
-    <span class="c1">// 基础银行转账案例正确代码
-</span><span class="c1"></span>    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">aTob</span><span class="o">(</span><span class="n">String</span> <span class="n">aname</span><span class="o">,</span> <span class="n">String</span> <span class="n">bname</span><span class="o">,</span> <span class="kt">int</span> <span class="n">money</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">UserDao</span> <span class="n">userDao</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserDao</span><span class="o">();</span>
-        <span class="c1">// 参数校验
-</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">(</span><span class="n">aname</span><span class="o">)</span> <span class="o">||</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">(</span><span class="n">bname</span><span class="o">)</span> <span class="o">||</span> <span class="n">money</span> <span class="o">&lt;=</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;参数状态非法&#34;</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="c1">// A扣钱
-</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">userDao</span><span class="o">.</span><span class="na">updateByUnameAndMoneySub</span><span class="o">(</span><span class="n">aname</span><span class="o">,</span> <span class="n">money</span><span class="o">);</span>
-        <span class="c1">// B加钱
-</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">i1</span> <span class="o">=</span> <span class="n">userDao</span><span class="o">.</span><span class="na">updateByUnameAndMoneyAdd</span><span class="o">(</span><span class="n">bname</span><span class="o">,</span> <span class="n">money</span><span class="o">);</span>
-
-        <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="n">0</span> <span class="o">&amp;&amp;</span> <span class="n">i1</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;转账成功&#34;</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;转账失败&#34;</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-<span class="c1">// UserDao.java
-</span><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserDao</span> <span class="o">{</span>
-    <span class="c1">// 根据用户名扣除相应金额
-</span><span class="c1"></span>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">updateByUnameAndMoneySub</span><span class="o">(</span><span class="n">String</span> <span class="n">aname</span><span class="o">,</span> <span class="kt">int</span> <span class="n">money</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">ApplicationContext</span> <span class="n">ac</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassPathXmlApplicationContext</span><span class="o">(</span><span class="s">&#34;spring.xml&#34;</span><span class="o">);</span>
-        <span class="n">JdbcTemplate</span> <span class="n">jdbcTemplate</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&#34;jdbcTemplate&#34;</span><span class="o">,</span> <span class="n">JdbcTemplate</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-        <span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">&#34;UPDATE bank SET cdata = now(), money = money - ? WHERE uname = ?&#34;</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">linIsSuccessful</span> <span class="o">=</span> <span class="n">jdbcTemplate</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">sql</span><span class="o">,</span> <span class="n">money</span><span class="o">,</span> <span class="n">aname</span><span class="o">);</span>
-        <span class="k">return</span> <span class="n">linIsSuccessful</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="c1">// 根据用户名增加金额
-</span><span class="c1"></span>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">updateByUnameAndMoneyAdd</span><span class="o">(</span><span class="n">String</span> <span class="n">bname</span><span class="o">,</span> <span class="kt">int</span> <span class="n">money</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">ApplicationContext</span> <span class="n">ac</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassPathXmlApplicationContext</span><span class="o">(</span><span class="s">&#34;spring.xml&#34;</span><span class="o">);</span>
-        <span class="n">JdbcTemplate</span> <span class="n">jdbcTemplate</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&#34;jdbcTemplate&#34;</span><span class="o">,</span> <span class="n">JdbcTemplate</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-        <span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">&#34;UPDATE bank SET cdata = now(), money = money + ? WHERE uname = ?&#34;</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">linIsSuccessful</span> <span class="o">=</span> <span class="n">jdbcTemplate</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">sql</span><span class="o">,</span> <span class="n">money</span><span class="o">,</span> <span class="n">bname</span><span class="o">);</span>
-        <span class="k">return</span> <span class="n">linIsSuccessful</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-<span class="c1">// spring.xml省略，只注入了jdbc
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// UserService.java 接口
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserService</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">aTob</span><span class="o">(</span><span class="n">String</span> <span class="n">aname</span><span class="o">,</span> <span class="n">String</span> <span class="n">bname</span><span class="o">,</span> <span class="kt">int</span> <span class="n">money</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// UserServiceImpl.java 接口实现类
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserServiceImpl</span> <span class="kd">implements</span> <span class="n">UserService</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 基础银行转账案例正确代码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">aTob</span><span class="o">(</span><span class="n">String</span> <span class="n">aname</span><span class="o">,</span> <span class="n">String</span> <span class="n">bname</span><span class="o">,</span> <span class="kt">int</span> <span class="n">money</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">UserDao</span> <span class="n">userDao</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserDao</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 参数校验
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">(</span><span class="n">aname</span><span class="o">)</span> <span class="o">||</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">(</span><span class="n">bname</span><span class="o">)</span> <span class="o">||</span> <span class="n">money</span> <span class="o">&lt;=</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;参数状态非法&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// A扣钱
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">userDao</span><span class="o">.</span><span class="na">updateByUnameAndMoneySub</span><span class="o">(</span><span class="n">aname</span><span class="o">,</span> <span class="n">money</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// B加钱
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">int</span> <span class="n">i1</span> <span class="o">=</span> <span class="n">userDao</span><span class="o">.</span><span class="na">updateByUnameAndMoneyAdd</span><span class="o">(</span><span class="n">bname</span><span class="o">,</span> <span class="n">money</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="n">0</span> <span class="o">&amp;&amp;</span> <span class="n">i1</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;转账成功&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;转账失败&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// UserDao.java
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserDao</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 根据用户名扣除相应金额
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">updateByUnameAndMoneySub</span><span class="o">(</span><span class="n">String</span> <span class="n">aname</span><span class="o">,</span> <span class="kt">int</span> <span class="n">money</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ApplicationContext</span> <span class="n">ac</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassPathXmlApplicationContext</span><span class="o">(</span><span class="s">&#34;spring.xml&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">JdbcTemplate</span> <span class="n">jdbcTemplate</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&#34;jdbcTemplate&#34;</span><span class="o">,</span> <span class="n">JdbcTemplate</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">&#34;UPDATE bank SET cdata = now(), money = money - ? WHERE uname = ?&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">linIsSuccessful</span> <span class="o">=</span> <span class="n">jdbcTemplate</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">sql</span><span class="o">,</span> <span class="n">money</span><span class="o">,</span> <span class="n">aname</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">linIsSuccessful</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 根据用户名增加金额
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">updateByUnameAndMoneyAdd</span><span class="o">(</span><span class="n">String</span> <span class="n">bname</span><span class="o">,</span> <span class="kt">int</span> <span class="n">money</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ApplicationContext</span> <span class="n">ac</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassPathXmlApplicationContext</span><span class="o">(</span><span class="s">&#34;spring.xml&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">JdbcTemplate</span> <span class="n">jdbcTemplate</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&#34;jdbcTemplate&#34;</span><span class="o">,</span> <span class="n">JdbcTemplate</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">&#34;UPDATE bank SET cdata = now(), money = money + ? WHERE uname = ?&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">linIsSuccessful</span> <span class="o">=</span> <span class="n">jdbcTemplate</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">sql</span><span class="o">,</span> <span class="n">money</span><span class="o">,</span> <span class="n">bname</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">linIsSuccessful</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// spring.xml省略，只注入了jdbc
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>接下来，我们在 <code>UserServiceImpl.java</code> 的如下位置添加代码，设置一个人为的零除数异常：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -370,13 +370,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// A扣钱
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">userDao</span><span class="o">.</span><span class="na">updateByUnameAndMoneySub</span><span class="o">(</span><span class="n">aname</span><span class="o">,</span> <span class="n">money</span><span class="o">);</span>
-<span class="c1">// 人为异常
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">1</span> <span class="o">/</span> <span class="n">0</span><span class="o">;</span>
-<span class="c1">// B加钱
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">i1</span> <span class="o">=</span> <span class="n">userDao</span><span class="o">.</span><span class="na">updateByUnameAndMoneyAdd</span><span class="o">(</span><span class="n">bname</span><span class="o">,</span> <span class="n">money</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// A扣钱
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">userDao</span><span class="o">.</span><span class="na">updateByUnameAndMoneySub</span><span class="o">(</span><span class="n">aname</span><span class="o">,</span> <span class="n">money</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 人为异常
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">1</span> <span class="o">/</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// B加钱
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">i1</span> <span class="o">=</span> <span class="n">userDao</span><span class="o">.</span><span class="na">updateByUnameAndMoneyAdd</span><span class="o">(</span><span class="n">bname</span><span class="o">,</span> <span class="n">money</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>此时，A扣了钱但是B没有收到转账。此时我们就需要引入<strong>事务管理</strong></p>
 <a class="post-dummy-target" id="事务管理"></a><h2>事务管理</h2>
@@ -384,7 +384,7 @@
 <p>引入新的约束：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -400,53 +400,53 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.springframework.org/schema/beans&#34;</span>
-       <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
-       <span class="na">xmlns:aop=</span><span class="s">&#34;http://www.springframework.org/schema/aop&#34;</span>
-       <span class="na">xmlns:context=</span><span class="s">&#34;http://www.springframework.org/schema/context&#34;</span>
-       <span class="na">xmlns:tx=</span><span class="s">&#34;http://www.springframework.org/schema/tx&#34;</span>
-       <span class="na">xsi:schemaLocation=</span><span class="s">&#34;
-</span><span class="s">       http://www.springframework.org/schema/beans
-</span><span class="s">       http://www.springframework.org/schema/beans/spring-beans.xsd
-</span><span class="s">       http://www.springframework.org/schema/aop
-</span><span class="s">       http://www.springframework.org/schema/context
-</span><span class="s">       http://www.springframework.org/schema/context/spring-contest-4.2.xsd
-</span><span class="s">       http://www.springframework.org/schema/aop/spring-aop.xsd
-</span><span class="s">       http://www.springframework.org/schema/tx
-</span><span class="s">       http://www.springframework.org/schema/tx/spring-tx.xsd&#34;</span><span class="nt">&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.springframework.org/schema/beans&#34;</span>
+</span></span><span class="line"><span class="cl">       <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span class="line"><span class="cl">       <span class="na">xmlns:aop=</span><span class="s">&#34;http://www.springframework.org/schema/aop&#34;</span>
+</span></span><span class="line"><span class="cl">       <span class="na">xmlns:context=</span><span class="s">&#34;http://www.springframework.org/schema/context&#34;</span>
+</span></span><span class="line"><span class="cl">       <span class="na">xmlns:tx=</span><span class="s">&#34;http://www.springframework.org/schema/tx&#34;</span>
+</span></span><span class="line"><span class="cl">       <span class="na">xsi:schemaLocation=</span><span class="s">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">       http://www.springframework.org/schema/beans
+</span></span></span><span class="line"><span class="cl"><span class="s">       http://www.springframework.org/schema/beans/spring-beans.xsd
+</span></span></span><span class="line"><span class="cl"><span class="s">       http://www.springframework.org/schema/aop
+</span></span></span><span class="line"><span class="cl"><span class="s">       http://www.springframework.org/schema/context
+</span></span></span><span class="line"><span class="cl"><span class="s">       http://www.springframework.org/schema/context/spring-contest-4.2.xsd
+</span></span></span><span class="line"><span class="cl"><span class="s">       http://www.springframework.org/schema/aop/spring-aop.xsd
+</span></span></span><span class="line"><span class="cl"><span class="s">       http://www.springframework.org/schema/tx
+</span></span></span><span class="line"><span class="cl"><span class="s">       http://www.springframework.org/schema/tx/spring-tx.xsd&#34;</span><span class="nt">&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>主要是关于tx的引入。</p>
 <p>第一步：配置平台事务管理器</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;manager&#34;</span> <span class="na">class=</span><span class="s">&#34;org.springframework.jdbc.datasource.DataSourceTransactionManager&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;dataSource&#34;</span> <span class="na">ref=</span><span class="s">&#34;managerDataSource&#34;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/bean&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;manager&#34;</span> <span class="na">class=</span><span class="s">&#34;org.springframework.jdbc.datasource.DataSourceTransactionManager&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;dataSource&#34;</span> <span class="na">ref=</span><span class="s">&#34;managerDataSource&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/bean&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>第二步：配置事务管理的模板类（可以简化事务管理器的使用）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;template&#34;</span> <span class="na">class=</span><span class="s">&#34;org.springframework.transaction.support.TransactionTemplate&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;transactionManager&#34;</span> <span class="na">ref=</span><span class="s">&#34;manager&#34;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/bean&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;template&#34;</span> <span class="na">class=</span><span class="s">&#34;org.springframework.transaction.support.TransactionTemplate&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;transactionManager&#34;</span> <span class="na">ref=</span><span class="s">&#34;manager&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/bean&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>第三步：在业务层注入事务管理的模板</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -458,22 +458,22 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--  业务层  --&gt;</span>
-<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;userService&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.service.UserServiceImpl&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;userDao&#34;</span> <span class="na">ref=</span><span class="s">&#34;userDao&#34;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;template&#34;</span> <span class="na">ref=</span><span class="s">&#34;template&#34;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/bean&gt;</span>
-<span class="c">&lt;!--  数据层  --&gt;</span>
-<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;userDao&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.dao.UserDao&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;jdbcTemplate&#34;</span> <span class="na">ref=</span><span class="s">&#34;jdbcTemplate&#34;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;template&#34;</span> <span class="na">ref=</span><span class="s">&#34;template&#34;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/bean&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--  业务层  --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;userService&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.service.UserServiceImpl&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;userDao&#34;</span> <span class="na">ref=</span><span class="s">&#34;userDao&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;template&#34;</span> <span class="na">ref=</span><span class="s">&#34;template&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/bean&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--  数据层  --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;userDao&#34;</span> <span class="na">class=</span><span class="s">&#34;co.zephyrl.dao.UserDao&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;jdbcTemplate&#34;</span> <span class="na">ref=</span><span class="s">&#34;jdbcTemplate&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;template&#34;</span> <span class="na">ref=</span><span class="s">&#34;template&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/bean&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>第四步：编写代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -498,35 +498,35 @@
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// UserServiceImpl.java
-</span><span class="c1"></span>
-<span class="c1">// 数据层注入
-</span><span class="c1"></span><span class="kd">private</span> <span class="n">UserDao</span> <span class="n">userDao</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUserDao</span><span class="o">(</span><span class="n">UserDao</span> <span class="n">userDao</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">userDao</span> <span class="o">=</span> <span class="n">userDao</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="c1">// 事务管理模板注入
-</span><span class="c1"></span><span class="kd">private</span> <span class="n">TransactionTemplate</span> <span class="n">template</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTemplate</span><span class="o">(</span><span class="n">TransactionTemplate</span> <span class="n">template</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">this</span><span class="o">.</span><span class="na">template</span> <span class="o">=</span> <span class="n">template</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="nd">@Override</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">aTob2</span><span class="o">(</span><span class="n">String</span> <span class="n">aName</span><span class="o">,</span> <span class="n">String</span> <span class="n">bName</span><span class="o">,</span> <span class="kt">int</span> <span class="n">money</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">template</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="k">new</span> <span class="n">TransactionCallbackWithoutResult</span><span class="o">()</span> <span class="o">{</span>
-        <span class="nd">@Override</span>
-        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doInTransactionWithoutResult</span><span class="o">(</span><span class="n">TransactionStatus</span> <span class="n">transactionStatus</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">transfer</span><span class="o">(</span><span class="n">aName</span><span class="o">,</span> <span class="n">bName</span><span class="o">,</span> <span class="n">money</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">});</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// UserServiceImpl.java
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 数据层注入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">private</span> <span class="n">UserDao</span> <span class="n">userDao</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUserDao</span><span class="o">(</span><span class="n">UserDao</span> <span class="n">userDao</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="o">.</span><span class="na">userDao</span> <span class="o">=</span> <span class="n">userDao</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 事务管理模板注入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">private</span> <span class="n">TransactionTemplate</span> <span class="n">template</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTemplate</span><span class="o">(</span><span class="n">TransactionTemplate</span> <span class="n">template</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="o">.</span><span class="na">template</span> <span class="o">=</span> <span class="n">template</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">aTob2</span><span class="o">(</span><span class="n">String</span> <span class="n">aName</span><span class="o">,</span> <span class="n">String</span> <span class="n">bName</span><span class="o">,</span> <span class="kt">int</span> <span class="n">money</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">template</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="k">new</span> <span class="n">TransactionCallbackWithoutResult</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doInTransactionWithoutResult</span><span class="o">(</span><span class="n">TransactionStatus</span> <span class="n">transactionStatus</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">transfer</span><span class="o">(</span><span class="n">aName</span><span class="o">,</span> <span class="n">bName</span><span class="o">,</span> <span class="n">money</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">});</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>第五步：编写测试类</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -543,22 +543,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// TestDemo.java
-</span><span class="c1"></span><span class="nd">@Test</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">test3</span><span class="o">()</span> <span class="o">{</span>
-    <span class="c1">// 准备测试数据
-</span><span class="c1"></span>    <span class="n">String</span> <span class="n">aname</span> <span class="o">=</span> <span class="s">&#34;zhangxin1&#34;</span><span class="o">;</span>
-    <span class="n">String</span> <span class="n">bname</span> <span class="o">=</span> <span class="s">&#34;Lin&#34;</span><span class="o">;</span>
-    <span class="kt">int</span> <span class="n">money</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
-
-    <span class="c1">// 根据配置文件创建spring容器
-</span><span class="c1"></span>    <span class="n">ApplicationContext</span> <span class="n">ac</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassPathXmlApplicationContext</span><span class="o">(</span><span class="s">&#34;spring.xml&#34;</span><span class="o">);</span>
-
-    <span class="c1">// 创建业务层对象
-</span><span class="c1"></span>    <span class="n">UserService</span> <span class="n">userService</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&#34;userService&#34;</span><span class="o">,</span> <span class="n">UserService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-    <span class="n">userService</span><span class="o">.</span><span class="na">aTob2</span><span class="o">(</span><span class="n">aname</span><span class="o">,</span> <span class="n">bname</span><span class="o">,</span> <span class="n">money</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// TestDemo.java
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">test3</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 准备测试数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">String</span> <span class="n">aname</span> <span class="o">=</span> <span class="s">&#34;zhangxin1&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">bname</span> <span class="o">=</span> <span class="s">&#34;Lin&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">money</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 根据配置文件创建spring容器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">ApplicationContext</span> <span class="n">ac</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassPathXmlApplicationContext</span><span class="o">(</span><span class="s">&#34;spring.xml&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 创建业务层对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">UserService</span> <span class="n">userService</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&#34;userService&#34;</span><span class="o">,</span> <span class="n">UserService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">userService</span><span class="o">.</span><span class="na">aTob2</span><span class="o">(</span><span class="n">aname</span><span class="o">,</span> <span class="n">bname</span><span class="o">,</span> <span class="n">money</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>此时，异常没有解决的情况下，事务会自动回滚防止数据脏读</p>
 <a class="post-dummy-target" id="声明式事务管理通过配置实现---aop"></a><h3>声明式事务管理（通过配置实现）&ndash; AOP</h3>
@@ -566,39 +566,39 @@
 <p>第二部：开启注解扫描</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--  开启注解扫描   --&gt;</span>
-<span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">&#34;co.zephyrl&#34;</span><span class="nt">&gt;&lt;/context:component-scan&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--  开启注解扫描   --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">&#34;co.zephyrl&#34;</span><span class="nt">&gt;&lt;/context:component-scan&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>第三步：配置事务管理器</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- Spring平台事务管理器 --&gt;</span>
-<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;manager&#34;</span> <span class="na">class=</span><span class="s">&#34;org.springframework.jdbc.datasource.DataSourceTransactionManager&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;dataSource&#34;</span> <span class="na">ref=</span><span class="s">&#34;managerDataSource&#34;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/bean&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- Spring平台事务管理器 --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;manager&#34;</span> <span class="na">class=</span><span class="s">&#34;org.springframework.jdbc.datasource.DataSourceTransactionManager&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;dataSource&#34;</span> <span class="na">ref=</span><span class="s">&#34;managerDataSource&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/bean&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>第四步：开启注解事务</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--  开启注解事务  --&gt;</span>
-<span class="nt">&lt;tx:annotation-driven</span> <span class="na">transaction-manager=</span><span class="s">&#34;manager&#34;</span> <span class="nt">&gt;&lt;/tx:annotation-driven&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--  开启注解事务  --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;tx:annotation-driven</span> <span class="na">transaction-manager=</span><span class="s">&#34;manager&#34;</span> <span class="nt">&gt;&lt;/tx:annotation-driven&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>第五步：在各个层添加注解</p>
 <p><img src="../../../blogimages/ssm6/q.png" alt="业务层注解"></p>
@@ -717,7 +717,7 @@
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

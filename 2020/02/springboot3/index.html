@@ -189,7 +189,7 @@
 <a class="post-dummy-target" id="webjars资源方法addresourceshandlers"></a><h3>webjars资源，方法：<code>addResourcesHandlers</code></h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -211,46 +211,46 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Override</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">addResourceHandlers</span><span class="o">(</span><span class="n">ResourceHandlerRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">if</span> <span class="o">(!</span><span class="k">this</span><span class="o">.</span><span class="na">resourceProperties</span><span class="o">.</span><span class="na">isAddMappings</span><span class="o">())</span> <span class="o">{</span>
-        <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;Default resource handling disabled&#34;</span><span class="o">);</span>
-        <span class="k">return</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="n">Duration</span> <span class="n">cachePeriod</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">resourceProperties</span><span class="o">.</span><span class="na">getCache</span><span class="o">().</span><span class="na">getPeriod</span><span class="o">();</span>
-    <span class="n">CacheControl</span> <span class="n">cacheControl</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">resourceProperties</span><span class="o">.</span><span class="na">getCache</span><span class="o">().</span><span class="na">getCachecontrol</span><span class="o">().</span><span class="na">toHttpCacheControl</span><span class="o">();</span>
-    <span class="k">if</span> <span class="o">(!</span><span class="n">registry</span><span class="o">.</span><span class="na">hasMappingForPattern</span><span class="o">(</span><span class="s">&#34;/webjars/**&#34;</span><span class="o">))</span> <span class="o">{</span>
-        <span class="n">customizeResourceHandlerRegistration</span><span class="o">(</span><span class="n">registry</span><span class="o">.</span><span class="na">addResourceHandler</span><span class="o">(</span><span class="s">&#34;/webjars/**&#34;</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">addResourceLocations</span><span class="o">(</span><span class="s">&#34;classpath:/META-INF/resources/webjars/&#34;</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">setCachePeriod</span><span class="o">(</span><span class="n">getSeconds</span><span class="o">(</span><span class="n">cachePeriod</span><span class="o">)).</span><span class="na">setCacheControl</span><span class="o">(</span><span class="n">cacheControl</span><span class="o">));</span>
-    <span class="o">}</span>
-    <span class="n">String</span> <span class="n">staticPathPattern</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">mvcProperties</span><span class="o">.</span><span class="na">getStaticPathPattern</span><span class="o">();</span>
-    <span class="k">if</span> <span class="o">(!</span><span class="n">registry</span><span class="o">.</span><span class="na">hasMappingForPattern</span><span class="o">(</span><span class="n">staticPathPattern</span><span class="o">))</span> <span class="o">{</span>
-        <span class="n">customizeResourceHandlerRegistration</span><span class="o">(</span><span class="n">registry</span><span class="o">.</span><span class="na">addResourceHandler</span><span class="o">(</span><span class="n">staticPathPattern</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">addResourceLocations</span><span class="o">(</span><span class="n">getResourceLocations</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">resourceProperties</span><span class="o">.</span><span class="na">getStaticLocations</span><span class="o">()))</span>
-            <span class="o">.</span><span class="na">setCachePeriod</span><span class="o">(</span><span class="n">getSeconds</span><span class="o">(</span><span class="n">cachePeriod</span><span class="o">)).</span><span class="na">setCacheControl</span><span class="o">(</span><span class="n">cacheControl</span><span class="o">));</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">addResourceHandlers</span><span class="o">(</span><span class="n">ResourceHandlerRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(!</span><span class="k">this</span><span class="o">.</span><span class="na">resourceProperties</span><span class="o">.</span><span class="na">isAddMappings</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;Default resource handling disabled&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Duration</span> <span class="n">cachePeriod</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">resourceProperties</span><span class="o">.</span><span class="na">getCache</span><span class="o">().</span><span class="na">getPeriod</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CacheControl</span> <span class="n">cacheControl</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">resourceProperties</span><span class="o">.</span><span class="na">getCache</span><span class="o">().</span><span class="na">getCachecontrol</span><span class="o">().</span><span class="na">toHttpCacheControl</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(!</span><span class="n">registry</span><span class="o">.</span><span class="na">hasMappingForPattern</span><span class="o">(</span><span class="s">&#34;/webjars/**&#34;</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">customizeResourceHandlerRegistration</span><span class="o">(</span><span class="n">registry</span><span class="o">.</span><span class="na">addResourceHandler</span><span class="o">(</span><span class="s">&#34;/webjars/**&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">addResourceLocations</span><span class="o">(</span><span class="s">&#34;classpath:/META-INF/resources/webjars/&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">setCachePeriod</span><span class="o">(</span><span class="n">getSeconds</span><span class="o">(</span><span class="n">cachePeriod</span><span class="o">)).</span><span class="na">setCacheControl</span><span class="o">(</span><span class="n">cacheControl</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">staticPathPattern</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">mvcProperties</span><span class="o">.</span><span class="na">getStaticPathPattern</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(!</span><span class="n">registry</span><span class="o">.</span><span class="na">hasMappingForPattern</span><span class="o">(</span><span class="n">staticPathPattern</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">customizeResourceHandlerRegistration</span><span class="o">(</span><span class="n">registry</span><span class="o">.</span><span class="na">addResourceHandler</span><span class="o">(</span><span class="n">staticPathPattern</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">            <span class="o">.</span><span class="na">addResourceLocations</span><span class="o">(</span><span class="n">getResourceLocations</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">resourceProperties</span><span class="o">.</span><span class="na">getStaticLocations</span><span class="o">()))</span>
+</span></span><span class="line"><span class="cl">            <span class="o">.</span><span class="na">setCachePeriod</span><span class="o">(</span><span class="n">getSeconds</span><span class="o">(</span><span class="n">cachePeriod</span><span class="o">)).</span><span class="na">setCacheControl</span><span class="o">(</span><span class="n">cacheControl</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>举例，在源代码第十一行我们可以得出，所有的 <code>/webjars/**</code>，都需要去 <code>classpath:/META-INF/resources/webjars/</code> 找对应的资源</p>
 <p>那么什么是 webjars 呢？他本质就是以 jar 包的方式引入我们的资源。</p>
 <p>比如我们想导入 jQuery，只需导入 jQuery 对应版本的 pom 依赖即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.webjars<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>jquery<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>3.4.1<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>org.webjars<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>jquery<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;version&gt;</span>3.4.1<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>导入后我们在 External Libraries 中找到它，包结构如下：</p>
 <p><img src="https://img.zephyrl.co/images/2020/02/26/1_webjarjqstructs.png" alt="jQueryJarStructs"></p>
@@ -262,7 +262,7 @@
 <p>我们去找 <code>staticPathPattern</code>，可以发现第二种映射规则：/**。访问当前项目的任意资源，他会找 <code>resourcesProperties</code> 这个类，我们点进去看一看</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -278,26 +278,26 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 代码已经手动格式化
-</span><span class="c1"></span><span class="nd">@ConfigurationProperties</span> <span class="o">(</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;spring.resources&#34;</span><span class="o">,</span>
-    <span class="n">ignoreUnknownFields</span> <span class="o">=</span> <span class="kc">false</span>
-<span class="o">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ResourceProperties</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span><span class="o">[]</span> <span class="n">CLASSPATH_RESOURCE_LOCATIONS</span> <span class="o">=</span> <span class="o">{</span>
-        <span class="s">&#34;classpath:/META-INF/resources/&#34;</span><span class="o">,</span>
-        <span class="s">&#34;classpath:/resources/&#34;</span><span class="o">,</span>
-        <span class="s">&#34;classpath:/static/&#34;</span><span class="o">,</span>
-        <span class="s">&#34;classpath:/public/&#34;</span>
-    <span class="o">};</span>
-    <span class="c1">// 其他源码
-</span><span class="c1"></span><span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 代码已经手动格式化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@ConfigurationProperties</span> <span class="o">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;spring.resources&#34;</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ignoreUnknownFields</span> <span class="o">=</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl"><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ResourceProperties</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span><span class="o">[]</span> <span class="n">CLASSPATH_RESOURCE_LOCATIONS</span> <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;classpath:/META-INF/resources/&#34;</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;classpath:/resources/&#34;</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;classpath:/static/&#34;</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;classpath:/public/&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">};</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 其他源码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>resourceProperties</code> 可以设置和我们静态资源有关的参数，<code>this.staticLocations = CLASSPATH_RESOURCE_LOCATIONS;</code> 这里面指向了它会去寻找资源的文件夹；即上面数组的内容。再向下看一个方法；它还会在根路径下去寻找资源。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -307,15 +307,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="nf">appendSlashIfNecessary</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">staticLocations</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">String</span><span class="o">[]</span> <span class="n">normalized</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="n">staticLocations</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">staticLocations</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-        <span class="n">String</span> <span class="n">location</span> <span class="o">=</span> <span class="n">staticLocations</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-        <span class="n">normalized</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">location</span><span class="o">.</span><span class="na">endsWith</span><span class="o">(</span><span class="s">&#34;/&#34;</span><span class="o">)</span> <span class="o">?</span> <span class="n">location</span> <span class="o">:</span> <span class="n">location</span> <span class="o">+</span> <span class="s">&#34;/&#34;</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="k">return</span> <span class="n">normalized</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="nf">appendSlashIfNecessary</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">staticLocations</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span><span class="o">[]</span> <span class="n">normalized</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="n">staticLocations</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">staticLocations</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">location</span> <span class="o">=</span> <span class="n">staticLocations</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">normalized</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">location</span><span class="o">.</span><span class="na">endsWith</span><span class="o">(</span><span class="s">&#34;/&#34;</span><span class="o">)</span> <span class="o">?</span> <span class="n">location</span> <span class="o">:</span> <span class="n">location</span> <span class="o">+</span> <span class="s">&#34;/&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">normalized</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>所以我们可以得出结论，会从一下目录中读取静态资源到 /**。在 <code>localhost:8080</code> 下所有的请求都会被接收</p>
 <ul>
@@ -453,7 +453,7 @@
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

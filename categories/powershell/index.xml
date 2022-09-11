@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sat, 03 Aug 2019 22:40:13 +0800</lastBuildDate>
-    
-	<atom:link href="https://blog.z36.moe/categories/powershell/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 03 Aug 2019 22:40:13 +0800</lastBuildDate><atom:link href="https://blog.z36.moe/categories/powershell/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用Fluent Terminal &#43; Oh-My-Posh打造优雅的Windows终端</title>
       <link>https://blog.z36.moe/2019/08/awsome-powershell/</link>

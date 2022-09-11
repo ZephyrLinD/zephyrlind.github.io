@@ -185,7 +185,7 @@
 <p>打开我们上次配置好的 vm00 虚拟机的 <code>/etc/hosts</code> 文件，加入以下内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -193,13 +193,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">192.168.1.100 vm00
-192.168.1.101 vm01
-192.168.1.102 vm02
-192.168.1.103 vm03
-192.168.1.104 vm04
-192.168.1.105 vm05
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">192.168.1.100 vm00
+</span></span><span class="line"><span class="cl">192.168.1.101 vm01
+</span></span><span class="line"><span class="cl">192.168.1.102 vm02
+</span></span><span class="line"><span class="cl">192.168.1.103 vm03
+</span></span><span class="line"><span class="cl">192.168.1.104 vm04
+</span></span><span class="line"><span class="cl">192.168.1.105 vm05
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后进入本机（Windows）的 <code>C:\Windows\system32\Drivers\etc\</code> 下编辑 <code>hosts</code> 文件，将以上内容加入</p>
 <a class="post-dummy-target" id="克隆虚拟机"></a><h2>克隆虚拟机</h2>
@@ -212,30 +212,30 @@
 <p>也可以通过以下命令更改</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">nmcli connection modify eth0 ipv4.address 192.168.1.101/24
-nmcli connection up eth0
-hostnamecli set-hostname vm01
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">nmcli connection modify eth0 ipv4.address 192.168.1.101/24
+</span></span><span class="line"><span class="cl">nmcli connection up eth0
+</span></span><span class="line"><span class="cl">hostnamecli set-hostname vm01
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>不论如何修改，不要忘记</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">systemctl restart network
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl restart network
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="ssh-通信"></a><h2>SSH 通信</h2>
 <p>在第一个终端输入以下命令获得当前的 SSH Keygen</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -261,63 +261,63 @@ hostnamecli set-hostname vm01
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ ssh-keygen -t rsa
-Generating public/private rsa key pair.
-Enter file in which to save the key <span class="o">(</span>/home/zephyr/.ssh/id_rsa<span class="o">)</span>: 
-Created directory <span class="s1">&#39;/home/zephyr/.ssh&#39;</span>.
-Enter passphrase <span class="o">(</span>empty <span class="k">for</span> no passphrase<span class="o">)</span>: 
-Enter same passphrase again: 
-Your identification has been saved in /home/zephyr/.ssh/id_rsa.
-Your public key has been saved in /home/zephyr/.ssh/id_rsa.pub.
-The key fingerprint is:
-SHA256:KJe7A4mQqYqEY+V9pUUg84Np6Jq87BzZcZfk39iNG/Y zephyr@vm01
-The key<span class="err">&#39;</span>s randomart image is:
-+---<span class="o">[</span>RSA 2048<span class="o">]</span>----+
-<span class="p">|</span>     o ..        <span class="p">|</span>
-<span class="p">|</span>    . *  .       <span class="p">|</span>
-<span class="p">|</span> o . + +.        <span class="p">|</span>
-<span class="p">|</span>+ ... oooo       <span class="p">|</span>
-<span class="p">|</span>o.o+oo++S        <span class="p">|</span>
-<span class="p">|</span><span class="o">=</span>o*.<span class="o">=</span>+.+. + o    <span class="p">|</span>
-<span class="p">|</span><span class="o">=</span>B . .o  o * .   <span class="p">|</span>
-<span class="p">|</span><span class="o">=</span> o   ..  . +    <span class="p">|</span>
-<span class="p">|</span>.<span class="o">=</span>    ..   . E   <span class="p">|</span>
-+----<span class="o">[</span>SHA256<span class="o">]</span>-----+
-<span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ ls .ssh
-id_rsa  id_rsa.pub
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ ssh-keygen -t rsa
+</span></span><span class="line"><span class="cl">Generating public/private rsa key pair.
+</span></span><span class="line"><span class="cl">Enter file in which to save the key <span class="o">(</span>/home/zephyr/.ssh/id_rsa<span class="o">)</span>: 
+</span></span><span class="line"><span class="cl">Created directory <span class="s1">&#39;/home/zephyr/.ssh&#39;</span>.
+</span></span><span class="line"><span class="cl">Enter passphrase <span class="o">(</span>empty <span class="k">for</span> no passphrase<span class="o">)</span>: 
+</span></span><span class="line"><span class="cl">Enter same passphrase again: 
+</span></span><span class="line"><span class="cl">Your identification has been saved in /home/zephyr/.ssh/id_rsa.
+</span></span><span class="line"><span class="cl">Your public key has been saved in /home/zephyr/.ssh/id_rsa.pub.
+</span></span><span class="line"><span class="cl">The key fingerprint is:
+</span></span><span class="line"><span class="cl">SHA256:KJe7A4mQqYqEY+V9pUUg84Np6Jq87BzZcZfk39iNG/Y zephyr@vm01
+</span></span><span class="line"><span class="cl">The key<span class="err">&#39;</span>s randomart image is:
+</span></span><span class="line"><span class="cl">+---<span class="o">[</span>RSA 2048<span class="o">]</span>----+
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     o ..        <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>    . *  .       <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> o . + +.        <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>+ ... oooo       <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>o.o+oo++S        <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span><span class="o">=</span>o*.<span class="o">=</span>+.+. + o    <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span><span class="o">=</span>B . .o  o * .   <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span><span class="o">=</span> o   ..  . +    <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>.<span class="o">=</span>    ..   . E   <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+----<span class="o">[</span>SHA256<span class="o">]</span>-----+
+</span></span><span class="line"><span class="cl"><span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ ls .ssh
+</span></span><span class="line"><span class="cl">id_rsa  id_rsa.pub
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中，id_rsa 为 私钥，id_rsa.pub 为公钥</p>
 <p>之后，把私钥放入认证文件中</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ <span class="nb">cd</span> .ssh
-<span class="o">[</span>zephyr@vm01 .ssh<span class="o">]</span>$ cat id_rsa.pub &gt;&gt; authorized_keys
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ <span class="nb">cd</span> .ssh
+</span></span><span class="line"><span class="cl"><span class="o">[</span>zephyr@vm01 .ssh<span class="o">]</span>$ cat id_rsa.pub &gt;&gt; authorized_keys
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后修改权限如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>zephyr@vm01 .ssh<span class="o">]</span>$ <span class="nb">cd</span> ..
-<span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ chmod <span class="m">700</span> ./.ssh
-<span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ chmod <span class="m">644</span> ./.ssh/authorized_keys
-<span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ chmod <span class="m">600</span> ./.ssh/id_rsa
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>zephyr@vm01 .ssh<span class="o">]</span>$ <span class="nb">cd</span> ..
+</span></span><span class="line"><span class="cl"><span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ chmod <span class="m">700</span> ./.ssh
+</span></span><span class="line"><span class="cl"><span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ chmod <span class="m">644</span> ./.ssh/authorized_keys
+</span></span><span class="line"><span class="cl"><span class="o">[</span>zephyr@vm01 ~<span class="o">]</span>$ chmod <span class="m">600</span> ./.ssh/id_rsa
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>最后在其他虚拟机里执行以下步骤：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -325,74 +325,74 @@ id_rsa  id_rsa.pub
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mkdir .ssh
-<span class="nb">cd</span> .ssh
-touch authorized_keys
-<span class="nb">cd</span> ..
-chmod <span class="m">700</span> .ssh
-chmod <span class="m">644</span> .ssh/authorized_keys
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkdir .ssh
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> .ssh
+</span></span><span class="line"><span class="cl">touch authorized_keys
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ..
+</span></span><span class="line"><span class="cl">chmod <span class="m">700</span> .ssh
+</span></span><span class="line"><span class="cl">chmod <span class="m">644</span> .ssh/authorized_keys
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后再第一个虚拟机下，复制 authorized_keys 到其他虚拟机</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">scp .ssh/authorized_keys root@vm02:~/.ssh/authorized_keys
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">scp .ssh/authorized_keys root@vm02:~/.ssh/authorized_keys
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="hadoop-分布式配置"></a><h2>Hadoop 分布式配置</h2>
 <p>之后，在 <code>vm01</code> 虚拟机，进入 <code>/usr/local/hadoop-2.9.2/etc/hadoop</code> 文件夹，</p>
 <p>打开 <code>core-site.xml</code>，输入以下内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property&gt;</span>
-    <span class="nt">&lt;name&gt;</span>fs.defaultFS<span class="nt">&lt;/name&gt;</span>
-    <span class="nt">&lt;value&gt;</span>hdfs://vm01/<span class="nt">&lt;/value&gt;</span>
-<span class="nt">&lt;/property&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;name&gt;</span>fs.defaultFS<span class="nt">&lt;/name&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;value&gt;</span>hdfs://vm01/<span class="nt">&lt;/value&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>打开 <code>hdfs-site.xml</code>，输入以下内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property&gt;</span>
-    <span class="nt">&lt;name&gt;</span>dfs.replication<span class="nt">&lt;/name&gt;</span>
-    <span class="nt">&lt;value&gt;</span>3<span class="nt">&lt;/value&gt;</span>
-<span class="nt">&lt;/property&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;name&gt;</span>dfs.replication<span class="nt">&lt;/name&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;value&gt;</span>3<span class="nt">&lt;/value&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后复制文件 <code>cp mapred-site.xml.template mapred-site.xml</code>，并打开 <code>mapred-site.xml</code>，输入以下内容</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property&gt;</span>
-    <span class="nt">&lt;name&gt;</span>mapreduce.framework.name<span class="nt">&lt;/name&gt;</span>
-    <span class="nt">&lt;value&gt;</span>yarn<span class="nt">&lt;/value&gt;</span>
-<span class="nt">&lt;/property&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;name&gt;</span>mapreduce.framework.name<span class="nt">&lt;/name&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;value&gt;</span>yarn<span class="nt">&lt;/value&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>打开 <code>yarn-site.xml</code>，输入以下内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -402,52 +402,52 @@ chmod <span class="m">644</span> .ssh/authorized_keys
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property&gt;</span>
-    <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.hostname<span class="nt">&lt;/name&gt;</span>
-    <span class="nt">&lt;value&gt;</span>vm01<span class="nt">&lt;/value&gt;</span>
-<span class="nt">&lt;/property&gt;</span>
-<span class="nt">&lt;property&gt;</span>
-    <span class="nt">&lt;name&gt;</span>yarn.nodemanager.aux-services<span class="nt">&lt;/name&gt;</span>
-    <span class="nt">&lt;value&gt;</span>mapreduce_shuffle<span class="nt">&lt;/value&gt;</span>
-<span class="nt">&lt;/property&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.hostname<span class="nt">&lt;/name&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;value&gt;</span>vm01<span class="nt">&lt;/value&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;name&gt;</span>yarn.nodemanager.aux-services<span class="nt">&lt;/name&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;value&gt;</span>mapreduce_shuffle<span class="nt">&lt;/value&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>打开 <code>slaves</code>，输入以下内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">vm02
-vm03
-vm04
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">vm02
+</span></span><span class="line"><span class="cl">vm03
+</span></span><span class="line"><span class="cl">vm04
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>至此，所有配置写入完毕，我们来分发配置</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">scp /usr/local/hadoop-2.9.2/etc/hadoop/* root@vm02:/usr/local/hadoop-2.9.2/etc/hadoop/
-scp /usr/local/hadoop-2.9.2/etc/hadoop/* root@vm03:/usr/local/hadoop-2.9.2/etc/hadoop/
-scp /usr/local/hadoop-2.9.2/etc/hadoop/* root@vm04:/usr/local/hadoop-2.9.2/etc/hadoop/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">scp /usr/local/hadoop-2.9.2/etc/hadoop/* root@vm02:/usr/local/hadoop-2.9.2/etc/hadoop/
+</span></span><span class="line"><span class="cl">scp /usr/local/hadoop-2.9.2/etc/hadoop/* root@vm03:/usr/local/hadoop-2.9.2/etc/hadoop/
+</span></span><span class="line"><span class="cl">scp /usr/local/hadoop-2.9.2/etc/hadoop/* root@vm04:/usr/local/hadoop-2.9.2/etc/hadoop/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后我们就可以格式化 NameNode 并且启动集群了</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">hadoop namenode -format
-start-all.sh
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hadoop namenode -format
+</span></span><span class="line"><span class="cl">start-all.sh
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>一切启动好了可以去 vm01:50070 和 vm01:8088 看一看即可</p>
 <p><img src="https://img.zephyrl.co/images/2020/06/03/3_overview.png" alt="3_overview.png"></p>
@@ -542,7 +542,7 @@ start-all.sh
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

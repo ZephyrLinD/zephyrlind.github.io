@@ -195,31 +195,31 @@
 <p>我用我的作为示例，在自己动手的时候需要修改目录：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo mkdir /var/www/graph
-<span class="nb">cd</span> /var/www/graph
-wget https://chevereto.com/download/file/installer
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo mkdir /var/www/graph
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /var/www/graph
+</span></span><span class="line"><span class="cl">wget https://chevereto.com/download/file/installer
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>然后，打开配置文件：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo vim /etc/nginx/sites-available/default
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo vim /etc/nginx/sites-available/default
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>添加以下内容以配置新的网站的伪静态（部分配置参考自小游大佬的博客，<a href="https://xiaoyou66.com/archives/774">点击进入</a>）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -249,35 +249,35 @@ wget https://chevereto.com/download/file/installer
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Nginx" data-lang="Nginx"><span class="k">server</span> <span class="p">{</span>
-  <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
-  <span class="kn">listen</span> <span class="s">[::]:80</span><span class="p">;</span>
-  <span class="kn">server_name</span> <span class="s">graph.zephyrl.co</span><span class="p">;</span>
-  <span class="kn">root</span> <span class="s">/var/www/graph.zephyrl.co</span><span class="p">;</span>
-  <span class="kn">index</span> <span class="s">index.php</span> <span class="s">index.html</span> <span class="s">index.htm</span> <span class="s">index.nginx-debian.html</span><span class="p">;</span>
-
-  <span class="c1"># Image not found replacement
-</span><span class="c1"></span>  <span class="kn">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">(jpe?g|png|gif)</span> <span class="p">{</span>
-      <span class="kn">log_not_found</span> <span class="no">off</span><span class="p">;</span>
-      <span class="kn">error_page</span> <span class="mi">404</span> <span class="s">/content/images/system/default/404.gif</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="c1"># CORS header (avoids font rendering issues)
-</span><span class="c1"></span>  <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.(ttf|ttc|otf|eot|woff|woff2|font.css|css|js)$</span> <span class="p">{</span>
-      <span class="kn">add_header</span> <span class="s">Access-Control-Allow-Origin</span> <span class="s">&#34;*&#34;</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="c1"># Pretty URLs
-</span><span class="c1"></span>  <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
-      <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">/index.php?</span><span class="nv">$query_string</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
-      <span class="kn">include</span> <span class="s">snippets/fastcgi-php.conf</span><span class="p">;</span>
-      <span class="kn">fastcgi_pass</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Nginx" data-lang="Nginx"><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kn">listen</span> <span class="s">[::]:80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kn">server_name</span> <span class="s">graph.zephyrl.co</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kn">root</span> <span class="s">/var/www/graph.zephyrl.co</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kn">index</span> <span class="s">index.php</span> <span class="s">index.html</span> <span class="s">index.htm</span> <span class="s">index.nginx-debian.html</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># Image not found replacement
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kn">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">(jpe?g|png|gif)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kn">log_not_found</span> <span class="no">off</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="kn">error_page</span> <span class="mi">404</span> <span class="s">/content/images/system/default/404.gif</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># CORS header (avoids font rendering issues)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.(ttf|ttc|otf|eot|woff|woff2|font.css|css|js)$</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kn">add_header</span> <span class="s">Access-Control-Allow-Origin</span> <span class="s">&#34;*&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># Pretty URLs
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">/index.php?</span><span class="nv">$query_string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kn">include</span> <span class="s">snippets/fastcgi-php.conf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="kn">fastcgi_pass</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -289,13 +289,13 @@ wget https://chevereto.com/download/file/installer
 <p>首先是出现了<code>Chevereto can’t create the app/settings.php file. You must manually create this file</code>，之后应该打开终端，创建该文件，</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> /var/www/graph
-touch app/settings.php
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> /var/www/graph
+</span></span><span class="line"><span class="cl">touch app/settings.php
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>即可进入下一个问题：</p>
 <p>由于当时手忙脚乱心态爆炸，以下问题均没有截图。我会努力描述的并且尽量找到找一些网上的图片，侵删。</p>
@@ -304,20 +304,20 @@ touch app/settings.php
 <p>先来解决权限问题：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">chmod -R <span class="m">775</span> ./*
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">chmod -R <span class="m">775</span> ./*
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后来解决缺少组件的问题，由于是ubuntu系统，我们<strong>不需要从官网下载源代码然后编译，会报错</strong>，直接<code>apt</code>安装即可。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt install php-curl php-gd php-mbstring php-zip
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install php-curl php-gd php-mbstring php-zip
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>省的跟我一样xjb make install然后浪费好多时间 =_=</p>
 <p>之后出现了成功的页面，就很开心</p>
@@ -333,28 +333,28 @@ touch app/settings.php
 <p>首先，下载挂载工具，我是Ubuntu 18.04 LTS，其他版本安装方法请参照<a href="https://help.aliyun.com/document_detail/32196.html">官方说明页面</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">wget http://gosspublic.alicdn.com/ossfs/ossfs_1.80.6_ubuntu18.04_amd64.deb?spm<span class="o">=</span>a2c4g.11186623.2.13.5a037358XgQ4NQ<span class="p">&amp;</span><span class="nv">file</span><span class="o">=</span>ossfs_1.80.6_ubuntu18.04_amd64.deb
-
-sudo dpkg -i ossfs_1.80.6_ubuntu18.04_amd64.deb
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">wget http://gosspublic.alicdn.com/ossfs/ossfs_1.80.6_ubuntu18.04_amd64.deb?spm<span class="o">=</span>a2c4g.11186623.2.13.5a037358XgQ4NQ<span class="p">&amp;</span><span class="nv">file</span><span class="o">=</span>ossfs_1.80.6_ubuntu18.04_amd64.deb
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo dpkg -i ossfs_1.80.6_ubuntu18.04_amd64.deb
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>安装好后就可以设置bucket name 和 AccessKeyId/Secret信息，将其存放在/etc/passwd-ossfs 文件中。注意这个文件的权限必须正确设置，建议设为640。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> 你的bucket名字:你的keyid:你的keysecret &gt; /etc/passwd-ossfs
-chmod <span class="m">640</span> /etc/passwd-ossfs
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">echo</span> 你的bucket名字:你的keyid:你的keysecret &gt; /etc/passwd-ossfs
+</span></span><span class="line"><span class="cl">chmod <span class="m">640</span> /etc/passwd-ossfs
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -362,21 +362,21 @@ chmod <span class="m">640</span> /etc/passwd-ossfs
 <p>OSSFS的挂载方法如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">ossfs 你的bucket名字 挂载目录 -ourl<span class="o">=</span>你的阿里云的访问网址
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ossfs 你的bucket名字 挂载目录 -ourl<span class="o">=</span>你的阿里云的访问网址
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>我们将挂载目录挂载在Chevereto目录下的images文件夹就可以了</p>
 <p>以我为例，</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">ossfs mybuckit /var/www/graph/images -ourl<span class="o">=</span>阿里云地址 -o allow_other 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ossfs mybuckit /var/www/graph/images -ourl<span class="o">=</span>阿里云地址 -o allow_other 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>完成后即可开始使用了！</p>
 </li>
@@ -476,7 +476,7 @@ chmod <span class="m">640</span> /etc/passwd-ossfs
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

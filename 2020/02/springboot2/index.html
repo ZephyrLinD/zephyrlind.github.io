@@ -41,7 +41,7 @@
     
         "keywords": "Java, 后端开发笔记, Spring, SpringBoot学习笔记",
     
-    "wordcount":  1680 ,
+    "wordcount":  1685 ,
     "url": "https:\/\/blog.z36.moe\/2020\/02\/springboot2\/",
     
         "datePublished": "2020-02-20T16:52:56\u002b08:00",
@@ -146,7 +146,7 @@
             </div>
             <div class="post-meta-other">
                 <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-02-20>2020-02-20</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 1680 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1685 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 4 分钟&nbsp;</div>
         </div>
 
@@ -184,34 +184,34 @@
 <p>SpringBoot使用一个全局的配置文件，配置文件名称是固定的，可以是 <code>application.properties</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># application.properties
-# key = value
-# 比如...
-server.port=8080
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># application.properties
+</span></span><span class="line"><span class="cl"># key = value
+</span></span><span class="line"><span class="cl"># 比如...
+</span></span><span class="line"><span class="cl">server.port=8080
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>或者 <code>application.yaml</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># application.yaml</span><span class="w">
-</span><span class="w"></span><span class="c"># key: value (key冒号空格value)</span><span class="w">
-</span><span class="w"></span><span class="c"># 比如...</span><span class="w">
-</span><span class="w"></span><span class="k">server</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">port</span><span class="p">:</span><span class="w"> </span><span class="m">8080</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># application.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># key: value (key冒号空格value)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 比如...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">server</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8080</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>配置文件可以修改 SpringBoot 自动配置的默认值</p>
 <a class="post-dummy-target" id="yaml"></a><h2>YAML</h2>
@@ -220,88 +220,88 @@ server.port=8080
 <p>注：<code>yaml</code> 大小写敏感</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">server</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">port</span><span class="p">:</span><span class="w"> </span><span class="m">8081</span><span class="w">
-</span><span class="w">    </span><span class="k">path</span><span class="p">:</span><span class="w"> </span>/hello<span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">server</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8081</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/hello</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>在此引入新的名词，字面量。字面量指的是数字、布尔值、字符串。</p>
 <p>字面量在 yaml 中可以直接写在后面，不用加任何双引号或者单引号。</p>
 <p>“” 双引号，不会转义字符串里面的特殊字符 ， 特殊字符会作为本身想表示的意思；</p>
 <p>比如 ： name: &ldquo;kuang \n shen&rdquo;   输出 ： kuang  换行   shen</p>
-<p>'&rsquo; 单引号，会转义特殊字符 ， 特殊字符最终会变成和普通字符一样输出</p>
+<p>&rsquo;&rsquo; 单引号，会转义特殊字符 ， 特殊字符最终会变成和普通字符一样输出</p>
 <p>比如 ： name: ‘kuang \n shen’   输出 ： kuang  \n   shen</p>
 <p>（狂神牛逼）</p>
 <a class="post-dummy-target" id="对象map"></a><h3>对象、Map</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">k</span><span class="p">:</span><span class="w"> 
-</span><span class="w">    </span><span class="k">v1</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">v2</span><span class="p">:</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">k</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">v1</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">v2</span><span class="p">:</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>在下一行来写对象的属性和值得关系，注意缩进；比如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">student</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>zephyr<span class="w">
-</span><span class="w">    </span><span class="k">age</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">student</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">zephyr</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">age</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>行内写法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">student</span><span class="p">:</span><span class="w"> </span>{<span class="k">name: zephyr, age</span><span class="p">:</span><span class="w"> </span><span class="m">20</span>}<span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">student</span><span class="p">:</span><span class="w"> </span>{<span class="nt">name: zephyr, age</span><span class="p">:</span><span class="w"> </span><span class="m">20</span>}<span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="数组listset"></a><h3>数组（list、set）</h3>
 <p>用 - 值表示数组中的一个元素,比如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">pets</span><span class="p">:</span><span class="w">
-</span><span class="w"> </span>- cat<span class="w">
-</span><span class="w"> </span>- dog<span class="w">
-</span><span class="w"> </span>- pig<span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">pets</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span>- <span class="l">cat</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span>- <span class="l">dog</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span>- <span class="l">pig</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>行内写法</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">pets</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>cat<span class="p">,</span>dog<span class="p">,</span>pig<span class="p">]</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">pets</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">cat,dog,pig]</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="注入配置文件"></a><h2>注入配置文件</h2>
 <p>1、导入配置文件处理器</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -309,18 +309,18 @@ server.port=8080
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--导入配置文件处理器，配置文件进行绑定就会有提示--&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>spring-boot-configuration-processor<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--导入配置文件处理器，配置文件进行绑定就会有提示--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>spring-boot-configuration-processor<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>2、在 <code>resources</code> 中删除 <code>application.properties</code>，新建 <code>application.yaml</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -335,25 +335,25 @@ server.port=8080
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">person</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>zephyr<span class="w">
-</span><span class="w">    </span><span class="k">age</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="w">
-</span><span class="w">    </span><span class="k">happy</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="w">    </span><span class="k">birth</span><span class="p">:</span><span class="w"> </span><span class="m">2000</span>/<span class="m">01</span>/<span class="m">01</span><span class="w">
-</span><span class="w">    </span><span class="k">maps</span><span class="p">:</span><span class="w"> </span>{<span class="k">k1: v1,k2</span><span class="p">:</span><span class="w"> </span>v2}<span class="w">
-</span><span class="w">    </span><span class="k">lists</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- code<span class="w">
-</span><span class="w">      </span>- girl<span class="w">
-</span><span class="w">      </span>- music<span class="w">
-</span><span class="w">    </span><span class="k">dog</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>旺财<span class="w">
-</span><span class="w">      </span><span class="k">age</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">person</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">zephyr</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">age</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">happy</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">birth</span><span class="p">:</span><span class="w"> </span><span class="m">2000</span><span class="l">/01/01</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">maps</span><span class="p">:</span><span class="w"> </span>{<span class="nt">k1: v1,k2</span><span class="p">:</span><span class="w"> </span><span class="l">v2}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">lists</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">code</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">girl</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">music</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">dog</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">旺财</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">age</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>3、编写主类</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -383,39 +383,39 @@ server.port=8080
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/*
-</span><span class="cm">@ConfigurationProperties作用：
-</span><span class="cm">将配置文件中配置的每一个属性的值，映射到这个组件中；
-</span><span class="cm">告诉SpringBoot将本类中的所有属性和配置文件中相关的配置进行绑定
-</span><span class="cm">参数 prefix = “person” : 将配置文件中的person下面的所有属性一一对应
-</span><span class="cm">
-</span><span class="cm">只有这个组件是容器中的组件，才能使用容器提供的@ConfigurationProperties功能
-</span><span class="cm">*/</span>
-
-<span class="c1">// Person.java
-</span><span class="c1"></span>
-<span class="nd">@Component</span> <span class="c1">//注册bean
-</span><span class="c1"></span><span class="nd">@ConfigurationProperties</span><span class="o">(</span><span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;person&#34;</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-    <span class="nd">@Component</span> <span class="c1">// 注册 Bean
-</span><span class="c1"></span>    <span class="nd">@ConfigurationProperties</span><span class="o">(</span><span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;person&#34;</span><span class="o">)</span> <span class="c1">// 用application.yaml中的person注入
-</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">Boolean</span> <span class="n">happy</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">Date</span> <span class="n">birth</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">maps</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">lists</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">Dog</span> <span class="n">dog</span><span class="o">;</span>
-
-    <span class="c1">//getter,setter
-</span><span class="c1"></span>    <span class="c1">//toString
-</span><span class="c1"></span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">@ConfigurationProperties作用：
+</span></span></span><span class="line"><span class="cl"><span class="cm">将配置文件中配置的每一个属性的值，映射到这个组件中；
+</span></span></span><span class="line"><span class="cl"><span class="cm">告诉SpringBoot将本类中的所有属性和配置文件中相关的配置进行绑定
+</span></span></span><span class="line"><span class="cl"><span class="cm">参数 prefix = “person” : 将配置文件中的person下面的所有属性一一对应
+</span></span></span><span class="line"><span class="cl"><span class="cm">
+</span></span></span><span class="line"><span class="cl"><span class="cm">只有这个组件是容器中的组件，才能使用容器提供的@ConfigurationProperties功能
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Person.java
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Component</span> <span class="c1">//注册bean
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@ConfigurationProperties</span><span class="o">(</span><span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;person&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Component</span> <span class="c1">// 注册 Bean
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@ConfigurationProperties</span><span class="o">(</span><span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;person&#34;</span><span class="o">)</span> <span class="c1">// 用application.yaml中的person注入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Boolean</span> <span class="n">happy</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Date</span> <span class="n">birth</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">maps</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">lists</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Dog</span> <span class="n">dog</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//getter,setter
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//toString
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -424,19 +424,19 @@ server.port=8080
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dog</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">;</span>
-
-    <span class="c1">//get、set方法
-</span><span class="c1"></span>    <span class="c1">//toString()方法  
-</span><span class="c1"></span><span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dog</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//get、set方法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//toString()方法  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>4、编写测试类并运行检测</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -450,19 +450,19 @@ server.port=8080
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@SpringBootTest</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SpringbootDemo03ApplicationTests</span> <span class="o">{</span>
-
-    <span class="nd">@Autowired</span>
-    <span class="n">Person</span> <span class="n">person</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">();</span>
-
-    <span class="nd">@Test</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">contextLoads</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">person</span><span class="o">);</span>
-    <span class="o">}</span>
-
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@SpringBootTest</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SpringbootDemo03ApplicationTests</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Person</span> <span class="n">person</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">contextLoads</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">person</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>运行结果如下</p>
 <p><img src="https://img.zephyrl.co/images/2020/02/26/1_runsuccess.png" alt="注入成功"></p>
@@ -472,7 +472,7 @@ server.port=8080
 <p>2、我们使用的是@configurationProperties的方式，还有一种方式是使用@value</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -485,53 +485,53 @@ server.port=8080
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Component</span> <span class="c1">//注册bean
-</span><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-    <span class="c1">//直接使用@value
-</span><span class="c1"></span>    <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${person.name}&#34;</span><span class="o">)</span> <span class="c1">//从配置文件中取值
-</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-    <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;#{11*2}&#34;</span><span class="o">)</span>  <span class="c1">//#{SPEL} Spring表达式
-</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">;</span>
-    <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;true&#34;</span><span class="o">)</span>  <span class="c1">// 字面量
-</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">Boolean</span> <span class="n">happy</span><span class="o">;</span>
-    <span class="err">。。。。。。</span>  
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Component</span> <span class="c1">//注册bean
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//直接使用@value
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${person.name}&#34;</span><span class="o">)</span> <span class="c1">//从配置文件中取值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;#{11*2}&#34;</span><span class="o">)</span>  <span class="c1">//#{SPEL} Spring表达式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;true&#34;</span><span class="o">)</span>  <span class="c1">// 字面量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">private</span> <span class="n">Boolean</span> <span class="n">happy</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="err">。。。。。。</span>  
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个使用起来并不友好！我们需要为每个属性单独注解赋值，比较麻烦；我们来看个功能对比图</p>
 <table>
 <thead>
 <tr>
-<th align="center"></th>
-<th align="center">@ConfigurationProperties</th>
-<th align="center">@Value</th>
+<th style="text-align:center"></th>
+<th style="text-align:center">@ConfigurationProperties</th>
+<th style="text-align:center">@Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">功能</td>
-<td align="center">批量注入配置文件中的属性</td>
-<td align="center">一个个指定</td>
+<td style="text-align:center">功能</td>
+<td style="text-align:center">批量注入配置文件中的属性</td>
+<td style="text-align:center">一个个指定</td>
 </tr>
 <tr>
-<td align="center">松散绑定（松散语法）</td>
-<td align="center">支持</td>
-<td align="center">不支持</td>
+<td style="text-align:center">松散绑定（松散语法）</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">不支持</td>
 </tr>
 <tr>
-<td align="center">SpEL</td>
-<td align="center">不支持</td>
-<td align="center">支持</td>
+<td style="text-align:center">SpEL</td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center">支持</td>
 </tr>
 <tr>
-<td align="center">JSR303 数据校验</td>
-<td align="center">支持</td>
-<td align="center">不支持</td>
+<td style="text-align:center">JSR303 数据校验</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">不支持</td>
 </tr>
 <tr>
-<td align="center">复杂类型封装</td>
-<td align="center">支持</td>
-<td align="center">不支持</td>
+<td style="text-align:center">复杂类型封装</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">不支持</td>
 </tr>
 </tbody>
 </table>
@@ -545,7 +545,7 @@ server.port=8080
 <p>可以用 <code>@Validated</code>来校验数据，如果数据异常则会统一抛出异常，方便异常中心统一处理。我们这里来写个注解让我们的 name 只能支持 Email 格式</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -562,22 +562,22 @@ server.port=8080
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Component</span>
-<span class="nd">@ConfigurationProperties</span><span class="o">(</span><span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;person&#34;</span><span class="o">)</span>
-<span class="nd">@Validated</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
-    <span class="nd">@Email</span><span class="o">()</span>
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">Boolean</span> <span class="n">happy</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">Date</span> <span class="n">Birth</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">maps</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">lists</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">Cat</span> <span class="n">cat</span><span class="o">;</span>
-    <span class="c1">// Constructor
-</span><span class="c1"></span>    <span class="c1">// Getter and Setter
-</span><span class="c1"></span><span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Component</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@ConfigurationProperties</span><span class="o">(</span><span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;person&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Validated</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Email</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Boolean</span> <span class="n">happy</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Date</span> <span class="n">Birth</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">maps</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">lists</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Cat</span> <span class="n">cat</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Constructor
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// Getter and Setter
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>此时会报错：</p>
 <p><img src="https://img.zephyrl.co/images/2020/02/26/3_jsr303errord20dc6270a79e4dd.png" alt="error"></p>
@@ -687,7 +687,7 @@ server.port=8080
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

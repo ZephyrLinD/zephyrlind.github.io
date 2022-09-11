@@ -41,7 +41,7 @@
     
         "keywords": "Ansible, 折腾笔记, DevOPs入门笔记, Zabbix",
     
-    "wordcount":  759 ,
+    "wordcount":  881 ,
     "url": "https:\/\/blog.z36.moe\/2020\/08\/ansible-compileagent\/",
     
         "datePublished": "2020-08-23T10:09:56\u002b08:00",
@@ -147,7 +147,7 @@
             </div>
             <div class="post-meta-other">
                 <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-23>2020-08-23</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 759 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 881 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
         </div>
 
@@ -200,7 +200,7 @@
 <p>根据以上需求，编写 <code>yaml</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -233,43 +233,43 @@
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
-</span><span class="w"></span>- <span class="k">hosts</span><span class="p">:</span><span class="w"> </span>vms<span class="w">
-</span><span class="w">  </span><span class="k">remote_user</span><span class="p">:</span><span class="w"> </span>root<span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="k">tasks</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Create<span class="w"> </span>zabbix<span class="w"> </span>group<span class="w">
-</span><span class="w">      </span><span class="k">group</span><span class="p">:</span><span class="w"> </span>name=zabbix<span class="w"> </span>system=yes<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Create<span class="w"> </span>zabbix<span class="w"> </span>user<span class="w">
-</span><span class="w">      </span><span class="k">user</span><span class="p">:</span><span class="w"> </span>name=zabbix<span class="w"> </span>system=yes<span class="w"> </span>shell=/sbin/nologin<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>unarchive<span class="w"> </span>zabbix<span class="w"> </span>source<span class="w">
-</span><span class="w">      </span><span class="k">unarchive</span><span class="p">:</span><span class="w"> </span>src=/usr/local/src/zabbix<span class="m">-5.0.2</span>.tar.gz<span class="w"> </span>dest=/usr/local/src<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>install<span class="w"> </span>pcre-devel<span class="w">
-</span><span class="w">      </span><span class="k">yum</span><span class="p">:</span><span class="w"> </span>name=pcre-devel<span class="w"> </span>state=present<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>make<span class="w"> </span>and<span class="w"> </span>make<span class="w"> </span>install<span class="w">
-</span><span class="w">      </span><span class="k">shell</span><span class="p">:</span><span class="w"> </span>cd<span class="w"> </span>/usr/local/src/zabbix<span class="m">-5.0.2</span><span class="w"> </span><span class="cp">&amp;&amp;</span><span class="w"> </span>./configure<span class="w"> </span>--prefix=/usr/local/zabbix_agent<span class="w"> </span>--enable-agent<span class="w"> </span><span class="cp">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span><span class="cp">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>copy<span class="w"> </span>the<span class="w"> </span>systemctl<span class="w"> </span>file<span class="w"> </span>to<span class="w"> </span>target<span class="w">
-</span><span class="w">      </span><span class="k">copy</span><span class="p">:</span><span class="w"> </span>src=zabbix-agent.service.bak<span class="w"> </span>dest=/usr/lib/systemd/system/zabbix-agent.service<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>mkdir<span class="w"> </span>for<span class="w"> </span>PidFile<span class="w">
-</span><span class="w">      </span><span class="k">shell</span><span class="p">:</span><span class="w"> </span>mkdir<span class="w"> </span>/var/run/zabbix/<span class="w"> </span><span class="cp">&amp;&amp;</span><span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>zabbix<span class="p">:</span>zabbix<span class="w"> </span>/var/run/zabbix/<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>change<span class="w"> </span>server<span class="w"> </span>and<span class="w"> </span>serverActice<span class="w">
-</span><span class="w">      </span><span class="k">shell</span><span class="p">:</span><span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&#34;s#127.0.0.1#192.168.1.169#g&#34;</span><span class="w"> </span>/usr/local/zabbix_agent/etc/zabbix_agentd.conf<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>change<span class="w"> </span>host<span class="w"> </span>name<span class="w">
-</span><span class="w">      </span><span class="k">shell</span><span class="p">:</span><span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&#34;s#Zabbix server#`hostname -I`#g&#34;</span><span class="w"> </span>/usr/local/zabbix_agent/etc/zabbix_agentd.conf<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>change<span class="w"> </span>hostmetadata<span class="w">
-</span><span class="w">      </span><span class="k">shell</span><span class="p">:</span><span class="w"> </span>echo<span class="w"> </span><span class="s1">&#39;HostMetadata=x86&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/usr/local/zabbix_agent/etc/zabbix_agentd.conf<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>add<span class="w"> </span>pidFile<span class="w">
-</span><span class="w">      </span><span class="k">shell</span><span class="p">:</span><span class="w"> </span>echo<span class="w"> </span><span class="s2">&#34;PidFile=/var/run/zabbix/zabbix_agentd.pid&#34;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/usr/local/zabbix_agent/etc/zabbix_agentd.conf<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>add<span class="w"> </span>other<span class="w">
-</span><span class="w">      </span><span class="k">shell</span><span class="p">:</span><span class="w"> </span>echo<span class="w"> </span><span class="s2">&#34;LogFileSize=0&#34;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/usr/local/zabbix_agent/etc/zabbix_agentd.conf<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>start<span class="w"> </span>service<span class="w">
-</span><span class="w">      </span><span class="k">service</span><span class="p">:</span><span class="w"> </span>name=zabbix-agent<span class="w"> </span>state=started<span class="w"> </span>enabled=yes<span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">vms</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">remote_user</span><span class="p">:</span><span class="w"> </span><span class="l">root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Create zabbix group</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l">name=zabbix system=yes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Create zabbix user</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l">name=zabbix system=yes shell=/sbin/nologin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">unarchive zabbix source</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">unarchive</span><span class="p">:</span><span class="w"> </span><span class="l">src=/usr/local/src/zabbix-5.0.2.tar.gz dest=/usr/local/src</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">install pcre-devel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">yum</span><span class="p">:</span><span class="w"> </span><span class="l">name=pcre-devel state=present</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">make and make install</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l">cd /usr/local/src/zabbix-5.0.2 &amp;&amp; ./configure --prefix=/usr/local/zabbix_agent --enable-agent &amp;&amp; make &amp;&amp; make install</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">copy the systemctl file to target</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">copy</span><span class="p">:</span><span class="w"> </span><span class="l">src=zabbix-agent.service.bak dest=/usr/lib/systemd/system/zabbix-agent.service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">mkdir for PidFile</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l">mkdir /var/run/zabbix/ &amp;&amp; chown -R zabbix:zabbix /var/run/zabbix/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">change server and serverActice</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l">sed -i &#34;s#127.0.0.1#192.168.1.169#g&#34; /usr/local/zabbix_agent/etc/zabbix_agentd.conf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">change host name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l">sed -i &#34;s#Zabbix server#`hostname -I`#g&#34; /usr/local/zabbix_agent/etc/zabbix_agentd.conf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">change hostmetadata</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l">echo &#39;HostMetadata=x86&#39; &gt;&gt; /usr/local/zabbix_agent/etc/zabbix_agentd.conf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">add pidFile</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l">echo &#34;PidFile=/var/run/zabbix/zabbix_agentd.pid&#34; &gt;&gt; /usr/local/zabbix_agent/etc/zabbix_agentd.conf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">add other</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l">echo &#34;LogFileSize=0&#34; &gt;&gt; /usr/local/zabbix_agent/etc/zabbix_agentd.conf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">start service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l">name=zabbix-agent state=started enabled=yes</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>在编写里面的 <code>zabbix-agent.service</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -289,25 +289,25 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-service" data-lang="service"><span class="k">[Unit]</span>
-<span class="na">Description</span><span class="o">=</span><span class="s">Zabbix Agent</span>
-<span class="na">After</span><span class="o">=</span><span class="s">syslog.target</span>
-<span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
-
-<span class="k">[Service]</span>
-<span class="na">Environment</span><span class="o">=</span><span class="s">&#34;CONFFILE=/usr/local/zabbix_agent/etc/zabbix_agentd.conf&#34;</span>
-<span class="c">#EnvironmentFile=/usr/local/zabbix/etc/zabbix_agentd.conf.d/</span>
-<span class="na">Type</span><span class="o">=</span><span class="s">forking</span>
-<span class="na">Restart</span><span class="o">=</span><span class="s">on-failure</span>
-<span class="na">PIDFile</span><span class="o">=</span><span class="s">/run/zabbix/zabbix_agentd.pid</span>
-<span class="na">KillMode</span><span class="o">=</span><span class="s">control-group</span>
-<span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/local/zabbix_agent/sbin/zabbix_agentd -c $CONFFILE</span>
-<span class="na">ExecStop</span><span class="o">=</span><span class="s">/bin/kill -SIGTERM $MAINPID</span>
-<span class="na">RestartSec</span><span class="o">=</span><span class="s">10s</span>
-
-<span class="k">[Install]</span>
-<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-service" data-lang="service"><span class="line"><span class="cl"><span class="k">[Unit]</span>
+</span></span><span class="line"><span class="cl"><span class="na">Description</span><span class="o">=</span><span class="s">Zabbix Agent</span>
+</span></span><span class="line"><span class="cl"><span class="na">After</span><span class="o">=</span><span class="s">syslog.target</span>
+</span></span><span class="line"><span class="cl"><span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">[Service]</span>
+</span></span><span class="line"><span class="cl"><span class="na">Environment</span><span class="o">=</span><span class="s">&#34;CONFFILE=/usr/local/zabbix_agent/etc/zabbix_agentd.conf&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c">#EnvironmentFile=/usr/local/zabbix/etc/zabbix_agentd.conf.d/</span>
+</span></span><span class="line"><span class="cl"><span class="na">Type</span><span class="o">=</span><span class="s">forking</span>
+</span></span><span class="line"><span class="cl"><span class="na">Restart</span><span class="o">=</span><span class="s">on-failure</span>
+</span></span><span class="line"><span class="cl"><span class="na">PIDFile</span><span class="o">=</span><span class="s">/run/zabbix/zabbix_agentd.pid</span>
+</span></span><span class="line"><span class="cl"><span class="na">KillMode</span><span class="o">=</span><span class="s">control-group</span>
+</span></span><span class="line"><span class="cl"><span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/local/zabbix_agent/sbin/zabbix_agentd -c $CONFFILE</span>
+</span></span><span class="line"><span class="cl"><span class="na">ExecStop</span><span class="o">=</span><span class="s">/bin/kill -SIGTERM $MAINPID</span>
+</span></span><span class="line"><span class="cl"><span class="na">RestartSec</span><span class="o">=</span><span class="s">10s</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">[Install]</span>
+</span></span><span class="line"><span class="cl"><span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="问题"></a><h2>问题</h2>
 <p>由于最早我没做相关 PID 的相关代码，会造成偶尔无法启动的bug，排错的时候顺便加上了，没想到就成了&hellip;&hellip;</p>
@@ -316,11 +316,11 @@
 <p>执行 playbook 命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible-playbook compileAgent_x86_rhel.yaml -k
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible-playbook compileAgent_x86_rhel.yaml -k
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>输入密码后，成功运行</p>
 <p><img src="https://img.zephyrl.co/images/2020/08/25/3_doSuccess.png" alt="3_doSuccess.png"></p>
@@ -433,7 +433,7 @@
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

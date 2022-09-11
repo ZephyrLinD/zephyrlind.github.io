@@ -201,25 +201,25 @@
 <a class="post-dummy-target" id="打开网卡混杂模式"></a><h3>打开网卡混杂模式</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo ip link <span class="nb">set</span> eth0 promisc on
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo ip link <span class="nb">set</span> eth0 promisc on
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="结合自己网络情况创建网络"></a><h3>结合自己网络情况创建网络</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">docker network create -d macvlan --subnet<span class="o">=</span>192.168.2.0/24 --gateway<span class="o">=</span>192.168.2.1 -o <span class="nv">parent</span><span class="o">=</span>eth0 macnet
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker network create -d macvlan --subnet<span class="o">=</span>192.168.2.0/24 --gateway<span class="o">=</span>192.168.2.1 -o <span class="nv">parent</span><span class="o">=</span>eth0 macnet
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>此时，我们使用 docker network ls命令可以看到网络macnet已建立成功：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -227,46 +227,46 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ docker network ls
-NETWORK ID          NAME                DRIVER              SCOPE
-10e676133746        bridge              bridge              <span class="nb">local</span>
-f5308b94e8fa        host                host                <span class="nb">local</span>
-16745ea66852        macnet              macvlan             <span class="nb">local</span>
-5e72e41ea02a        none                null                <span class="nb">local</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker network ls
+</span></span><span class="line"><span class="cl">NETWORK ID          NAME                DRIVER              SCOPE
+</span></span><span class="line"><span class="cl">10e676133746        bridge              bridge              <span class="nb">local</span>
+</span></span><span class="line"><span class="cl">f5308b94e8fa        host                host                <span class="nb">local</span>
+</span></span><span class="line"><span class="cl">16745ea66852        macnet              macvlan             <span class="nb">local</span>
+</span></span><span class="line"><span class="cl">5e72e41ea02a        none                null                <span class="nb">local</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="拉取镜像"></a><h3>拉取镜像</h3>
 <p>为提高拉取速度，我拉取阿里云仓库中的镜像：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">docker pull registry.cn-shanghai.aliyuncs.com/suling/openwrt:latest
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker pull registry.cn-shanghai.aliyuncs.com/suling/openwrt:latest
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>镜像拉取完成后，我们可以执行<code>docker images</code>命令查看现存镜像：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ docker images
-REPOSITORY                                              TAG                 IMAGE ID            CREATED             SIZE
-registry.cn-shanghai.aliyuncs.com/suling/openwrt        latest              4f4bc5dca2d9        <span class="m">1</span> hours ago         112MB
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker images
+</span></span><span class="line"><span class="cl">REPOSITORY                                              TAG                 IMAGE ID            CREATED             SIZE
+</span></span><span class="line"><span class="cl">registry.cn-shanghai.aliyuncs.com/suling/openwrt        latest              4f4bc5dca2d9        <span class="m">1</span> hours ago         112MB
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>此时证明镜像已成功拉取到本地。</p>
 <a class="post-dummy-target" id="创建并启动容器"></a><h3>创建并启动容器</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">docker run --restart always --name openwrt -d --network macnet --privileged registry.cn-shanghai.aliyuncs.com/suling/openwrt:latest /sbin/init
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run --restart always --name openwrt -d --network macnet --privileged registry.cn-shanghai.aliyuncs.com/suling/openwrt:latest /sbin/init
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中：</p>
 <p><code>--restart always</code> 参数表示容器退出时始终重启，使服务尽量保持始终可用；</p>
@@ -279,26 +279,26 @@ registry.cn-shanghai.aliyuncs.com/suling/openwrt        latest              4f4b
 <p>启动容器后，我们可以使用 <code>docker ps -a</code> 命令查看当前运行的容器：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker ps -a
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-a26cee7cade6        openwrt:latest      <span class="s2">&#34;/sbin/init&#34;</span>        <span class="m">3</span> hours ago         Up <span class="m">3</span> hours                              openwrt
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker ps -a
+</span></span><span class="line"><span class="cl">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+</span></span><span class="line"><span class="cl">a26cee7cade6        openwrt:latest      <span class="s2">&#34;/sbin/init&#34;</span>        <span class="m">3</span> hours ago         Up <span class="m">3</span> hours                              openwrt
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>若容器运行信息 <code>STATUS</code> 列为 <code>UP</code> 状态，则说明容器运行正常。</p>
 <a class="post-dummy-target" id="进入容器并按照需求修改相关参数"></a><h3>进入容器并按照需求修改相关参数</h3>
 <p>首先进去容器</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">docker <span class="nb">exec</span> -it openwrt bash
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it openwrt bash
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中：</p>
 <p><code>openwrt</code>为容器名称；</p>
@@ -306,16 +306,16 @@ a26cee7cade6        openwrt:latest      <span class="s2">&#34;/sbin/init&#34;</s
 <p>执行此命令后我们便进入 OpenWrt 的命令行界面，首先，我们需要编辑 OpenWrt 的网络配置文件：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">vim /etc/config/network
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vim /etc/config/network
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>我们需要更改 Lan 口设置：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -327,23 +327,23 @@ a26cee7cade6        openwrt:latest      <span class="s2">&#34;/sbin/init&#34;</s
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">config interface <span class="s1">&#39;lan&#39;</span>
-    option <span class="nb">type</span> <span class="s1">&#39;bridge&#39;</span>
-    option ifname <span class="s1">&#39;eth0&#39;</span>
-    option proto <span class="s1">&#39;static&#39;</span>
-    option ipaddr <span class="s1">&#39;192.168.123.100&#39;</span>
-    option netmask <span class="s1">&#39;255.255.255.0&#39;</span>
-    option ip6assign <span class="s1">&#39;60&#39;</span>
-    option gateway <span class="s1">&#39;192.168.123.1&#39;</span>
-    option broadcast <span class="s1">&#39;192.168.123.255&#39;</span>
-    option dns <span class="s1">&#39;192.168.123.1&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">config interface <span class="s1">&#39;lan&#39;</span>
+</span></span><span class="line"><span class="cl">    option <span class="nb">type</span> <span class="s1">&#39;bridge&#39;</span>
+</span></span><span class="line"><span class="cl">    option ifname <span class="s1">&#39;eth0&#39;</span>
+</span></span><span class="line"><span class="cl">    option proto <span class="s1">&#39;static&#39;</span>
+</span></span><span class="line"><span class="cl">    option ipaddr <span class="s1">&#39;192.168.123.100&#39;</span>
+</span></span><span class="line"><span class="cl">    option netmask <span class="s1">&#39;255.255.255.0&#39;</span>
+</span></span><span class="line"><span class="cl">    option ip6assign <span class="s1">&#39;60&#39;</span>
+</span></span><span class="line"><span class="cl">    option gateway <span class="s1">&#39;192.168.123.1&#39;</span>
+</span></span><span class="line"><span class="cl">    option broadcast <span class="s1">&#39;192.168.123.255&#39;</span>
+</span></span><span class="line"><span class="cl">    option dns <span class="s1">&#39;192.168.123.1&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中：</p>
 <p>所有的 192.168.123.x 需要根据树莓派所处网段修改，<code>option gateway</code> 和 <code>option dns</code> 填写路由器的 IP，若树莓派获得的 IP 为 <code>192.168.2.200</code>，路由器 IP 为 <code>192.168.2.1</code>，则需要这样修改：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -355,27 +355,27 @@ a26cee7cade6        openwrt:latest      <span class="s2">&#34;/sbin/init&#34;</s
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">config interface <span class="s1">&#39;lan&#39;</span>
-    option <span class="nb">type</span> <span class="s1">&#39;bridge&#39;</span>
-    option ifname <span class="s1">&#39;eth0&#39;</span>
-    option proto <span class="s1">&#39;static&#39;</span>
-    option ipaddr <span class="s1">&#39;192.168.2.254&#39;</span>
-    option netmask <span class="s1">&#39;255.255.255.0&#39;</span>
-    option ip6assign <span class="s1">&#39;60&#39;</span>
-    option gateway <span class="s1">&#39;192.168.2.1&#39;</span>
-    option broadcast <span class="s1">&#39;192.168.2.255&#39;</span>
-    option dns <span class="s1">&#39;192.168.2.1&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">config interface <span class="s1">&#39;lan&#39;</span>
+</span></span><span class="line"><span class="cl">    option <span class="nb">type</span> <span class="s1">&#39;bridge&#39;</span>
+</span></span><span class="line"><span class="cl">    option ifname <span class="s1">&#39;eth0&#39;</span>
+</span></span><span class="line"><span class="cl">    option proto <span class="s1">&#39;static&#39;</span>
+</span></span><span class="line"><span class="cl">    option ipaddr <span class="s1">&#39;192.168.2.254&#39;</span>
+</span></span><span class="line"><span class="cl">    option netmask <span class="s1">&#39;255.255.255.0&#39;</span>
+</span></span><span class="line"><span class="cl">    option ip6assign <span class="s1">&#39;60&#39;</span>
+</span></span><span class="line"><span class="cl">    option gateway <span class="s1">&#39;192.168.2.1&#39;</span>
+</span></span><span class="line"><span class="cl">    option broadcast <span class="s1">&#39;192.168.2.255&#39;</span>
+</span></span><span class="line"><span class="cl">    option dns <span class="s1">&#39;192.168.2.1&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>option ipaddr 项目定义了 OpenWrt 的 IP 地址，在完成网段设置后，IP最后一段可根据自己的爱好修改（前提是符合规则且不和现有已分配 IP 冲突）。</p>
 <a class="post-dummy-target" id="重启网络"></a><h3>重启网络</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">/etc/init.d/network restart
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/etc/init.d/network restart
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="进入控制面板"></a><h3>进入控制面板</h3>
 <p>在浏览器中输入第 5 步 <code>option ipaddr</code> 项目中的 IP 进入 Luci 控制面板，若 <code>option ipaddr</code> 的参数为 <code>192.168.123.100</code>，则可以在浏览器输入 http://192.168.123.100 进入控制面板。</p>
@@ -389,11 +389,11 @@ a26cee7cade6        openwrt:latest      <span class="s2">&#34;/sbin/init&#34;</s
 <p>后来查询发现是因为国内网站走了一遍防火墙，我们设置防火墙即可解决问题</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="最后"></a><h2>最后</h2>
 <p>暂时没遇到其他问题，如果遇到了会更新博客！</p>
@@ -488,7 +488,7 @@ a26cee7cade6        openwrt:latest      <span class="s2">&#34;/sbin/init&#34;</s
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

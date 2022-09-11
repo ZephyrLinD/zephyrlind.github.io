@@ -186,7 +186,7 @@
 <p>首先我们通过命令来查看我们要取的值在哪</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -198,48 +198,48 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@zep2 ~<span class="o">]</span><span class="c1"># iostat</span>
-Linux 3.10.0-862.el7.x86_64 <span class="o">(</span>zep2.test<span class="o">)</span>         08/05/2020      _x86_64_        <span class="o">(</span><span class="m">2</span> CPU<span class="o">)</span>
-
-avg-cpu:  %user   %nice %system %iowait  %steal   %idle
-           2.33    0.00    2.71    0.06    0.00   94.90
-
-Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
-sda               0.42         3.36        66.43     <span class="m">540882</span>   <span class="m">10699175</span>
-dm-0              0.31         2.99        32.73     <span class="m">482054</span>    <span class="m">5271735</span>
-dm-1              8.50         0.32        33.68      <span class="m">50792</span>    <span class="m">5425372</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@zep2 ~<span class="o">]</span><span class="c1"># iostat</span>
+</span></span><span class="line"><span class="cl">Linux 3.10.0-862.el7.x86_64 <span class="o">(</span>zep2.test<span class="o">)</span>         08/05/2020      _x86_64_        <span class="o">(</span><span class="m">2</span> CPU<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+</span></span><span class="line"><span class="cl">           2.33    0.00    2.71    0.06    0.00   94.90
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+</span></span><span class="line"><span class="cl">sda               0.42         3.36        66.43     <span class="m">540882</span>   <span class="m">10699175</span>
+</span></span><span class="line"><span class="cl">dm-0              0.31         2.99        32.73     <span class="m">482054</span>    <span class="m">5271735</span>
+</span></span><span class="line"><span class="cl">dm-1              8.50         0.32        33.68      <span class="m">50792</span>    <span class="m">5425372</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>所以我们可以使用以下命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@zep2 ~<span class="o">]</span><span class="c1"># iostat | awk &#39;/sda/{print $2}&#39;</span>
-0.42
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@zep2 ~<span class="o">]</span><span class="c1"># iostat | awk &#39;/sda/{print $2}&#39;</span>
+</span></span><span class="line"><span class="cl">0.42
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="添加到配置文件中"></a><h3>添加到配置文件中</h3>
 <p>我们打开 <code>/etc/zabbix/zabbix_agentd.conf</code>，找到 <code>UserParameter</code> 字段，按照 &lt;key, value&gt; 写入</p>
 <p>key 代表这个动作的名字，value 就是这个动作的命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">UserParameter</span><span class="o">=</span>sda_tps, iostat <span class="p">|</span> awk <span class="s1">&#39;/sda/{print $2}&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">UserParameter</span><span class="o">=</span>sda_tps, iostat <span class="p">|</span> awk <span class="s1">&#39;/sda/{print $2}&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后我们重启服务即可生效</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">systemctl restart zabbix-agent
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">systemctl restart zabbix-agent
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="测试是否成功取值"></a><h3>测试是否成功取值</h3>
 <a class="post-dummy-target" id="添加到-web-管理页面中"></a><h3>添加到 Web 管理页面中</h3>
@@ -257,22 +257,22 @@ dm-1              8.50         0.32        33.68      <span class="m">50792</spa
 <p>之后我们再目标主机执行以下命令，关掉 Swap</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">swapoff -a
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">swapoff -a
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>不久之后就可以发现，服务器成功报警</p>
 <p><img src="https://img.zephyrl.co/images/2020/08/05/2_swapTriggerTestSuccess.png" alt="2_swapTriggerTestSuccess.png"></p>
 <p>然后我们重新开启 swap 即可</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">swapon -a
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">swapon -a
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="自定义触发器监控登陆人数zabbix-5-未发现相关函数"></a><h3>自定义触发器监控登陆人数（Zabbix 5 未发现相关函数）、</h3>
 <p>首先，按照配置-主机-触发器-创建触发器来创建触发器</p>
@@ -381,7 +381,7 @@ dm-1              8.50         0.32        33.68      <span class="m">50792</spa
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

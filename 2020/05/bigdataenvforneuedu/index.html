@@ -198,11 +198,11 @@
 <p>所以在的在开机启动页面按下 <code>tab</code> 开始自己配置网卡名，按下 <code>tab</code> 之后不用管别的二话不说直接输入一下内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">net.ifnames<span class="o">=</span><span class="m">0</span> <span class="nv">biosdevname</span><span class="o">=</span><span class="m">0</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">net.ifnames<span class="o">=</span><span class="m">0</span> <span class="nv">biosdevname</span><span class="o">=</span><span class="m">0</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>效果如下图：</p>
 <p><img src="https://img.zephyrl.co/images/2020/05/27/3_netcardname.png" alt="网卡名称"></p>
@@ -248,83 +248,83 @@
 <p>粘贴到 <code>/usr/local</code> 解压压缩包</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">tar zxvf jdk-8u241-linux-x64.tar.gz
-rm -rf jdk-8u241-linux-x64.tar.gz
-<span class="nb">cd</span> jdk1.8.0_241
-<span class="nb">pwd</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">tar zxvf jdk-8u241-linux-x64.tar.gz
+</span></span><span class="line"><span class="cl">rm -rf jdk-8u241-linux-x64.tar.gz
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> jdk1.8.0_241
+</span></span><span class="line"><span class="cl"><span class="nb">pwd</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>获取到当前路径后，复制路径链接，配置环境变量</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">vim /etc/profile
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vim /etc/profile
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在末尾添加如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># JDK 设置</span>
-<span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/local/jdk1.8.0_241
-<span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/jre
-<span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span><span class="nv">$CLASSPATH</span>:<span class="nv">$JAVA_HOME</span>/lib:<span class="nv">$JRE_HOME</span>/lib
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$JRE_HOME</span>/bin
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># JDK 设置</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/local/jdk1.8.0_241
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/jre
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span><span class="nv">$CLASSPATH</span>:<span class="nv">$JAVA_HOME</span>/lib:<span class="nv">$JRE_HOME</span>/lib
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$JRE_HOME</span>/bin
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后将环境变量生效</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">source</span> /etc/profile
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">source</span> /etc/profile
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后运行一下 java 查看是否安装成功：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@vm00 ~<span class="o">]</span><span class="c1"># java -version</span>
-java version <span class="s2">&#34;1.8.0_241&#34;</span>
-Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="o">(</span>build 1.8.0_241-b07<span class="o">)</span>
-Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM <span class="o">(</span>build 25.241-b07, mixed mode<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@vm00 ~<span class="o">]</span><span class="c1"># java -version</span>
+</span></span><span class="line"><span class="cl">java version <span class="s2">&#34;1.8.0_241&#34;</span>
+</span></span><span class="line"><span class="cl">Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="o">(</span>build 1.8.0_241-b07<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM <span class="o">(</span>build 25.241-b07, mixed mode<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="mysql-安装"></a><h3>MySQL 安装</h3>
 <p>因为按照默认yum源安装MySQL非常慢，所以换一下yum源</p>
 <p>首先备份原始yum源</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后，直接使用如下内容覆盖掉 /etc/yum.repos.d/CentOS-Base.repo 文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -377,119 +377,119 @@ Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM 
 </span><span class="lnt">51
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># CentOS-Base.repo</span>
-#
-<span class="c1"># The mirror system uses the connecting IP address of the client and the</span>
-<span class="c1"># update status of each mirror to pick mirrors that are updated to and</span>
-<span class="c1"># geographically close to the client.  You should use this for CentOS updates</span>
-<span class="c1"># unless you are manually picking other mirrors.</span>
-#
-<span class="c1"># If the mirrorlist= does not work for you, as a fall back you can try the</span>
-<span class="c1"># remarked out baseurl= line instead.</span>
-#
-#
-
-
-<span class="o">[</span>base<span class="o">]</span>
-<span class="nv">name</span><span class="o">=</span>CentOS-<span class="nv">$releasever</span> - Base
-<span class="nv">baseurl</span><span class="o">=</span>https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="nv">$releasever</span>/os/<span class="nv">$basearch</span>/
-<span class="c1">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os</span>
-<span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-7
-
-<span class="c1">#released updates</span>
-<span class="o">[</span>updates<span class="o">]</span>
-<span class="nv">name</span><span class="o">=</span>CentOS-<span class="nv">$releasever</span> - Updates
-<span class="nv">baseurl</span><span class="o">=</span>https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="nv">$releasever</span>/updates/<span class="nv">$basearch</span>/
-<span class="c1">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=updates</span>
-<span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-7
-
-
-
-<span class="c1">#additional packages that may be useful</span>
-<span class="o">[</span>extras<span class="o">]</span>
-<span class="nv">name</span><span class="o">=</span>CentOS-<span class="nv">$releasever</span> - Extras
-<span class="nv">baseurl</span><span class="o">=</span>https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="nv">$releasever</span>/extras/<span class="nv">$basearch</span>/
-<span class="c1">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=extras</span>
-<span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-7
-
-
-
-<span class="c1">#additional packages that extend functionality of existing packages</span>
-<span class="o">[</span>centosplus<span class="o">]</span>
-<span class="nv">name</span><span class="o">=</span>CentOS-<span class="nv">$releasever</span> - Plus
-<span class="nv">baseurl</span><span class="o">=</span>https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="nv">$releasever</span>/centosplus/<span class="nv">$basearch</span>/
-<span class="c1">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=centosplus</span>
-<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">enabled</span><span class="o">=</span><span class="m">0</span>
-<span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-7
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># CentOS-Base.repo</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># The mirror system uses the connecting IP address of the client and the</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># update status of each mirror to pick mirrors that are updated to and</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># geographically close to the client.  You should use this for CentOS updates</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># unless you are manually picking other mirrors.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># If the mirrorlist= does not work for you, as a fall back you can try the</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># remarked out baseurl= line instead.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>base<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">name</span><span class="o">=</span>CentOS-<span class="nv">$releasever</span> - Base
+</span></span><span class="line"><span class="cl"><span class="nv">baseurl</span><span class="o">=</span>https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="nv">$releasever</span>/os/<span class="nv">$basearch</span>/
+</span></span><span class="line"><span class="cl"><span class="c1">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os</span>
+</span></span><span class="line"><span class="cl"><span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-7
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#released updates</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>updates<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">name</span><span class="o">=</span>CentOS-<span class="nv">$releasever</span> - Updates
+</span></span><span class="line"><span class="cl"><span class="nv">baseurl</span><span class="o">=</span>https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="nv">$releasever</span>/updates/<span class="nv">$basearch</span>/
+</span></span><span class="line"><span class="cl"><span class="c1">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=updates</span>
+</span></span><span class="line"><span class="cl"><span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-7
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#additional packages that may be useful</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>extras<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">name</span><span class="o">=</span>CentOS-<span class="nv">$releasever</span> - Extras
+</span></span><span class="line"><span class="cl"><span class="nv">baseurl</span><span class="o">=</span>https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="nv">$releasever</span>/extras/<span class="nv">$basearch</span>/
+</span></span><span class="line"><span class="cl"><span class="c1">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=extras</span>
+</span></span><span class="line"><span class="cl"><span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-7
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#additional packages that extend functionality of existing packages</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>centosplus<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">name</span><span class="o">=</span>CentOS-<span class="nv">$releasever</span> - Plus
+</span></span><span class="line"><span class="cl"><span class="nv">baseurl</span><span class="o">=</span>https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="nv">$releasever</span>/centosplus/<span class="nv">$basearch</span>/
+</span></span><span class="line"><span class="cl"><span class="c1">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=centosplus</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">enabled</span><span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-7
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>最后，更新软件包缓存</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo yum makecache
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo yum makecache
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在<a href="https://dev.mysql.com/downloads/repo/yum/">这个链接</a>找到 <code>Red Hat Enterprise Linux 7 / Oracle Linux 7 (Architecture Independent), RPM Package</code> 并下载，个人习惯直接在虚拟机内wget</p>
 <p>按照以下步骤安装：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
-yum install mysql80-community-release-el7-3.noarch.rpm
-yum install mysql-community-server
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+</span></span><span class="line"><span class="cl">yum install mysql80-community-release-el7-3.noarch.rpm
+</span></span><span class="line"><span class="cl">yum install mysql-community-server
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>经过漫长的等待，安装完了 MySQL8，我们首先启动 <code>mysqld</code> 服务来获取他的默认密码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">systemctl start mysqld
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">systemctl start mysqld
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后，从 log 中找到临时密码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">grep <span class="s1">&#39;temporary password&#39;</span> /var/log/mysqld.log
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">grep <span class="s1">&#39;temporary password&#39;</span> /var/log/mysqld.log
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后就可以用这个密码登录 MySQL 之后修改密码，首先降低密码复杂等级和最低密码长度：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysql&gt; <span class="nb">set</span> global validate_password.policy<span class="o">=</span>0<span class="p">;</span>
-mysql&gt; <span class="nb">set</span> global validate_password.length<span class="o">=</span>6<span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mysql&gt; <span class="nb">set</span> global validate_password.policy<span class="o">=</span>0<span class="p">;</span>
+</span></span><span class="line"><span class="cl">mysql&gt; <span class="nb">set</span> global validate_password.length<span class="o">=</span>6<span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后，修改密码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysql&gt; ALTER USER <span class="s1">&#39;root&#39;</span>@<span class="s1">&#39;localhost&#39;</span> IDENTIFIED BY <span class="s1">&#39;123456&#39;</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mysql&gt; ALTER USER <span class="s1">&#39;root&#39;</span>@<span class="s1">&#39;localhost&#39;</span> IDENTIFIED BY <span class="s1">&#39;123456&#39;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="安装-hadoop"></a><h3>安装 Hadoop</h3>
 <p>首先找到 <a href="https://hadoop.apache.org/releases.html">Hadoop 下载页面</a>，复制合适的链接，然后下载到虚拟机中的 <code>/usr/local/</code> 下</p>
@@ -497,29 +497,29 @@ mysql&gt; <span class="nb">set</span> global validate_password.length<span class
 <p>之后，解压文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">tar zxvf hadoop-2.9.2.tar.gz
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">tar zxvf hadoop-2.9.2.tar.gz
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后记住现在的安装路径，设置一下环境变量，在 <code>/etc/profile</code> 里面添加如下内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Hadoop</span>
-<span class="nb">export</span> <span class="nv">HADOOP_HOME</span><span class="o">=</span>/usr/local/hadoop-2.9.2
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$HADOOP_HOME</span>/bin:<span class="nv">$HADOOP_HOME</span>/sbin
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Hadoop</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HADOOP_HOME</span><span class="o">=</span>/usr/local/hadoop-2.9.2
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$HADOOP_HOME</span>/bin:<span class="nv">$HADOOP_HOME</span>/sbin
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>最后，保存设置生效并验证</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -532,18 +532,18 @@ mysql&gt; <span class="nb">set</span> global validate_password.length<span class
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@vm00 hadoop-2.9.2<span class="o">]</span>$ <span class="nb">source</span> /etc/profile
-<span class="o">[</span>root@vm00 local<span class="o">]</span>$ hadoop version
-Hadoop 2.9.2
-Subversion https://git-wip-us.apache.org/repos/asf/hadoop.git -r 826afbeae31ca687bc2f8471dc841b66ed2c6704
-Compiled by ajisaka on 2018-11-13T12:42Z
-Compiled with protoc 2.5.0
-From <span class="nb">source</span> with checksum 3a9939967262218aa556c684d107985
-This <span class="nb">command</span> was run using /usr/local/hadoop-2.9.2/share/hadoop/common/hadoop-common-2.9.2.jar
-<span class="o">[</span>root@vm00 local<span class="o">]</span>$ hdfs dfs -ls /home
-Found <span class="m">1</span> items
-drwx------   - zephyr zephyr         <span class="m">62</span> 2018-04-11 12:59 /home/zephyr
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@vm00 hadoop-2.9.2<span class="o">]</span>$ <span class="nb">source</span> /etc/profile
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@vm00 local<span class="o">]</span>$ hadoop version
+</span></span><span class="line"><span class="cl">Hadoop 2.9.2
+</span></span><span class="line"><span class="cl">Subversion https://git-wip-us.apache.org/repos/asf/hadoop.git -r 826afbeae31ca687bc2f8471dc841b66ed2c6704
+</span></span><span class="line"><span class="cl">Compiled by ajisaka on 2018-11-13T12:42Z
+</span></span><span class="line"><span class="cl">Compiled with protoc 2.5.0
+</span></span><span class="line"><span class="cl">From <span class="nb">source</span> with checksum 3a9939967262218aa556c684d107985
+</span></span><span class="line"><span class="cl">This <span class="nb">command</span> was run using /usr/local/hadoop-2.9.2/share/hadoop/common/hadoop-common-2.9.2.jar
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@vm00 local<span class="o">]</span>$ hdfs dfs -ls /home
+</span></span><span class="line"><span class="cl">Found <span class="m">1</span> items
+</span></span><span class="line"><span class="cl">drwx------   - zephyr zephyr         <span class="m">62</span> 2018-04-11 12:59 /home/zephyr
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="安装-hive"></a><h3>安装 Hive</h3>
 <p>首先找到 <a href="http://www.apache.org/dyn/closer.cgi/hive/">Hadoop 下载页面</a>，复制合适的链接，然后下载到虚拟机中的 <code>/usr/local/</code> 下</p>
@@ -551,29 +551,29 @@ drwx------   - zephyr zephyr         <span class="m">62</span> 2018-04-11 12:59 
 <p>之后，解压文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">tar zxvf apache-hive-2.3.7-bin.tar.gz
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">tar zxvf apache-hive-2.3.7-bin.tar.gz
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后记住现在的安装路径，设置一下环境变量，在 <code>/etc/profile</code> 里面添加如下内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Hive</span>
-<span class="nb">export</span> <span class="nv">HIVE_HOME</span><span class="o">=</span>/usr/local/apache-hive-2.3.7-bin
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$HIVE_HOME</span>/bin
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Hive</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HIVE_HOME</span><span class="o">=</span>/usr/local/apache-hive-2.3.7-bin
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$HIVE_HOME</span>/bin
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>最后，保存设置生效并验证</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -581,13 +581,13 @@ drwx------   - zephyr zephyr         <span class="m">62</span> 2018-04-11 12:59 
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@vm00 hadoop-2.9.2<span class="o">]</span>$ <span class="nb">source</span> /etc/profile
-<span class="o">[</span>root@vm00 hadoop-2.9.2<span class="o">]</span>$ hive --version
-Hive 2.3.7
-Git git://Alans-MacBook-Air.local/Users/gates/git/hive -r cb213d88304034393d68cc31a95be24f5aac62b6
-Compiled by gates on Tue Apr <span class="m">7</span> 12:42:45 PDT <span class="m">2020</span>
-From <span class="nb">source</span> with checksum 9da14e8ac4737126b00a1a47f662657e
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@vm00 hadoop-2.9.2<span class="o">]</span>$ <span class="nb">source</span> /etc/profile
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@vm00 hadoop-2.9.2<span class="o">]</span>$ hive --version
+</span></span><span class="line"><span class="cl">Hive 2.3.7
+</span></span><span class="line"><span class="cl">Git git://Alans-MacBook-Air.local/Users/gates/git/hive -r cb213d88304034393d68cc31a95be24f5aac62b6
+</span></span><span class="line"><span class="cl">Compiled by gates on Tue Apr <span class="m">7</span> 12:42:45 PDT <span class="m">2020</span>
+</span></span><span class="line"><span class="cl">From <span class="nb">source</span> with checksum 9da14e8ac4737126b00a1a47f662657e
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="配置-hive"></a><h3>配置 Hive</h3>
 <p>在 MySQL 中创建数据库 hive。由于 hive 有默认的数据库，但是我们需要自己的数据库，所以需要修改一下配置</p>
@@ -595,7 +595,7 @@ From <span class="nb">source</span> with checksum 9da14e8ac4737126b00a1a47f66265
 <p>所有配置文件均在 Hive 安装目录下的 <code>conf</code> 文件夹中</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -619,29 +619,29 @@ From <span class="nb">source</span> with checksum 9da14e8ac4737126b00a1a47f66265
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@vm00 conf<span class="o">]</span>$ cp hive-default.xml.template hive-site.xml
-<span class="o">[</span>root@vm00 conf<span class="o">]</span>$ vim hive-set.xml
-&lt;!--用户名--&gt;
-&lt;property&gt;
-        &lt;name&gt;javax.jdo.option.ConnectionUserName&lt;/name&gt;
-        &lt;value&gt;root&lt;/value&gt;
-    &lt;/property&gt;
-&lt;!--密码--&gt;
-    &lt;property&gt;
-        &lt;name&gt;javax.jdo.option.ConnectionPassword&lt;/name&gt;
-        &lt;value&gt;123456&lt;/value&gt;
-    &lt;/property&gt;
-&lt;!--mysql--&gt;
-   &lt;property&gt;
-        &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;
-        &lt;value&gt;jdbc:mysql://192.168.1.100:3306/hive&lt;/value&gt;
-    &lt;/property&gt;
-&lt;!--mysql驱动程序--&gt;
-    &lt;property&gt;
-        &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt;
-        &lt;value&gt;com.mysql.cj.jdbc.Driver&lt;/value&gt;
-    &lt;/property&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@vm00 conf<span class="o">]</span>$ cp hive-default.xml.template hive-site.xml
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@vm00 conf<span class="o">]</span>$ vim hive-set.xml
+</span></span><span class="line"><span class="cl">&lt;!--用户名--&gt;
+</span></span><span class="line"><span class="cl">&lt;property&gt;
+</span></span><span class="line"><span class="cl">        &lt;name&gt;javax.jdo.option.ConnectionUserName&lt;/name&gt;
+</span></span><span class="line"><span class="cl">        &lt;value&gt;root&lt;/value&gt;
+</span></span><span class="line"><span class="cl">    &lt;/property&gt;
+</span></span><span class="line"><span class="cl">&lt;!--密码--&gt;
+</span></span><span class="line"><span class="cl">    &lt;property&gt;
+</span></span><span class="line"><span class="cl">        &lt;name&gt;javax.jdo.option.ConnectionPassword&lt;/name&gt;
+</span></span><span class="line"><span class="cl">        &lt;value&gt;123456&lt;/value&gt;
+</span></span><span class="line"><span class="cl">    &lt;/property&gt;
+</span></span><span class="line"><span class="cl">&lt;!--mysql--&gt;
+</span></span><span class="line"><span class="cl">   &lt;property&gt;
+</span></span><span class="line"><span class="cl">        &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;
+</span></span><span class="line"><span class="cl">        &lt;value&gt;jdbc:mysql://192.168.1.100:3306/hive&lt;/value&gt;
+</span></span><span class="line"><span class="cl">    &lt;/property&gt;
+</span></span><span class="line"><span class="cl">&lt;!--mysql驱动程序--&gt;
+</span></span><span class="line"><span class="cl">    &lt;property&gt;
+</span></span><span class="line"><span class="cl">        &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt;
+</span></span><span class="line"><span class="cl">        &lt;value&gt;com.mysql.cj.jdbc.Driver&lt;/value&gt;
+</span></span><span class="line"><span class="cl">    &lt;/property&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>2、替换临时目录</p>
 <p>所以将 <code>hive-set.xml</code> 中的 <code>${system:java.io.tmpdir}</code> 换成 Hive 目录下的 <code>tmp</code> 文件夹即可</p>
@@ -649,35 +649,35 @@ From <span class="nb">source</span> with checksum 9da14e8ac4737126b00a1a47f66265
 <p>配置的内容是一样的，从 <code>hive-env.sh</code> 开始</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mv hive-env.sh.template hive-env.sh
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mv hive-env.sh.template hive-env.sh
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后是 <code>hive-config.sh</code>，他在 Hive 安装目录的 <code>bin</code> 文件夹下，加入以下内容</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/local/jdk1.8.0_241
-<span class="nb">export</span> <span class="nv">HIVE_HOME</span><span class="o">=</span>/usr/local/apache-hive-2.3.7-bin
-<span class="nb">export</span> <span class="nv">HADOOP_HOME</span><span class="o">=</span>/usr/local/hadoop-2.9.2
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/local/jdk1.8.0_241
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HIVE_HOME</span><span class="o">=</span>/usr/local/apache-hive-2.3.7-bin
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HADOOP_HOME</span><span class="o">=</span>/usr/local/hadoop-2.9.2
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>3、复制驱动</p>
 <p>把从<a href="https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.20.tar.gz">这里</a>下载的驱动包 <code>mysql-connector-java-8.0.20.jar</code> 解压粘贴到 Hive 安装目录下的 <code>lib</code> 文件夹即可</p>
 <p>4、在 MySQL 中 Hive 的 Schema &ndash; 作用是在 MySQL 的 Hive 数据库下建立相关的表格</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@vm00 local<span class="o">]</span>$ schematool -dbType mysql -initSchema
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@vm00 local<span class="o">]</span>$ schematool -dbType mysql -initSchema
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>5、执行hive</p>
 <a class="post-dummy-target" id="sqoop-安装"></a><h2>Sqoop 安装</h2>
@@ -685,70 +685,70 @@ From <span class="nb">source</span> with checksum 9da14e8ac4737126b00a1a47f66265
 <p>之后，解压文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">tar zxvf sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz
-mv sqoop-1.4.7.bin__hadoop-2.6.0 sqoop-1.4.7
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">tar zxvf sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz
+</span></span><span class="line"><span class="cl">mv sqoop-1.4.7.bin__hadoop-2.6.0 sqoop-1.4.7
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后记住现在的安装路径，设置一下环境变量，在 <code>/etc/profile</code> 里面添加如下内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Hadoop</span>
-<span class="nb">export</span> <span class="nv">SQOOP_HOME</span><span class="o">=</span>/usr/local/sqoop-1.4.7
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$SQOOP_HOME</span>/bin
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Hadoop</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">SQOOP_HOME</span><span class="o">=</span>/usr/local/sqoop-1.4.7
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$SQOOP_HOME</span>/bin
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后对 Sqoop 进行简单配置</p>
 <p>首先修改配置文件：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">source</span> /etc/profile
-<span class="nb">cd</span> <span class="nv">$SQOOP_HOME</span>/conf
-mv sqoop-env-template.sh sqoop-env.sh
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">source</span> /etc/profile
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> <span class="nv">$SQOOP_HOME</span>/conf
+</span></span><span class="line"><span class="cl">mv sqoop-env-template.sh sqoop-env.sh
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>打开sqoop-env.sh并编辑下面几行：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HADOOP_COMMON_HOME</span><span class="o">=</span>/usr/local/hadoop-2.9.2
-<span class="nb">export</span>  <span class="nv">HADOOP_MAPRED_HOME</span><span class="o">=</span>/usr/local/hadoop-2.9.2
-<span class="nb">export</span> <span class="nv">HIVE_HOME</span><span class="o">=</span>/usr/local/apache-hive-2.3.7-bin
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HADOOP_COMMON_HOME</span><span class="o">=</span>/usr/local/hadoop-2.9.2
+</span></span><span class="line"><span class="cl"><span class="nb">export</span>  <span class="nv">HADOOP_MAPRED_HOME</span><span class="o">=</span>/usr/local/hadoop-2.9.2
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HIVE_HOME</span><span class="o">=</span>/usr/local/apache-hive-2.3.7-bin
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>加入 MySql 的 JDBC 驱动包。首先冲<a href="https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.20.tar.gz">这里</a>下资 MySQL 驱动包 然后提取里面的jar文件放在 $SQOOP_HOME/lib/ 中，即可大功告成。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ sqoop-version
-20/06/16 16:55:23 INFO sqoop.Sqoop: Running Sqoop version: 1.4.7
-Sqoop 1.4.7
-git commit id 2328971411f57f0cb683dfb79d19d4d19d185dd8
-Compiled by maugli on Thu Dec <span class="m">21</span> 15:59:58 STD <span class="m">2017</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sqoop-version
+</span></span><span class="line"><span class="cl">20/06/16 16:55:23 INFO sqoop.Sqoop: Running Sqoop version: 1.4.7
+</span></span><span class="line"><span class="cl">Sqoop 1.4.7
+</span></span><span class="line"><span class="cl">git commit id 2328971411f57f0cb683dfb79d19d4d19d185dd8
+</span></span><span class="line"><span class="cl">Compiled by maugli on Thu Dec <span class="m">21</span> 15:59:58 STD <span class="m">2017</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>到这里，整个Sqoop安装工作完成。</p>
 
@@ -842,7 +842,7 @@ Compiled by maugli on Thu Dec <span class="m">21</span> 15:59:58 STD <span class
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

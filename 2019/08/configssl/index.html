@@ -190,45 +190,45 @@
 <p>安装只需一条命令即可完成</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">curl https://get.acme.sh <span class="p">|</span> sh
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">curl https://get.acme.sh <span class="p">|</span> sh
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中，首先会把acme.sh安装到<code>~/.acme.sh</code>，此目录也会存储生成的证书文件。然后脚本会指定别名<code>alias acme.sh=~/.acme.sh/acme.sh</code>。然后自动创建<code>cronjob</code>定时任务，每天0:00:00会自动检测所有证书，及时更新证书。</p>
 <p>为了保险起见我还是进行了如下操作</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="s2">&#34;alias acme.sh=~/.acme.sh/acme.sh&#34;</span> &gt;&gt; ~/.zshrc
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;alias acme.sh=~/.acme.sh/acme.sh&#34;</span> &gt;&gt; ~/.zshrc
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>安装命令执行完毕后，执行<code>acme.sh --version</code>确认是否能正常使用<code>acme.sh</code>命令。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ acme.sh --version
-https://github.com/Neilpang/acme.sh
-v2.8.3
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ acme.sh --version
+</span></span><span class="line"><span class="cl">https://github.com/Neilpang/acme.sh
+</span></span><span class="line"><span class="cl">v2.8.3
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="生成证书"></a><h2>生成证书</h2>
 <p>acme支持DNS和HTTP认证，我选择了HTTP验证的方式</p>
 <p>其中，我以example.com的域名举例，实际操作换成自己的就可以了：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">acme.sh --issue -d example.com -d www.example.com -w /home/wwwroot/example.com
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">acme.sh --issue -d example.com -d www.example.com -w /home/wwwroot/example.com
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>简单解释下这条命令涉及到的一些参数：</p>
 <ul>
@@ -242,45 +242,45 @@ v2.8.3
 <p>另外，可以通过下面两个常用<code>acme.sh</code>命令查看和删除证书：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 查看证书列表</span>
-acme.sh --list
-
-<span class="c1"># 删除证书</span>
-acme.sh remove &lt;SAN_Domains&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 查看证书列表</span>
+</span></span><span class="line"><span class="cl">acme.sh --list
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除证书</span>
+</span></span><span class="line"><span class="cl">acme.sh remove &lt;SAN_Domains&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="安装证书"></a><h2>安装证书</h2>
 <p>本文将以Nginx为例，记录如何将证书安装，如果其他webserver大家可以参考acme.sh的文档来说。</p>
 <p>由于证书生成的目录并不是Nginx存储SSL证书的正确目录，所以我们要用<code>--installcert</code>命令来指定复制的目标位置，来让Nginx的配置文件直接读取该目录下的证书。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">acme.sh --installcert -d zephyrl.co <span class="se">\
-</span><span class="se"></span>    --key-file /etc/nginx/ssl/zephyrl.co.key <span class="se">\
-</span><span class="se"></span>    --fullchain-file /etc/nginx/ssl/fullchain.cer <span class="se">\
-</span><span class="se"></span>    --reloadcmd <span class="s2">&#34;service nginx force-reload&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">acme.sh --installcert -d zephyrl.co <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --key-file /etc/nginx/ssl/zephyrl.co.key <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --fullchain-file /etc/nginx/ssl/fullchain.cer <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --reloadcmd <span class="s2">&#34;service nginx force-reload&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果发现出现<code>/root/.acme.sh/acme.sh: line 5121: /etc/nginx/ssl/example.com.key: No such file or directory</code>的错误，请先执行以下操作：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mkdir /etc/nginx/ssl
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkdir /etc/nginx/ssl
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>成功后：</p>
 <p><img src="https://img.zephyrl.co/images/2020/02/02/successinstall.png" alt="successinstall.png"></p>
@@ -288,7 +288,7 @@ acme.sh remove &lt;SAN_Domains&gt;
 <p>这个：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -314,31 +314,31 @@ acme.sh remove &lt;SAN_Domains&gt;
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
-    <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span> <span class="s">default_server</span><span class="p">;</span>
-    <span class="kn">listen</span> <span class="s">[::]:443</span> <span class="s">ssl</span> <span class="s">default_server</span><span class="p">;</span>
-    <span class="kn">server_name</span> <span class="s">esofar.cn</span><span class="p">;</span>
-    <span class="kn">ssl</span> <span class="no">on</span><span class="p">;</span>
-    <span class="kn">ssl_certificate</span>      <span class="s">/etc/nginx/ssl/fullchain.cer</span><span class="p">;</span>
-    <span class="kn">ssl_certificate_key</span>  <span class="s">/etc/nginx/ssl/esofar.cn.key</span><span class="p">;</span>
-    <span class="kn">root</span> <span class="s">/home/wwwroot/esofar.cn</span><span class="p">;</span>
-    <span class="kn">index</span> <span class="s">index.html</span><span class="p">;</span>
-    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
-        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">@router</span><span class="p">;</span>
-        <span class="kn">index</span> <span class="s">index.html</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="kn">location</span> <span class="s">@router</span> <span class="p">{</span>
-        <span class="kn">rewrite</span> <span class="s">^.*</span>$ <span class="s">/index.html</span> <span class="s">last</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">server</span> <span class="p">{</span>
-    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
-    <span class="kn">server_name</span> <span class="s">esofar.cn</span><span class="p">;</span>
-    <span class="kn">return</span> <span class="mi">301</span> <span class="s">https://</span><span class="nv">$server_name$request_uri</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span> <span class="s">default_server</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="s">[::]:443</span> <span class="s">ssl</span> <span class="s">default_server</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">esofar.cn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl</span> <span class="no">on</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_certificate</span>      <span class="s">/etc/nginx/ssl/fullchain.cer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_certificate_key</span>  <span class="s">/etc/nginx/ssl/esofar.cn.key</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">root</span> <span class="s">/home/wwwroot/esofar.cn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">index</span> <span class="s">index.html</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">@router</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">index</span> <span class="s">index.html</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="s">@router</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">rewrite</span> <span class="s">^.*</span>$ <span class="s">/index.html</span> <span class="s">last</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">esofar.cn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">return</span> <span class="mi">301</span> <span class="s">https://</span><span class="nv">$server_name$request_uri</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>也是从此，我的域名下的一个网站升级到了HTTPS，23333333333333</p>
 
@@ -436,7 +436,7 @@ acme.sh remove &lt;SAN_Domains&gt;
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

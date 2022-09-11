@@ -41,7 +41,7 @@
     
         "keywords": "折腾笔记, DevOPs入门笔记, Ansible",
     
-    "wordcount":  1522 ,
+    "wordcount":  1717 ,
     "url": "https:\/\/blog.z36.moe\/2020\/08\/ansible3\/",
     
         "datePublished": "2020-08-14T16:20:15\u002b08:00",
@@ -147,7 +147,7 @@
             </div>
             <div class="post-meta-other">
                 <i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-14>2020-08-14</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 1522 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1717 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 4 分钟&nbsp;</div>
         </div>
 
@@ -195,34 +195,34 @@
 <table>
 <thead>
 <tr>
-<th align="center">元素</th>
-<th align="center">意义</th>
+<th style="text-align:center">元素</th>
+<th style="text-align:center">意义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">Hosts</td>
-<td align="center">执行的远程主机列表(应用在哪些主机上)</td>
+<td style="text-align:center">Hosts</td>
+<td style="text-align:center">执行的远程主机列表(应用在哪些主机上)</td>
 </tr>
 <tr>
-<td align="center">Tasks</td>
-<td align="center">任务集</td>
+<td style="text-align:center">Tasks</td>
+<td style="text-align:center">任务集</td>
 </tr>
 <tr>
-<td align="center">Variables</td>
-<td align="center">内置变量或自定义变量在playbook中调用</td>
+<td style="text-align:center">Variables</td>
+<td style="text-align:center">内置变量或自定义变量在playbook中调用</td>
 </tr>
 <tr>
-<td align="center">Templates模板</td>
-<td align="center">可替换模板文件中的变量并实现一些简单逻辑的文件</td>
+<td style="text-align:center">Templates模板</td>
+<td style="text-align:center">可替换模板文件中的变量并实现一些简单逻辑的文件</td>
 </tr>
 <tr>
-<td align="center">Handlers和notify结合使用</td>
-<td align="center">由特定条件触发的操作，满足条件方才执行，否则不执行</td>
+<td style="text-align:center">Handlers和notify结合使用</td>
+<td style="text-align:center">由特定条件触发的操作，满足条件方才执行，否则不执行</td>
 </tr>
 <tr>
-<td align="center">tags</td>
-<td align="center">指定某条任务执行，用于选择运行playbook中的部分代码。</td>
+<td style="text-align:center">tags</td>
+<td style="text-align:center">指定某条任务执行，用于选择运行playbook中的部分代码。</td>
 </tr>
 </tbody>
 </table>
@@ -231,11 +231,11 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible-playbook -t tagsname useradd.yml
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible-playbook -t tagsname useradd.yml
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="playbook-基础组件"></a><h2>Playbook 基础组件</h2>
 <a class="post-dummy-target" id="hosts"></a><h3>Hosts</h3>
@@ -244,7 +244,7 @@
 <p>可以是如下形式：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -253,14 +253,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">one.example.com
-one.example.com:two.example.com
-192.168.1.50
-192.168.1.*
-Websrvs:dbsrvs       或者，两个组的并集
-Websrvs:&amp;dbsrvs      与，两个组的交集
-webservers:!phoenix  在websrvs组，但不在dbsrvs组
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">one.example.com
+</span></span><span class="line"><span class="cl">one.example.com:two.example.com
+</span></span><span class="line"><span class="cl">192.168.1.50
+</span></span><span class="line"><span class="cl">192.168.1.*
+</span></span><span class="line"><span class="cl">Websrvs:dbsrvs       或者，两个组的并集
+</span></span><span class="line"><span class="cl">Websrvs:&amp;dbsrvs      与，两个组的交集
+</span></span><span class="line"><span class="cl">webservers:!phoenix  在websrvs组，但不在dbsrvs组
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>示例: - hosts: websrvs：dbsrvs</p>
 <a class="post-dummy-target" id="remote_user"></a><h3>remote_user</h3>
@@ -272,30 +272,30 @@ webservers:!phoenix  在websrvs组，但不在dbsrvs组
 <p>hosts: websrvs</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">remote_user: root   (可省略,默认为root)  以root身份连接
-tasks:    指定任务
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">remote_user: root   (可省略,默认为root)  以root身份连接
+</span></span><span class="line"><span class="cl">tasks:    指定任务
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>name: test connection</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ping:
-remote_user: zephyr
-sudo: yes               # 默认sudo为root
-sudo_user:zephyr        # sudo为zephyr
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ping:
+</span></span><span class="line"><span class="cl">remote_user: zephyr
+</span></span><span class="line"><span class="cl">sudo: yes               # 默认sudo为root
+</span></span><span class="line"><span class="cl">sudo_user:zephyr        # sudo为zephyr
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -318,7 +318,7 @@ sudo_user:zephyr        # sudo为zephyr
 <a class="post-dummy-target" id="playbook-创建用户"></a><h3>Playbook 创建用户</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -328,20 +328,20 @@ sudo_user:zephyr        # sudo为zephyr
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="k">hosts</span><span class="p">:</span><span class="w"> </span>all<span class="w">
-</span><span class="w">  </span><span class="k">remote_user</span><span class="p">:</span><span class="w"> </span>root<span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="k">tasks</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>create<span class="w"> </span>mysql<span class="w"> </span>user<span class="w">
-</span><span class="w">      </span><span class="k">user</span><span class="p">:</span><span class="w"> </span>name=mysql<span class="w"> </span>system=yes<span class="w"> </span>uid=<span class="m">36</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>create<span class="w"> </span>a<span class="w"> </span>group<span class="w">
-</span><span class="w">      </span><span class="k">group</span><span class="p">:</span><span class="w"> </span>name=httpd<span class="w"> </span>system=yes<span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">remote_user</span><span class="p">:</span><span class="w"> </span><span class="l">root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">create mysql user</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l">name=mysql system=yes uid=36</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">create a group</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l">name=httpd system=yes</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="安装-apache-httpd-服务"></a><h3>安装 Apache httpd 服务</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -353,23 +353,23 @@ sudo_user:zephyr        # sudo为zephyr
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="k">hosts</span><span class="p">:</span><span class="w"> </span>vms<span class="w">
-</span><span class="w">  </span><span class="k">remote_user</span><span class="p">:</span><span class="w"> </span>root<span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="k">tasks</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Install<span class="w"> </span>httpd<span class="w">
-</span><span class="w">      </span><span class="k">yum</span><span class="p">:</span><span class="w"> </span>name=httpd<span class="w"> </span>state=present<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Install<span class="w"> </span>configure<span class="w"> </span>file<span class="w">
-</span><span class="w">      </span><span class="k">copy</span><span class="p">:</span><span class="w"> </span>src=files/httpd.conf<span class="w"> </span>dest=/etc/httpd/conf/<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>start<span class="w"> </span>service<span class="w">
-</span><span class="w">      </span><span class="k">service</span><span class="p">:</span><span class="w"> </span>name=httpd<span class="w"> </span>state=started<span class="w"> </span>enabled=yes<span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">vms</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">remote_user</span><span class="p">:</span><span class="w"> </span><span class="l">root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install httpd</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">yum</span><span class="p">:</span><span class="w"> </span><span class="l">name=httpd state=present</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install configure file</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">copy</span><span class="p">:</span><span class="w"> </span><span class="l">src=files/httpd.conf dest=/etc/httpd/conf/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">start service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l">name=httpd state=started enabled=yes</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>这里的 <code>files</code> 文件夹存在于 <code>~/.ansible</code> 中</p>
 <a class="post-dummy-target" id="安装-nginx-服务"></a><h3>安装 Nginx 服务</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -383,19 +383,19 @@ sudo_user:zephyr        # sudo为zephyr
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="k">hosts</span><span class="p">:</span><span class="w"> </span>all<span class="w">
-</span><span class="w">  </span><span class="k">remote_user</span><span class="p">:</span><span class="w"> </span>root<span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="k">tasks</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>add<span class="w"> </span>group<span class="w"> </span>nginx<span class="w">
-</span><span class="w">      </span><span class="k">user</span><span class="p">:</span><span class="w"> </span>name=nginx<span class="w"> </span>state=present<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>add<span class="w"> </span>user<span class="w"> </span>nginx<span class="w">
-</span><span class="w">      </span><span class="k">user</span><span class="p">:</span><span class="w"> </span>name=nginx<span class="w"> </span>state=present<span class="w"> </span>group=nginx<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Install<span class="w"> </span>Nginx<span class="w">
-</span><span class="w">      </span><span class="k">yum</span><span class="p">:</span><span class="w"> </span>name=nginx<span class="w"> </span>state=present<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Start<span class="w"> </span>Nginx<span class="w">
-</span><span class="w">      </span><span class="k">service</span><span class="p">:</span><span class="w"> </span>name=nginx<span class="w"> </span>state=started<span class="w"> </span>enabled=yes<span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">remote_user</span><span class="p">:</span><span class="w"> </span><span class="l">root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">add group nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l">name=nginx state=present</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">add user nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l">name=nginx state=present group=nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install Nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">yum</span><span class="p">:</span><span class="w"> </span><span class="l">name=nginx state=present</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Start Nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l">name=nginx state=started enabled=yes</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="handlers-和-notify"></a><h2>Handlers 和 notify</h2>
 <p>Handlers 实际上就是一个触发器</p>
@@ -405,7 +405,7 @@ sudo_user:zephyr        # sudo为zephyr
 <a class="post-dummy-target" id="当-httpdconf-改变的时候重启-httpd-服务"></a><h3>当 <code>httpd.conf</code> 改变的时候重启 httpd 服务</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -422,27 +422,27 @@ sudo_user:zephyr        # sudo为zephyr
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="k">hosts</span><span class="p">:</span><span class="w"> </span>websrvs<span class="w">
-</span><span class="w">  </span><span class="k">remote_user</span><span class="p">:</span><span class="w"> </span>root<span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="k">tasks</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Install<span class="w"> </span>httpd<span class="w">
-</span><span class="w">      </span><span class="k">yum</span><span class="p">:</span><span class="w"> </span>name=httpd<span class="w"> </span>state=present<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Install<span class="w"> </span>configure<span class="w"> </span>file<span class="w">
-</span><span class="w">      </span><span class="k">copy</span><span class="p">:</span><span class="w"> </span>src=files/httpd.conf<span class="w"> </span>dest=/etc/httpd/conf/<span class="w">
-</span><span class="w">      </span><span class="k">notify</span><span class="p">:</span><span class="w"> </span>restart<span class="w"> </span>httpd<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>ensure<span class="w"> </span>apache<span class="w"> </span>is<span class="w"> </span>running<span class="w">
-</span><span class="w">      </span><span class="k">service</span><span class="p">:</span><span class="w"> </span>name=httpd<span class="w"> </span>state=started<span class="w"> </span>enabled=yes<span class="w">
-</span><span class="w">  
-</span><span class="w">  </span><span class="k">handlers</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>restart<span class="w"> </span>httpd<span class="w">
-</span><span class="w">      </span><span class="k">service</span><span class="p">:</span><span class="w"> </span>name=httpd<span class="w"> </span>state=restarted<span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">websrvs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">remote_user</span><span class="p">:</span><span class="w"> </span><span class="l">root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install httpd</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">yum</span><span class="p">:</span><span class="w"> </span><span class="l">name=httpd state=present</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install configure file</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">copy</span><span class="p">:</span><span class="w"> </span><span class="l">src=files/httpd.conf dest=/etc/httpd/conf/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">notify</span><span class="p">:</span><span class="w"> </span><span class="l">restart httpd</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">ensure apache is running</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l">name=httpd state=started enabled=yes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">handlers</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">restart httpd</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l">name=httpd state=restarted</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="更新-nginx-新的配置并重启服务"></a><h3>更新 Nginx 新的配置并重启服务</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -466,29 +466,29 @@ sudo_user:zephyr        # sudo为zephyr
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="k">hosts</span><span class="p">:</span><span class="w"> </span>websrvs<span class="w">
-</span><span class="w">  </span><span class="k">remote_user</span><span class="p">:</span><span class="w"> </span>root<span class="w">
-</span><span class="w">  
-</span><span class="w">  </span><span class="k">tasks</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>add<span class="w"> </span>group<span class="w"> </span>nginx<span class="w">
-</span><span class="w">      </span><span class="k">tags</span><span class="p">:</span><span class="w"> </span>user<span class="w">
-</span><span class="w">      </span><span class="k">user</span><span class="p">:</span><span class="w"> </span>name=nginx<span class="w"> </span>state=present<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>add<span class="w"> </span>user<span class="w"> </span>nginx<span class="w">
-</span><span class="w">      </span><span class="k">user</span><span class="p">:</span><span class="w"> </span>name=nginx<span class="w"> </span>state=present<span class="w"> </span>group=nginx<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Install<span class="w"> </span>Nginx<span class="w">
-</span><span class="w">      </span><span class="k">yum</span><span class="p">:</span><span class="w"> </span>name=nginx<span class="w"> </span>state=present<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>config<span class="w">
-</span><span class="w">      </span><span class="k">copy</span><span class="p">:</span><span class="w"> </span>src=/root/config.txt<span class="w"> </span>dest=/etc/nginx/nginx.conf<span class="w">
-</span><span class="w">      </span><span class="k">notify</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- Restart<span class="w"> </span>Nginx<span class="w">
-</span><span class="w">        </span>- Check<span class="w"> </span>Nginx<span class="w"> </span>Process<span class="w">
-</span><span class="w">  
-</span><span class="w">  </span><span class="k">handlers</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Restart<span class="w"> </span>Nginx<span class="w">
-</span><span class="w">      </span><span class="k">service</span><span class="p">:</span><span class="w"> </span>name=nginx<span class="w"> </span>state=restarted<span class="w"> </span>enabled=yes<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Check<span class="w"> </span>Nginx<span class="w"> </span>process<span class="w">
-</span><span class="w">      </span><span class="k">shell</span><span class="p">:</span><span class="w"> </span>killall<span class="w"> </span>-<span class="m">0</span><span class="w"> </span>nginx<span class="w"> </span>&gt;<span class="w"> </span>/tmp/nginx.log<span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">websrvs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">remote_user</span><span class="p">:</span><span class="w"> </span><span class="l">root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">add group nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l">user</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l">name=nginx state=present</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">add user nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l">name=nginx state=present group=nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install Nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">yum</span><span class="p">:</span><span class="w"> </span><span class="l">name=nginx state=present</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">copy</span><span class="p">:</span><span class="w"> </span><span class="l">src=/root/config.txt dest=/etc/nginx/nginx.conf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">notify</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">Restart Nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">Check Nginx Process</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">handlers</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Restart Nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l">name=nginx state=restarted enabled=yes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Check Nginx process</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l">killall -0 nginx &gt; /tmp/nginx.log</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>注：可以通过向进程发送信号0，然后根据返回值来判断一个进程是否存在。</p>
@@ -498,7 +498,7 @@ sudo_user:zephyr        # sudo为zephyr
 <p>多个动作可以使用同一个标签</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -513,29 +513,29 @@ sudo_user:zephyr        # sudo为zephyr
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># httpd.yaml</span><span class="w">
-</span><span class="w"></span>- <span class="k">hosts</span><span class="p">:</span><span class="w"> </span>websrvs<span class="w">
-</span><span class="w">  </span><span class="k">remote_user</span><span class="p">:</span><span class="w"> </span>root<span class="w">
-</span><span class="w">  
-</span><span class="w">  </span><span class="k">tasks</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Install<span class="w"> </span>httpd<span class="w">
-</span><span class="w">      </span><span class="k">yum</span><span class="p">:</span><span class="w"> </span>name=httpd<span class="w"> </span>state=present<span class="w">
-</span><span class="w">      </span><span class="k">tage</span><span class="p">:</span><span class="w"> </span>install<span class="w"> 
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Install<span class="w"> </span>configure<span class="w"> </span>file<span class="w">
-</span><span class="w">      </span><span class="k">copy</span><span class="p">:</span><span class="w"> </span>src=files/httpd.conf<span class="w"> </span>dest=/etc/httpd/conf/<span class="w">
-</span><span class="w">      </span><span class="k">tags</span><span class="p">:</span><span class="w"> </span>conf<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>start<span class="w"> </span>httpd<span class="w"> </span>service<span class="w">
-</span><span class="w">      </span><span class="k">tags</span><span class="p">:</span><span class="w"> </span>service<span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># httpd.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">websrvs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">remote_user</span><span class="p">:</span><span class="w"> </span><span class="l">root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install httpd</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">yum</span><span class="p">:</span><span class="w"> </span><span class="l">name=httpd state=present</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">tage</span><span class="p">:</span><span class="w"> </span><span class="l">install </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install configure file</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">copy</span><span class="p">:</span><span class="w"> </span><span class="l">src=files/httpd.conf dest=/etc/httpd/conf/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l">conf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">start httpd service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l">service</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>此为 <code>httpd.yaml</code>，我们执行以下代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ansible-playbook –t install,conf httpd.yml
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible-playbook –t install,conf httpd.yml
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>就是执行了里面的 <code>install</code> 和 <code>conf</code> 模块</p>
 
@@ -637,7 +637,7 @@ sudo_user:zephyr        # sudo为zephyr
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 

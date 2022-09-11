@@ -209,7 +209,7 @@
 <p>首先，我们要找到 Zabbix 默认存放脚本的地方，可以使用 <code>grep</code> 筛选</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -226,36 +226,36 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@zep0 ~<span class="o">]</span><span class="c1"># grep -Ev &#39;^$|#&#39; /etc/zabbix/zabbix_server.conf</span>
-<span class="nv">LogFile</span><span class="o">=</span>/var/log/zabbix/zabbix_server.log
-<span class="nv">LogFileSize</span><span class="o">=</span><span class="m">0</span>
-<span class="nv">PidFile</span><span class="o">=</span>/var/run/zabbix/zabbix_server.pid
-<span class="nv">SocketDir</span><span class="o">=</span>/var/run/zabbix
-<span class="nv">DBHost</span><span class="o">=</span>127.0.0.1
-<span class="nv">DBName</span><span class="o">=</span>zabbix
-<span class="nv">DBUser</span><span class="o">=</span>zabbix
-<span class="nv">DBPassword</span><span class="o">=</span>Lza0423.
-<span class="nv">SNMPTrapperFile</span><span class="o">=</span>/var/log/snmptrap/snmptrap.log
-<span class="nv">Timeout</span><span class="o">=</span><span class="m">4</span>
-<span class="nv">AlertScriptsPath</span><span class="o">=</span>/usr/lib/zabbix/alertscripts
-<span class="nv">ExternalScripts</span><span class="o">=</span>/usr/lib/zabbix/externalscripts
-<span class="nv">LogSlowQueries</span><span class="o">=</span><span class="m">3000</span>
-<span class="nv">StatsAllowedIP</span><span class="o">=</span>127.0.0.1
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@zep0 ~<span class="o">]</span><span class="c1"># grep -Ev &#39;^$|#&#39; /etc/zabbix/zabbix_server.conf</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LogFile</span><span class="o">=</span>/var/log/zabbix/zabbix_server.log
+</span></span><span class="line"><span class="cl"><span class="nv">LogFileSize</span><span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="nv">PidFile</span><span class="o">=</span>/var/run/zabbix/zabbix_server.pid
+</span></span><span class="line"><span class="cl"><span class="nv">SocketDir</span><span class="o">=</span>/var/run/zabbix
+</span></span><span class="line"><span class="cl"><span class="nv">DBHost</span><span class="o">=</span>127.0.0.1
+</span></span><span class="line"><span class="cl"><span class="nv">DBName</span><span class="o">=</span>zabbix
+</span></span><span class="line"><span class="cl"><span class="nv">DBUser</span><span class="o">=</span>zabbix
+</span></span><span class="line"><span class="cl"><span class="nv">DBPassword</span><span class="o">=</span>Lza0423.
+</span></span><span class="line"><span class="cl"><span class="nv">SNMPTrapperFile</span><span class="o">=</span>/var/log/snmptrap/snmptrap.log
+</span></span><span class="line"><span class="cl"><span class="nv">Timeout</span><span class="o">=</span><span class="m">4</span>
+</span></span><span class="line"><span class="cl"><span class="nv">AlertScriptsPath</span><span class="o">=</span>/usr/lib/zabbix/alertscripts
+</span></span><span class="line"><span class="cl"><span class="nv">ExternalScripts</span><span class="o">=</span>/usr/lib/zabbix/externalscripts
+</span></span><span class="line"><span class="cl"><span class="nv">LogSlowQueries</span><span class="o">=</span><span class="m">3000</span>
+</span></span><span class="line"><span class="cl"><span class="nv">StatsAllowedIP</span><span class="o">=</span>127.0.0.1
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在倒数第四行就是我们要找的 <code>alertscripts</code> 文件夹，我们进入文件夹，创建 <code>dingding.py</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">vim /usr/lib/zabbix/alertscripts/dingding.py
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vim /usr/lib/zabbix/alertscripts/dingding.py
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>插入以下脚本内容</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -286,36 +286,36 @@
 </span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/bin/python</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">os</span>
-
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json;charset=utf-8&#39;</span><span class="p">}</span>
-<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&#34;https://oapi.dingtalk.com/robot/send?access_token=youraccesstoken&#34;</span>
-
-<span class="k">def</span> <span class="nf">msg</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="n">json_text</span><span class="o">=</span> <span class="p">{</span>
-     <span class="s2">&#34;msgtype&#34;</span><span class="p">:</span> <span class="s2">&#34;text&#34;</span><span class="p">,</span>
-        <span class="s2">&#34;at&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&#34;atMobiles&#34;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&#34;电话号码&#34;</span>
-            <span class="p">],</span>
-            <span class="s2">&#34;isAtAll&#34;</span><span class="p">:</span> <span class="bp">False</span>
-        <span class="p">},</span>
-        <span class="s2">&#34;text&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="n">text</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">print</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_text</span><span class="p">),</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">msg</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/python</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -*- coding: utf-8 -*-</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">json</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json;charset=utf-8&#39;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">api_url</span> <span class="o">=</span> <span class="s2">&#34;https://oapi.dingtalk.com/robot/send?access_token=youraccesstoken&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">msg</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">json_text</span><span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="s2">&#34;msgtype&#34;</span><span class="p">:</span> <span class="s2">&#34;text&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;at&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;atMobiles&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;电话号码&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;isAtAll&#34;</span><span class="p">:</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;text&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="n">text</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_text</span><span class="p">),</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">text</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">msg</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><a class="post-dummy-target" id="添加自定义机器人并复制-webhook"></a><h3>添加自定义机器人并复制 Webhook</h3>
 <p>点击 智能群管理，添加自定义机器人</p>
@@ -335,7 +335,7 @@
 <p>添加故障发生的 Custom message</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -346,21 +346,21 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">标题：故障发生: {TRIGGER.STATUS} 服务器: {HOSTNAME1}
-消息：
-告警主机：{HOSTNAME1}
-告警事件：{EVENT.DATE} {EVENT.TIME}
-告警等级：{TRIGGER.SEVERITY}
-告警信息：{TRIGGER.NAME}
-告警项目：{TRIGGER.KEY1}
-问题详情：{ITEM.NAME}:{ITEM.VALUE}
-当前状态：{TRIGGER.STATUS}:{ITEM.VALUE1}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">标题：故障发生: {TRIGGER.STATUS} 服务器: {HOSTNAME1}
+</span></span><span class="line"><span class="cl">消息：
+</span></span><span class="line"><span class="cl">告警主机：{HOSTNAME1}
+</span></span><span class="line"><span class="cl">告警事件：{EVENT.DATE} {EVENT.TIME}
+</span></span><span class="line"><span class="cl">告警等级：{TRIGGER.SEVERITY}
+</span></span><span class="line"><span class="cl">告警信息：{TRIGGER.NAME}
+</span></span><span class="line"><span class="cl">告警项目：{TRIGGER.KEY1}
+</span></span><span class="line"><span class="cl">问题详情：{ITEM.NAME}:{ITEM.VALUE}
+</span></span><span class="line"><span class="cl">当前状态：{TRIGGER.STATUS}:{ITEM.VALUE1}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>添加故障解决的 Custom message</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -372,17 +372,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">标题：问题：{ITEM.NAME}:{ITEM.VALUE} 已解决
-消息：
-问题已解决！
-问题：{ITEM.NAME}:{ITEM.VALUE}
-主机：{HOST.NAME}
-解决时间：{EVENT.DATE} {EVENT.TIME}
-持续时间：{EVENT.DURATION}
-问题等级：{EVENT.SEVERITY}
-问题ID：{EVENT.ID}
-{TRIGGER.URL}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">标题：问题：{ITEM.NAME}:{ITEM.VALUE} 已解决
+</span></span><span class="line"><span class="cl">消息：
+</span></span><span class="line"><span class="cl">问题已解决！
+</span></span><span class="line"><span class="cl">问题：{ITEM.NAME}:{ITEM.VALUE}
+</span></span><span class="line"><span class="cl">主机：{HOST.NAME}
+</span></span><span class="line"><span class="cl">解决时间：{EVENT.DATE} {EVENT.TIME}
+</span></span><span class="line"><span class="cl">持续时间：{EVENT.DURATION}
+</span></span><span class="line"><span class="cl">问题等级：{EVENT.SEVERITY}
+</span></span><span class="line"><span class="cl">问题ID：{EVENT.ID}
+</span></span><span class="line"><span class="cl">{TRIGGER.URL}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>以上内容添加到 <code>钉钉告警</code> 的 Templates 里面也可以</p>
 <p>之后我们可以进行压力测试，看一看能不能正常报警，或者干脆关掉机器</p>
@@ -491,7 +491,7 @@
             由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
         </div>
         <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://blog.z36.moe/">Zephyr</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
 </footer>
 
